@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulador de Uniformes – Marol Sports</title>
+  <meta name="description" content="Crie uniformes de futebol exclusivos: escolha o modelo, as cores, a gola, nome, número, escudo e patrocínio, e peça seu orçamento.">
+  <link rel="icon" href="logo_icone.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="https://www.marolsports.com" title="Marol Sports">
+      <img src="logo_branca.webp" alt="Marol Sports" width="107" height="43">
+    </a>
+    <div class="titulo">
+      <span class="titulo-rotulo">Simulador · Futebol masculino</span>
+      <strong id="titulo-modelo">Modelo</strong>
+    </div>
+    <div class="acoes">
+      <button class="btn-icone" id="btn-desfazer" title="Desfazer (Ctrl+Z)" aria-label="Desfazer"><svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></button>
+      <button class="btn-icone" id="btn-refazer" title="Refazer (Ctrl+Y)" aria-label="Refazer"><svg viewBox="0 0 24 24"><path d="m15 14 5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13"/></svg></button>
+      <span class="sep"></span>
+      <button class="btn-secundario" id="btn-nova" title="Começar uma nova simulação"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Nova</span></button>
+      <button class="btn-secundario" id="btn-armario" title="Simulações salvas neste navegador"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM12 4v16M9 11v2M15 11v2"/></svg><span>Armário</span></button>
+      <button class="btn-secundario" id="btn-salvar" title="Salvar no armário"><svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"/><path d="M8 3v5h7V3M8 21v-7h8v7"/></svg><span>Salvar</span></button>
+      <button class="btn-secundario" id="btn-baixar" title="Baixar imagem (PNG)"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>Baixar</span></button>
+      <button class="btn-primario" id="btn-orcamento"><svg viewBox="0 0 24 24"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.6-4.2A8.5 8.5 0 1 1 20.5 11.6z"/></svg><span>Pedir orçamento</span></button>
+    </div>
+  </header>
+
+  <main class="area">
+    <nav class="abas" role="tablist" aria-label="Etapas da personalização">
+      <button role="tab" data-aba="modelos" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z"/></svg><span>Modelos</span></button>
+      <button role="tab" data-aba="cores"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-1.4-1.5-1.7-1.5-3s1-2.2 2.4-2.2H18a3 3 0 0 0 3-3C21 6.5 17 3 12 3z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10" cy="7" r="1.2"/><circle cx="15" cy="7" r="1.2"/></svg><span>Cores</span></button>
+      <button role="tab" data-aba="acabamentos"><svg viewBox="0 0 24 24"><path d="M7 3c1 3 3 5 5 5s4-2 5-5M7 3 3 6l2 5 2-1M17 3l4 3-2 5-2-1M7 10v11h10V10"/></svg><span>Gola e manga</span></button>
+      <button role="tab" data-aba="meiao"><svg viewBox="0 0 24 24"><path d="M8 3h7v9l4 3a3 3 0 0 1-2 6h-5a4 4 0 0 1-4-4z"/><path d="M8 7h7"/></svg><span>Meião</span></button>
+      <button role="tab" data-aba="nome"><svg viewBox="0 0 24 24"><path d="M4 7V5h16v2M12 5v14M9 19h6"/></svg><span>Nome e número</span></button>
+      <button role="tab" data-aba="imagens"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><span>Escudo e patrocínio</span></button>
+    </nav>
+
+    <section class="painel" id="painel" aria-live="polite"></section>
+
+    <section class="palco-area">
+      <div class="palco-barra">
+        <div class="segmentado" id="vista" role="group" aria-label="Vista">
+          <button data-vista="ambos" aria-pressed="true">Frente e costas</button>
+          <button data-vista="frente">Frente</button>
+          <button data-vista="verso">Costas</button>
+        </div>
+        <div class="segmentado" id="fundo" role="group" aria-label="Fundo">
+          <button data-fundo="claro" title="Fundo claro" aria-label="Fundo claro"><i class="bola bola-claro"></i></button>
+          <button data-fundo="medio" title="Fundo neutro" aria-label="Fundo neutro" aria-pressed="true"><i class="bola bola-medio"></i></button>
+          <button data-fundo="escuro" title="Fundo escuro" aria-label="Fundo escuro"><i class="bola bola-escuro"></i></button>
+        </div>
+      </div>
+      <div class="palco" id="palco" data-fundo="medio">
+        <svg id="palco-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Pré-visualização do uniforme"></svg>
+        <div class="carregando" id="carregando" hidden><span></span>Carregando modelo…</div>
+      </div>
+      <p class="dica">Dica: arraste nomes, números e imagens direto no uniforme para ajustar a posição.</p>
+    </section>
+  </main>
+
+  <dialog id="dialogo" class="dialogo"></dialog>
+  <div class="aviso" id="aviso" role="status" hidden></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

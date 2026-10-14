@@ -1,0 +1,15 @@
+{
+  "name": "marol-sports-simulador",
+  "private": true,
+  "type": "module",
+  "description": "Simulador de uniformes da Marol Sports",
+  "scripts": {
+    "servir": "http-server simulador -p 8080 -c-1",
+    "converter": "node ferramentas/converter-modelos.mjs \"Futebol Masculino-20260515T124229Z-3-001/Futebol Masculino\" simulador/dados",
+    "miniaturas": "node ferramentas/gerar-miniaturas.mjs http://localhost:8080/ simulador/dados/miniaturas"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "playwright": "^1.56.1"
+  }
+}

@@ -1,0 +1,2834 @@
+{
+ "viewBox": {
+  "camisa": "0 0 224820 284513",
+  "calcao": "0 0 182661 157761"
+ },
+ "silhuetas": {
+  "camisa": "M28187 20860c-5441,2966 -10056,7068 -14882,13586 -7770,10435 -9347,28393 -9226,41740 0,9100 -1456,14803 -2670,22813 -1138,7719 -1601,14377 -1336,22949 63,2032 2286,1190 4291,1612l37104 -25c124,-1849 -150,-4637 -28,-5971 108,-1547 477,-6005 1012,-6003 214,0 454,712 716,2605 242,1091 365,1698 486,2426l3278 14803c4735,23662 3763,13467 3763,40405 0,5218 -729,8858 -971,13346l-4249 39436c-1327,9516 -7438,43305 -7526,53531 365,1640 1379,1683 3791,2432 6851,2127 24224,3410 31288,3497 2756,33 5622,-118 8364,-36 2817,84 4797,514 8312,507l38704 -1c7260,0 13326,-509 20088,-489l19096 -991c6381,28 12407,-1396 17223,-2863 2477,-755 8417,-3220 9820,-5368l1185 -3072c-339,-4186 -1864,-8451 -2723,-14143l-6921 -43073c-1578,-9466 -3157,-18930 -4735,-28636 -729,-4614 -1942,-9952 -2185,-14561 -122,-2671 243,-5461 -122,-8132 -1093,-7765 243,-21236 1214,-29001 1291,-8657 2163,-21432 4019,-24601 20,-35 41,-69 61,-102l477 3842 298 5392c346,1904 578,3138 2872,3141l33701 45c3763,0 3126,-2033 2761,-4582 -364,-2911 0,-5823 -122,-8737l-1454 -15651c-2064,-14682 -2307,-16502 -3399,-31426 -487,-5218 -244,-11407 -1701,-15532 -2306,-6916 -8377,-16380 -14446,-19899 -7691,-4537 -8852,-6003 -12778,-7487 -2271,-859 -5465,-1723 -11381,-3190 -6798,-1699 -18695,-6431 -25131,-9222l-8984 -4247c-4735,-3398 -1700,-1699 -16753,485l-19788 1091c-3400,0 -16146,-606 -19666,-1334 -2305,-362 -5099,-1455 -7282,-1455 -971,0 -3035,1820 -4006,2427l-13234 5824c-3035,1215 -5949,2671 -9347,3519 -3398,850 -6798,1577 -10318,2427 -6573,1684 -11873,3395 -16560,5949z",
+  "calcao": "M103423 13776l-40309 1c-3660,8 -5722,-440 -8656,-528 -2856,-85 -5841,73 -8711,37 -7357,-91 -25450,-1426 -32585,-3641 -3393,-1054 -4131,-767 -4131,-5053l-2239 21741c-160,1062 -614,3280 -695,3898 -852,6504 -1080,21449 -1873,26699l-1316 18073c0,3463 256,5476 484,8191 302,3598 -335,5842 -486,8644 -430,7967 101,16592 -926,25606 -353,3093 -341,5311 -680,8504l-490 12262c-201,1684 -3450,5690 4663,10252 4775,2684 22850,9198 29069,9198 22425,0 26801,1863 40958,-12617 4392,-4492 5140,-11784 6443,-16517 592,-2152 698,-4011 1363,-6290 380,-1303 441,-1764 682,-2889 1984,-11120 4638,-33029 6169,-43323l510 0c0,3550 1527,13249 2113,16765 538,3234 784,4761 946,8748 73,1803 1592,9924 2004,11773 1766,7941 4990,24360 8211,29545 3111,5009 11329,11660 18751,13393 8886,2076 15934,1412 25120,1412 6956,0 23162,-5989 29259,-9008 8380,-4149 4824,-9514 4926,-19565 48,-4653 -784,-7729 -1005,-11750l-664 -25209c-239,-2094 -738,-7500 -155,-11299 348,-2268 387,-3084 102,-5387 -90,-729 -118,-707 -149,-1855l-1561 -20153c-298,-2175 -21,-4319 -137,-6496 -187,-3524 -996,-8236 -1400,-11355 -265,-2043 -30,-3967 -124,-5999 -111,-2396 -849,-3397 -1013,-5620l-2057 -23964c-69,108 -140,164 -162,349l-1278 3313c-1462,2238 -7648,4805 -10227,5591 -5016,1528 -11291,3011 -17937,2982l-19888 1032c-7042,-21 -13359,509 -20919,509z"
+ },
+ "modelos": [
+  {
+   "id": 39,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 42,
+   "camisa": 3,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 43,
+   "camisa": 3,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     null
+    ]
+   }
+  },
+  {
+   "id": 44,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 45,
+   "camisa": 4,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 46,
+   "camisa": 4,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 47,
+   "camisa": 3,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 48,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 49,
+   "camisa": 3,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 50,
+   "camisa": 3,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 51,
+   "camisa": 3,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     null,
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 52,
+   "camisa": 3,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 58,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 59,
+   "camisa": 3,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 60,
+   "camisa": 3,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 61,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 62,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 64,
+   "camisa": 3,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 65,
+   "camisa": 0,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 66,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 67,
+   "camisa": 3,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     null
+    ]
+   }
+  },
+  {
+   "id": 68,
+   "camisa": 3,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 71,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 72,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 74,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 76,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 77,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 79,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 80,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 81,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 82,
+   "camisa": 3,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 83,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 84,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 85,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 86,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 87,
+   "camisa": 4,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 88,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 89,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#3BAFED",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 90,
+   "camisa": 4,
+   "calcao": 4,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 91,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 142,
+   "camisa": 3,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 143,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 144,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 145,
+   "camisa": 0,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 146,
+   "camisa": 0,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 147,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 148,
+   "camisa": 3,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 149,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 150,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 151,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 152,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 154,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 155,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 156,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 157,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 159,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 160,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 161,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 162,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 163,
+   "camisa": 1,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 164,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 165,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 166,
+   "camisa": 3,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 167,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 168,
+   "camisa": 3,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 169,
+   "camisa": 3,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 170,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 171,
+   "camisa": 4,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 172,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 173,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 174,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 175,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 176,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 177,
+   "camisa": 1,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 178,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 179,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 180,
+   "camisa": 3,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 181,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 182,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 183,
+   "camisa": 4,
+   "calcao": 4,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 184,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 186,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 187,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 188,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 189,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 191,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 199,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 391,
+   "camisa": 4,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 392,
+   "camisa": 3,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 393,
+   "camisa": 4,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 394,
+   "camisa": 3,
+   "calcao": 4,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 395,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 396,
+   "camisa": 3,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 397,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 398,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 399,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 400,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#F00808",
+     "#F00808"
+    ],
+    "camisa": [
+     "#F00808",
+     "#F00808"
+    ]
+   }
+  },
+  {
+   "id": 401,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#7C0000"
+    ],
+    "camisa": [
+     "#7C0000"
+    ]
+   }
+  },
+  {
+   "id": 402,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     "#7C0000",
+     "#B51723"
+    ]
+   }
+  },
+  {
+   "id": 403,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#B51723"
+    ],
+    "camisa": [
+     "#62DA5E",
+     null
+    ]
+   }
+  },
+  {
+   "id": 404,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#8CDDFF"
+    ],
+    "camisa": [
+     "#3BAFED",
+     "#0062D9"
+    ]
+   }
+  },
+  {
+   "id": 405,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#B51723"
+    ],
+    "camisa": [
+     "#1A6642"
+    ]
+   }
+  },
+  {
+   "id": 406,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#1A6642",
+     null
+    ],
+    "camisa": [
+     "#B51723",
+     "#1A6642"
+    ]
+   }
+  },
+  {
+   "id": 407,
+   "camisa": 2,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     null,
+     "#0030A8",
+     "#B51723"
+    ],
+    "camisa": [
+     "#0062D9",
+     null
+    ]
+   }
+  },
+  {
+   "id": 408,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#3BAFED"
+    ],
+    "camisa": [
+     "#3BAFED",
+     null
+    ]
+   }
+  },
+  {
+   "id": 409,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     "#4D1387",
+     null
+    ]
+   }
+  },
+  {
+   "id": 410,
+   "camisa": 1,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     null,
+     null
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 411,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#B51723"
+    ],
+    "camisa": [
+     "#B51723"
+    ]
+   }
+  },
+  {
+   "id": 412,
+   "camisa": 3,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#1A6642",
+     null,
+     "#ECD407"
+    ],
+    "camisa": [
+     "#1A6642",
+     "#ECD407",
+     null
+    ]
+   }
+  },
+  {
+   "id": 413,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     null,
+     null
+    ],
+    "camisa": [
+     "#1A6642",
+     null
+    ]
+   }
+  },
+  {
+   "id": 414,
+   "camisa": 4,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#0030A8",
+     "#04003E"
+    ],
+    "camisa": [
+     "#8CDDFF",
+     "#0062D9",
+     "#0030A8",
+     "#04003E"
+    ]
+   }
+  },
+  {
+   "id": 415,
+   "camisa": 4,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#B51723"
+    ],
+    "camisa": [
+     "#62DA5E",
+     "#1A6642",
+     "#B51723",
+     null
+    ]
+   }
+  },
+  {
+   "id": 416,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 417,
+   "camisa": 4,
+   "calcao": 4,
+   "cores": {
+    "calcao": [
+     "#1A6642",
+     "#62DA5E",
+     "#B51723",
+     null
+    ],
+    "camisa": [
+     "#1A6642",
+     "#62DA5E",
+     "#B51723",
+     null
+    ]
+   }
+  },
+  {
+   "id": 418,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 419,
+   "camisa": 1,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#62DA5E",
+     "#0030A8"
+    ],
+    "camisa": [
+     "#62DA5E"
+    ]
+   }
+  },
+  {
+   "id": 420,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#62DA5E"
+    ],
+    "camisa": [
+     "#ECD407",
+     "#62DA5E"
+    ]
+   }
+  },
+  {
+   "id": 481,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#3BAFED"
+    ],
+    "camisa": [
+     "#3BAFED"
+    ]
+   }
+  },
+  {
+   "id": 482,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 483,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#04003E"
+    ],
+    "camisa": [
+     "#04003E"
+    ]
+   }
+  },
+  {
+   "id": 484,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#7C0000"
+    ],
+    "camisa": [
+     "#7C0000"
+    ]
+   }
+  },
+  {
+   "id": 485,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 486,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 487,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     null,
+     "#04003E"
+    ],
+    "camisa": [
+     null,
+     "#04003E"
+    ]
+   }
+  },
+  {
+   "id": 488,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 489,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#F16321"
+    ]
+   }
+  },
+  {
+   "id": 490,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#0030A8"
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 491,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 492,
+   "camisa": 0,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#ECD407",
+     null
+    ]
+   }
+  },
+  {
+   "id": 493,
+   "camisa": 4,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#F16321",
+     "#1A6642",
+     "#F16321"
+    ],
+    "camisa": [
+     "#FFB700",
+     "#F16321",
+     "#1A6642",
+     "#F16321"
+    ]
+   }
+  },
+  {
+   "id": 494,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 495,
+   "camisa": 3,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     null,
+     null,
+     null
+    ],
+    "camisa": [
+     null,
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 496,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#ECD407"
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 497,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#7C0000"
+    ],
+    "camisa": [
+     "#7C0000"
+    ]
+   }
+  },
+  {
+   "id": 498,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     null,
+     null
+    ],
+    "camisa": [
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 500,
+   "camisa": 4,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     null,
+     "#0062D9",
+     null,
+     "#0062D9"
+    ]
+   }
+  },
+  {
+   "id": 501,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 502,
+   "camisa": 3,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     "#0030A8",
+     "#3BAFED",
+     null
+    ]
+   }
+  },
+  {
+   "id": 503,
+   "camisa": 3,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     "#242424",
+     "#B3B5B7",
+     null
+    ]
+   }
+  },
+  {
+   "id": 504,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#F16321"
+    ]
+   }
+  },
+  {
+   "id": 505,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 506,
+   "camisa": 3,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#B3B5B7",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 507,
+   "camisa": 3,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     null,
+     null,
+     null
+    ],
+    "camisa": [
+     "#242424",
+     null,
+     "#B3B5B7"
+    ]
+   }
+  },
+  {
+   "id": 508,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 509,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#0062D9"
+    ],
+    "camisa": [
+     "#0062D9"
+    ]
+   }
+  },
+  {
+   "id": 510,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#0062D9"
+    ],
+    "camisa": [
+     "#0062D9"
+    ]
+   }
+  },
+  {
+   "id": 511,
+   "camisa": 4,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     null,
+     null,
+     "#242424"
+    ],
+    "camisa": [
+     "#ED1C24",
+     null,
+     "#27233F",
+     null
+    ]
+   }
+  },
+  {
+   "id": 512,
+   "camisa": 0,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#B51723",
+     "#0030A8"
+    ]
+   }
+  },
+  {
+   "id": 513,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 514,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     "#B3B5B7"
+    ]
+   }
+  },
+  {
+   "id": 515,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#B51723",
+     "#0030A8"
+    ],
+    "camisa": [
+     "#B51723",
+     "#0030A8"
+    ]
+   }
+  },
+  {
+   "id": 516,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     null,
+     "#0030A8"
+    ],
+    "camisa": [
+     null,
+     "#0030A8"
+    ]
+   }
+  },
+  {
+   "id": 517,
+   "camisa": 5,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#511A20",
+     "#7C0000",
+     "#B51723",
+     "#FFB700",
+     null
+    ]
+   }
+  },
+  {
+   "id": 518,
+   "camisa": 4,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#00FFEC",
+     "#4D1387",
+     "#00FFEC"
+    ],
+    "camisa": [
+     "#4D1387",
+     "#4D1387",
+     null,
+     "#00FFEC"
+    ]
+   }
+  },
+  {
+   "id": 519,
+   "camisa": 0,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 520,
+   "camisa": 5,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     "#B3B5B7",
+     null,
+     null,
+     "#B3B5B7",
+     null
+    ]
+   }
+  },
+  {
+   "id": 521,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     "#009A44",
+     null
+    ]
+   }
+  },
+  {
+   "id": 522,
+   "camisa": 4,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#00A3E0",
+     "#001E60",
+     null
+    ],
+    "camisa": [
+     "#001E60",
+     null,
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 523,
+   "camisa": 3,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#97D700",
+     "#4A7729"
+    ],
+    "camisa": [
+     "#97D700",
+     "#4A7729",
+     "#215732"
+    ]
+   }
+  },
+  {
+   "id": 524,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#CB6015"
+    ],
+    "camisa": [
+     "#CB6015",
+     "#782327"
+    ]
+   }
+  },
+  {
+   "id": 525,
+   "camisa": 5,
+   "calcao": 5,
+   "cores": {
+    "calcao": [
+     "#2E1A47",
+     "#003DA5",
+     "#E10098",
+     "#00A3E0",
+     "#FDFEFD"
+    ],
+    "camisa": [
+     "#2E1A47",
+     "#003DA5",
+     "#E10098",
+     "#00A3E0",
+     "#FDFEFD"
+    ]
+   }
+  },
+  {
+   "id": 526,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 527,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#782327"
+    ],
+    "camisa": [
+     "#782327",
+     "#EF3340"
+    ]
+   }
+  },
+  {
+   "id": 528,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 529,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#00A3E0"
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 530,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#CACCCB",
+     "#D50032"
+    ]
+   }
+  },
+  {
+   "id": 531,
+   "camisa": 5,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     "#CACCCB",
+     "#CB6015",
+     null,
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 532,
+   "camisa": 4,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     null,
+     null
+    ],
+    "camisa": [
+     "#009A44",
+     null,
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 533,
+   "camisa": 5,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     "#EAAA00",
+     null,
+     null,
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": 534,
+   "camisa": 5,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     null,
+     null,
+     "#003DA5",
+     "#003DA5",
+     null
+    ]
+   }
+  },
+  {
+   "id": 535,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#864BAE"
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 536,
+   "camisa": 5,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#003DA5",
+     "#002147"
+    ],
+    "camisa": [
+     "#003DA5",
+     "#002147",
+     null,
+     "#00A3E0",
+     "#002147"
+    ]
+   }
+  },
+  {
+   "id": 537,
+   "camisa": 4,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#EAAA00",
+     "#EAAA00"
+    ],
+    "camisa": [
+     "#EAAA00",
+     "#EAAA00",
+     "#EAAA00",
+     "#BD162C"
+    ]
+   }
+  },
+  {
+   "id": 538,
+   "camisa": 4,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#003DA5",
+     "#00A3E0",
+     "#002147"
+    ],
+    "camisa": [
+     "#003DA5",
+     "#00A3E0",
+     "#00A3E0",
+     "#002147"
+    ]
+   }
+  },
+  {
+   "id": 539,
+   "camisa": 5,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#001E60",
+     "#B9D9EB",
+     "#00A3E0",
+     "#002147",
+     "#002147"
+    ]
+   }
+  },
+  {
+   "id": 540,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#333F48"
+    ],
+    "camisa": [
+     "#333F48",
+     null
+    ]
+   }
+  },
+  {
+   "id": 541,
+   "camisa": 3,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     null,
+     null,
+     "#EAAA00"
+    ],
+    "camisa": [
+     "#EAAA00",
+     "#D50032",
+     null
+    ]
+   }
+  },
+  {
+   "id": 542,
+   "camisa": 3,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#B9D9EB",
+     "#00A3E0",
+     "#864BAE"
+    ],
+    "camisa": [
+     "#B9D9EB",
+     "#00A3E0",
+     "#864BAE"
+    ]
+   }
+  },
+  {
+   "id": 543,
+   "camisa": 0,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     null,
+     "#BD162C",
+     "#003DA5"
+    ]
+   }
+  },
+  {
+   "id": 544,
+   "camisa": 1,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#BD162C",
+     null
+    ],
+    "camisa": [
+     "#001E60"
+    ]
+   }
+  },
+  {
+   "id": 545,
+   "camisa": 1,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     null,
+     "#BD162C"
+    ],
+    "camisa": [
+     "#BD162C"
+    ]
+   }
+  },
+  {
+   "id": 546,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#00A3E0"
+    ],
+    "camisa": [
+     "#00A3E0"
+    ]
+   }
+  },
+  {
+   "id": 547,
+   "camisa": 2,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#333F48"
+    ],
+    "camisa": [
+     "#FF8200",
+     "#FF8200"
+    ]
+   }
+  },
+  {
+   "id": 548,
+   "camisa": 3,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     "#003DA5",
+     "#D50032",
+     null
+    ],
+    "camisa": [
+     "#EF3340",
+     "#002147",
+     null
+    ]
+   }
+  },
+  {
+   "id": 549,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#C3922E"
+    ],
+    "camisa": [
+     "#001E60"
+    ]
+   }
+  },
+  {
+   "id": 550,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#B9D9EB"
+    ]
+   }
+  },
+  {
+   "id": 551,
+   "camisa": 3,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     null,
+     "#53B0AE"
+    ],
+    "camisa": [
+     null,
+     "#BD162C",
+     "#53B0AE"
+    ]
+   }
+  },
+  {
+   "id": 552,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#EF3340"
+    ],
+    "camisa": [
+     "#EF3340"
+    ]
+   }
+  },
+  {
+   "id": 553,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#BD162C"
+    ]
+   }
+  },
+  {
+   "id": 554,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#001E60"
+    ],
+    "camisa": [
+     "#EAAA00"
+    ]
+   }
+  },
+  {
+   "id": 555,
+   "camisa": 0,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#EAAA00"
+    ]
+   }
+  },
+  {
+   "id": 556,
+   "camisa": 2,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#007A33",
+     "#215732"
+    ]
+   }
+  },
+  {
+   "id": 557,
+   "camisa": 2,
+   "calcao": 4,
+   "cores": {
+    "calcao": [
+     "#2E1A47",
+     "#864BAE",
+     "#D7C6E6",
+     "#864BAE"
+    ],
+    "camisa": [
+     "#440099",
+     "#D7C6E6"
+    ]
+   }
+  },
+  {
+   "id": 558,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     null
+    ],
+    "camisa": [
+     null
+    ]
+   }
+  },
+  {
+   "id": 559,
+   "camisa": 1,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#782327",
+     "#BD162C"
+    ],
+    "camisa": [
+     "#782327"
+    ]
+   }
+  },
+  {
+   "id": 560,
+   "camisa": 3,
+   "calcao": 3,
+   "cores": {
+    "calcao": [
+     null,
+     "#002147",
+     "#003DA5"
+    ],
+    "camisa": [
+     null,
+     "#002147",
+     "#003DA5"
+    ]
+   }
+  },
+  {
+   "id": 561,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#441E1E"
+    ],
+    "camisa": [
+     "#441E1E"
+    ]
+   }
+  },
+  {
+   "id": 562,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#215732"
+    ],
+    "camisa": [
+     "#215732"
+    ]
+   }
+  },
+  {
+   "id": 563,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#53B0AE"
+    ],
+    "camisa": [
+     "#53B0AE"
+    ]
+   }
+  },
+  {
+   "id": 564,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#333F48"
+    ],
+    "camisa": [
+     "#333F48"
+    ]
+   }
+  },
+  {
+   "id": 565,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#EF3340",
+     "#441E1E"
+    ],
+    "camisa": [
+     "#EF3340",
+     "#441E1E"
+    ]
+   }
+  },
+  {
+   "id": 566,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#441E1E"
+    ]
+   }
+  },
+  {
+   "id": 567,
+   "camisa": 1,
+   "calcao": 0,
+   "cores": {
+    "camisa": [
+     "#003DA5"
+    ]
+   }
+  },
+  {
+   "id": 568,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     "#BD162C",
+     "#864BAE"
+    ],
+    "camisa": [
+     "#BD162C",
+     "#864BAE"
+    ]
+   }
+  },
+  {
+   "id": 569,
+   "camisa": 1,
+   "calcao": 1,
+   "cores": {
+    "calcao": [
+     "#003DA5"
+    ],
+    "camisa": [
+     "#003DA5"
+    ]
+   }
+  },
+  {
+   "id": 570,
+   "camisa": 2,
+   "calcao": 2,
+   "cores": {
+    "calcao": [
+     null,
+     "#F6EB61"
+    ],
+    "camisa": [
+     "#215732",
+     "#009A44"
+    ]
+   }
+  }
+ ]
+}
