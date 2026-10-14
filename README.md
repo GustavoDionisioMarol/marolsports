@@ -36,6 +36,27 @@ publicado em qualquer hospedagem, inclusive em `marolsports.com/simulador/`.
   WhatsApp da Marol com o resumo completo e baixa a imagem para anexar. O número
   fica na constante `WHATSAPP` em `simulador/js/app.js`.
 
+## Mockup em foto (teste)
+
+Além do visual ilustrado, o simulador tem o visual **Foto** (botão "Foto /
+Ilustração" no palco), montado sobre a foto `ferramentas/mockup/base.webp`
+(camisa e calção brancos, de frente e de costas):
+
+- a estampa é pintada por baixo, encaixada na camisa e no calção da foto;
+- a foto entra por cima como mapa de sombras (multiplicar) e de brilhos (tela).
+  Por isso as dobras, as costuras e o tecido aparecem em qualquer cor;
+- a gola, as mangas e os punhos são coloridos por regiões medidas na foto. A
+  foto tem gola V, então nesse visual a camisa sempre aparece com gola V.
+
+Para trocar a foto, rode
+`python3 ferramentas/preparar-mockup-foto.py <foto> simulador/mockup`. O script
+gera os contornos e os mapas de luz em `simulador/mockup/`. As regiões de gola,
+mangas e punhos estão em coordenadas da foto dentro do script e precisam ser
+reajustadas para outra imagem.
+
+> **Licença:** se a foto veio de um banco de imagens (Freepik, Envato etc.),
+> confirme que a licença permite usá-la no site antes de publicar.
+
 ## Rodar localmente
 
 ```bash
@@ -58,6 +79,7 @@ simulador/
   dados/modelos/<n>.json      camadas de cada modelo (geradas a partir dos SVGs)
   dados/miniaturas/*.webp     miniaturas do catálogo
   fontes/                     fontes de licença aberta (OFL) usadas no nome e número
+  mockup/                     contornos e mapas de luz do mockup em foto
 ferramentas/
   converter-modelos.mjs       converte os SVGs do CorelDRAW para dados/modelos
   classificar-camadas.mjs     sugere se camadas de um lado só são fundo ou destaque

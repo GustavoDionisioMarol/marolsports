@@ -1,6 +1,6 @@
 import { CORES, cor, hex, rotulo } from './cores.js';
 import {
-  montarPalco, overlaysPeca, variaveisCor, VB, GOLAS, PUNHOS,
+  montarPalco, montarPalcoFoto, overlaysPeca, variaveisCor, VB, GOLAS, PUNHOS,
   TIPOS_GOLA, TIPOS_PUNHO, POSICOES_NUMERO_FRENTE, POSICOES_IMAGEM, FONTES,
 } from './render.js';
 
@@ -44,6 +44,8 @@ const novoId = () => Math.random().toString(36).slice(2, 9);
 // ------------------------------------------------------------------ estado
 
 let catalogo = null; // dados/modelos.json
+let fotoMockup = null; // mockup/foto.json
+let visual = 'foto'; // 'foto' (mockup fotográfico) ou 'ilustracao'
 let estado = clonar(PADRAO);
 const historico = [];
 const futuro = [];
@@ -157,7 +159,7 @@ let renderizacao = 0;
 
 function estrutura(e) {
   return JSON.stringify({
-    vista, pecas: e.pecas, camisa: e.modeloCamisa, calcao: idCalcao(e), meiao: e.meiao.ativo,
+    vista, visual, pecas: e.pecas, camisa: e.modeloCamisa, calcao: idCalcao(e), meiao: e.meiao.ativo,
     gola: e.gola.tipo, mangaCor: e.manga.cor === 'corpo', punho: e.punho.tipo,
   });
 }
@@ -172,6 +174,12 @@ function aplicarCores(el, e) {
   for (const [k, v] of Object.entries(variaveisCor(e, camisa, calcao))) el.style.setProperty(k, v);
 }
 
+function palco({ estado: e, modelos, vista: v, prefixo }) {
+  return visual === 'foto' && fotoMockup
+    ? montarPalcoFoto({ estado: e, modelos, foto: fotoMockup, vista: v, prefixo })
+    : montarPalco({ estado: e, modelos, silhuetas: catalogo.silhuetas, vista: v, prefixo });
+}
+
 async function renderizar() {
   const minha = ++renderizacao;
   aplicarCores(palcoSvg, estado);
@@ -183,7 +191,7 @@ async function renderizar() {
       chaveOverlay = novoOverlay;
       for (const g of $$('[data-ov]', palcoSvg)) {
         const [peca, lado] = g.dataset.ov.split('-');
-        g.innerHTML = overlaysPeca(estado, peca, lado);
+        g.innerHTML = overlaysPeca(estado, peca, lado, Number(g.dataset.fx ?? 1));
       }
     }
     return;
@@ -193,7 +201,7 @@ async function renderizar() {
   try {
     const [mCamisa, mCalcao] = await Promise.all([carregarModelo(estado.modeloCamisa), carregarModelo(idCalcao())]);
     if (minha !== renderizacao) return;
-    const { svg, viewBox } = montarPalco({ estado, modelos: { camisa: mCamisa, calcao: mCalcao }, silhuetas: catalogo.silhuetas, vista });
+    const { svg, viewBox } = palco({ estado, modelos: { camisa: mCamisa, calcao: mCalcao }, vista });
     palcoSvg.setAttribute('viewBox', viewBox);
     palcoSvg.innerHTML = svg;
     chaveEstrutura = novaEstrutura;
@@ -415,7 +423,7 @@ const ABAS = {
       const punhos = Object.entries(TIPOS_PUNHO).map(([k, n]) => `<button class="opcao" data-punho="${k}" aria-pressed="${estado.punho.tipo === k}">
         ${iconeCamisa(k === 'simples' ? `<clipPath id="ic-p"><path d="${catalogo.silhuetas.camisa}"/></clipPath><path clip-path="url(#ic-p)" d="${PUNHOS}" fill="#ef6a28"/>` : '')}${esc(n)}</button>`).join('');
       return `<h2>Gola e manga</h2><p class="sub">Escolha a gola, o punho e as cores dos acabamentos.</p>
-        <h3>Gola</h3><div class="opcoes">${golas}</div>
+        <h3>Gola</h3>${visual === 'foto' ? '<p class="sub" style="margin:-4px 0 10px">No visual Foto a camisa aparece sempre com gola V. A Careca aparece no visual Ilustração.</p>' : ''}<div class="opcoes">${golas}</div>
         <h3>Punho</h3><div class="opcoes">${punhos}</div>
         <h3>Cores dos acabamentos</h3>${blocoCores('acabamentos', this.alvos())}`;
     },
@@ -670,11 +678,17 @@ async function cssFontes() {
 }
 
 let logoEmbutido = null;
+const imagensMockup = {};
 
 // Gera um PNG com o uniforme, o logo e a lista de cores.
 async function gerarImagem({ largura = 1800, tipo = 'image/png', comLegenda = true, e = estado } = {}) {
   const [mCamisa, mCalcao] = await Promise.all([carregarModelo(e.modeloCamisa), carregarModelo(idCalcao(e))]);
-  const { svg, viewBox } = montarPalco({ estado: e, modelos: { camisa: mCamisa, calcao: mCalcao }, silhuetas: catalogo.silhuetas, vista: 'ambos', prefixo: 'x' });
+  let { svg, viewBox } = palco({ estado: e, modelos: { camisa: mCamisa, calcao: mCalcao }, vista: 'ambos', prefixo: 'x' });
+  // imagens do mockup em foto precisam ir embutidas para a exportação
+  for (const arq of new Set(svg.match(/mockup\/[\w-]+\.webp/g) ?? [])) {
+    imagensMockup[arq] ??= await base64(arq);
+    svg = svg.replaceAll(`"${arq}"`, `"${imagensMockup[arq]}"`);
+  }
   const [, , vw, vh] = viewBox.split(' ').map(Number);
   const topo = comLegenda ? 90 : 0;
   const linhas = comLegenda ? resumo(e).slice(0, 6) : [];
@@ -912,6 +926,18 @@ function avisar(texto) {
 
 async function iniciar() {
   catalogo = await (await fetch('dados/modelos.json')).json();
+  try { fotoMockup = await (await fetch('mockup/foto.json')).json(); } catch { fotoMockup = null; }
+  try { visual = localStorage.getItem('marol-sports:visual') || visual; } catch { /* sem armazenamento */ }
+  $$('#visual [data-visual]').forEach((b) => {
+    b.setAttribute('aria-pressed', b.dataset.visual === visual);
+    b.addEventListener('click', () => {
+      visual = b.dataset.visual;
+      $$('#visual button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+      try { localStorage.setItem('marol-sports:visual', visual); } catch { /* sem armazenamento */ }
+      renderizar();
+      if (abaAtual === 'acabamentos') renderizarPainel();
+    });
+  });
   let inicial = null;
   const hash = location.hash.match(/#s=([\w-]+)/);
   if (hash) {

@@ -302,7 +302,7 @@ function meiao(id, lado) {
 
 // ---------------------------------------------------------------- textos e imagens
 
-function textoSvg({ texto, x, y, t, fonte, alvo }) {
+function textoSvg({ texto, x, y, t, fonte, alvo, fx = 1 }) {
   const f = FONTES[fonte] ?? FONTES.bebas;
   // o Chrome limita o tamanho de fonte (~10000 unidades); por isso o texto é
   // desenhado 100x menor dentro de um grupo ampliado
@@ -310,12 +310,14 @@ function textoSvg({ texto, x, y, t, fonte, alvo }) {
   const grosso = tam * (f.engrossar ?? 0);
   const atributos = `x="0" y="0" font-family="'${f.familia}'" font-weight="${f.peso ?? 400}" font-size="${tam}" text-anchor="middle"`;
   const conteudo = esc(texto);
-  return `<g transform="translate(${x} ${y}) scale(100 ${100 * (f.esticar ?? 1)})" data-arrastar="${alvo}">
+  return `<g transform="translate(${x} ${y}) scale(${100 * fx} ${100 * (f.esticar ?? 1)})" data-arrastar="${alvo}">
     <text ${atributos} fill="var(--texto-contorno)" stroke="var(--texto-contorno)" stroke-width="${grosso + tam * 0.08}" stroke-linejoin="round">${conteudo}</text>
     <text ${atributos} fill="var(--texto)"${grosso ? ` stroke="var(--texto)" stroke-width="${grosso}" stroke-linejoin="miter"` : ''}>${conteudo}</text></g>`;
 }
 
-export function overlaysPeca(estado, peca, lado) {
+// fx compensa peças esticadas na horizontal (mockup em foto), para os textos e
+// imagens não ficarem deformados
+export function overlaysPeca(estado, peca, lado, fx = 1) {
   const partes = [];
   const n = estado.nome;
   const desl = (k) => estado.deslocamentos?.[k] ?? [0, 0];
@@ -325,29 +327,29 @@ export function overlaysPeca(estado, peca, lado) {
   };
   if (peca === 'camisa' && lado === 'verso') {
     const yNome = n.posicaoNome === 'abaixo' ? 218000 : 62000;
-    if (n.texto.trim()) partes.push(mover('nome', textoSvg({ texto: n.texto.trim(), x: 114000, y: yNome, t: n.tamanhoNome * 26000, fonte: n.fonte, alvo: 'nome' })));
+    if (n.texto.trim()) partes.push(mover('nome', textoSvg({ fx, texto: n.texto.trim(), x: 114000, y: yNome, t: n.tamanhoNome * 26000, fonte: n.fonte, alvo: 'nome' })));
     if (String(n.numero).trim()) {
       const yNum = n.posicaoNome === 'abaixo' ? 160000 : 178000;
-      partes.push(mover('numero', textoSvg({ texto: n.numero, x: 114000, y: yNum, t: 100000, fonte: n.fonte, alvo: 'numero' })));
+      partes.push(mover('numero', textoSvg({ fx, texto: n.numero, x: 114000, y: yNum, t: 100000, fonte: n.fonte, alvo: 'numero' })));
     }
   }
   if (peca === 'camisa' && lado === 'frente' && String(n.numero).trim()) {
     const p = POSICOES_NUMERO_FRENTE[n.numeroFrente];
-    if (p?.x) partes.push(mover('numero-frente', textoSvg({ texto: n.numero, x: p.x, y: p.y, t: p.t, fonte: n.fonte, alvo: 'numero-frente' })));
+    if (p?.x) partes.push(mover('numero-frente', textoSvg({ fx, texto: n.numero, x: p.x, y: p.y, t: p.t, fonte: n.fonte, alvo: 'numero-frente' })));
   }
   if (peca === 'calcao' && lado === 'frente' && n.numeroCalcao && String(n.numero).trim())
-    partes.push(mover('numero-calcao', textoSvg({ texto: n.numero, x: 32000, y: 118000, t: 30000, fonte: n.fonte, alvo: 'numero-calcao' })));
+    partes.push(mover('numero-calcao', textoSvg({ fx, texto: n.numero, x: 32000, y: 118000, t: 30000, fonte: n.fonte, alvo: 'numero-calcao' })));
   for (const tx of estado.textos) {
     if (tx.peca !== peca || tx.lado !== lado || !tx.texto.trim()) continue;
     const vb = VB[peca];
     const x = { esquerda: vb.w * 0.32, centro: vb.w * 0.505, direita: vb.w * 0.68 }[tx.alinhamento];
-    partes.push(mover(`texto-${tx.id}`, textoSvg({ texto: tx.texto, x, y: vb.h * tx.altura, t: tx.tamanho * 1000, fonte: n.fonte, alvo: `texto-${tx.id}` })));
+    partes.push(mover(`texto-${tx.id}`, textoSvg({ fx, texto: tx.texto, x, y: vb.h * tx.altura, t: tx.tamanho * 1000, fonte: n.fonte, alvo: `texto-${tx.id}` })));
   }
   for (const img of estado.imagens) {
     const p = POSICOES_IMAGEM[img.posicao];
     if (!p || p.peca !== peca || p.lado !== lado) continue;
     const t = p.t * img.escala;
-    partes.push(mover(`img-${img.id}`, `<image href="${img.src}" x="${p.x - t / 2}" y="${p.y - t / 2}" width="${t}" height="${t}" preserveAspectRatio="xMidYMid meet" data-arrastar="img-${img.id}"/>`));
+    partes.push(mover(`img-${img.id}`, `<image href="${img.src}" x="${p.x - (t * fx) / 2}" y="${p.y - t / 2}" width="${t * fx}" height="${t}" preserveAspectRatio="none" data-arrastar="img-${img.id}"/>`));
   }
   return partes.join('');
 }
@@ -411,4 +413,83 @@ export function montarPalco({ estado, modelos, silhuetas, vista, prefixo = 'p' }
   const my = 50;
   const total = lados.length * largura;
   return { svg: colunas, viewBox: `${-mx} ${-my} ${total + mx * 2} ${altura + (vista === 'ambos' ? 24 : 0) + my * 2}` };
+}
+
+// ---------------------------------------------------------------- mockup em foto
+
+// Monta o palco sobre a foto do mockup: as estampas são encaixadas na caixa de
+// cada peça da foto e a própria foto entra por cima como luz e sombra
+// (multiplicar para sombras, tela para brilhos). `foto` é o mockup/foto.json.
+export function montarPalcoFoto({ estado, modelos, foto, vista, prefixo = 'f', base = 'mockup/' }) {
+  const lados = vista === 'ambos' ? ['frente', 'verso'] : [vista];
+  const temCamisa = estado.pecas !== 'calcao';
+  const temCalcao = estado.pecas !== 'camisa';
+  const GAP = 40;
+  let ox = 0;
+  let alturaMax = 0;
+  const colunas = lados.map((lado) => {
+    const f = foto.lados[lado === 'verso' ? 'costas' : 'frente'];
+    const [x0, y0, w, h] = f.recorte;
+    const id = `${prefixo}-${lado}`;
+    const cam = f.pecas.camisa;
+    const cal = f.pecas.calcao;
+    // camisa: estica a arte plana até a caixa da peça na foto
+    const [cx0, cy0, cx1, cy1] = cam.caixa;
+    const sxCam = (cx1 - cx0) / VB.camisa.w;
+    const syCam = (cy1 - cy0) / VB.camisa.h;
+    // calção: escala uniforme pela largura, alinhado pela barra das pernas
+    const [kx0, , kx1, ky1] = cal.caixa;
+    const sCal = (kx1 - kx0) / VB.calcao.w;
+    const hCal = VB.calcao.h * sCal;
+    const clipes = [temCamisa && cam.caminho, temCalcao && cal.caminho].filter(Boolean).join('');
+    const corManga = estado.manga.cor !== 'corpo';
+    const frente = lado === 'frente';
+    let meiao_ = '';
+    let altura = h;
+    if (estado.meiao.ativo && temCalcao) {
+      const mw = kx1 - kx0;
+      const mh = (mw * VB.meiao.h) / VB.meiao.w;
+      meiao_ = `<g data-peca="meiao">${meiao(`${id}-meiao`, lado).replace('<svg ', `<svg x="${kx0}" y="${ky1 + 14}" width="${mw}" height="${mh}" `)}</g>`;
+      altura = Math.max(h, ky1 + 14 + mh - y0);
+    }
+    alturaMax = Math.max(alturaMax, altura);
+    const conteudo = `<g transform="translate(${ox - x0} ${-y0})">
+      <defs>
+        <clipPath id="${id}-cam"><path d="${cam.caminho}"/></clipPath>
+        <clipPath id="${id}-cal"><path d="${cal.caminho}"/></clipPath>
+        <clipPath id="${id}-pecas"><path d="${clipes}"/></clipPath>
+      </defs>
+      <g data-peca="foto" style="isolation:isolate">
+      ${temCalcao ? `<g clip-path="url(#${id}-cal)">
+        <rect x="${x0}" y="${y0}" width="${w}" height="${h}" fill="var(--calcao-base)"/>
+        <svg x="${kx0}" y="${ky1 - hCal}" width="${kx1 - kx0}" height="${hCal}" viewBox="0 0 ${VB.calcao.w} ${VB.calcao.h}" overflow="visible">
+          ${camadasModelo(modelos.calcao, 'calcao', lado)}<g data-ov="calcao-${lado}" data-fx="1">${overlaysPeca(estado, 'calcao', lado)}</g>
+        </svg></g>` : ''}
+      ${temCamisa ? `<g clip-path="url(#${id}-cam)">
+        <rect x="${x0}" y="${y0}" width="${w}" height="${h}" fill="var(--camisa-base)"/>
+        <svg x="${cx0}" y="${cy0}" width="${cx1 - cx0}" height="${cy1 - cy0}" viewBox="0 0 ${VB.camisa.w} ${VB.camisa.h}" preserveAspectRatio="none" overflow="visible">
+          ${camadasModelo(modelos.camisa, 'camisa', lado)}
+        </svg>
+        ${corManga ? `<path d="${f.mangas}" fill="var(--manga)"/>` : ''}
+        ${estado.punho.tipo === 'simples' ? `<path d="${f.punhos}" fill="var(--punho)"/>` : ''}
+        <svg x="${cx0}" y="${cy0}" width="${cx1 - cx0}" height="${cy1 - cy0}" viewBox="0 0 ${VB.camisa.w} ${VB.camisa.h}" preserveAspectRatio="none" overflow="visible">
+          <g data-ov="camisa-${lado}" data-fx="${syCam / sxCam}">${overlaysPeca(estado, 'camisa', lado, syCam / sxCam)}</g>
+        </svg>
+        ${frente ? `<path d="${f.abertura}" fill="var(--camisa-base)"/><path d="${f.golaInterna}" fill="var(--gola)"/>` : ''}
+        <path d="${f.gola}" fill="var(--gola)"/>
+      </g>` : ''}
+      <!-- o recorte vai em cada imagem: um grupo recortado isolaria a mistura das cores -->
+      <image href="${base}sombra-${lado === 'verso' ? 'costas' : 'frente'}.webp" x="${x0}" y="${y0}" width="${w}" height="${h}" clip-path="url(#${id}-pecas)" style="mix-blend-mode:multiply" pointer-events="none"/>
+      <image href="${base}brilho-${lado === 'verso' ? 'costas' : 'frente'}.webp" x="${x0}" y="${y0}" width="${w}" height="${h}" clip-path="url(#${id}-pecas)" style="mix-blend-mode:screen" opacity=".38" pointer-events="none"/>
+      </g>
+      ${meiao_}
+    </g>`;
+    const legenda = vista === 'ambos' ? `<text x="${ox + w / 2}" y="${altura + 30}" text-anchor="middle" class="legenda-lado" style="font-size:18px">${frente ? 'FRENTE' : 'COSTAS'}</text>` : '';
+    const largura = w;
+    ox += largura + GAP;
+    return conteudo + legenda;
+  });
+  const total = ox - GAP;
+  const m = 30;
+  return { svg: colunas.join(''), viewBox: `${-m} ${-m} ${total + 2 * m} ${alturaMax + (vista === 'ambos' ? 44 : 0) + 2 * m}` };
 }
