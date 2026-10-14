@@ -5,7 +5,7 @@ import { hex } from './cores.js';
 export const VB = {
   camisa: { w: 224820, h: 284513 },
   calcao: { w: 182661, h: 157761 },
-  meiao: { w: 300, h: 1000 },
+  meiao: { w: 600, h: 515 },
 };
 
 // ---------------------------------------------------------------- formas fixas
@@ -44,8 +44,22 @@ const COSTURA_MANGA = 'M39500 16500C49500 45000 50500 85000 43200 114200M186500 
 export const PUNHOS = 'M-2000 116800H46500V126000H-2000ZM181000 115200H227000V124000H181000Z';
 export const TIPOS_PUNHO = { sem: 'Sem punho', simples: 'Punho simples' };
 
-// meião visto de frente
-const MEIAO = 'M52 0H248C252 120 262 260 258 380C255 480 236 560 228 650C224 700 232 760 246 820C262 890 258 960 214 985C186 1000 114 1000 86 985C42 960 38 890 54 820C68 760 76 700 72 650C64 560 45 480 42 380C38 260 48 120 52 0Z';
+// par de meiões com chuteira (coordenadas de uma perna: 170 x 470)
+const PERNA = {
+  // meião do punho até o tornozelo (a chuteira cobre a parte de baixo)
+  meiao: 'M33 0H137C143 40 152 90 151 140C150 200 133 250 123 300C119 320 117 338 118 352H52C53 338 51 320 47 300C37 250 20 200 19 140C18 90 27 40 33 0Z',
+  meiaoCostas: 'M33 0H137C144 40 154 92 152 145C150 205 131 255 119 302C114 322 112 338 113 352H57C58 338 56 322 51 302C39 255 20 205 18 145C16 92 26 40 33 0Z',
+  // chuteira de frente: cabedal, sola e travas
+  chuteiraFrente: 'M48 334C44 356 30 384 22 414C16 438 26 458 50 462H120C144 458 154 438 148 414C140 384 126 356 122 334Z',
+  solaFrente: 'M18 440C18 462 32 474 52 475H118C138 474 152 462 152 440C146 456 134 462 120 463H50C36 462 24 456 18 440Z',
+  biqueira: 'M28 432C50 447 120 447 142 432',
+  lingueta: 'M68 330H102V362C102 368 68 368 68 362Z',
+  cadarco: 'M70 362L100 368M70 376L100 370M70 378L100 384M70 392L100 386M70 394L100 400M70 408L100 402',
+  // chuteira de costas: calcanhar arredondado
+  chuteiraCostas: 'M52 334C47 366 38 398 38 428C38 450 55 462 85 462C115 462 132 450 132 428C132 398 123 366 118 334Z',
+  solaCostas: 'M34 440C34 462 54 474 85 474C116 474 136 462 136 440C128 458 110 465 85 465C60 465 42 458 34 440Z',
+  travas: 'M34 474h13v7h-13zM62 475h13v7h-13zM95 475h13v7h-13zM123 474h13v7h-13z',
+};
 
 // Áreas onde nome, número e imagens são posicionados (coordenadas da peça).
 export const POSICOES_NUMERO_FRENTE = {
@@ -226,27 +240,63 @@ function calcao({ id, modelo, lado, silhueta, overlays }) {
   </svg>`;
 }
 
-function meiao(id) {
-  const { w, h } = VB.meiao;
-  const nervuras = Array.from({ length: 19 }, (_, i) => `<path d="M${60 + i * 10} 6V104" />`).join('');
-  return `<svg viewBox="0 0 ${w} ${h}" overflow="visible">
-    <defs><clipPath id="${id}-clip"><path d="${MEIAO}"/></clipPath>
-      <filter id="${id}-b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
-      <linearGradient id="${id}-lat" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".38"/>
-        <stop offset=".3" stop-color="#000" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".16"/>
-        <stop offset=".7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".38"/></linearGradient></defs>
-    <g clip-path="url(#${id}-clip)">
-      <rect width="${w}" height="${h}" fill="var(--meiao)"/>
-      <g stroke="#000" stroke-opacity=".1" stroke-width="3">${nervuras}</g>
-      <rect width="${w}" height="${h}" fill="url(#${id}-lat)"/>
+function perna(id, lado, n) {
+  const frente = lado === 'frente';
+  const meiaoPath = frente ? PERNA.meiao : PERNA.meiaoCostas;
+  const pid = `${id}-${n}`;
+  const nervuras = Array.from({ length: 13 }, (_, i) => `<path d="M${37 + i * 8} 2V30"/>`).join('');
+  return `<defs><clipPath id="${pid}-clip"><path d="${meiaoPath}"/></clipPath></defs>
+    <g clip-path="url(#${pid}-clip)">
+      <rect width="170" height="470" fill="var(--meiao)"/>
+      <g stroke="#000" stroke-opacity=".12" stroke-width="2.4">${nervuras}</g>
+      <rect width="170" height="470" fill="url(#${id}-cil)"/>
       <g filter="url(#${id}-b)">
-        <rect x="0" y="100" width="${w}" height="14" fill="#000" fill-opacity=".2"/>
-        <ellipse cx="150" cy="690" rx="90" ry="22" fill="#000" fill-opacity=".14"/>
-        <ellipse cx="150" cy="985" rx="110" ry="30" fill="#000" fill-opacity=".3"/>
-        <ellipse cx="130" cy="330" rx="34" ry="140" fill="#fff" fill-opacity=".14"/>
+        <rect x="0" y="30" width="170" height="7" fill="#000" fill-opacity=".28"/>
+        <rect x="0" y="22" width="170" height="5" fill="#fff" fill-opacity=".18"/>
+        <ellipse cx="${frente ? 66 : 70}" cy="150" rx="14" ry="95" fill="#fff" fill-opacity=".22"/>
+        <ellipse cx="${frente ? 128 : 125}" cy="170" rx="10" ry="110" fill="#000" fill-opacity=".22"/>
+        <ellipse cx="85" cy="320" rx="50" ry="10" fill="#000" fill-opacity=".14"/>
+        ${frente ? '' : '<ellipse cx="85" cy="250" rx="7" ry="80" fill="#000" fill-opacity=".12"/>'}
       </g>
     </g>
-    <path d="${MEIAO}" fill="none" stroke="#1b1f24" stroke-opacity=".45" stroke-width="4"/>
+    <path d="${meiaoPath}" fill="none" stroke="#1b1f24" stroke-opacity=".45" stroke-width="1.6"/>
+    ${frente
+      ? `<path d="${PERNA.chuteiraFrente}" fill="url(#${id}-couro)"/>
+         <path d="${PERNA.lingueta}" fill="#f4f5f6" stroke="#9aa3aa" stroke-width="1.2"/>
+         <path d="${PERNA.cadarco}" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>
+         <path d="${PERNA.cadarco}" stroke="#7d8790" stroke-width="1" stroke-linecap="round" fill="none"/>
+         <path d="${PERNA.biqueira}" fill="none" stroke="#b5bcc2" stroke-width="1.6"/>
+         <ellipse cx="72" cy="448" rx="30" ry="7" fill="#fff" fill-opacity=".8" filter="url(#${id}-b)"/>
+         <path d="${PERNA.chuteiraFrente}" fill="none" stroke="#5f6a73" stroke-opacity=".7" stroke-width="1.4"/>
+         <path d="${PERNA.solaFrente}" fill="#d9dde0" stroke="#5f6a73" stroke-opacity=".7" stroke-width="1.2"/>`
+      : `<path d="${PERNA.chuteiraCostas}" fill="url(#${id}-couro)"/>
+         <path d="M85 340V452" stroke="#9aa3aa" stroke-width="1.4"/>
+         <path d="M64 342C64 376 70 404 85 412C100 404 106 376 106 342" fill="none" stroke="#c3c9ce" stroke-width="2"/>
+         <path d="M52 336C70 344 100 344 118 336" fill="none" stroke="#8d969d" stroke-width="2.4"/>
+         <ellipse cx="72" cy="420" rx="12" ry="30" fill="#fff" fill-opacity=".7" filter="url(#${id}-b)"/>
+         <path d="${PERNA.chuteiraCostas}" fill="none" stroke="#5f6a73" stroke-opacity=".7" stroke-width="1.4"/>
+         <path d="${PERNA.solaCostas}" fill="#d9dde0" stroke="#5f6a73" stroke-opacity=".7" stroke-width="1.2"/>`}
+    <path d="${PERNA.travas}" fill="#3a4148"/>`;
+}
+
+// Par de pernas com meião e chuteira, de frente ou de costas.
+function meiao(id, lado) {
+  const { w, h } = VB.meiao;
+  return `<svg viewBox="0 0 ${w} ${h}" overflow="visible">
+    <defs>
+      <filter id="${id}-b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+      <linearGradient id="${id}-cil" x1="0" x2="1">
+        <stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset=".22" stop-color="#000" stop-opacity=".08"/>
+        <stop offset=".38" stop-color="#fff" stop-opacity=".14"/><stop offset=".6" stop-color="#000" stop-opacity="0"/>
+        <stop offset=".85" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></linearGradient>
+      <linearGradient id="${id}-couro" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0" stop-color="#b9c0c6"/><stop offset=".3" stop-color="#ffffff"/>
+        <stop offset=".65" stop-color="#f1f3f4"/><stop offset="1" stop-color="#aab2b9"/></linearGradient>
+    </defs>
+    <ellipse cx="132" cy="500" rx="92" ry="9" fill="#000" fill-opacity=".18" filter="url(#${id}-b)"/>
+    <ellipse cx="468" cy="500" rx="92" ry="9" fill="#000" fill-opacity=".18" filter="url(#${id}-b)"/>
+    <g transform="translate(37 0) scale(1.12 1.04) rotate(2.5 85 0)">${perna(id, lado, 'e')}</g>
+    <g transform="translate(373 0) scale(1.12 1.04) rotate(-2.5 85 0)">${perna(id, lado, 'd')}</g>
   </svg>`;
 }
 
@@ -305,7 +355,7 @@ export function overlaysPeca(estado, peca, lado) {
 // ---------------------------------------------------------------- composição
 
 // Posições das peças dentro de cada coluna (frente / verso).
-const LARGURA_COLUNA = 520;
+const LARGURA_COLUNA = 440;
 
 export function layout(estado) {
   const temCamisa = estado.pecas !== 'calcao';
@@ -314,15 +364,17 @@ export function layout(estado) {
   const itens = [];
   let y = 0;
   if (temCamisa) {
-    itens.push({ peca: 'camisa', x: 40, y: 0, w: 400 });
+    itens.push({ peca: 'camisa', x: 20, y: 0, w: 400 });
     y = 470;
   }
   if (temCalcao) {
-    const w = temCamisa ? 300 : 400;
-    itens.push({ peca: 'calcao', x: temCamisa ? 90 : 40, y, w });
-    if (temMeiao) itens.push({ peca: 'meiao', x: temCamisa ? 405 : 450, y: y + 30, w: 76 });
+    const w = temCamisa ? 300 : 360;
+    const x = temCamisa ? 70 : 40;
+    itens.push({ peca: 'calcao', x, y, w });
+    // os meiões ficam alinhados às pernas do calção, logo abaixo da barra
+    if (temMeiao) itens.push({ peca: 'meiao', x, y: y + (w * VB.calcao.h) / VB.calcao.w + 18, w });
   } else if (temMeiao) {
-    itens.push({ peca: 'meiao', x: 200, y: y + 20, w: 90 });
+    itens.push({ peca: 'meiao', x: 70, y: y + 30, w: 300 });
   }
   const altura = Math.max(...itens.map((i) => i.y + (i.w * VB[i.peca].h) / VB[i.peca].w)) + 20;
   return { itens, altura, largura: LARGURA_COLUNA };
@@ -344,7 +396,7 @@ export function montarPalco({ estado, modelos, silhuetas, vista, prefixo = 'p' }
             corpo = camisa({ id, modelo: modelos.camisa, lado, estado, silhueta: silhuetas.camisa, overlays: overlaysPeca(estado, 'camisa', lado) });
           else if (it.peca === 'calcao')
             corpo = calcao({ id, modelo: modelos.calcao, lado, silhueta: silhuetas.calcao, overlays: overlaysPeca(estado, 'calcao', lado) });
-          else corpo = meiao(id);
+          else corpo = meiao(id, lado);
           return `<g data-peca="${it.peca}" data-lado="${lado}">${corpo.replace('<svg ', `<svg x="${ox + it.x}" y="${it.y}" width="${it.w}" height="${h}" `)}</g>`;
         })
         // a camisa vai por cima do calção

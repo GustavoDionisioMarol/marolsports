@@ -32,7 +32,7 @@ for (const m of ids) {
       const vars = Object.entries(s.variaveisCor(estado, 8, 8)).map(([k, v]) => `${k}:${v}`).join(';');
       const [, , w, h] = viewBox.split(' ').map(Number);
       // recorta só a peça (sem as margens da coluna)
-      const it = peca === 'camisa' ? { x: 40, y: 0, w: 400, h: 400 * 284513 / 224820 } : { x: 40, y: 0, w: 400, h: 400 * 157761 / 182661 };
+      const it = peca === 'camisa' ? { x: 20, y: 0, w: 400, h: 400 * 284513 / 224820 } : { x: 40, y: 0, w: 360, h: 360 * 157761 / 182661 };
       const doc = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${it.x - 8} ${it.y - 8} ${it.w + 16} ${it.h + 16}" width="${(it.w + 16)}" height="${it.h + 16}"><style>svg{${vars}}</style>${svg}</svg>`;
       const img = new Image();
       img.src = URL.createObjectURL(new Blob([doc], { type: 'image/svg+xml' }));
