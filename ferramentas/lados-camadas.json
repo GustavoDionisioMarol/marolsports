@@ -1,0 +1,1469 @@
+{
+ "39": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.94,
+     "simetria": 0.33,
+     "area": 0.34,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "43": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.16,
+     "area": 0.27,
+     "original": "verso"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "44": {
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.9,
+     "area": 0.06,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.51,
+     "area": 0.49,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "45": {
+  "camisa": {
+   "2": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.98,
+     "area": 0.64,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "46": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.36,
+     "area": 0.13,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.57,
+     "area": 0.31,
+     "original": "frente"
+    }
+   },
+   "3": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.67,
+     "area": 0.34,
+     "original": "frente"
+    }
+   },
+   "4": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.54,
+     "simetria": 0.54,
+     "area": 0,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "47": {
+  "camisa": {
+   "2": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.58,
+     "area": 0.6,
+     "original": "frente"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.41,
+     "area": 0.46,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "48": {
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 0.85,
+     "simetria": 0.78,
+     "area": 0.19,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "49": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.85,
+     "simetria": 0.33,
+     "area": 0.17,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.47,
+     "area": 0.38,
+     "original": "frente"
+    }
+   },
+   "3": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.95,
+     "area": 0.06,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "50": {
+  "camisa": {
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.76,
+     "simetria": 0.19,
+     "area": 0.43,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "51": {
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.84,
+     "area": 0.75,
+     "original": "verso"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "52": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.31,
+     "area": 0.43,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "67": {
+  "camisa": {
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "68": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.35,
+     "simetria": 0,
+     "area": 0.07,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "76": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.25,
+     "area": 0.44,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "82": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.88,
+     "area": 0.03,
+     "original": "frente"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.8,
+     "simetria": 0.45,
+     "area": 0.51,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.25,
+     "area": 0.01,
+     "original": "frente"
+    }
+   },
+   "3": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.85,
+     "area": 0.05,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "83": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.8,
+     "area": 0.03,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "85": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.6,
+     "area": 0.01,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "86": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.16,
+     "area": 0.05,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "87": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.67,
+     "area": 0.04,
+     "original": "frente"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.29,
+     "area": 0.04,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.19,
+     "area": 0.03,
+     "original": "frente"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0,
+     "area": 0.01,
+     "original": "frente"
+    }
+   },
+   "4": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.59,
+     "area": 0.02,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "89": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.6,
+     "area": 0.02,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "90": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.75,
+     "area": 0.07,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.66,
+     "area": 0.02,
+     "original": "frente"
+    }
+   },
+   "3": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.58,
+     "area": 0.02,
+     "original": "frente"
+    }
+   },
+   "4": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "frente"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.59,
+     "simetria": 0.02,
+     "area": 0.13,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.72,
+     "simetria": 0.11,
+     "area": 0.08,
+     "original": "frente"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.78,
+     "simetria": 0.07,
+     "area": 0.08,
+     "original": "frente"
+    }
+   },
+   "4": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "147": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.86,
+     "area": 0.15,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.01,
+     "simetria": 0,
+     "area": 0,
+     "original": "frente"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.04,
+     "area": 0.44,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.98,
+     "simetria": 0,
+     "area": 0.08,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "148": {
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.73,
+     "area": 0.02,
+     "original": "verso"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "149": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.87,
+     "area": 0.37,
+     "original": "verso"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 0.76,
+     "simetria": 0.74,
+     "area": 0.26,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "155": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.46,
+     "area": 0.04,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "160": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.85,
+     "area": 0.07,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.87,
+     "area": 0.07,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "161": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.8,
+     "simetria": 0.18,
+     "area": 0.07,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.3,
+     "area": 0.26,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "163": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.44,
+     "area": 0.05,
+     "original": "verso"
+    }
+   },
+   "2": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.64,
+     "area": 0.1,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "164": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.89,
+     "simetria": 0.5,
+     "area": 0.4,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "182": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.4,
+     "area": 0.57,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.13,
+     "area": 0.21,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "186": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.38,
+     "area": 0.49,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "393": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.49,
+     "simetria": 0,
+     "area": 0.14,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "414": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.27,
+     "simetria": 0,
+     "area": 0.21,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.22,
+     "simetria": 0,
+     "area": 0.1,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "416": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.51,
+     "simetria": 0,
+     "area": 0.13,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "483": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.47,
+     "area": 0.13,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "487": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "488": {
+  "camisa": {
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.26,
+     "simetria": 0.56,
+     "area": 0.07,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "493": {
+  "calcao": {
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.42,
+     "simetria": 0,
+     "area": 0.1,
+     "original": "frente"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.9,
+     "simetria": 0.02,
+     "area": 0.07,
+     "original": "frente"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.16,
+     "area": 0.29,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.26,
+     "area": 0.3,
+     "original": "frente"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.74,
+     "simetria": 0.06,
+     "area": 0.12,
+     "original": "frente"
+    }
+   },
+   "4": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.94,
+     "simetria": 0.29,
+     "area": 0.04,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "495": {
+  "calcao": {
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.39,
+     "area": 0.1,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "497": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.42,
+     "simetria": 0,
+     "area": 0.15,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "500": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 0.98,
+     "simetria": 0.67,
+     "area": 0.14,
+     "original": "verso"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.98,
+     "simetria": 0,
+     "area": 0.05,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "506": {
+  "camisa": {
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.12,
+     "area": 0.02,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "508": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.39,
+     "area": 0.13,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "509": {
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.79,
+     "area": 0.38,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "517": {
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.62,
+     "area": 0.74,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.85,
+     "simetria": 0,
+     "area": 0.03,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "518": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.13,
+     "area": 0.16,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.13,
+     "area": 0.25,
+     "original": "verso"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "522": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.92,
+     "area": 0.15,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.63,
+     "area": 0.1,
+     "original": "frente"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.02,
+     "area": 0.01,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "528": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.43,
+     "simetria": 0,
+     "area": 0.05,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "531": {
+  "camisa": {
+   "4": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.98,
+     "simetria": 0.21,
+     "area": 0.11,
+     "original": "frente"
+    }
+   },
+   "5": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.57,
+     "simetria": 0.02,
+     "area": 0.04,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "532": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.31,
+     "area": 0.25,
+     "original": "verso"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   },
+   "4": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "533": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.37,
+     "simetria": 0,
+     "area": 0.12,
+     "original": "frente"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.26,
+     "area": 0.4,
+     "original": "verso"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   },
+   "4": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "535": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.47,
+     "simetria": 0,
+     "area": 0.04,
+     "original": "frente"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.12,
+     "area": 0.13,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "536": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.31,
+     "area": 0.05,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.51,
+     "area": 0.09,
+     "original": "frente"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.83,
+     "area": 0.31,
+     "original": "verso"
+    }
+   },
+   "3": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.83,
+     "area": 0.21,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "537": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.9,
+     "area": 0.21,
+     "original": "frente"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.97,
+     "area": 0.39,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "538": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.52,
+     "area": 0.23,
+     "original": "verso"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.33,
+     "simetria": 0,
+     "area": 0.13,
+     "original": "verso"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.47,
+     "simetria": 0,
+     "area": 0.16,
+     "original": "frente"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.97,
+     "area": 0.25,
+     "original": "verso"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.89,
+     "simetria": 0.49,
+     "area": 0.49,
+     "original": "frente"
+    }
+   },
+   "4": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.89,
+     "simetria": 0.3,
+     "area": 0.33,
+     "original": "frente"
+    }
+   }
+  }
+ },
+ "539": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.54,
+     "area": 0.61,
+     "original": "verso"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.46,
+     "simetria": 0,
+     "area": 0.02,
+     "original": "verso"
+    }
+   },
+   "3": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.57,
+     "simetria": 0.01,
+     "area": 0.08,
+     "original": "verso"
+    }
+   },
+   "4": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.56,
+     "simetria": 0,
+     "area": 0.06,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "540": {
+  "calcao": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.3,
+     "area": 0.42,
+     "original": "verso"
+    }
+   }
+  },
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.33,
+     "area": 0.5,
+     "original": "verso"
+    }
+   },
+   "2": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.96,
+     "area": 0.54,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "541": {
+  "calcao": {
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0,
+     "simetria": 0,
+     "area": 0,
+     "original": "verso"
+    }
+   },
+   "3": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.89,
+     "area": 0.02,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "562": {
+  "calcao": {
+   "1": {
+    "lado": "ambos",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0.6,
+     "area": 0.11,
+     "original": "verso"
+    }
+   }
+  }
+ },
+ "570": {
+  "camisa": {
+   "1": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 1,
+     "simetria": 0,
+     "area": 0.01,
+     "original": "frente"
+    }
+   },
+   "2": {
+    "lado": "frente",
+    "medidas": {
+     "largura": 0.96,
+     "simetria": 0.07,
+     "area": 0.02,
+     "original": "frente"
+    }
+   }
+  }
+ }
+}

@@ -162,16 +162,6 @@
    }
   },
   {
-   "id": 58,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     "#F00808"
-    ]
-   }
-  },
-  {
    "id": 59,
    "camisa": 3,
    "calcao": 1,
@@ -241,18 +231,6 @@
    }
   },
   {
-   "id": 65,
-   "camisa": 0,
-   "calcao": 3,
-   "cores": {
-    "calcao": [
-     "#F00808",
-     "#F00808",
-     "#F00808"
-    ]
-   }
-  },
-  {
    "id": 66,
    "camisa": 1,
    "calcao": 0,
@@ -305,16 +283,6 @@
    }
   },
   {
-   "id": 72,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     "#F00808"
-    ]
-   }
-  },
-  {
    "id": 74,
    "camisa": 1,
    "calcao": 1,
@@ -333,26 +301,6 @@
    "calcao": 0,
    "cores": {
     "camisa": [
-     "#F00808"
-    ]
-   }
-  },
-  {
-   "id": 77,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     "#F00808"
-    ]
-   }
-  },
-  {
-   "id": 79,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
      "#F00808"
     ]
    }
@@ -464,16 +412,6 @@
    }
   },
   {
-   "id": 88,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     "#F00808"
-    ]
-   }
-  },
-  {
    "id": 89,
    "camisa": 2,
    "calcao": 1,
@@ -507,16 +445,6 @@
    }
   },
   {
-   "id": 91,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     "#F00808"
-    ]
-   }
-  },
-  {
    "id": 142,
    "camisa": 3,
    "calcao": 2,
@@ -533,16 +461,6 @@
    }
   },
   {
-   "id": 143,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     "#F00808"
-    ]
-   }
-  },
-  {
    "id": 144,
    "camisa": 1,
    "calcao": 1,
@@ -551,29 +469,6 @@
      "#F00808"
     ],
     "camisa": [
-     "#F00808"
-    ]
-   }
-  },
-  {
-   "id": 145,
-   "camisa": 0,
-   "calcao": 3,
-   "cores": {
-    "calcao": [
-     "#F00808",
-     "#F00808",
-     "#F00808"
-    ]
-   }
-  },
-  {
-   "id": 146,
-   "camisa": 0,
-   "calcao": 2,
-   "cores": {
-    "calcao": [
-     "#F00808",
      "#F00808"
     ]
    }
@@ -1100,16 +995,6 @@
    }
   },
   {
-   "id": 187,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     "#F00808"
-    ]
-   }
-  },
-  {
    "id": 188,
    "camisa": 1,
    "calcao": 1,
@@ -1118,26 +1003,6 @@
      "#F00808"
     ],
     "camisa": [
-     "#F00808"
-    ]
-   }
-  },
-  {
-   "id": 189,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     "#F00808"
-    ]
-   }
-  },
-  {
-   "id": 191,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
      "#F00808"
     ]
    }
@@ -1704,16 +1569,6 @@
    }
   },
   {
-   "id": 489,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     "#F16321"
-    ]
-   }
-  },
-  {
    "id": 490,
    "camisa": 1,
    "calcao": 1,
@@ -1740,17 +1595,6 @@
    }
   },
   {
-   "id": 492,
-   "camisa": 0,
-   "calcao": 2,
-   "cores": {
-    "calcao": [
-     "#ECD407",
-     null
-    ]
-   }
-  },
-  {
    "id": 493,
    "camisa": 4,
    "calcao": 3,
@@ -1765,16 +1609,6 @@
      "#F16321",
      "#1A6642",
      "#F16321"
-    ]
-   }
-  },
-  {
-   "id": 494,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     null
     ]
    }
   },
@@ -1903,16 +1737,6 @@
    }
   },
   {
-   "id": 505,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     null
-    ]
-   }
-  },
-  {
    "id": 506,
    "camisa": 3,
    "calcao": 0,
@@ -1999,27 +1823,6 @@
    }
   },
   {
-   "id": 512,
-   "camisa": 0,
-   "calcao": 2,
-   "cores": {
-    "calcao": [
-     "#B51723",
-     "#0030A8"
-    ]
-   }
-  },
-  {
-   "id": 513,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     null
-    ]
-   }
-  },
-  {
    "id": 514,
    "camisa": 1,
    "calcao": 1,
@@ -2091,17 +1894,6 @@
      "#4D1387",
      null,
      "#00FFEC"
-    ]
-   }
-  },
-  {
-   "id": 519,
-   "camisa": 0,
-   "calcao": 2,
-   "cores": {
-    "calcao": [
-     null,
-     null
     ]
    }
   },
@@ -2460,18 +2252,6 @@
    }
   },
   {
-   "id": 543,
-   "camisa": 0,
-   "calcao": 3,
-   "cores": {
-    "calcao": [
-     null,
-     "#BD162C",
-     "#003DA5"
-    ]
-   }
-  },
-  {
    "id": 544,
    "camisa": 1,
    "calcao": 2,
@@ -2596,16 +2376,6 @@
    }
   },
   {
-   "id": 553,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
-     "#BD162C"
-    ]
-   }
-  },
-  {
    "id": 554,
    "camisa": 1,
    "calcao": 1,
@@ -2614,16 +2384,6 @@
      "#001E60"
     ],
     "camisa": [
-     "#EAAA00"
-    ]
-   }
-  },
-  {
-   "id": 555,
-   "camisa": 0,
-   "calcao": 1,
-   "cores": {
-    "calcao": [
      "#EAAA00"
     ]
    }

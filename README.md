@@ -6,7 +6,7 @@ publicado em qualquer hospedagem, inclusive em `marolsports.com/simulador/`.
 
 ## O que ele faz
 
-- **Modelos:** 206 modelos do catálogo, com miniaturas, busca por número e
+- **Modelos:** 183 modelos do catálogo, com miniaturas, busca por número e
   filtro por quantidade de cores. A camisa e o calção podem ter o mesmo modelo
   ou modelos diferentes. Dá para simular só a camisa, só o calção, ou os dois
   com meião.
@@ -14,11 +14,12 @@ publicado em qualquer hospedagem, inclusive em `marolsports.com/simulador/`.
   cada camada da estampa. A camisa e o calção podem ter as mesmas cores ou cores
   independentes.
 - **Gola e manga:**
-  - golas Redonda, Careca, V e Polo, com cor e friso;
-  - manga Tradicional ou Raglan, com cor própria ou seguindo o desenho do corpo;
+  - golas Careca e V, com cor;
+  - manga com cor própria ou seguindo o desenho do corpo;
   - punho simples ou sem punho.
-- **Meião:** cor base, punho, 0 a 3 faixas, calcanhar e ponta.
-- **Nome e número:** 4 fontes, cor e contorno. O nome pode ficar acima ou
+- **Meião:** visto de frente, com uma cor.
+- **Nome e número:** 4 fontes (a "Universitária" imita o estilo College), cor e
+  contorno. O nome pode ficar acima ou
   abaixo do número. O número também pode ir na frente (3 posições) e no calção.
   Há textos extras livres.
 - **Escudo e patrocínio:** envio de PNG, JPG, WEBP ou SVG (até 5 MB) em 10
@@ -59,6 +60,9 @@ simulador/
   fontes/                     fontes de licença aberta (OFL) usadas no nome e número
 ferramentas/
   converter-modelos.mjs       converte os SVGs do CorelDRAW para dados/modelos
+  classificar-camadas.mjs     sugere se camadas de um lado só são fundo ou destaque
+  ajustes-manuais.json        decisão final de cada camada de um lado só (tem prioridade)
+  lados-camadas.json          sugestões geradas pelo classificar-camadas.mjs
   gerar-miniaturas.mjs        gera as miniaturas usando o próprio simulador
 ```
 
@@ -81,12 +85,31 @@ npm run servir            # em outro terminal
 npm run miniaturas
 ```
 
+### Camadas que existem só de um lado
+
+Em alguns modelos, uma camada foi exportada só para a frente ou só para as
+costas (ex.: modelo 51, com o listrado só em `1c.svg` e o gorila só em
+`3.svg`). O conversor resolve cada caso assim:
+
+- **Fundo (`ambos`):** listras, texturas, estampas corridas, mangas, degradês e
+  faixas do calção. A camada é repetida na frente e nas costas.
+- **Destaque (`frente`):** animais, personagens e grafismos do peito. A camada
+  aparece só na frente.
+- **`manter`:** a frente e as costas têm desenhos diferentes de propósito. A
+  camada fica onde foi exportada.
+
+As decisões ficam em `ferramentas/ajustes-manuais.json`, numeradas pela posição
+da camada. Por exemplo, `"51": { "camisa": { "1": "ambos" } }`. Para modelos
+novos, rode `node ferramentas/classificar-camadas.mjs http://localhost:8080/ revisao.png`:
+ele grava sugestões em `lados-camadas.json` e uma folha de revisão. Depois,
+corrija o que for preciso no arquivo de ajustes e rode `npm run converter`.
+
 ### Arquivos que o conversor não aproveitou nesta versão
+
+- **Modelos só com calção:** 23 modelos não têm camisa e ficam fora do catálogo.
 
 - **Modelo 148:** as pastas `Camisa` e `Calção` parecem trocadas e os SVGs têm
   proporções diferentes do padrão. Precisa ser exportado de novo.
-- **Modelo 65:** os arquivos `2c(1).svg`, `3(1).svg` e `3c(1).svg` parecem
-  duplicados e foram ignorados.
 - **Modelos 87 e 90:** o `costas.svg` só tem o contorno, sem desenho. As costas
   ficam lisas na cor base.
 - **Modelos sem SVG:** das 502 pastas de modelo, 295 têm só o arquivo `.cdr`

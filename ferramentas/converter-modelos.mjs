@@ -7,6 +7,18 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const [origem, destino] = process.argv.slice(2);
+const AQUI = path.dirname(new URL(import.meta.url).pathname);
+
+// Camadas que existem só de um lado: 'ambos' (fundo que se repete), 'frente',
+// 'verso' ou 'manter' (frente e costas com desenhos diferentes de propósito). A classificação automática vem de classificar-camadas.mjs e os
+// ajustes manuais têm prioridade. Formato: { "51": { "camisa": { "1": "ambos" } } }
+function lerJson(nome) {
+  try { return JSON.parse(fs.readFileSync(path.join(AQUI, nome), 'utf8')); } catch { return {}; }
+}
+const ladosAuto = lerJson('lados-camadas.json');
+const ladosManuais = lerJson('ajustes-manuais.json');
+const ladoDefinido = (numero, peca, camada) =>
+  ladosManuais[numero]?.[peca]?.[camada] ?? ladosAuto[numero]?.[peca]?.[camada]?.lado;
 if (!origem || !destino) {
   console.error('Uso: node ferramentas/converter-modelos.mjs <pasta-origem> <pasta-destino>');
   process.exit(1);
@@ -123,12 +135,36 @@ for (const { numero, dir } of [...pastasModelo(origem)].sort((a, b) => a.numero 
         continue;
       }
       camadas[c.camada] ??= { cor: r.cor };
-      camadas[c.camada][c.lado] = { viewBox: r.viewBox, svg: r.svg };
+      camadas[c.camada][c.lado] = { viewBox: r.viewBox, svg: r.svg, prefixo };
     }
+    // camadas de um lado só: repete o fundo nos dois lados e leva destaques para a frente
+    // a numeração usada nos ajustes é a posição da camada (1, 2, 3...), como na folha de revisão
+    const ordem = Object.keys(camadas).map(Number).sort((a, b) => a - b);
+    for (const [pos, k] of ordem.entries()) {
+      const cam = camadas[k];
+      const unico = cam.frente ? (cam.verso ? null : 'frente') : 'verso';
+      if (!unico) continue;
+      cam.unilateral = unico;
+      const decisao = ladoDefinido(numero, peca, pos + 1);
+      const outro = unico === 'frente' ? 'verso' : 'frente';
+      const origemLado = cam[unico];
+      const copia = (lado) => ({
+        viewBox: origemLado.viewBox,
+        svg: origemLado.svg.replaceAll(origemLado.prefixo, `m${numero}${peca.slice(0, 3)}${k}${lado[0]}_`),
+      });
+      if (decisao === 'ambos') cam[outro] = copia(outro);
+      else if (decisao === 'frente' && unico === 'verso') { cam.frente = copia('frente'); delete cam.verso; }
+      else if (decisao === 'verso' && unico === 'frente') { cam.verso = copia('verso'); delete cam.frente; }
+    }
+    for (const cam of Object.values(camadas)) for (const l of ['frente', 'verso']) if (cam[l]) delete cam[l].prefixo;
     const lista = Object.keys(camadas).map(Number).sort((a, b) => a - b).map((k) => camadas[k]);
     if (lista.length) modelo.pecas[peca] = lista;
   }
-  if (!Object.keys(modelo.pecas).length) continue;
+  // o catálogo é de uniformes: modelos que só têm calção ficam de fora
+  if (!modelo.pecas.camisa) {
+    if (modelo.pecas.calcao) avisos.push(`Modelo ${numero}: só tem calção, fora do catálogo`);
+    continue;
+  }
   vistos.add(numero);
   fs.writeFileSync(path.join(destino, 'modelos', `${numero}.json`), JSON.stringify(modelo));
   indice.push({

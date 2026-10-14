@@ -1,7 +1,7 @@
 import { CORES, cor, hex, rotulo } from './cores.js';
 import {
-  montarPalco, overlaysPeca, variaveisCor, VB, GOLAS, MANGAS, PUNHOS,
-  TIPOS_GOLA, TIPOS_MANGA, TIPOS_PUNHO, POSICOES_NUMERO_FRENTE, POSICOES_IMAGEM, FONTES,
+  montarPalco, overlaysPeca, variaveisCor, VB, GOLAS, PUNHOS,
+  TIPOS_GOLA, TIPOS_PUNHO, POSICOES_NUMERO_FRENTE, POSICOES_IMAGEM, FONTES,
 } from './render.js';
 
 // Número que recebe os pedidos de orçamento (DDI + DDD + número).
@@ -22,10 +22,10 @@ const PADRAO = {
     camisa: { base: 'azul-marinho', camadas: [...CAMADAS_PADRAO] },
     calcao: { base: 'azul-marinho', camadas: [...CAMADAS_PADRAO] },
   },
-  gola: { tipo: 'redonda', cor: 'branco', friso: 'nenhum' },
-  manga: { tipo: 'tradicional', cor: 'corpo' },
+  gola: { tipo: 'careca', cor: 'branco' },
+  manga: { cor: 'corpo' },
   punho: { tipo: 'simples', cor: 'branco' },
-  meiao: { ativo: true, base: 'azul-marinho', punho: 'branco', faixas: 2, corFaixas: 'branco', pe: 'azul-marinho' },
+  meiao: { ativo: true, cor: 'azul-marinho' },
   nome: {
     texto: '', numero: '10', fonte: 'bebas', cor: 'branco', contorno: 'azul-marinho',
     numeroFrente: 'peito-direito', numeroCalcao: true, posicaoNome: 'acima', tamanhoNome: 1,
@@ -111,6 +111,12 @@ function normalizar(e) {
   r.textos = Array.isArray(e?.textos) ? e.textos : [];
   r.imagens = Array.isArray(e?.imagens) ? e.imagens : [];
   r.deslocamentos = e?.deslocamentos ?? {};
+  // simulações salvas antes das golas Careca/V e do meião de uma cor
+  if (!GOLAS[r.gola.tipo]) r.gola.tipo = r.gola.tipo === 'v' ? 'v' : 'careca';
+  if (e?.meiao?.base && !e.meiao.cor) r.meiao.cor = e.meiao.base;
+  delete r.gola.friso;
+  for (const k of ['base', 'punho', 'faixas', 'corFaixas', 'pe']) delete r.meiao[k];
+  delete r.manga.tipo;
   if (!infoModelo(r.modeloCamisa)) r.modeloCamisa = modeloInicial();
   if (!r.sincronizarModelo && !infoModelo(r.modeloCalcao)) r.modeloCalcao = r.modeloCamisa;
   return r;
@@ -151,8 +157,8 @@ let renderizacao = 0;
 
 function estrutura(e) {
   return JSON.stringify({
-    vista, pecas: e.pecas, camisa: e.modeloCamisa, calcao: idCalcao(e), meiao: e.meiao.ativo, faixas: e.meiao.faixas,
-    gola: e.gola.tipo, manga: e.manga.tipo, mangaCor: e.manga.cor === 'corpo', punho: e.punho.tipo,
+    vista, pecas: e.pecas, camisa: e.modeloCamisa, calcao: idCalcao(e), meiao: e.meiao.ativo,
+    gola: e.gola.tipo, mangaCor: e.manga.cor === 'corpo', punho: e.punho.tipo,
   });
 }
 
@@ -397,7 +403,6 @@ const ABAS = {
     alvos() {
       const a = [
         { chave: 'gola', rotulo: 'Gola', valor: () => estado.gola.cor, definir: (e, v) => { e.gola.cor = v; } },
-        { chave: 'friso', rotulo: 'Friso da gola', valor: () => estado.gola.friso, definir: (e, v) => { e.gola.friso = v; }, especiais: [{ valor: 'nenhum', rotulo: 'Sem friso' }] },
         { chave: 'manga', rotulo: 'Manga', valor: () => estado.manga.cor, definir: (e, v) => { e.manga.cor = v; }, especiais: [{ valor: 'corpo', rotulo: 'Igual ao desenho do corpo' }] },
       ];
       if (estado.punho.tipo !== 'sem') a.push({ chave: 'punho', rotulo: 'Punho', valor: () => estado.punho.cor, definir: (e, v) => { e.punho.cor = v; } });
@@ -407,20 +412,16 @@ const ABAS = {
       if (estado.pecas === 'calcao') return '<h2>Gola e manga</h2><p class="sub">Inclua a camisa em “Modelos” para escolher gola, manga e punho.</p>';
       const golas = Object.entries(GOLAS).map(([k, g]) => `<button class="opcao" data-gola="${k}" aria-pressed="${estado.gola.tipo === k}">
         ${iconeCamisa(`<path d="${g.abertura}" fill="#8796a1"/><path d="${g.frente}" fill="#1d4251"/>`)}${esc(g.nome)}</button>`).join('');
-      const mangas = Object.entries(MANGAS).map(([k, m]) => `<button class="opcao" data-manga="${k}" aria-pressed="${estado.manga.tipo === k}">
-        ${iconeCamisa(`<clipPath id="ic-m-${k}"><path d="${catalogo.silhuetas.camisa}"/></clipPath><path clip-path="url(#ic-m-${k})" d="${m.join('')}" fill="#ef6a28"/>`)}${esc(TIPOS_MANGA[k])}</button>`).join('');
       const punhos = Object.entries(TIPOS_PUNHO).map(([k, n]) => `<button class="opcao" data-punho="${k}" aria-pressed="${estado.punho.tipo === k}">
         ${iconeCamisa(k === 'simples' ? `<clipPath id="ic-p"><path d="${catalogo.silhuetas.camisa}"/></clipPath><path clip-path="url(#ic-p)" d="${PUNHOS}" fill="#ef6a28"/>` : '')}${esc(n)}</button>`).join('');
-      return `<h2>Gola e manga</h2><p class="sub">Defina os acabamentos da camisa.</p>
+      return `<h2>Gola e manga</h2><p class="sub">Escolha a gola, o punho e as cores dos acabamentos.</p>
         <h3>Gola</h3><div class="opcoes">${golas}</div>
-        <h3>Manga</h3><div class="opcoes">${mangas}</div>
         <h3>Punho</h3><div class="opcoes">${punhos}</div>
         <h3>Cores dos acabamentos</h3>${blocoCores('acabamentos', this.alvos())}`;
     },
     ligar() {
       if (estado.pecas === 'calcao') return;
       $$('[data-gola]').forEach((b) => b.addEventListener('click', () => atualizar((e) => { e.gola.tipo = b.dataset.gola; }, { painel: true })));
-      $$('[data-manga]').forEach((b) => b.addEventListener('click', () => atualizar((e) => { e.manga.tipo = b.dataset.manga; }, { painel: true })));
       $$('[data-punho]').forEach((b) => b.addEventListener('click', () => atualizar((e) => { e.punho.tipo = b.dataset.punho; }, { painel: true })));
       ligarBlocoCores('acabamentos', this.alvos());
     },
@@ -428,23 +429,15 @@ const ABAS = {
 
   meiao: {
     alvos() {
-      const a = [
-        { chave: 'base', rotulo: 'Cor base', valor: () => estado.meiao.base, definir: (e, v) => { e.meiao.base = v; } },
-        { chave: 'punho', rotulo: 'Punho (topo)', valor: () => estado.meiao.punho, definir: (e, v) => { e.meiao.punho = v; } },
-      ];
-      if (estado.meiao.faixas > 0) a.push({ chave: 'faixas', rotulo: 'Faixas', valor: () => estado.meiao.corFaixas, definir: (e, v) => { e.meiao.corFaixas = v; } });
-      a.push({ chave: 'pe', rotulo: 'Calcanhar e ponta', valor: () => estado.meiao.pe, definir: (e, v) => { e.meiao.pe = v; } });
-      return a;
+      return [{ chave: 'cor', rotulo: 'Cor do meião', valor: () => estado.meiao.cor, definir: (e, v) => { e.meiao.cor = v; } }];
     },
     html() {
       return `<h2>Meião</h2><p class="sub">Combine o meião com o restante do uniforme.</p>
         <div class="grupo">${interruptor('chk-meiao-aba', 'Incluir meião', estado.meiao.ativo)}</div>
-        ${estado.meiao.ativo ? `<h3>Faixas</h3>${segmentado('faixas', { f0: 'Sem faixas', f1: '1', f2: '2', f3: '3' }, `f${estado.meiao.faixas}`)}
-        <h3>Cores</h3>${blocoCores('meiao', this.alvos())}` : ''}`;
+        ${estado.meiao.ativo ? `<h3>Cor</h3>${blocoCores('meiao', this.alvos())}` : ''}`;
     },
     ligar() {
       ligarInterruptor('chk-meiao-aba', (e, v) => { e.meiao.ativo = v; });
-      ligarSegmentado('faixas', (e, v) => { e.meiao.faixas = Number(v.slice(1)); });
       ligarBlocoCores('meiao', this.alvos());
     },
   },
@@ -747,9 +740,9 @@ function resumo(e = estado) {
   if (temCamisa) linhas.push(`Camisa (modelo ${e.modeloCamisa}): ${cores('camisa', sinc ? Math.max(nCamisa, nCalcao) : nCamisa)}`);
   if (temCalcao) linhas.push(`Calção (modelo ${idCalcao(e)}): ${sinc ? 'mesmas cores da camisa' : cores(e.cores.sincronizar && !temCamisa ? 'camisa' : 'calcao', nCalcao)}`);
   if (temCamisa) {
-    linhas.push(`Gola ${TIPOS_GOLA[e.gola.tipo]} ${rotulo(e.gola.cor)}${e.gola.friso !== 'nenhum' ? ` com friso ${rotulo(e.gola.friso)}` : ''} · Manga ${TIPOS_MANGA[e.manga.tipo]}${e.manga.cor !== 'corpo' ? ` ${rotulo(e.manga.cor)}` : ''} · ${TIPOS_PUNHO[e.punho.tipo]}${e.punho.tipo !== 'sem' ? ` ${rotulo(e.punho.cor)}` : ''}`);
+    linhas.push(`Gola ${TIPOS_GOLA[e.gola.tipo]} ${rotulo(e.gola.cor)} · Manga ${e.manga.cor !== 'corpo' ? rotulo(e.manga.cor) : 'igual ao desenho do corpo'} · ${TIPOS_PUNHO[e.punho.tipo]}${e.punho.tipo !== 'sem' ? ` ${rotulo(e.punho.cor)}` : ''}`);
   }
-  if (e.meiao.ativo) linhas.push(`Meião: ${rotulo(e.meiao.base)}, punho ${rotulo(e.meiao.punho)}${e.meiao.faixas ? `, ${e.meiao.faixas} faixa(s) ${rotulo(e.meiao.corFaixas)}` : ''}, calcanhar/ponta ${rotulo(e.meiao.pe)}`);
+  if (e.meiao.ativo) linhas.push(`Meião: ${rotulo(e.meiao.cor)}`);
   const n = e.nome;
   if (n.texto || n.numero) linhas.push(`Nome "${n.texto || '—'}" · Número ${n.numero || '—'} · Fonte ${FONTES[n.fonte].nome} · ${rotulo(n.cor)}${n.contorno !== 'nenhum' ? ` com contorno ${rotulo(n.contorno)}` : ''} · Frente: ${POSICOES_NUMERO_FRENTE[n.numeroFrente].nome}${temCalcao ? ` · No calção: ${n.numeroCalcao ? 'sim' : 'não'}` : ''}`);
   if (e.textos.length) linhas.push(`Textos extras: ${e.textos.map((t) => `"${t.texto}" (${t.peca === 'camisa' ? 'camisa' : 'calção'}, ${t.lado === 'frente' ? 'frente' : 'costas'})`).join(', ')}`);

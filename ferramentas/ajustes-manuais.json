@@ -1,0 +1,367 @@
+{
+ "39": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "43": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "44": {
+  "camisa": {
+   "1": "ambos",
+   "2": "frente"
+  }
+ },
+ "45": {
+  "camisa": {
+   "2": "ambos"
+  }
+ },
+ "46": {
+  "camisa": {
+   "1": "ambos",
+   "2": "frente",
+   "3": "frente",
+   "4": "frente"
+  }
+ },
+ "47": {
+  "camisa": {
+   "2": "frente",
+   "3": "frente"
+  }
+ },
+ "48": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "49": {
+  "camisa": {
+   "1": "frente",
+   "2": "frente",
+   "3": "ambos"
+  }
+ },
+ "50": {
+  "camisa": {
+   "2": "frente"
+  }
+ },
+ "51": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "52": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "68": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "76": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "82": {
+  "calcao": {
+   "1": "ambos"
+  },
+  "camisa": {
+   "1": "ambos",
+   "2": "ambos",
+   "3": "ambos"
+  }
+ },
+ "83": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "85": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "86": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "87": {
+  "calcao": {
+   "1": "ambos"
+  },
+  "camisa": {
+   "1": "frente",
+   "2": "frente",
+   "3": "frente",
+   "4": "ambos"
+  }
+ },
+ "89": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "90": {
+  "calcao": {
+   "1": "ambos",
+   "2": "ambos",
+   "3": "ambos"
+  },
+  "camisa": {
+   "1": "frente",
+   "2": "frente",
+   "3": "frente"
+  }
+ },
+ "147": {
+  "calcao": {
+   "1": "ambos",
+   "2": "ambos"
+  },
+  "camisa": {
+   "1": "manter",
+   "2": "manter"
+  }
+ },
+ "149": {
+  "calcao": {
+   "1": "ambos"
+  },
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "155": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "160": {
+  "calcao": {
+   "1": "ambos",
+   "2": "ambos"
+  }
+ },
+ "161": {
+  "camisa": {
+   "1": "frente",
+   "2": "frente"
+  }
+ },
+ "163": {
+  "calcao": {
+   "1": "ambos",
+   "2": "ambos"
+  }
+ },
+ "164": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "182": {
+  "camisa": {
+   "1": "ambos",
+   "2": "ambos"
+  }
+ },
+ "186": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "393": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "414": {
+  "calcao": {
+   "1": "ambos",
+   "2": "ambos"
+  }
+ },
+ "416": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "483": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "488": {
+  "calcao": {
+   "2": "ambos"
+  }
+ },
+ "493": {
+  "calcao": {
+   "2": "ambos",
+   "3": "ambos"
+  },
+  "camisa": {
+   "1": "manter",
+   "2": "manter",
+   "3": "manter",
+   "4": "manter"
+  }
+ },
+ "495": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "497": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "500": {
+  "camisa": {
+   "1": "ambos",
+   "2": "ambos"
+  }
+ },
+ "506": {
+  "camisa": {
+   "3": "ambos"
+  }
+ },
+ "508": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "509": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "517": {
+  "camisa": {
+   "1": "ambos",
+   "2": "frente"
+  }
+ },
+ "518": {
+  "camisa": {
+   "1": "manter",
+   "2": "manter"
+  }
+ },
+ "522": {
+  "calcao": {
+   "1": "ambos",
+   "2": "ambos",
+   "3": "ambos"
+  }
+ },
+ "528": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "531": {
+  "camisa": {
+   "4": "frente",
+   "5": "frente"
+  }
+ },
+ "532": {
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "533": {
+  "calcao": {
+   "1": "frente"
+  },
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "535": {
+  "calcao": {
+   "1": "frente"
+  },
+  "camisa": {
+   "1": "frente"
+  }
+ },
+ "536": {
+  "calcao": {
+   "1": "ambos",
+   "2": "ambos"
+  },
+  "camisa": {
+   "1": "ambos",
+   "3": "manter"
+  }
+ },
+ "537": {
+  "calcao": {
+   "1": "ambos"
+  },
+  "camisa": {
+   "1": "ambos"
+  }
+ },
+ "538": {
+  "calcao": {
+   "1": "ambos",
+   "2": "manter",
+   "3": "frente"
+  },
+  "camisa": {
+   "1": "ambos",
+   "2": "frente",
+   "4": "frente"
+  }
+ },
+ "539": {
+  "camisa": {
+   "1": "ambos",
+   "2": "manter",
+   "3": "manter",
+   "4": "manter"
+  }
+ },
+ "540": {
+  "calcao": {
+   "1": "ambos"
+  },
+  "camisa": {
+   "1": "ambos",
+   "2": "ambos"
+  }
+ },
+ "541": {
+  "calcao": {
+   "3": "ambos"
+  }
+ },
+ "562": {
+  "calcao": {
+   "1": "ambos"
+  }
+ },
+ "570": {
+  "camisa": {
+   "1": "ambos",
+   "2": "ambos"
+  }
+ }
+}
