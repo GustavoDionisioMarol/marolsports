@@ -20,9 +20,12 @@ export const GOLAS = {
   },
   v: {
     nome: 'Gola V',
-    frente: 'M78200 -500L113400 55000L148800 -500L140600 2000L113400 41500L86600 2000Z',
-    abertura: 'M86600 2000L113400 41500L140600 2000C130000 -900 97000 -900 86600 2000Z',
-    nervura: 'M82400 750L113400 48200L144700 750',
+    // decote raso, faixa fina e laterais levemente curvas
+    frente: 'M79600 -500C88000 11500 104000 28500 113400 37800C122800 28500 138800 11500 147400 -500L141300 1700C133400 11300 120400 23200 113400 31400C106400 23200 93600 11300 85700 1700Z',
+    abertura: 'M85700 1700C93600 11300 106400 23200 113400 31400C120400 23200 133400 11300 141300 1700C130000 -900 97000 -900 85700 1700Z',
+    nervura: 'M82600 600C90800 11400 105200 25800 113400 34600C121600 25800 136100 11400 144400 600',
+    // costura cruzada na ponta do V
+    detalhe: 'M113400 37600L117600 31000',
   },
 };
 export const TIPOS_GOLA = Object.fromEntries(Object.entries(GOLAS).map(([k, g]) => [k, g.nome]));
@@ -159,7 +162,8 @@ function golaFrente(id, gola) {
     <path d="${GOLA_INTERNA}" fill="var(--gola)"/><path d="${GOLA_INTERNA}" fill="#000" fill-opacity=".4"/>
     <path d="${gola.frente}" fill="var(--gola)"/>
     <path d="${gola.frente}" fill="url(#${id}-rib)"/>
-    <path d="${gola.nervura}" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="700"/>
+    <path d="${gola.nervura}" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="600"/>
+    ${gola.detalhe ? `<path d="${gola.detalhe}" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="600"/>` : ''}
     <path d="${gola.frente}" fill="none" stroke="#000" stroke-opacity=".3" stroke-width="500"/>`;
 }
 

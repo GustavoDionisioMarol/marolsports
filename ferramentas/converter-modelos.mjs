@@ -17,6 +17,8 @@ function lerJson(nome) {
 }
 const ladosAuto = lerJson('lados-camadas.json');
 const ladosManuais = lerJson('ajustes-manuais.json');
+// camadas que não aparecem (vazias ou cobertas), detectadas por verificar-camadas.mjs
+const invisiveis = lerJson('camadas-invisiveis.json');
 const ladoDefinido = (numero, peca, camada) =>
   ladosManuais[numero]?.[peca]?.[camada] ?? ladosAuto[numero]?.[peca]?.[camada]?.lado;
 if (!origem || !destino) {
@@ -54,7 +56,8 @@ function classificar(arquivo) {
   return null;
 }
 
-const COR = /#[0-9a-f]{3,8}\b|rgba?\([^)]*\)|\b(?:red|white|black|blue|green|yellow)\b/i;
+// qualquer cor: hexadecimal, rgb()/hsl() ou nome (red, fuchsia, gold...); nunca none/url()/currentColor
+const COR = /^\s*(?:#[0-9a-f]{3,8}|(?:rgb|hsl)a?\([^)]*\)|(?!none\b|currentcolor\b|transparent\b|inherit\b)[a-z]+)\s*$/i;
 
 // Limpa o SVG, troca todas as cores por currentColor e prefixa os ids.
 function processarSvg(texto, prefixo) {
@@ -157,8 +160,10 @@ for (const { numero, dir } of [...pastasModelo(origem)].sort((a, b) => a.numero 
       else if (decisao === 'verso' && unico === 'frente') { cam.verso = copia('verso'); delete cam.frente; }
     }
     for (const cam of Object.values(camadas)) for (const l of ['frente', 'verso']) if (cam[l]) delete cam[l].prefixo;
-    const lista = Object.keys(camadas).map(Number).sort((a, b) => a - b).map((k) => camadas[k]);
-    if (lista.length) modelo.pecas[peca] = lista;
+    const todas = Object.keys(camadas).map(Number).sort((a, b) => a - b).map((k) => camadas[k]);
+    const remover = new Set(invisiveis[numero]?.[peca] ?? []);
+    const lista = todas.filter((_, i) => !remover.has(i + 1));
+    if (todas.length) modelo.pecas[peca] = lista;
   }
   // o catálogo é de uniformes: modelos que só têm calção ficam de fora
   if (!modelo.pecas.camisa) {

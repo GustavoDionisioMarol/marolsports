@@ -63,6 +63,8 @@ ferramentas/
   classificar-camadas.mjs     sugere se camadas de um lado só são fundo ou destaque
   ajustes-manuais.json        decisão final de cada camada de um lado só (tem prioridade)
   lados-camadas.json          sugestões geradas pelo classificar-camadas.mjs
+  verificar-camadas.mjs       encontra camadas vazias ou cobertas (cor sem efeito)
+  camadas-invisiveis.json     camadas que o conversor remove por não aparecerem
   gerar-miniaturas.mjs        gera as miniaturas usando o próprio simulador
 ```
 
@@ -103,6 +105,16 @@ da camada. Por exemplo, `"51": { "camisa": { "1": "ambos" } }`. Para modelos
 novos, rode `node ferramentas/classificar-camadas.mjs http://localhost:8080/ revisao.png`:
 ele grava sugestões em `lados-camadas.json` e uma folha de revisão. Depois,
 corrija o que for preciso no arquivo de ajustes e rode `npm run converter`.
+
+### Cores que não mudam nada
+
+Algumas camadas foram exportadas vazias ou ficam totalmente cobertas por outras.
+Nesses casos, o campo de cor correspondente não teria efeito. O
+`verificar-camadas.mjs` pinta cada camada de preto e depois de branco e compara
+os pixels da peça. Quando nada muda, a camada vai para
+`camadas-invisiveis.json` e o conversor a remove. Depois de adicionar modelos,
+rode na ordem: `npm run converter`, `node ferramentas/verificar-camadas.mjs` (com
+o servidor ligado), `npm run converter` de novo e `npm run miniaturas`.
 
 ### Arquivos que o conversor não aproveitou nesta versão
 

@@ -38,7 +38,7 @@
   },
   {
    "id": 43,
-   "camisa": 3,
+   "camisa": 2,
    "calcao": 1,
    "cores": {
     "calcao": [
@@ -46,8 +46,7 @@
     ],
     "camisa": [
      "#F00808",
-     "#F00808",
-     null
+     "#F00808"
     ]
    }
   },
@@ -139,12 +138,11 @@
   },
   {
    "id": 51,
-   "camisa": 3,
+   "camisa": 2,
    "calcao": 0,
    "cores": {
     "camisa": [
      "#F00808",
-     null,
      "#F00808"
     ]
    }
@@ -242,7 +240,7 @@
   },
   {
    "id": 67,
-   "camisa": 3,
+   "camisa": 2,
    "calcao": 2,
    "cores": {
     "calcao": [
@@ -251,8 +249,7 @@
     ],
     "camisa": [
      "#F00808",
-     "#F00808",
-     null
+     "#F00808"
     ]
    }
   },
@@ -490,13 +487,11 @@
   },
   {
    "id": 148,
-   "camisa": 3,
+   "camisa": 1,
    "calcao": 0,
    "cores": {
     "camisa": [
-     "#F00808",
-     null,
-     null
+     "#F00808"
     ]
    }
   },
@@ -1544,7 +1539,7 @@
   },
   {
    "id": 487,
-   "camisa": 2,
+   "camisa": 1,
    "calcao": 2,
    "cores": {
     "calcao": [
@@ -1552,7 +1547,6 @@
      "#04003E"
     ],
     "camisa": [
-     null,
      "#04003E"
     ]
    }
@@ -1615,10 +1609,9 @@
   {
    "id": 495,
    "camisa": 3,
-   "calcao": 3,
+   "calcao": 2,
    "cores": {
     "calcao": [
-     null,
      null,
      null
     ],
@@ -1673,11 +1666,9 @@
   {
    "id": 500,
    "camisa": 4,
-   "calcao": 1,
+   "calcao": 0,
    "cores": {
-    "calcao": [
-     null
-    ],
+    "calcao": [],
     "camisa": [
      null,
      "#0062D9",
@@ -1881,7 +1872,7 @@
   },
   {
    "id": 518,
-   "camisa": 4,
+   "camisa": 3,
    "calcao": 3,
    "cores": {
     "calcao": [
@@ -1892,7 +1883,6 @@
     "camisa": [
      "#4D1387",
      "#4D1387",
-     null,
      "#00FFEC"
     ]
    }
@@ -2074,24 +2064,18 @@
   },
   {
    "id": 532,
-   "camisa": 4,
-   "calcao": 2,
+   "camisa": 1,
+   "calcao": 0,
    "cores": {
-    "calcao": [
-     null,
-     null
-    ],
+    "calcao": [],
     "camisa": [
-     "#009A44",
-     null,
-     null,
-     null
+     "#009A44"
     ]
    }
   },
   {
    "id": 533,
-   "camisa": 5,
+   "camisa": 3,
    "calcao": 1,
    "cores": {
     "calcao": [
@@ -2099,8 +2083,6 @@
     ],
     "camisa": [
      "#EAAA00",
-     null,
-     null,
      null,
      null
     ]
@@ -2220,10 +2202,9 @@
   {
    "id": 541,
    "camisa": 3,
-   "calcao": 3,
+   "calcao": 2,
    "cores": {
     "calcao": [
-     null,
      null,
      "#EAAA00"
     ],
