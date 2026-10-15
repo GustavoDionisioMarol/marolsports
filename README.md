@@ -13,9 +13,9 @@ publicado em qualquer hospedagem, inclusive em `marolsports.com/simulador/`.
 - **Cores:** cartela com 48 cores com referência Pantone/TCX, para a base e para
   cada camada da estampa. A camisa e o calção podem ter as mesmas cores ou cores
   independentes.
-- **Gola e manga:**
+- **Gola e punho:**
   - golas Careca e V, com cor;
-  - manga com cor própria ou seguindo o desenho do corpo;
+  - mangas montadas separadas do corpo, sempre na cor de fundo do uniforme;
   - punho simples ou sem punho.
 - **Meião:** visto de frente, com uma cor.
 - **Nome e número:** 4 fontes (a "Universitária" imita o estilo College), cor e
@@ -45,13 +45,15 @@ Ilustração" no palco), montado sobre a foto `ferramentas/mockup/base.webp`
 - a estampa é pintada por baixo, encaixada na camisa e no calção da foto;
 - a foto entra por cima como mapa de sombras (multiplicar) e de brilhos (tela).
   Por isso as dobras, as costuras e o tecido aparecem em qualquer cor;
-- a gola, as mangas e os punhos são coloridos por regiões medidas na foto. A
-  foto tem gola V, então nesse visual a camisa sempre aparece com gola V.
+- a gola e os punhos são coloridos por regiões medidas na foto. A foto tem gola
+  V e manga raglan: o script apaga as costuras raglan, porque a camisa da Marol
+  tem manga comum (a costura certa é desenhada pelo simulador), e gera uma
+  versão da frente sem o V para a gola Careca.
 
 Para trocar a foto, rode
 `python3 ferramentas/preparar-mockup-foto.py <foto> simulador/mockup`. O script
 gera os contornos e os mapas de luz em `simulador/mockup/`. As regiões de gola,
-mangas e punhos estão em coordenadas da foto dentro do script e precisam ser
+punhos e costuras estão em coordenadas da foto dentro do script e precisam ser
 reajustadas para outra imagem.
 
 > **Licença:** se a foto veio de um banco de imagens (Freepik, Envato etc.),

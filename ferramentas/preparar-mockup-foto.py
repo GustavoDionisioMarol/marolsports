@@ -119,6 +119,67 @@ def caminho(pontos):
     return 'M' + 'L'.join(f'{x:.1f} {y:.1f}' for x, y in pontos) + 'Z'
 
 
+# ------------------------------------------------------------------ retoques da foto
+from PIL import ImageDraw
+
+
+def mascara_de(desenhar):
+    m = Image.new('L', (W, H), 0)
+    desenhar(ImageDraw.Draw(m))
+    return np.asarray(m) > 127
+
+
+def preencher(img, mascara, iteracoes=400):
+    """Apaga a região da máscara: preenchimento suave (Laplace) a partir das
+    bordas e, por cima, a textura da malha copiada de logo abaixo da região."""
+    out = img.copy()
+    ys, xs = np.nonzero(mascara)
+    y0, y1, x0, x1 = ys.min() - 2, ys.max() + 3, xs.min() - 2, xs.max() + 3
+    sub = out[y0:y1, x0:x1]
+    m = mascara[y0:y1, x0:x1]
+    sub[m] = sub[~m].mean()
+    for _ in range(iteracoes):
+        media = (np.roll(sub, 1, 0) + np.roll(sub, -1, 0) + np.roll(sub, 1, 1) + np.roll(sub, -1, 1)) / 4
+        sub[m] = media[m]
+    # textura: detalhe fino (passa-alta) de uma faixa logo abaixo
+    desfoque = np.asarray(Image.fromarray(np.clip(img, 0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.5))).astype(np.float32)
+    detalhe = img - desfoque
+    alt = y1 - y0
+    doador = detalhe[min(y1 + 10, H - alt):min(y1 + 10, H - alt) + alt, x0:x1]
+    sub[m] += doador[m] * 0.9
+    out[y0:y1, x0:x1] = sub
+    return out
+
+
+# costuras raglan da foto (frente; as costas repetem deslocadas): são apagadas,
+# porque a camisa da Marol tem manga comum (a costura certa é desenhada no simulador)
+RAGLAN_E = [(366, 60), (348, 72), (330, 85), (305, 105), (285, 125), (270, 160), (262, 200), (262, 240), (266, 270), (273, 300)]
+RAGLAN_D = [(898 - x, y) for x, y in RAGLAN_E]
+DESLOC = 648.5
+
+
+def apagar_raglan(d):
+    for pts in (RAGLAN_E, RAGLAN_D, [(x + DESLOC, y) for x, y in RAGLAN_E], [(x + DESLOC, y) for x, y in RAGLAN_D]):
+        d.line(pts, fill=255, width=17, joint='curve')
+
+
+L_base = preencher(L, mascara_de(apagar_raglan) & pecas, iteracoes=250)
+
+# variante com gola careca: apaga o V da frente (faixa + abertura) e o simulador desenha a gola redonda
+V_FRENTE = [(344, 44), (352, 66), (366, 86), (388, 106), (414, 124), (449, 146), (484, 124), (512, 106), (532, 86), (544, 66), (546, 44), (530, 38), (449, 36), (370, 38)]
+L_careca = preencher(L_base, mascara_de(lambda d: d.polygon(V_FRENTE, fill=255)), iteracoes=500)
+
+def mapas_de_luz(reg, nome):
+    # sombras: luminância relativa ao branco do tecido, com um pouco mais de contraste
+    sombra = np.clip(reg / ref, 0, 1) ** 1.35
+    # brilhos: só onde o tecido é mais claro que a vizinhança (relevo das dobras),
+    # para dar volume às cores escuras sem lavar a peça inteira
+    media = np.asarray(Image.fromarray(reg.astype(np.uint8)).filter(ImageFilter.GaussianBlur(14))).astype(np.float32)
+    brilho = np.asarray(Image.fromarray(np.clip((reg - media) / 26 * 255, 0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.2))).astype(np.float32) / 255
+    Image.fromarray((sombra * 255).astype(np.uint8)).save(f'{destino}/sombra-{nome}.webp', quality=88)
+    Image.fromarray((brilho * 255).astype(np.uint8)).save(f'{destino}/brilho-{nome}.webp', quality=85)
+
+
 saida = {'largura': W, 'altura': H, 'lados': {}}
 garment_lum = L[pecas]
 ref = float(np.percentile(garment_lum, 97))  # branco do tecido
@@ -135,29 +196,21 @@ for lado, cfg in LADOS.items():
     for nome, m in (('camisa', camisa), ('calcao', calcao)):
         ys, xs = np.nonzero(m)
         info['pecas'][nome] = {'caminho': caminho(contorno(m)), 'caixa': [int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())]}
-    # mapas de luz recortados para o lado
-    reg = L[y0:y0 + h, x0:x0 + w]
-    # sombras: luminância relativa ao branco do tecido, com um pouco mais de contraste
-    sombra = np.clip(reg / ref, 0, 1) ** 1.35
-    # brilhos: só onde o tecido é mais claro que a vizinhança (relevo das dobras),
-    # para dar volume às cores escuras sem lavar a peça inteira
-    media = np.asarray(Image.fromarray(reg.astype(np.uint8)).filter(ImageFilter.GaussianBlur(14))).astype(np.float32)
-    brilho = np.asarray(Image.fromarray(np.clip((reg - media) / 26 * 255, 0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.2))).astype(np.float32) / 255
-    Image.fromarray((sombra * 255).astype(np.uint8)).save(f'{destino}/sombra-{lado}.webp', quality=88)
-    Image.fromarray((brilho * 255).astype(np.uint8)).save(f'{destino}/brilho-{lado}.webp', quality=85)
+    # mapas de luz recortados para o lado (frente também na versão gola careca)
+    variantes = [('', L_base)] + ([('-careca', L_careca)] if lado == 'frente' else [])
+    for sufixo, fonte in variantes:
+        mapas_de_luz(fonte[y0:y0 + h, x0:x0 + w], f'{lado}{sufixo}')
     saida['lados'][lado] = info
 
+
 # ------------------------------------------------------------------ regiões desenhadas à mão
-# Coordenadas na foto (px). As costas repetem mangas e punhos da frente deslocados.
-DESLOC = 648.5
-manga_e = [(352, 40), (300, 95), (272, 130), (258, 170), (252, 220), (262, 270), (274, 306), (276, 345), (140, 330), (140, 40)]
-manga_d = [(546, 40), (598, 95), (626, 130), (640, 170), (646, 220), (636, 270), (624, 306), (618, 345), (750, 330), (750, 40)]
-punho_e = [(150, 286), (277, 305), (274, 342), (148, 322)]
-punho_d = [(616, 304), (742, 292), (748, 318), (620, 342)]
+# Coordenadas na foto (px). As costas repetem os punhos da frente deslocados.
+# punhos medidos na barra das mangas (acompanham a inclinação de cada manga)
+punho_e = [(150, 290), (266, 318), (268, 344), (148, 314)]
+punho_d = [(622, 319), (742, 296), (744, 318), (624, 345)]
 mover = lambda pts, dx: [(x + dx, y) for x, y in pts]
 poli = lambda pts: 'M' + 'L'.join(f'{x:.1f} {y:.1f}' for x, y in pts) + 'Z'
 saida['lados']['frente'].update({
-    'mangas': poli(manga_e) + poli(manga_d),
     'punhos': poli(punho_e) + poli(punho_d),
     # gola V: faixa da gola e abertura (interior da camisa, com a gola de trás)
     'gola': 'M347 47C351 64 362 82 384 101C404 118 428 131 449 142C470 131 494 118 514 101C530 85 538 66 539 46'
@@ -165,9 +218,15 @@ saida['lados']['frente'].update({
             'C366 41 356 42 347 47Z',
     'abertura': 'M374 44C379 62 392 82 414 100C428 110 439 115 449 120C459 115 470 110 484 100C507 82 519 62 522 43C495 39 400 39 374 44Z',
     'golaInterna': 'M378 52C410 49 490 49 519 51L518 66C490 62 410 62 382 66Z',
+    # gola careca (usa os mapas de luz "-careca", em que o V da foto foi apagado)
+    'careca': {
+        'gola': 'M361 41C379 88 519 88 537 41C531 39 525 39 520 43C503 69 395 69 378 43C372 39 366 39 361 41Z',
+        'abertura': 'M378 43C395 69 503 69 520 43C495 37 403 37 378 43Z',
+        'golaInterna': 'M381 45C410 41 488 41 517 45L514 52C488 48 410 48 384 52Z',
+        'nervura': 'M369 42C386 79 512 79 529 42',
+    },
 })
 saida['lados']['costas'].update({
-    'mangas': poli(mover(manga_e, DESLOC)) + poli(mover(manga_d, DESLOC)),
     'punhos': poli(mover(punho_e, DESLOC)) + poli(mover(punho_d, DESLOC)),
     'gola': 'M996 62C1000 54 1006 48 1012 46C1040 42 1130 41 1163 44C1168 47 1172 52 1172 58C1150 66 1125 71 1100 72C1065 72 1030 68 996 62Z',
 })

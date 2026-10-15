@@ -34,14 +34,12 @@ export const TIPOS_GOLA = Object.fromEntries(Object.entries(GOLAS).map(([k, g]) 
 const GOLA_INTERNA = 'M87300 2400C97000 -900 130000 -900 140200 2400L138600 4600C129000 1600 98500 1600 88900 4600Z';
 const GOLA_COSTAS = 'M78800 -500C86500 11500 140500 11500 148200 -500L141000 -500C133500 5200 93500 5200 86000 -500Z';
 
-// área das mangas (para a cor da manga) e costura do ombro
-export const MANGAS = [
-  'M-2000 -2000H39500V15500C49500 45000 50500 85000 43200 114200L46000 132000H-2000Z',
-  'M227000 -2000H186500V16500C176000 45000 175500 85000 184400 109700L182000 132000H227000Z',
-];
+// costura da manga (manga comum, montada separada do corpo)
 const COSTURA_MANGA = 'M39500 16500C49500 45000 50500 85000 43200 114200M186500 17500C176000 45000 175500 85000 184400 109700';
 
-export const PUNHOS = 'M-2000 116800H46500V126000H-2000ZM181000 115200H227000V124000H181000Z';
+// punhos levemente inclinados, acompanhando a barra de cada manga
+export const PUNHOS = 'M-2000 113700L43300 115500V127000H-2000ZM184600 115000L227000 113500V126000H184600Z';
+const PUNHOS_COSTURA = 'M-2000 113700L43300 115500M184600 115000L227000 113500';
 export const TIPOS_PUNHO = { sem: 'Sem punho', simples: 'Punho simples' };
 
 // par de meiões com chuteira (coordenadas de uma perna: 170 x 470). O meião é
@@ -105,7 +103,6 @@ export function variaveisCor(estado, camadasCamisa = 6, camadasCalcao = 6) {
     '--camisa-base': hex(c.camisa.base),
     '--calcao-base': hex(calcao.base),
     '--gola': hex(estado.gola.cor),
-    '--manga': hex(estado.manga.cor === 'corpo' ? c.camisa.base : estado.manga.cor),
     '--punho': hex(estado.punho.cor),
     '--meiao': hex(estado.meiao.cor),
     '--texto': hex(estado.nome.cor),
@@ -187,7 +184,6 @@ function golaFrente(id, gola) {
 function camisa({ id, modelo, lado, estado, silhueta, overlays }) {
   const { w, h } = VB.camisa;
   const gola = GOLAS[estado.gola.tipo] ?? GOLAS.careca;
-  const corManga = estado.manga.cor !== 'corpo';
   const frente = lado === 'frente';
   return `<svg viewBox="0 0 ${w} ${h}" overflow="visible">
     <defs><clipPath id="${id}-clip"><path d="${silhueta}"/></clipPath>${filtros(id, w, h)}
@@ -196,10 +192,9 @@ function camisa({ id, modelo, lado, estado, silhueta, overlays }) {
     <g clip-path="url(#${id}-clip)">
       <rect x="-5000" y="-5000" width="${w + 10000}" height="${h + 10000}" fill="var(--camisa-base)"/>
       ${camadasModelo(modelo, 'camisa', lado)}
-      ${corManga ? `<path d="${MANGAS.join('')}" fill="var(--manga)"/>` : ''}
       ${estado.punho.tipo === 'simples' ? `<path d="${PUNHOS}" fill="var(--punho)"/>` : ''}
       <g data-ov="camisa-${lado}">${overlays}</g>
-      ${estado.punho.tipo === 'simples' ? `<path d="M-2000 116800H46500M181000 115200H227000" stroke="#000" stroke-opacity=".25" stroke-width="500" pointer-events="none"/>` : ''}
+      ${estado.punho.tipo === 'simples' ? `<path d="${PUNHOS_COSTURA}" stroke="#000" stroke-opacity=".25" stroke-width="500" pointer-events="none"/>` : ''}
       ${sombraCamisa(id, lado)}
     </g>
     ${frente ? golaFrente(id, gola) : `<path d="${GOLA_COSTAS}" fill="var(--gola)"/><path d="${GOLA_COSTAS}" fill="url(#${id}-rib)"/><path d="${GOLA_COSTAS}" fill="none" stroke="#000" stroke-opacity=".3" stroke-width="500"/>`}
@@ -449,8 +444,10 @@ export function montarPalcoFoto({ estado, modelos, foto, vista, prefixo = 'f', b
     const sCal = (kx1 - kx0) / VB.calcao.w;
     const hCal = VB.calcao.h * sCal;
     const clipes = [temCamisa && cam.caminho, temCalcao && cal.caminho].filter(Boolean).join('');
-    const corManga = estado.manga.cor !== 'corpo';
     const frente = lado === 'frente';
+    // gola careca na frente: mapas de luz sem o V da foto + gola redonda desenhada
+    const careca = frente && estado.gola.tipo === 'careca' && f.careca;
+    const mapa = `${frente ? 'frente' : 'costas'}${careca ? '-careca' : ''}`;
     let meiao_ = '';
     let altura = h;
     if (estado.meiao.ativo && temCalcao) {
@@ -465,6 +462,9 @@ export function montarPalcoFoto({ estado, modelos, foto, vista, prefixo = 'f', b
         <clipPath id="${id}-cam"><path d="${cam.caminho}"/></clipPath>
         <clipPath id="${id}-cal"><path d="${cal.caminho}"/></clipPath>
         <clipPath id="${id}-pecas"><path d="${clipes}"/></clipPath>
+        <linearGradient id="${id}-interno" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+        <linearGradient id="${id}-rib" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></linearGradient>
+        <filter id="${id}-sb" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
       </defs>
       <g data-peca="foto" style="isolation:isolate">
       ${temCalcao ? `<g clip-path="url(#${id}-cal)">
@@ -476,18 +476,29 @@ export function montarPalcoFoto({ estado, modelos, foto, vista, prefixo = 'f', b
         <rect x="${x0}" y="${y0}" width="${w}" height="${h}" fill="var(--camisa-base)"/>
         <svg x="${cx0}" y="${cy0}" width="${cx1 - cx0}" height="${cy1 - cy0}" viewBox="0 0 ${VB.camisa.w} ${VB.camisa.h}" preserveAspectRatio="none" overflow="visible">
           ${camadasModelo(modelos.camisa, 'camisa', lado)}
+          <path d="${COSTURA_MANGA}" fill="none" stroke="#000" stroke-opacity=".38" stroke-width="1.3" vector-effect="non-scaling-stroke"/>
+          <path d="${COSTURA_MANGA}" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1" vector-effect="non-scaling-stroke" transform="translate(-900 0)"/>
         </svg>
-        ${corManga ? `<path d="${f.mangas}" fill="var(--manga)"/>` : ''}
         ${estado.punho.tipo === 'simples' ? `<path d="${f.punhos}" fill="var(--punho)"/>` : ''}
         <svg x="${cx0}" y="${cy0}" width="${cx1 - cx0}" height="${cy1 - cy0}" viewBox="0 0 ${VB.camisa.w} ${VB.camisa.h}" preserveAspectRatio="none" overflow="visible">
           <g data-ov="camisa-${lado}" data-fx="${syCam / sxCam}">${overlaysPeca(estado, 'camisa', lado, syCam / sxCam)}</g>
         </svg>
-        ${frente ? `<path d="${f.abertura}" fill="var(--camisa-base)"/><path d="${f.golaInterna}" fill="var(--gola)"/>` : ''}
-        <path d="${f.gola}" fill="var(--gola)"/>
+        ${careca
+          ? `<path d="${careca.abertura}" fill="var(--camisa-base)"/><path d="${careca.golaInterna}" fill="var(--gola)"/><path d="${careca.gola}" fill="var(--gola)"/>`
+          : `${frente ? `<path d="${f.abertura}" fill="var(--camisa-base)"/><path d="${f.golaInterna}" fill="var(--gola)"/>` : ''}<path d="${f.gola}" fill="var(--gola)"/>`}
       </g>` : ''}
       <!-- o recorte vai em cada imagem: um grupo recortado isolaria a mistura das cores -->
-      <image href="${base}sombra-${lado === 'verso' ? 'costas' : 'frente'}.webp" x="${x0}" y="${y0}" width="${w}" height="${h}" clip-path="url(#${id}-pecas)" style="mix-blend-mode:multiply" pointer-events="none"/>
-      <image href="${base}brilho-${lado === 'verso' ? 'costas' : 'frente'}.webp" x="${x0}" y="${y0}" width="${w}" height="${h}" clip-path="url(#${id}-pecas)" style="mix-blend-mode:screen" opacity=".38" pointer-events="none"/>
+      <image href="${base}sombra-${mapa}.webp" x="${x0}" y="${y0}" width="${w}" height="${h}" clip-path="url(#${id}-pecas)" style="mix-blend-mode:multiply" pointer-events="none"/>
+      <image href="${base}brilho-${mapa}.webp" x="${x0}" y="${y0}" width="${w}" height="${h}" clip-path="url(#${id}-pecas)" style="mix-blend-mode:screen" opacity=".38" pointer-events="none"/>
+      ${careca && temCamisa ? `<g pointer-events="none">
+        <path d="${careca.gola}" fill="#000" fill-opacity=".35" filter="url(#${id}-sb)" transform="translate(0 3)"/>
+        <path d="${careca.abertura}" fill="url(#${id}-interno)"/>
+        <path d="${careca.golaInterna}" fill="#000" fill-opacity=".35"/>
+        <path d="${careca.gola}" fill="var(--gola)"/>
+        <path d="${careca.gola}" fill="url(#${id}-rib)"/>
+        <path d="${careca.nervura}" fill="none" stroke="#000" stroke-opacity=".14" stroke-width=".8"/>
+        <path d="${careca.gola}" fill="none" stroke="#000" stroke-opacity=".3" stroke-width=".7"/>
+      </g>` : ''}
       </g>
       ${meiao_}
     </g>`;
