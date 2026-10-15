@@ -34,6 +34,10 @@ export const TIPOS_GOLA = Object.fromEntries(Object.entries(GOLAS).map(([k, g]) 
 const GOLA_INTERNA = 'M87300 2400C97000 -900 130000 -900 140200 2400L138600 4600C129000 1600 98500 1600 88900 4600Z';
 const GOLA_COSTAS = 'M78800 -500C86500 11500 140500 11500 148200 -500L141000 -500C133500 5200 93500 5200 86000 -500Z';
 
+// Área do corpo da camisa: a estampa fica só aqui. As mangas são peças
+// separadas, inteiras na cor de fundo, então nenhum desenho passa da costura.
+export const TRONCO = 'M39500 -5000H186500V17500C176000 45000 175500 85000 184400 109700L185000 124000L230000 135000V290000H-5000V135000L43000 124500L43200 114200C50500 85000 49500 45000 39500 16500Z';
+
 // costura da manga (manga comum, montada separada do corpo)
 const COSTURA_MANGA = 'M39500 16500C49500 45000 50500 85000 43200 114200M186500 17500C176000 45000 175500 85000 184400 109700';
 
@@ -186,12 +190,12 @@ function camisa({ id, modelo, lado, estado, silhueta, overlays }) {
   const gola = GOLAS[estado.gola.tipo] ?? GOLAS.careca;
   const frente = lado === 'frente';
   return `<svg viewBox="0 0 ${w} ${h}" overflow="visible">
-    <defs><clipPath id="${id}-clip"><path d="${silhueta}"/></clipPath>${filtros(id, w, h)}
+    <defs><clipPath id="${id}-clip"><path d="${silhueta}"/></clipPath><clipPath id="${id}-tronco"><path d="${TRONCO}"/></clipPath>${filtros(id, w, h)}
       <linearGradient id="${id}-interno" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".62"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient>
       <linearGradient id="${id}-rib" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".22"/></linearGradient></defs>
     <g clip-path="url(#${id}-clip)">
       <rect x="-5000" y="-5000" width="${w + 10000}" height="${h + 10000}" fill="var(--camisa-base)"/>
-      ${camadasModelo(modelo, 'camisa', lado)}
+      <g clip-path="url(#${id}-tronco)">${camadasModelo(modelo, 'camisa', lado)}</g>
       ${estado.punho.tipo === 'simples' ? `<path d="${PUNHOS}" fill="var(--punho)"/>` : ''}
       <g data-ov="camisa-${lado}">${overlays}</g>
       ${estado.punho.tipo === 'simples' ? `<path d="${PUNHOS_COSTURA}" stroke="#000" stroke-opacity=".25" stroke-width="500" pointer-events="none"/>` : ''}
@@ -227,7 +231,7 @@ function sombraCalcao(id, lado) {
 function calcao({ id, modelo, lado, silhueta, overlays }) {
   const { w, h } = VB.calcao;
   return `<svg viewBox="0 0 ${w} ${h}" overflow="visible">
-    <defs><clipPath id="${id}-clip"><path d="${silhueta}"/></clipPath>${filtros(id, w, h)}</defs>
+    <defs><clipPath id="${id}-clip"><path d="${silhueta}"/></clipPath><clipPath id="${id}-tronco"><path d="${TRONCO}"/></clipPath>${filtros(id, w, h)}</defs>
     <g clip-path="url(#${id}-clip)">
       <rect x="-5000" y="-5000" width="${w + 10000}" height="${h + 10000}" fill="var(--calcao-base)"/>
       ${camadasModelo(modelo, 'calcao', lado)}
@@ -475,7 +479,8 @@ export function montarPalcoFoto({ estado, modelos, foto, vista, prefixo = 'f', b
       ${temCamisa ? `<g clip-path="url(#${id}-cam)">
         <rect x="${x0}" y="${y0}" width="${w}" height="${h}" fill="var(--camisa-base)"/>
         <svg x="${cx0}" y="${cy0}" width="${cx1 - cx0}" height="${cy1 - cy0}" viewBox="0 0 ${VB.camisa.w} ${VB.camisa.h}" preserveAspectRatio="none" overflow="visible">
-          ${camadasModelo(modelos.camisa, 'camisa', lado)}
+          <clipPath id="${id}-tronco"><path d="${TRONCO}"/></clipPath>
+          <g clip-path="url(#${id}-tronco)">${camadasModelo(modelos.camisa, 'camisa', lado)}</g>
           <path d="${COSTURA_MANGA}" fill="none" stroke="#000" stroke-opacity=".38" stroke-width="1.3" vector-effect="non-scaling-stroke"/>
           <path d="${COSTURA_MANGA}" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1" vector-effect="non-scaling-stroke" transform="translate(-900 0)"/>
         </svg>

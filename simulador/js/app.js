@@ -1,6 +1,6 @@
 import { CORES, cor, hex, rotulo } from './cores.js';
 import {
-  montarPalco, montarPalcoFoto, overlaysPeca, variaveisCor, VB, GOLAS, PUNHOS,
+  TRONCO, montarPalco, montarPalcoFoto, overlaysPeca, variaveisCor, VB, GOLAS, PUNHOS,
   TIPOS_GOLA, TIPOS_PUNHO, POSICOES_NUMERO_FRENTE, POSICOES_IMAGEM, FONTES,
 } from './render.js';
 
@@ -1033,7 +1033,7 @@ async function iniciar() {
 }
 
 // Usado pela ferramenta que gera as miniaturas do catálogo.
-window.simulador = { montarPalco, variaveisCor, PADRAO, VB, get catalogo() { return catalogo; }, carregarModelo };
+window.simulador = { montarPalco, variaveisCor, PADRAO, VB, TRONCO, get catalogo() { return catalogo; }, carregarModelo };
 
 iniciar().catch((err) => {
   console.error(err);

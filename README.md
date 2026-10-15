@@ -15,7 +15,8 @@ publicado em qualquer hospedagem, inclusive em `marolsports.com/simulador/`.
   independentes.
 - **Gola e punho:**
   - golas Careca e V, com cor;
-  - mangas montadas separadas do corpo, sempre na cor de fundo do uniforme;
+  - mangas montadas separadas do corpo, inteiras na cor de fundo do uniforme (a
+    estampa termina na costura e nunca passa para a manga);
   - punho simples ou sem punho.
 - **Meião:** visto de frente, com uma cor.
 - **Nome e número:** 4 fontes (a "Universitária" imita o estilo College), cor e

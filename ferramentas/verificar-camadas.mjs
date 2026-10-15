@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// Encontra camadas que não aparecem no uniforme: arquivos vazios ou desenhos
-// totalmente cobertos por outras camadas. Para cada camada, renderiza a peça
+// Encontra camadas que não aparecem no uniforme: arquivos vazios, desenhos
+// totalmente cobertos por outras camadas ou que ficavam só nas mangas (as
+// mangas são inteiras na cor de fundo). Para cada camada, renderiza a peça
 // (frente e costas) com a camada em preto e depois em branco; se quase nenhum
 // pixel muda, a camada é invisível e o seu campo de cor não serve para nada.
 // Grava ferramentas/camadas-invisiveis.json, que o conversor usa para removê-las.
@@ -32,8 +33,8 @@ const invisiveis = await pagina.evaluate(async (MINIMO) => {
       return `<svg width="${vw}" height="${vh}" viewBox="${l.viewBox}" preserveAspectRatio="none" style="color:${i === k ? cor : cinzas[i % cinzas.length]}" fill="currentColor">${l.svg}</svg>`;
     }).join('');
     const doc = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${vw} ${vh}" width="${W}" height="${H}">
-      <defs><clipPath id="c"><path d="${s.catalogo.silhuetas[peca]}"/></clipPath></defs>
-      <g clip-path="url(#c)"><rect width="${vw}" height="${vh}" fill="#777"/>${corpo}</g></svg>`;
+      <defs><clipPath id="c"><path d="${s.catalogo.silhuetas[peca]}"/></clipPath><clipPath id="t"><path d="${s.TRONCO}"/></clipPath></defs>
+      <g clip-path="url(#c)"><rect width="${vw}" height="${vh}" fill="#777"/>${peca === 'camisa' ? `<g clip-path="url(#t)">${corpo}</g>` : corpo}</g></svg>`;
     const img = new Image();
     img.src = URL.createObjectURL(new Blob([doc], { type: 'image/svg+xml' }));
     await img.decode();

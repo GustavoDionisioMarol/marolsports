@@ -1004,14 +1004,13 @@
   },
   {
    "id": 199,
-   "camisa": 2,
+   "camisa": 1,
    "calcao": 1,
    "cores": {
     "calcao": [
      "#F00808"
     ],
     "camisa": [
-     "#F00808",
      "#F00808"
     ]
    }
@@ -1446,15 +1445,14 @@
   },
   {
    "id": 420,
-   "camisa": 2,
+   "camisa": 1,
    "calcao": 1,
    "cores": {
     "calcao": [
      "#62DA5E"
     ],
     "camisa": [
-     "#ECD407",
-     "#62DA5E"
+     "#ECD407"
     ]
    }
   },
@@ -1512,14 +1510,13 @@
   },
   {
    "id": 485,
-   "camisa": 2,
+   "camisa": 1,
    "calcao": 1,
    "cores": {
     "calcao": [
      null
     ],
     "camisa": [
-     null,
      null
     ]
    }
@@ -2234,16 +2231,14 @@
   },
   {
    "id": 544,
-   "camisa": 1,
+   "camisa": 0,
    "calcao": 2,
    "cores": {
     "calcao": [
      "#BD162C",
      null
     ],
-    "camisa": [
-     "#001E60"
-    ]
+    "camisa": []
    }
   },
   {
@@ -2371,12 +2366,11 @@
   },
   {
    "id": 556,
-   "camisa": 2,
+   "camisa": 1,
    "calcao": 0,
    "cores": {
     "camisa": [
-     "#007A33",
-     "#215732"
+     "#007A33"
     ]
    }
   },
