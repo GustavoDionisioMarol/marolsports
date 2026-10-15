@@ -164,14 +164,17 @@ input[type="range"] { width: 100%; accent-color: var(--marca); }
 .bola-medio { background: #9aa6b0; }
 .bola-escuro { background: #1e2a33; }
 .palco {
-  flex: 1; min-height: 0; border-radius: 14px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+  flex: 1; min-height: 0; border-radius: 14px; position: relative; overflow: auto;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .06);
 }
 /* fundos pensados para contraste: o neutro médio destaca tanto peças claras quanto escuras */
 .palco[data-fundo="medio"] { background: radial-gradient(ellipse at 50% 35%, #c9d1d8 0%, #a9b4bd 70%, #9aa6b0 100%); }
 .palco[data-fundo="claro"] { background: radial-gradient(ellipse at 50% 35%, #ffffff 0%, #eef1f4 75%, #e2e7eb 100%); }
 .palco[data-fundo="escuro"] { background: radial-gradient(ellipse at 50% 35%, #34444f 0%, #1e2a33 75%, #151e25 100%); }
-#palco-svg { width: 100%; height: 100%; display: block; }
+/* o tamanho do SVG é calculado no JS (zoom); o palco rola quando passa da tela */
+#palco-svg { display: block; margin: 0 auto; }
+.palco[data-fundo] { background-attachment: local; }
+.zoom button { min-width: 34px; justify-content: center; font-variant-numeric: tabular-nums; }
 #palco-svg [data-peca] { filter: drop-shadow(0 6px 10px rgba(10, 20, 30, .28)); }
 .palco[data-fundo="escuro"] #palco-svg [data-peca] { filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .6)); }
 #palco-svg [data-arrastar] { cursor: grab; }

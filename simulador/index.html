@@ -52,6 +52,11 @@
           <button data-visual="foto" aria-pressed="true" title="Mockup fotográfico">Foto</button>
           <button data-visual="ilustracao" title="Mockup ilustrado">Ilustração</button>
         </div>
+        <div class="segmentado zoom" id="zoom" role="group" aria-label="Zoom">
+          <button data-zoom="-" title="Diminuir zoom" aria-label="Diminuir zoom">−</button>
+          <button data-zoom="0" title="Voltar ao tamanho padrão" id="zoom-valor">100%</button>
+          <button data-zoom="+" title="Aumentar zoom" aria-label="Aumentar zoom">+</button>
+        </div>
         <div class="segmentado" id="fundo" role="group" aria-label="Fundo">
           <button data-fundo="claro" title="Fundo claro" aria-label="Fundo claro"><i class="bola bola-claro"></i></button>
           <button data-fundo="medio" title="Fundo neutro" aria-label="Fundo neutro" aria-pressed="true"><i class="bola bola-medio"></i></button>
@@ -62,7 +67,7 @@
         <svg id="palco-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Pré-visualização do uniforme"></svg>
         <div class="carregando" id="carregando" hidden><span></span>Carregando modelo…</div>
       </div>
-      <p class="dica">Dica: arraste nomes, números e imagens direto no uniforme para ajustar a posição.</p>
+      <p class="dica">Dica: arraste nomes, números e imagens no uniforme para ajustar a posição · Ctrl + rolagem do mouse para dar zoom.</p>
     </section>
   </main>
 

@@ -157,6 +157,39 @@ let chaveEstrutura = '';
 let chaveOverlay = '';
 let renderizacao = 0;
 
+// Zoom do palco: 1 = camisa e calção inteiros na tela (o meião pode passar e o
+// palco rola). Os níveis multiplicam esse tamanho base.
+let zoom = 1;
+const ZOOM_MIN = 0.5;
+const ZOOM_MAX = 3;
+const PARTE_VISIVEL = 0.74; // fração da altura do desenho que cabe na tela no zoom 1
+
+function ajustarPalco(manterCentro = false) {
+  const palcoEl = $('#palco');
+  const vb = palcoSvg.viewBox.baseVal;
+  if (!vb || !vb.width) return;
+  const proporcao = vb.width / vb.height;
+  const W = palcoEl.clientWidth - 2;
+  const H = palcoEl.clientHeight - 2;
+  // centro visível antes da mudança, para manter o foco ao dar zoom
+  const cx = (palcoEl.scrollLeft + palcoEl.clientWidth / 2) / Math.max(palcoEl.scrollWidth, 1);
+  const cy = (palcoEl.scrollTop + palcoEl.clientHeight / 2) / Math.max(palcoEl.scrollHeight, 1);
+  const base = Math.min(W / proporcao, H / PARTE_VISIVEL);
+  const h = base * zoom;
+  palcoSvg.style.height = `${h}px`;
+  palcoSvg.style.width = `${h * proporcao}px`;
+  if (manterCentro) {
+    palcoEl.scrollLeft = cx * palcoEl.scrollWidth - palcoEl.clientWidth / 2;
+    palcoEl.scrollTop = cy * palcoEl.scrollHeight - palcoEl.clientHeight / 2;
+  }
+  $('#zoom-valor').textContent = `${Math.round(zoom * 100)}%`;
+}
+
+function mudarZoom(novo) {
+  zoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, Math.round(novo * 100) / 100));
+  ajustarPalco(true);
+}
+
 function estrutura(e) {
   return JSON.stringify({
     vista, visual, pecas: e.pecas, camisa: e.modeloCamisa, calcao: idCalcao(e), meiao: e.meiao.ativo,
@@ -204,6 +237,7 @@ async function renderizar() {
     const { svg, viewBox } = palco({ estado, modelos: { camisa: mCamisa, calcao: mCalcao }, vista });
     palcoSvg.setAttribute('viewBox', viewBox);
     palcoSvg.innerHTML = svg;
+    ajustarPalco();
     chaveEstrutura = novaEstrutura;
     chaveOverlay = novoOverlay;
   } catch (err) {
@@ -969,6 +1003,16 @@ async function iniciar() {
     const fundo = localStorage.getItem('marol-sports:fundo');
     if (fundo) $(`#fundo [data-fundo="${fundo}"]`)?.click();
   } catch { /* sem armazenamento */ }
+  $$('#zoom [data-zoom]').forEach((b) => b.addEventListener('click', () => {
+    const z = b.dataset.zoom;
+    mudarZoom(z === '+' ? zoom + 0.25 : z === '-' ? zoom - 0.25 : 1);
+  }));
+  $('#palco').addEventListener('wheel', (ev) => {
+    if (!ev.ctrlKey && !ev.metaKey) return;
+    ev.preventDefault();
+    mudarZoom(zoom * (ev.deltaY < 0 ? 1.1 : 1 / 1.1));
+  }, { passive: false });
+  new ResizeObserver(() => ajustarPalco()).observe($('#palco'));
   $('#btn-desfazer').addEventListener('click', desfazer);
   $('#btn-refazer').addEventListener('click', refazer);
   $('#btn-nova').addEventListener('click', novaSimulacao);

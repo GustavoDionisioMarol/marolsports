@@ -5,7 +5,7 @@ import { hex } from './cores.js';
 export const VB = {
   camisa: { w: 224820, h: 284513 },
   calcao: { w: 182661, h: 157761 },
-  meiao: { w: 600, h: 515 },
+  meiao: { w: 600, h: 690 },
 };
 
 // ---------------------------------------------------------------- formas fixas
@@ -44,7 +44,10 @@ const COSTURA_MANGA = 'M39500 16500C49500 45000 50500 85000 43200 114200M186500 
 export const PUNHOS = 'M-2000 116800H46500V126000H-2000ZM181000 115200H227000V124000H181000Z';
 export const TIPOS_PUNHO = { sem: 'Sem punho', simples: 'Punho simples' };
 
-// par de meiões com chuteira (coordenadas de uma perna: 170 x 470)
+// par de meiões com chuteira (coordenadas de uma perna: 170 x 470). O meião é
+// desenhado curto e esticado na vertical; a chuteira só desce, sem deformar.
+const ESTICA_MEIAO = 1.5;
+const DESCE_CHUTEIRA = 340 * (ESTICA_MEIAO - 1);
 const PERNA = {
   // meião do punho até o tornozelo (a chuteira cobre a parte de baixo)
   meiao: 'M33 0H137C143 40 152 90 151 140C150 200 133 250 123 300C119 320 117 338 118 352H52C53 338 51 320 47 300C37 250 20 200 19 140C18 90 27 40 33 0Z',
@@ -246,6 +249,7 @@ function perna(id, lado, n) {
   const pid = `${id}-${n}`;
   const nervuras = Array.from({ length: 13 }, (_, i) => `<path d="M${37 + i * 8} 2V30"/>`).join('');
   return `<defs><clipPath id="${pid}-clip"><path d="${meiaoPath}"/></clipPath></defs>
+    <g transform="scale(1 ${ESTICA_MEIAO})">
     <g clip-path="url(#${pid}-clip)">
       <rect width="170" height="470" fill="var(--meiao)"/>
       <g stroke="#000" stroke-opacity=".12" stroke-width="2.4">${nervuras}</g>
@@ -259,7 +263,9 @@ function perna(id, lado, n) {
         ${frente ? '' : '<ellipse cx="85" cy="250" rx="7" ry="80" fill="#000" fill-opacity=".12"/>'}
       </g>
     </g>
-    <path d="${meiaoPath}" fill="none" stroke="#1b1f24" stroke-opacity=".45" stroke-width="1.6"/>
+    <path d="${meiaoPath}" fill="none" stroke="#1b1f24" stroke-opacity=".45" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    </g>
+    <g transform="translate(0 ${DESCE_CHUTEIRA})">
     ${frente
       ? `<path d="${PERNA.chuteiraFrente}" fill="url(#${id}-couro)"/>
          <path d="${PERNA.lingueta}" fill="#f4f5f6" stroke="#9aa3aa" stroke-width="1.2"/>
@@ -276,7 +282,8 @@ function perna(id, lado, n) {
          <ellipse cx="72" cy="420" rx="12" ry="30" fill="#fff" fill-opacity=".7" filter="url(#${id}-b)"/>
          <path d="${PERNA.chuteiraCostas}" fill="none" stroke="#5f6a73" stroke-opacity=".7" stroke-width="1.4"/>
          <path d="${PERNA.solaCostas}" fill="#d9dde0" stroke="#5f6a73" stroke-opacity=".7" stroke-width="1.2"/>`}
-    <path d="${PERNA.travas}" fill="#3a4148"/>`;
+    <path d="${PERNA.travas}" fill="#3a4148"/>
+    </g>`;
 }
 
 // Par de pernas com meião e chuteira, de frente ou de costas.
@@ -293,8 +300,8 @@ function meiao(id, lado) {
         <stop offset="0" stop-color="#b9c0c6"/><stop offset=".3" stop-color="#ffffff"/>
         <stop offset=".65" stop-color="#f1f3f4"/><stop offset="1" stop-color="#aab2b9"/></linearGradient>
     </defs>
-    <ellipse cx="132" cy="500" rx="92" ry="9" fill="#000" fill-opacity=".18" filter="url(#${id}-b)"/>
-    <ellipse cx="468" cy="500" rx="92" ry="9" fill="#000" fill-opacity=".18" filter="url(#${id}-b)"/>
+    <ellipse cx="132" cy="672" rx="92" ry="9" fill="#000" fill-opacity=".18" filter="url(#${id}-b)"/>
+    <ellipse cx="468" cy="672" rx="92" ry="9" fill="#000" fill-opacity=".18" filter="url(#${id}-b)"/>
     <g transform="translate(37 0) scale(1.12 1.04) rotate(2.5 85 0)">${perna(id, lado, 'e')}</g>
     <g transform="translate(373 0) scale(1.12 1.04) rotate(-2.5 85 0)">${perna(id, lado, 'd')}</g>
   </svg>`;
