@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marol Sports — Camisas personalizadas</title>
+<meta name="description" content="Camisas personalizadas para times, eventos e o dia a dia. Uniformes sublimados em Helanca Light e Dryfit. Peça seu orçamento pelo WhatsApp.">
+<meta property="og:title" content="Marol Sports — Camisas personalizadas">
+<meta property="og:description" content="Seu estilo. Sua equipe. Sua camisa. Peça seu orçamento pelo WhatsApp.">
+<meta property="og:image" content="assets/banner-time.webp">
+<meta name="theme-color" content="#0A0B0D">
+<link rel="icon" type="image/png" href="assets/selo-branco.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&amp;family=Barlow:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0A0B0D}
+a{color:#F4F5F2}a:hover{color:#F9CA0D}
+html{scroll-behavior:smooth}
+.btn-main{transition:transform .15s ease, box-shadow .15s ease}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(249,202,13,.3);color:#0A0B0D}
+.btn-ghost{transition:border-color .15s ease, background .15s ease}
+.btn-ghost:hover{border-color:#F4F5F2;background:rgba(255,255,255,.06);color:#F4F5F2}
+.cat-tile{transition:transform .25s ease, border-color .25s ease, background .25s ease}
+.cat-tile:hover{transform:translateY(-6px);border-color:#F9CA0D;color:#F4F5F2}
+.cat-tile:hover .cat-arrow{transform:translateX(6px)}
+.cat-arrow{transition:transform .25s ease}
+.bat-card{transition:transform .25s ease, border-color .25s ease}
+.bat-card:hover,.bat-card:focus-visible{transform:translateY(-6px);border-color:#F9CA0D}
+@media (max-width:480px){.bat-card{padding:12px 12px 14px!important}.bat-cta{font-size:13px!important}}
+.pill{transition:background .15s ease,color .15s ease,border-color .15s ease}
+.grab{cursor:grab}.grab:active{cursor:grabbing}
+.rv{opacity:0;transform:translateY(46px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.75,.2,1)}
+.rv-l{opacity:0;transform:translateX(-70px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.75,.2,1)}
+.rv-r{opacity:0;transform:translateX(70px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.75,.2,1)}
+.rv-z{opacity:0;transform:scale(.9);transition:opacity .9s ease, transform 1s cubic-bezier(.2,.75,.2,1)}
+.rv.in,.rv-l.in,.rv-r.in,.rv-z.in{opacity:1;transform:none}
+.wipe{transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(.7,0,.2,1)}
+.wipe.in{transform:scaleX(1)}
+@keyframes mFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes mDraw{from{stroke-dashoffset:420}to{stroke-dashoffset:0}}
+@keyframes mFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes mPulse{0%{transform:translate(-50%,-50%) scale(1);opacity:.7}100%{transform:translate(-50%,-50%) scale(2.6);opacity:0}}
+@keyframes mDot{from{transform:translate(-50%,-50%) scale(0)}to{transform:translate(-50%,-50%) scale(1)}}
+.hs-shirt{animation:mFloat 6s ease-in-out infinite}
+.hs-line{stroke-dasharray:420;stroke-dashoffset:420;animation:mDraw 1s cubic-bezier(.6,0,.2,1) forwards}
+.hs-label{opacity:0;animation:mFade .7s ease forwards}
+.hs-dot{transform:translate(-50%,-50%) scale(0);animation:mDot .4s ease forwards}
+.hs-ring{animation:mPulse 2s ease-out infinite}
+.hs-list{display:none}
+input[type=range].rot{-webkit-appearance:none;appearance:none;background:transparent;height:44px}
+input[type=range].rot::-webkit-slider-runnable-track{height:4px;background:#2A2E35;border-radius:4px}
+input[type=range].rot::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#F9CA0D;margin-top:-9px;border:3px solid #0A0B0D}
+input[type=range].rot::-moz-range-track{height:4px;background:#2A2E35;border-radius:4px}
+input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#F9CA0D;border:3px solid #0A0B0D}
+@media (max-width: 900px){
+  .nav-links{display:none !important}
+  .hs-lines,.hs-label,.hs-dot{display:none !important}
+  .hs-list{display:grid}
+  .hs-stage{aspect-ratio:auto !important;height:420px}
+  .hs-img{left:10% !important;width:80% !important}
+}
+@media (prefers-reduced-motion: reduce){
+  .hs-shirt{animation:none}
+  .rv,.rv-l,.rv-r,.rv-z,.wipe{transition:none;opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="app-tpl">
+<div style="font-family: 'Barlow', system-ui, sans-serif; color: #F4F5F2; background: #0A0B0D; width: 100%; overflow-x: clip">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 30; background: rgba(10,11,13,0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #1C1F24">
+    <nav style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px" aria-label="Principal">
+      <a href="#topo" style="display: flex; align-items: center" aria-label="Marol Sports — início">
+        <img src="assets/logo-branco.png" alt="Marol Sports" style="height: 44px; width: auto; display: block">
+      </a>
+      <div class="nav-links" style="display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 600">
+        <a href="#times" style="text-decoration: none; color: #C9CDD3">Uniformes de time</a>
+        <a href="#eventos" style="text-decoration: none; color: #C9CDD3">Eventos</a>
+        <a href="#dia-a-dia" style="text-decoration: none; color: #C9CDD3">Dia a dia</a>
+        <a href="simulador/" style="text-decoration: none; color: {{accent}}">Simulador</a>
+      </div>
+      <a class="btn-main" href="{{waLink}}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-weight: 700; font-size: 15px; text-decoration: none; white-space: nowrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>
+        Orçamento
+      </a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="topo" style="position: relative; padding: 64px 24px 24px; background: radial-gradient(ellipse at 50% 70%, #1A1C21 0%, #0A0B0D 62%)">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px">
+      <div style="display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border: 1px solid #2A2E35; border-radius: 999px; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #C9CDD3">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}}"></span>
+        Camisas personalizadas
+      </div>
+      <h1 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(54px, 8.4vw, 124px); line-height: 0.88; letter-spacing: -0.01em">Seu estilo. Sua equipe. <span style="color: {{accent}}">Sua camisa.</span></h1>
+      <p style="margin: 0; max-width: 720px; font-size: 19px; line-height: 1.6; color: #C9CDD3">Camisas personalizadas que combinam tecidos de qualidade, conforto e estampas cheias de personalidade. Para competir, participar de um evento ou vestir no dia a dia, criamos modelos que representam você.</p>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px">
+        <a class="btn-main" href="{{waLink}}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-weight: 700; font-size: 17px; text-decoration: none">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>
+          Peça seu orçamento
+        </a>
+        <a class="btn-ghost" href="#categorias" style="display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 26px; border-radius: 999px; border: 1px solid #3A3F47; color: #F4F5F2; font-weight: 600; font-size: 17px; text-decoration: none">
+          Ver categorias
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M6 13l6 6 6-6"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- shirt with connected callouts -->
+    <div class="hs-stage" style="position: relative; max-width: 1160px; margin: 36px auto 0; aspect-ratio: 1160 / 700">
+      <div style="position: absolute; left: 50%; bottom: 2%; width: 40%; height: 7%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,0.85), rgba(0,0,0,0))"></div>
+      <div class="hs-img" style="position: absolute; left: 20.69%; top: 1.43%; width: 58.62%; height: 97.14%">
+        <img class="hs-shirt" src="assets/okt-045.webp" alt="Camisa Equipe Oktoberfest Magé, preta com detalhes amarelos, vista de três quartos" style="width: 100%; height: 100%; object-fit: contain; display: block">
+      </div>
+      <svg class="hs-lines" viewBox="0 0 1160 700" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none">
+        <path class="hs-line" d="M510 74 L262 74" fill="none" stroke="{{accent}}" stroke-width="1.5" vector-effect="non-scaling-stroke" style="animation-delay: .5s"></path>
+        <path class="hs-line" d="M665 163 L725 150 L898 150" fill="none" stroke="{{accent}}" stroke-width="1.5" vector-effect="non-scaling-stroke" style="animation-delay: .75s"></path>
+        <path class="hs-line" d="M760 280 L820 420 L898 420" fill="none" stroke="{{accent}}" stroke-width="1.5" vector-effect="non-scaling-stroke" style="animation-delay: 1s"></path>
+        <path class="hs-line" d="M470 452 L390 330 L262 330" fill="none" stroke="{{accent}}" stroke-width="1.5" vector-effect="non-scaling-stroke" style="animation-delay: 1.25s"></path>
+        <path class="hs-line" d="M435 588 L262 588" fill="none" stroke="{{accent}}" stroke-width="1.5" vector-effect="non-scaling-stroke" style="animation-delay: 1.5s"></path>
+      </svg>
+      <sc-for list="{{dots}}" as="d" hint-placeholder-count="5">
+        <div class="hs-dot" style="position: absolute; left: {{d.x}}; top: {{d.y}}; width: 14px; height: 14px; animation-delay: {{d.delay}}; pointer-events: none">
+          <span class="hs-ring" style="position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; border-radius: 50%; border: 2px solid {{accent}}"></span>
+          <span style="position: absolute; inset: 0; border-radius: 50%; background: {{accent}}; box-shadow: 0 0 0 4px rgba(10,11,13,0.75)"></span>
+        </div>
+      </sc-for>
+      <div class="hs-label" style="position: absolute; left: 0; width: 21.5%; top: 10.57%; transform: translateY(-50%); text-align: right; animation-delay: .9s; display: flex; flex-direction: column; gap: 4px">
+        <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: .01em">Gola do seu jeito</strong>
+        <span style="font-size: 14px; line-height: 1.45; color: #A3A8B0">Redonda, V ou padre.</span>
+      </div>
+      <div class="hs-label" style="position: absolute; left: 0; width: 21.5%; top: 47.14%; transform: translateY(-50%); text-align: right; animation-delay: 1.65s; display: flex; flex-direction: column; gap: 4px">
+        <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: .01em">Estampa de ponta a ponta</strong>
+        <span style="font-size: 14px; line-height: 1.45; color: #A3A8B0">Cores vivas e desenhos bem definidos em toda a peça.</span>
+      </div>
+      <div class="hs-label" style="position: absolute; left: 0; width: 21.5%; top: 84%; transform: translateY(-50%); text-align: right; animation-delay: 1.9s; display: flex; flex-direction: column; gap: 4px">
+        <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: .01em">Leve e no caimento certo</strong>
+        <span style="font-size: 14px; line-height: 1.45; color: #A3A8B0">Tecido leve, com forma que acompanha o corpo.</span>
+      </div>
+      <div class="hs-label" style="position: absolute; left: 78.45%; width: 21.5%; top: 21.43%; transform: translateY(-50%); text-align: left; animation-delay: 1.15s; display: flex; flex-direction: column; gap: 4px">
+        <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: .01em">Helanca Light ou Dryfit</strong>
+        <span style="font-size: 14px; line-height: 1.45; color: #A3A8B0">O tecido escolhido conforme a proposta de cada projeto.</span>
+      </div>
+      <div class="hs-label" style="position: absolute; left: 78.45%; width: 21.5%; top: 60%; transform: translateY(-50%); text-align: left; animation-delay: 1.4s; display: flex; flex-direction: column; gap: 4px">
+        <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: .01em">Costura de alta qualidade</strong>
+        <span style="font-size: 14px; line-height: 1.45; color: #A3A8B0">Acabamento firme em golas, mangas e barras.</span>
+      </div>
+    </div>
+    <ul class="hs-list" style="list-style: none; margin: 8px auto 0; padding: 0; max-width: 560px; grid-template-columns: 1fr; gap: 12px">
+      <li style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1px solid #22252B; border-radius: 16px; background: #111317"><span style="flex: none; width: 10px; height: 10px; margin-top: 7px; border-radius: 50%; background: {{accent}}"></span><span><strong>Gola do seu jeito.</strong> <span style="color: #A3A8B0">Redonda, V ou padre.</span></span></li>
+      <li style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1px solid #22252B; border-radius: 16px; background: #111317"><span style="flex: none; width: 10px; height: 10px; margin-top: 7px; border-radius: 50%; background: {{accent}}"></span><span><strong>Helanca Light ou Dryfit.</strong> <span style="color: #A3A8B0">O tecido escolhido conforme a proposta de cada projeto.</span></span></li>
+      <li style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1px solid #22252B; border-radius: 16px; background: #111317"><span style="flex: none; width: 10px; height: 10px; margin-top: 7px; border-radius: 50%; background: {{accent}}"></span><span><strong>Costura de alta qualidade.</strong> <span style="color: #A3A8B0">Acabamento firme em golas, mangas e barras.</span></span></li>
+      <li style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1px solid #22252B; border-radius: 16px; background: #111317"><span style="flex: none; width: 10px; height: 10px; margin-top: 7px; border-radius: 50%; background: {{accent}}"></span><span><strong>Estampa de ponta a ponta.</strong> <span style="color: #A3A8B0">Cores vivas e desenhos bem definidos em toda a peça.</span></span></li>
+      <li style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1px solid #22252B; border-radius: 16px; background: #111317"><span style="flex: none; width: 10px; height: 10px; margin-top: 7px; border-radius: 50%; background: {{accent}}"></span><span><strong>Leve e no caimento certo.</strong> <span style="color: #A3A8B0">Tecido leve, com forma que acompanha o corpo.</span></span></li>
+    </ul>
+  </section>
+
+  <!-- CATEGORIAS -->
+  <section id="categorias" ref="{{r.cats}}" style="max-width: 1240px; margin: 0 auto; padding: 72px 24px 104px; display: flex; flex-direction: column; gap: 36px">
+    <div class="rv {{cls.cats}}" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 5vw, 64px); line-height: 0.95">Escolha sua <span style="color: {{accent}}">categoria</span></h2>
+      <p style="margin: 0; max-width: 420px; font-size: 16px; line-height: 1.6; color: #A3A8B0">Tecidos, modelagens e estampas pensados para cada ocasião.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 18px">
+      <a class="cat-tile rv {{cls.cats}}" href="#times" style="transition-delay: .05s; position: relative; display: flex; flex-direction: column; gap: 18px; padding: 30px; min-height: 260px; border-radius: 26px; text-decoration: none; color: #F4F5F2; background: linear-gradient(160deg, #0F2A1B 0%, #0A140E 100%); border: 1px solid #1E3A29; overflow: hidden">
+        <span style="position: absolute; right: -6px; top: -26px; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 160px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(249,202,13,0.22)">01</span>
+        <span style="width: 56px; height: 56px; border-radius: 16px; background: {{accent}}; color: #0A0B0D; display: inline-flex; align-items: center; justify-content: center">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v5a5 5 0 0 1-10 0z"></path><path d="M17 5h3v2a3 3 0 0 1-3 3"></path><path d="M7 5H4v2a3 3 0 0 0 3 3"></path></svg>
+        </span>
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 38px; line-height: 0.95">Uniformes<br>de time</span>
+        <span style="font-size: 15px; line-height: 1.55; color: #B9C2BC">Campeonatos com cores, escudo, nomes e números.</span>
+        <span style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: {{accent}}">Ver uniformes <svg class="cat-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+      </a>
+      <a class="cat-tile rv {{cls.cats}}" href="#eventos" style="transition-delay: .18s; position: relative; display: flex; flex-direction: column; gap: 18px; padding: 30px; min-height: 260px; border-radius: 26px; text-decoration: none; color: #F4F5F2; background: linear-gradient(160deg, #121B33 0%, #0A0E1A 100%); border: 1px solid #222E4D; overflow: hidden">
+        <span style="position: absolute; right: -6px; top: -26px; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 160px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(249,202,13,0.22)">02</span>
+        <span style="width: 56px; height: 56px; border-radius: 16px; background: {{accent}}; color: #0A0B0D; display: inline-flex; align-items: center; justify-content: center">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18"></path><path d="M8 3v4"></path><path d="M16 3v4"></path></svg>
+        </span>
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 38px; line-height: 0.95">Eventos</span>
+        <span style="font-size: 15px; line-height: 1.55; color: #B5BCCC">Festas, corridas, eventos escolares e camisas para baterias de escola de samba.</span>
+        <span style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: {{accent}}">Ver eventos <svg class="cat-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+      </a>
+      <a class="cat-tile rv {{cls.cats}}" href="#dia-a-dia" style="transition-delay: .31s; position: relative; display: flex; flex-direction: column; gap: 18px; padding: 30px; min-height: 260px; border-radius: 26px; text-decoration: none; color: #F4F5F2; background: linear-gradient(160deg, #331219 0%, #170A0D 100%); border: 1px solid #4A1E27; overflow: hidden">
+        <span style="position: absolute; right: -6px; top: -26px; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 160px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(249,202,13,0.22)">03</span>
+        <span style="width: 56px; height: 56px; border-radius: 16px; background: {{accent}}; color: #0A0B0D; display: inline-flex; align-items: center; justify-content: center">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"></path></svg>
+        </span>
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 38px; line-height: 0.95">Linha premium<br>dia a dia</span>
+        <span style="font-size: 15px; line-height: 1.55; color: #CDB5BA">Estampas marcantes para vestir muito além dos eventos.</span>
+        <span style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: {{accent}}">Ver linha premium <svg class="cat-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== 01 UNIFORMES DE TIME ========== -->
+  <section id="times" ref="{{r.times}}" style="position: relative; background: #07120C; border-top: 1px solid #16301F; overflow: clip">
+    <!-- KICK: scroll-driven scene -->
+    <div ref="{{r.kick}}" style="position: relative; height: 360vh">
+      <div style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 72px 0 24px; box-sizing: border-box; overflow: hidden">
+        <div style="position: relative; width: min(100%, calc((100vh - 150px) * 16 / 9)); aspect-ratio: 16 / 9; container-type: inline-size; overflow: hidden; border-radius: clamp(0px, 2vw, 28px); background: linear-gradient(180deg, #05070d 0%, #0c1424 45%, #13213a 61%, #0d3a20 62%, #0f5a2e 100%)">
+          <div style="position: absolute; inset: 0; transform: scale({{kick.zoom}}); transform-origin: 62% 40%">
+            <div style="position: absolute; left: 0; right: 0; top: 0; height: 62%; background: repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 2px, rgba(0,0,0,0) 2px 26px), linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(20,30,50,0.9) 100%)"></div>
+            <div style="position: absolute; left: 0; right: 0; top: 44%; height: 18%; background: linear-gradient(180deg, #0b1220, #152238)"></div>
+            <div style="position: absolute; left: -10%; right: -10%; top: 47%; height: 12%; background: radial-gradient(circle at 8% 60%, #1d2a44 0 0.38cqw, rgba(0,0,0,0) 0.44cqw) 0 0 / 1.4cqw 1.1cqw, radial-gradient(circle at 50% 30%, #22324f 0 0.32cqw, rgba(0,0,0,0) 0.38cqw) 0.7cqw 0.4cqw / 1.4cqw 1.1cqw; opacity: 0.9"></div>
+            <div style="position: absolute; left: -30%; right: -30%; top: 62%; height: 80%; transform-origin: 50% 0; transform: perspective(31cqw) rotateX(62deg); background: repeating-linear-gradient(90deg, #14652f 0 7%, #11592a 7% 14%)"></div>
+            <div style="position: absolute; left: 22%; right: 14%; top: 62%; height: 60%; transform-origin: 50% 0; transform: perspective(31cqw) rotateX(62deg); border: 0.38cqw solid rgba(255,255,255,0.75); border-top: none"></div>
+            <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 55% 45%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%)"></div>
+            <div style="position: absolute; left: 8%; top: -18%; width: 22%; height: 60%; background: radial-gradient(closest-side, rgba(255,255,235,0.5), rgba(255,255,235,0))"></div>
+            <div style="position: absolute; right: 6%; top: -18%; width: 22%; height: 60%; background: radial-gradient(closest-side, rgba(255,255,235,0.5), rgba(255,255,235,0))"></div>
+            <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 5%; text-align: center; white-space: nowrap; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 15cqw; line-height: 1; color: transparent; -webkit-text-stroke: 0.14cqw rgba(249,202,13,0.25); transform: translateX({{kick.wordX}})">No ângulo</div>
+
+            <div style="position: absolute; left: 34%; top: 29%; width: 44%; aspect-ratio: 1127 / 496">
+              <sc-for list="{{kick.keepers}}" as="g" hint-placeholder-count="5">
+                <img src="{{g.src}}" alt="{{g.alt}}" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: {{g.op}}">
+              </sc-for>
+            </div>
+            <div style="position: absolute; left: 75.2%; top: 31.8%; width: 16cqw; height: 16cqw; transform: translate(-50%, -50%) scale({{kick.flashS}}); border-radius: 50%; background: radial-gradient(closest-side, rgba(249,202,13,0.75), rgba(249,202,13,0)); opacity: {{kick.flashO}}; pointer-events: none"></div>
+
+            <div style="position: absolute; left: {{kick.streakL}}; top: {{kick.by}}; width: {{kick.streakW}}; height: 5cqw; border-radius: 999px; transform-origin: 100% 50%; transform: translateY(-50%) rotate({{kick.ang}}) scaleY({{kick.streakSY}}); background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.6)); filter: blur(0.3cqw); opacity: {{kick.streakO}}; pointer-events: none"></div>
+            <img src="assets/bola.webp" alt="" aria-hidden="true" style="position: absolute; left: {{kick.bx}}; top: {{kick.by}}; width: 5cqw; height: 5cqw; transform: translate(-50%, -50%) scale({{kick.bs}}) rotate({{kick.rot}}); filter: {{kick.bblur}}; pointer-events: none">
+
+            <div style="position: absolute; inset: 0; transform: {{kick.plT}}; transform-origin: 20% 100%; pointer-events: none">
+              <sc-for list="{{kick.players}}" as="pl" hint-placeholder-count="6">
+                <img src="{{pl.src}}" alt="{{pl.alt}}" style="position: absolute; left: 6%; bottom: -2%; height: 92%; width: auto; display: block; opacity: {{pl.op}}; filter: drop-shadow(0 0 2.5cqw rgba(255,40,40,0.35))">
+              </sc-for>
+              <div style="position: absolute; left: 33%; top: 30%; display: flex; align-items: center; gap: 0.8cqw; opacity: {{kick.tagO}}; transition: opacity .4s ease">
+                <span style="width: 4cqw; height: 0.12cqw; background: {{accent}}"></span>
+                <span style="padding: 0.6cqw 1cqw; border-radius: 0.6cqw; background: rgba(10,11,13,0.82); border: 1px solid rgba(249,202,13,0.5); font-size: max(11px, 1.1cqw); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap">Kit Pedreira F.C. · Marol Sports</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 70% at 50% 55%, rgba(5,8,6,0.35), rgba(5,8,6,0.85)); opacity: {{kick.endO}}; transition: opacity .5s ease; pointer-events: none"></div>
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0.6cqw; padding: 0 4cqw; opacity: {{kick.endO}}; transform: scale({{kick.endS}}); transition: opacity .4s ease, transform .6s cubic-bezier(.2,1.5,.4,1); pointer-events: none">
+            <span style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 10.5cqw; line-height: .86; letter-spacing: -0.01em; text-shadow: 0 0.5cqw 3cqw rgba(0,0,0,0.6)">Acerte no uniforme.</span>
+            <span style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 10.5cqw; line-height: .86; letter-spacing: -0.01em; color: {{accent}}; text-shadow: 0 0.5cqw 3cqw rgba(0,0,0,0.6)">Marque um golaço.</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px; min-height: 52px; padding: 0 24px">
+          <sc-if value="{{kick.hint}}" hint-placeholder-val="{{ true }}">
+            <span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: #A9B8AF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M6 13l6 6 6-6"></path></svg>Role a página para cobrar</span>
+          </sc-if>
+          <sc-if value="{{kick.done}}" hint-placeholder-val="{{ false }}">
+            <a class="btn-main" href="{{waLink}}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-weight: 700; font-size: 16px; text-decoration: none">Quero o uniforme do meu time</a>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+
+    <div class="wipe {{cls.times}}" style="height: 6px; background: {{accent}}"></div>
+    <div aria-hidden="true" style="position: absolute; top: calc(360vh + 120px); left: 0; white-space: nowrap; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 260px; line-height: 1; color: transparent; -webkit-text-stroke: 2px rgba(249,202,13,0.10); transform: {{timesWord}}; pointer-events: none">Em campo · Em campo · Em campo</div>
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 88px 24px 0; display: flex; flex-direction: column; gap: 22px">
+      <div class="rv {{cls.times}}" style="display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: {{accent}}">
+        <span style="width: 40px; height: 40px; border-radius: 12px; background: {{accent}}; color: #0A0B0D; display: inline-flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v5a5 5 0 0 1-10 0z"></path><path d="M17 5h3v2a3 3 0 0 1-3 3"></path><path d="M7 5H4v2a3 3 0 0 0 3 3"></path></svg></span>
+        01 · Uniformes de time
+      </div>
+      <figure class="rv-z {{cls.times}}" style="margin: 0; border-radius: 28px; overflow: hidden; border: 1px solid #1E3A29; box-shadow: 0 40px 80px rgba(0,0,0,0.45)">
+        <img src="assets/banner-time.webp" alt="Mire na vitória. Vista o uniforme certo. Jogador de uniforme azul e amarelo número 10 chutando a bola em gramado sintético, com adversários e goleiro ao fundo" style="width: 100%; height: auto; display: block">
+      </figure>
+    </div>
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 48px 24px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 40px; align-items: end">
+      <h2 class="rv-l {{cls.times}}" style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(44px, 5.5vw, 76px); line-height: 0.9">Uniformes para<br><span style="color: {{accent}}">entrar em campo</span></h2>
+      <p class="rv-r {{cls.times}}" style="margin: 0; font-size: 18px; line-height: 1.65; color: #C3CCC6">Produzimos uniformes de times para campeonatos, com cores, escudo, nomes e números personalizados. Uma identidade completa para vestir sua equipe e fortalecer a união dentro e fora do jogo.</p>
+    </div>
+
+    <!-- simulador + features -->
+    <div ref="{{r.timesA}}" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 24px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px; align-items: stretch">
+      <a class="cat-tile rv-l {{cls.timesA}}" href="simulador/" style="position: relative; display: flex; flex-direction: column; gap: 18px; padding: 32px; border-radius: 26px; text-decoration: none; color: #0A0B0D; background: {{accent}}; overflow: hidden">
+        <span aria-hidden="true" style="position: absolute; right: -10px; bottom: -40px; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 190px; line-height: 1; color: rgba(10,11,13,0.08)">500+</span>
+        <span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 7.3L16 4l-2 2h-4L8 4 3.6 7.3a1 1 0 0 0-.3 1.2l1.4 3a1 1 0 0 0 1.2.5L7 11.7V20h10v-8.3l1.1.3a1 1 0 0 0 1.2-.5l1.4-3a1 1 0 0 0-.3-1.2z"></path></svg>
+          Simulador de uniformes
+        </span>
+        <strong style="position: relative; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(36px, 4vw, 52px); line-height: .92">Monte o uniforme do seu time agora</strong>
+        <span style="position: relative; font-size: 16px; line-height: 1.55; font-weight: 500; max-width: 440px">Escolha entre mais de 500 modelos, defina as cores e a posição do nome e veja o resultado na hora.</span>
+        <span style="position: relative; display: flex; flex-wrap: wrap; gap: 8px">
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(10,11,13,0.1); font-size: 14px; font-weight: 700">+500 modelos</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(10,11,13,0.1); font-size: 14px; font-weight: 700">Cores do time</span>
+          <span style="padding: 8px 14px; border-radius: 999px; background: rgba(10,11,13,0.1); font-size: 14px; font-weight: 700">Posição do nome</span>
+        </span>
+        <span style="position: relative; margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 999px; background: #0A0B0D; color: #F4F5F2; font-weight: 700; font-size: 16px">
+          Abrir o simulador
+          <svg class="cat-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg>
+        </span>
+      </a>
+      <div class="rv-r {{cls.timesA}}" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 18px; background: #0C1D13; border: 1px solid #1E3A29">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="1.5"></circle><circle cx="17.5" cy="10.5" r="1.5"></circle><circle cx="8.5" cy="7.5" r="1.5"></circle><circle cx="6.5" cy="12.5" r="1.5"></circle><path d="M12 2a10 10 0 0 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.4A5.6 5.6 0 0 0 22 10c0-4.4-4.5-8-10-8z"></path></svg>
+          <strong style="font-size: 17px">Cores do time</strong>
+          <span style="font-size: 14px; line-height: 1.5; color: #9FB0A6">Listras, degradês e detalhes na paleta da sua equipe.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 18px; background: #0C1D13; border: 1px solid #1E3A29">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path></svg>
+          <strong style="font-size: 17px">Escudo</strong>
+          <span style="font-size: 14px; line-height: 1.5; color: #9FB0A6">No peito, na manga e no calção.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 18px; background: #0C1D13; border: 1px solid #1E3A29">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V5h16v2"></path><path d="M9 19h6"></path><path d="M12 5v14"></path></svg>
+          <strong style="font-size: 17px">Nomes</strong>
+          <span style="font-size: 14px; line-height: 1.5; color: #9FB0A6">O nome de cada atleta nas costas.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 18px; background: #0C1D13; border: 1px solid #1E3A29">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16"></path><path d="M4 15h16"></path><path d="M10 3L8 21"></path><path d="M16 3l-2 18"></path></svg>
+          <strong style="font-size: 17px">Números</strong>
+          <span style="font-size: 14px; line-height: 1.5; color: #9FB0A6">Camisa e calção, na fonte que combina com o time.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- base / formação video -->
+    <div ref="{{r.timesB}}" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 56px 24px 112px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 48px; align-items: center">
+      <div class="rv {{cls.timesB}}" style="display: flex; flex-direction: column; gap: 18px; max-width: 520px">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">Base e formação</span>
+        <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(38px, 4.4vw, 56px); line-height: .92">Jovem atleta também merece uniforme de profissional</strong>
+        <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #B9C2BC">Preparar a juventude para o esporte começa nos detalhes. Entrar em quadra com um uniforme bem feito mostra a cada jovem que o treino, o jogo e o time dele são levados a sério.</p>
+      </div>
+      <div class="rv-z {{cls.timesB}}" style="display: flex; justify-content: center">
+        <div style="position: relative; width: 100%; max-width: 380px; aspect-ratio: 9 / 16; border-radius: 30px; overflow: hidden; background: #000; border: 1px solid #2A3A30; box-shadow: 0 40px 80px rgba(0,0,0,0.5)">
+          <video ref="{{r.video}}" src="assets/ciep-clip.mp4" poster="assets/ciep-poster.jpg" aria-label="Jovem jogador de uniforme branco e verde chutando a bola em quadra" style="width: 100%; height: 100%; object-fit: cover; display: block"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 02 EVENTOS ========== -->
+  <section id="eventos" ref="{{r.eventos}}" style="position: relative; background: #070B16; border-top: 1px solid #18213A; overflow: clip">
+    <div class="wipe {{cls.eventos}}" style="height: 6px; background: {{accent}}"></div>
+    <div aria-hidden="true" style="position: absolute; top: 110px; left: 0; white-space: nowrap; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 260px; line-height: 1; color: transparent; -webkit-text-stroke: 2px rgba(249,202,13,0.09); transform: {{evWord}}; pointer-events: none">Evento · Equipe · Evento · Equipe</div>
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 96px 24px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 40px; align-items: end">
+      <div class="rv-l {{cls.eventos}}" style="display: flex; flex-direction: column; gap: 18px">
+        <div style="display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: {{accent}}">
+          <span style="width: 40px; height: 40px; border-radius: 12px; background: {{accent}}; color: #0A0B0D; display: inline-flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18"></path><path d="M8 3v4"></path><path d="M16 3v4"></path></svg></span>
+          02 · Eventos
+        </div>
+        <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(52px, 7vw, 104px); line-height: 0.88">A camisa do evento<br><span style="color: {{accent}}">vira lembrança.</span></h2>
+      </div>
+      <div class="rv-r {{cls.eventos}}" style="display: flex; flex-direction: column; gap: 16px">
+        <h3 style="margin: 0; font-size: 22px; font-weight: 700">Camisas para corridas e eventos</h3>
+        <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #BCC3D3">Vista os participantes com camisas pensadas para o movimento e o conforto. Personalizamos peças para corridas, encontros, festas e eventos, valorizando a identidade de cada ocasião.</p>
+      </div>
+    </div>
+
+    <nav class="rv {{cls.eventos}}" aria-label="Tipos de evento" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 24px 40px; display: flex; flex-wrap: wrap; gap: 10px">
+      <a class="pill" href="#ev-festas" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 999px; background: #111A30; border: 1px solid #2A3A66; color: #F4F5F2; font-weight: 600; font-size: 15px; text-decoration: none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.8 11.3L2 22l10.7-3.8"></path><path d="M4 3h.01"></path><path d="M22 8h.01"></path><path d="M15 2h.01"></path><path d="M22 20h.01"></path><path d="M22 2l-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"></path><path d="M11 13l-2-2"></path></svg>
+        Festas e encontros
+      </a>
+      <a class="pill" href="#ev-corridas" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 999px; background: #111A30; border: 1px solid #2A3A66; color: #F4F5F2; font-weight: 600; font-size: 15px; text-decoration: none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="4" r="2"></circle><path d="M6 20l3-6 3 2v5"></path><path d="M9 14l1.5-5 4 1.5 2.5 3"></path><path d="M10.5 9L7 10l-2 3"></path></svg>
+        Corridas
+      </a>
+      <a class="pill" href="#ev-escola" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 999px; background: #111A30; border: 1px solid #2A3A66; color: #F4F5F2; font-weight: 600; font-size: 15px; text-decoration: none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"></path><path d="M6 12v5c3 2 9 2 12 0v-5"></path></svg>
+        Eventos escolares
+      </a>
+      <a class="pill" href="#ev-baterias" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 999px; background: #111A30; border: 1px solid #2A3A66; color: #F4F5F2; font-weight: 600; font-size: 15px; text-decoration: none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="9" rx="8" ry="3"></ellipse><path d="M4 9v7c0 1.7 3.6 3 8 3s8-1.3 8-3V9"></path><path d="M8 11.7l2 7.1"></path><path d="M16 11.7l-2 7.1"></path><path d="M3 2l7 6"></path><path d="M21 2l-7 6"></path></svg>
+        Baterias de samba
+      </a>
+    </nav>
+
+    <!-- 2.1 Festas, encontros e corridas: 360 -->
+    <div id="ev-festas" ref="{{r.turn}}" style="position: relative; max-width: 760px; margin: 0 auto; padding: 8px 24px 72px; display: flex; flex-direction: column; gap: 16px">
+      <span class="rv {{cls.turn}}" style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">2.1 · Festas e encontros</span>
+      <div class="rv-z {{cls.turn}}" style="display: flex; flex-direction: column; gap: 14px; min-width: 0">
+        <div class="grab" onPointerDown="{{tdown}}" onPointerMove="{{tmove}}" onPointerUp="{{tup}}" onPointerLeave="{{tup}}" onPointerCancel="{{tup}}" style="position: relative; height: 620px; border-radius: 30px; background: radial-gradient(circle at 50% 38%, #24314F 0%, #0F1528 58%, #090D19 100%); border: 1px solid #1F2A47; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-select: none">
+          <div style="position: absolute; left: 50%; bottom: 34px; width: 56%; height: 46px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,0.85), rgba(0,0,0,0))"></div>
+          <div style="position: absolute; left: 50%; bottom: 22px; width: 68%; height: 74px; transform: translateX(-50%); border-radius: 50%; border: 1px solid rgba(249,202,13,0.28)"></div>
+          <div style="position: absolute; left: 50%; top: 22px; width: 560px; max-width: 94%; aspect-ratio: 1 / 1; transform: translateX(-50%)">
+            <sc-for list="{{tframes}}" as="f" hint-placeholder-count="8">
+              <img src="{{f.src}}" alt="{{f.alt}}" draggable="false" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; opacity: {{f.op}}; visibility: {{f.vis}}">
+            </sc-for>
+          </div>
+          <div style="position: absolute; top: 18px; left: 18px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: rgba(7,11,22,0.75); border: 1px solid #2A3557; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-style: italic; font-size: 18px; letter-spacing: 0.04em">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path></svg>
+            360º
+          </div>
+          <div style="position: absolute; top: 18px; right: 18px; padding: 8px 12px; border-radius: 999px; background: rgba(7,11,22,0.75); border: 1px solid #2A3557; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #C9CDD3">{{turnLabel}}</div>
+          <div style="position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-size: 13px; color: #8C94A8">Arraste para os lados para girar</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+          <button class="pill" type="button" onClick="{{view.front}}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid #3A4566; background: transparent; color: #F4F5F2; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer">Frente</button>
+          <button class="pill" type="button" onClick="{{view.side}}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid #3A4566; background: transparent; color: #F4F5F2; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer">Lateral</button>
+          <button class="pill" type="button" onClick="{{view.back}}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid #3A4566; background: transparent; color: #F4F5F2; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer">Costas</button>
+          <button class="pill" type="button" onClick="{{view.auto}}" aria-pressed="{{t3.autoPressed}}" style="margin-left: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid {{t3.autoBorder}}; background: {{t3.autoBg}}; color: {{t3.autoFg}}; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path></svg>
+            Girar sozinha
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.2 Corridas -->
+    <div id="ev-corridas" ref="{{r.corr}}" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 24px 24px 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 32px; align-items: center">
+      <div class="rv-l {{cls.corr}}" style="display: flex; flex-direction: column; gap: 20px; padding-top: 40px; border-top: 1px solid #1F2A47">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">2.2 · Corridas</span>
+        <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 4.6vw, 60px); line-height: .92">Feita para o movimento</strong>
+        <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #BCC3D3">Camisas leves para provas, treinões e assessorias de corrida, com a identidade do grupo do aquecimento à linha de chegada.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px">
+          <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #111A30; border: 1px solid #22305A; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"></path></svg>Dryfit leve</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #111A30; border: 1px solid #22305A; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.9"></path><path d="M16 3.1a4 4 0 0 1 0 7.8"></path></svg>Assessorias e clubes</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #111A30; border: 1px solid #22305A; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"></path><path d="M4 4h12l-2 4 2 4H4"></path></svg>Provas e treinões</span>
+        </div>
+      </div>
+      <figure class="rv-r {{cls.corr}}" style="margin: 0; position: relative; border-radius: 30px; overflow: hidden; border: 1px solid #1F2A47; box-shadow: 0 40px 80px rgba(0,0,0,0.45)">
+        <img src="assets/corrida.webp" alt="Grupo de corredoras com camisas Run Club azul-marinho e verde-limão em evento de corrida ao ar livre" style="width: 100%; height: auto; display: block">
+        <figcaption style="position: absolute; left: 16px; bottom: 16px; padding: 8px 14px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase">Run Club</figcaption>
+      </figure>
+    </div>
+
+    <!-- 2.3 Eventos escolares -->
+    <div id="ev-escola" ref="{{r.olimp}}" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 24px 24px 72px; display: flex; flex-direction: column; gap: 28px">
+      <div class="rv {{cls.olimp}}" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; padding-top: 40px; border-top: 1px solid #1F2A47">
+        <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
+          <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">2.3 · Eventos escolares</span>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 4.6vw, 60px); line-height: .92">Evento na escola também tem camisa</strong>
+          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #BCC3D3">Olimpíadas, arraiá, feira de ciências, jogos internos e datas comemorativas: a turma inteira vestindo a mesma identidade.</p>
+        </div>
+      </div>
+      <div class="rv {{cls.olimp}}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 18px; background: #16203A; border: 1px solid rgba(249,202,13,0.45)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c1.5 2 3 3.2 3 5.2A3 3 0 0 1 9 7.2C9 5.8 10 5 10.5 4"></path><path d="M8 11h8l-1 4H9z"></path><path d="M10 15l-1 7h6l-1-7"></path></svg>
+          <strong style="font-size: 16px">Olimpíadas</strong>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 18px; background: #0D1324; border: 1px solid #1F2A47">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4-3 6-6.5 6-10a6 6 0 0 0-12 0c0 3.5 2 7 6 10z"></path><path d="M12 6v4"></path><path d="M10 8h4"></path></svg>
+          <strong style="font-size: 16px">Arraiá e festa junina</strong>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 18px; background: #0D1324; border: 1px solid #1F2A47">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"></path><path d="M10 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3"></path><path d="M7.5 15h9"></path></svg>
+          <strong style="font-size: 16px">Feiras e mostras</strong>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 18px; background: #0D1324; border: 1px solid #1F2A47">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7l4 3-1.5 5h-5L8 10z"></path></svg>
+          <strong style="font-size: 16px">Jogos internos</strong>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 18px; background: #0D1324; border: 1px solid #1F2A47">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v10H4V12"></path><path d="M2 7h20v5H2z"></path><path d="M12 22V7"></path><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+          <strong style="font-size: 16px">Camisas comemorativas</strong>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px; align-items: stretch">
+        <div class="rv-l {{cls.olimp}}" style="display: flex; flex-direction: column; gap: 18px; padding: 28px; border-radius: 30px; background: #0D1324; border: 1px solid #1F2A47">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+            <div style="display: flex; flex-direction: column; gap: 4px">
+              <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">Uma cor por bandeira</span>
+              <strong style="font-size: 22px">Olimpíadas IEGC 2026</strong>
+            </div>
+            <div style="display: flex; gap: 8px" role="group" aria-label="Cor da bandeira">
+              <sc-for list="{{olyPills}}" as="o" hint-placeholder-count="2">
+                <button class="pill" type="button" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid {{o.border}}; background: {{o.bg}}; color: {{o.fg}}; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer"><span style="width: 12px; height: 12px; border-radius: 50%; background: {{o.swatch}}"></span>{{o.name}}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="position: relative; height: 420px; border-radius: 22px; background: radial-gradient(circle at 50% 45%, #1C2640 0%, #0A0F1D 72%); overflow: hidden">
+            <div style="position: absolute; left: 50%; bottom: 22px; width: 70%; height: 36px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,0.8), rgba(0,0,0,0))"></div>
+            <img src="{{oly.back}}" alt="{{oly.altBack}}" style="position: absolute; right: 5%; top: 7%; height: 76%; width: auto; transform: rotate(7deg); filter: brightness(0.8) drop-shadow(0 24px 24px rgba(0,0,0,0.5))">
+            <img src="{{oly.front}}" alt="{{oly.altFront}}" style="position: absolute; left: 5%; top: 12%; height: 82%; width: auto; transform: rotate(-5deg); filter: drop-shadow(0 30px 30px rgba(0,0,0,0.55))">
+          </div>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #A9B1C4">Mesmo modelo, cores diferentes para cada equipe, com o brasão da escola e os ícones das modalidades.</p>
+        </div>
+        <div class="rv-r {{cls.olimp}}" style="position: relative; min-height: 520px; border-radius: 30px; overflow: hidden; border: 1px solid #1F2A47; background: #0B1121; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; gap: 12px">
+          <img src="assets/alunos.webp" alt="Cinco alunos sorrindo e conversando na saída da escola, vestindo as camisas azul e verde das Olimpíadas IEGC 2026" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%">
+          <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 55%; background: linear-gradient(0deg, rgba(7,11,22,0.92), rgba(7,11,22,0))"></div>
+          <span style="position: relative; align-self: flex-start; padding: 8px 14px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase">Olimpíadas escolares</span>
+          <strong style="position: relative; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 44px; line-height: .92">Do pátio ao pódio,<br>a escola inteira junta.</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.4 Baterias de escola de samba -->
+    <div id="ev-baterias" ref="{{r.bat}}" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 24px 24px 112px; display: flex; flex-direction: column; gap: 28px">
+      <div class="rv {{cls.bat}}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px 40px; align-items: end; padding-top: 40px; border-top: 1px solid #1F2A47">
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="9" rx="8" ry="3"></ellipse><path d="M4 9v7c0 1.7 3.6 3 8 3s8-1.3 8-3V9"></path><path d="M8 11.7l2 7.1"></path><path d="M16 11.7l-2 7.1"></path><path d="M3 2l7 6"></path><path d="M21 2l-7 6"></path></svg>2.4 · Baterias de escola de samba</span>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 4.6vw, 60px); line-height: .92">A bateria entra<br>na avenida vestida</strong>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #BCC3D3">Camisas para ritmistas, ensaios técnicos e esquentas, com o nome da bateria em destaque. Escolha a sua e personalize com o nome do ritmista e o naipe.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px"><span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #111A30; border: 1px solid #22305A; font-size: 14px; font-weight: 600">Nome do ritmista</span><span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #111A30; border: 1px solid #22305A; font-size: 14px; font-weight: 600">Naipe: surdo, caixa, tamborim…</span><span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #111A30; border: 1px solid #22305A; font-size: 14px; font-weight: 600">Ensaio e desfile</span></div>
+        </div>
+      </div>
+      <div class="rv {{cls.bat}}" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px">
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Furiosa." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Furiosa"><defs><clipPath id="bt0"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt0g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt0)"><rect x="0" y="0" width="200" height="230" fill="#D61F26"/><path d="M20,150 L180,96 L180,120 L20,174 Z" fill="#FFFFFF"/><path d="M11,72 L39,88" stroke="#FFFFFF" stroke-width="7"/><path d="M189,72 L161,88" stroke="#FFFFFF" stroke-width="7"/><rect x="0" y="0" width="200" height="230" fill="url(#bt0g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#FFFFFF" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="112.8" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="26.0" fill="#FFFFFF" stroke="#D61F26" stroke-width="3" paint-order="stroke" stroke-linejoin="round">FURIOSA</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Furiosa</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #D61F26; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Vermelho e branco</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Tabajara%20do%20Samba." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Tabajara do Samba"><defs><clipPath id="bt1"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt1g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt1)"><rect x="0" y="0" width="200" height="230" fill="#2B6CC4"/><path d="M20,150 Q45,138 70,150 T120,150 T170,150 T220,150" fill="none" stroke="#FFFFFF" stroke-width="7" opacity="1"/><path d="M20,168 Q45,156 70,168 T120,168 T170,168 T220,168" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.8"/><path d="M20,184 Q45,172 70,184 T120,184 T170,184 T220,184" fill="none" stroke="#FFFFFF" stroke-width="7" opacity="1"/><path d="M20,200 Q45,188 70,200 T120,200 T170,200 T220,200" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.8"/><path d="M11,72 L39,88" stroke="#FFFFFF" stroke-width="7"/><path d="M189,72 L161,88" stroke="#FFFFFF" stroke-width="7"/><rect x="0" y="0" width="200" height="230" fill="url(#bt1g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#FFFFFF" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="100.4" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="24.0" fill="#FFFFFF" stroke="#2B6CC4" stroke-width="3" paint-order="stroke" stroke-linejoin="round">TABAJARA</text><text x="100" y="123.9" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="24.0" fill="#FFFFFF" stroke="#2B6CC4" stroke-width="3" paint-order="stroke" stroke-linejoin="round">DO SAMBA</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Tabajara do Samba</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #2B6CC4; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Azul e branco</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Soberana." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Soberana"><defs><clipPath id="bt2"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt2g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt2)"><rect x="0" y="0" width="200" height="230" fill="#13358C"/><path d="M20,20 L180,20 L180,58 Q100,74 20,58 Z" fill="#FFFFFF"/><path d="M20,64 Q100,80 180,64 L180,68 Q100,84 20,68 Z" fill="#FFFFFF" opacity=".7"/><path d="M54,196 L146,196 L146,212 L54,212 Z" fill="#FFFFFF"/><rect x="0" y="0" width="200" height="230" fill="url(#bt2g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#FFFFFF" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="112.2" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="24.0" fill="#FFFFFF" stroke="#13358C" stroke-width="3" paint-order="stroke" stroke-linejoin="round">SOBERANA</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Soberana</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #13358C; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Azul e branco</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Swingueira%20de%20Noel." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Swingueira de Noel"><defs><clipPath id="bt3"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt3g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt3)"><rect x="0" y="0" width="200" height="230" fill="#1E4FA8"/><rect x="20" y="160" width="160" height="10" fill="#FFFFFF"/><rect x="20" y="178" width="160" height="6" fill="#FFFFFF"/><rect x="20" y="190" width="160" height="3" fill="#FFFFFF"/><path d="M11,72 L39,88" stroke="#FFFFFF" stroke-width="5"/><path d="M189,72 L161,88" stroke="#FFFFFF" stroke-width="5"/><rect x="0" y="0" width="200" height="230" fill="url(#bt3g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#FFFFFF" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="101.1" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="19.2" fill="#FFFFFF" stroke="#1E4FA8" stroke-width="3" paint-order="stroke" stroke-linejoin="round">SWINGUEIRA</text><text x="100" y="119.9" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="19.2" fill="#FFFFFF" stroke="#1E4FA8" stroke-width="3" paint-order="stroke" stroke-linejoin="round">DE NOEL</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Swingueira de Noel</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #1E4FA8; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Azul e branco</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Invocada." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Invocada"><defs><clipPath id="bt4"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt4g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt4)"><rect x="0" y="0" width="200" height="230" fill="#C8102E"/><path d="M20,20 L72,20 L72,220 L20,220 Z" fill="#00843D"/><path d="M128,20 L180,20 L180,220 L128,220 Z" fill="#00843D"/><rect x="70" y="20" width="5" height="200" fill="#FFFFFF"/><rect x="125" y="20" width="5" height="200" fill="#FFFFFF"/><rect x="0" y="0" width="200" height="230" fill="url(#bt4g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#00843D" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="112.2" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="24.0" fill="#FFFFFF" stroke="#C8102E" stroke-width="3" paint-order="stroke" stroke-linejoin="round">INVOCADA</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Invocada</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #C8102E; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #00843D; border: 1px solid rgba(255,255,255,.3)"></i></span>Vermelho, verde e branco</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20N%C3%A3o%20Existe%20Mais%20Quente." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Não Existe Mais Quente"><defs><clipPath id="bt5"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt5g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt5)"><rect x="0" y="0" width="200" height="230" fill="#0A8F3C"/><path d="M20,138 L100,168 L180,138 L180,147 L100,177 L20,147 Z" fill="#FFFFFF"/><path d="M20,160 L100,190 L180,160 L180,169 L100,199 L20,169 Z" fill="#FFFFFF"/><rect x="0" y="0" width="200" height="230" fill="url(#bt5g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#FFFFFF" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="101.4" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="17.5" fill="#FFFFFF" stroke="#0A8F3C" stroke-width="3" paint-order="stroke" stroke-linejoin="round">NÃO EXISTE</text><text x="100" y="118.5" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="17.5" fill="#FFFFFF" stroke="#0A8F3C" stroke-width="3" paint-order="stroke" stroke-linejoin="round">MAIS QUENTE</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Não Existe Mais Quente</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #0A8F3C; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Verde e branco</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Pura%20Cad%C3%AAncia." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Pura Cadência"><defs><clipPath id="bt6"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt6g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt6)"><rect x="0" y="0" width="200" height="230" fill="#0B6E8A"/><path d="M20,20 L64,20 Q58,120 66,220 L20,220 Z" fill="#F2B705"/><path d="M180,20 L136,20 Q142,120 134,220 L180,220 Z" fill="#F2B705"/><rect x="0" y="0" width="200" height="230" fill="url(#bt6g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#F2B705" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="100.4" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="24.0" fill="#F2B705" stroke="#0B6E8A" stroke-width="3" paint-order="stroke" stroke-linejoin="round">PURA</text><text x="100" y="123.9" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="24.0" fill="#F2B705" stroke="#0B6E8A" stroke-width="3" paint-order="stroke" stroke-linejoin="round">CADÊNCIA</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Pura Cadência</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #0B6E8A; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #F2B705; border: 1px solid rgba(255,255,255,.3)"></i></span>Azul pavão e amarelo ouro</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Swing%20da%20Leopoldina." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Swing da Leopoldina"><defs><clipPath id="bt7"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt7g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt7)"><rect x="0" y="0" width="200" height="230" fill="#0E7A3E"/><path d="M20,150 L180,96 L180,120 L20,174 Z" fill="#E3B23C"/><path d="M20,180 L180,126 L180,132 L20,186 Z" fill="#FFFFFF"/><path d="M11,72 L39,88" stroke="#E3B23C" stroke-width="7"/><path d="M189,72 L161,88" stroke="#E3B23C" stroke-width="7"/><rect x="0" y="0" width="200" height="230" fill="url(#bt7g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#E3B23C" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="101.1" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="19.2" fill="#FFFFFF" stroke="#0E7A3E" stroke-width="3" paint-order="stroke" stroke-linejoin="round">SWING DA</text><text x="100" y="119.9" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="19.2" fill="#FFFFFF" stroke="#0E7A3E" stroke-width="3" paint-order="stroke" stroke-linejoin="round">LEOPOLDINA</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Swing da Leopoldina</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #0E7A3E; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #E3B23C; border: 1px solid rgba(255,255,255,.3)"></i></span>Verde, branco e ouro</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Furac%C3%A3o%20Vermelho%20e%20Branco." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Furacão Vermelho e Branco"><defs><clipPath id="bt8"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt8g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt8)"><rect x="0" y="0" width="200" height="230" fill="#D0202E"/><path d="M10,200 Q90,160 200,130" fill="none" stroke="#FFFFFF" stroke-width="9"/><path d="M10,216 Q90,176 200,146" fill="none" stroke="#FFFFFF" stroke-width="5"/><path d="M10,230 Q90,190 200,160" fill="none" stroke="#FFFFFF" stroke-width="9"/><path d="M11,72 L39,88" stroke="#FFFFFF" stroke-width="7"/><path d="M189,72 L161,88" stroke="#FFFFFF" stroke-width="7"/><rect x="0" y="0" width="200" height="230" fill="url(#bt8g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#FFFFFF" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="88.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="24.0" fill="#FFFFFF" stroke="#D0202E" stroke-width="3" paint-order="stroke" stroke-linejoin="round">FURACÃO</text><text x="100" y="112.2" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="24.0" fill="#FFFFFF" stroke="#D0202E" stroke-width="3" paint-order="stroke" stroke-linejoin="round">VERMELHO</text><text x="100" y="135.7" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="24.0" fill="#FFFFFF" stroke="#D0202E" stroke-width="3" paint-order="stroke" stroke-linejoin="round">E BRANCO</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Furacão Vermelho e Branco</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #D0202E; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Vermelho e branco</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Tem%20Que%20Respeitar%20Meu%20Tamborim." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Tem Que Respeitar Meu Tamborim"><defs><clipPath id="bt9"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt9g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt9)"><rect x="0" y="0" width="200" height="230" fill="#0A7B3E"/><path d="M20,20 L64,20 Q58,120 66,220 L20,220 Z" fill="#E0559B"/><path d="M180,20 L136,20 Q142,120 134,220 L180,220 Z" fill="#E0559B"/><rect x="0" y="0" width="200" height="230" fill="url(#bt9g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#E0559B" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="94.5" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="14.8" fill="#FFFFFF" stroke="#0A7B3E" stroke-width="3" paint-order="stroke" stroke-linejoin="round">TEM QUE</text><text x="100" y="109.0" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="14.8" fill="#FFFFFF" stroke="#0A7B3E" stroke-width="3" paint-order="stroke" stroke-linejoin="round">RESPEITAR MEU</text><text x="100" y="123.5" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="14.8" fill="#FFFFFF" stroke="#0A7B3E" stroke-width="3" paint-order="stroke" stroke-linejoin="round">TAMBORIM</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Tem Que Respeitar Meu Tamborim</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #0A7B3E; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #E0559B; border: 1px solid rgba(255,255,255,.3)"></i></span>Verde e rosa</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Sinf%C3%B4nica%20do%20Samba." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Sinfônica do Samba"><defs><clipPath id="bt10"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt10g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt10)"><rect x="0" y="0" width="200" height="230" fill="#0B6B3A"/><path d="M20,52 L100,82 L180,52 L180,20 L20,20 Z" fill="#FFFFFF" opacity=".18"/><path d="M20,186 L100,160 L180,186 L180,192 L100,166 L20,192 Z" fill="#FFFFFF"/><path d="M20,200 L100,174 L180,200 L180,206 L100,180 L20,206 Z" fill="#FFFFFF"/><rect x="0" y="0" width="200" height="230" fill="url(#bt10g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#FFFFFF" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="100.8" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="21.3" fill="#FFFFFF" stroke="#0B6B3A" stroke-width="3" paint-order="stroke" stroke-linejoin="round">SINFÔNICA</text><text x="100" y="121.7" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="21.3" fill="#FFFFFF" stroke="#0B6B3A" stroke-width="3" paint-order="stroke" stroke-linejoin="round">DO SAMBA</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Sinfônica do Samba</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #0B6B3A; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Verde e branco</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20minha%20bateria." target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 18px; border-radius: 22px; background: radial-gradient(circle at 50% 30%, #1C2640 0%, #0D1324 70%); border: 1px solid #1F2A47; color: #F4F5F2; text-decoration: none">
+          <div style="aspect-ratio: 200 / 230; width: 100%"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Sua bateria"><defs><clipPath id="bt11"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt11g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt11)"><rect x="0" y="0" width="200" height="230" fill="#1A1D24"/><rect x="20" y="160" width="160" height="10" fill="#F9CA0D"/><rect x="20" y="178" width="160" height="6" fill="#F9CA0D"/><rect x="20" y="190" width="160" height="3" fill="#F9CA0D"/><path d="M11,72 L39,88" stroke="#F9CA0D" stroke-width="5"/><path d="M189,72 L161,88" stroke="#F9CA0D" stroke-width="5"/><rect x="0" y="0" width="200" height="230" fill="url(#bt11g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#F9CA0D" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="100.1" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="26.0" fill="#F9CA0D" stroke="#1A1D24" stroke-width="3" paint-order="stroke" stroke-linejoin="round">SUA</text><text x="100" y="125.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="26.0" fill="#F9CA0D" stroke="#1A1D24" stroke-width="3" paint-order="stroke" stroke-linejoin="round">BATERIA</text></svg></div>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 4.8vw, 22px); line-height: 1">Sua bateria</strong>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #1A1D24; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #F9CA0D; border: 1px solid rgba(255,255,255,.3)"></i></span>Nas cores da sua escola</span>
+          <span class="bat-cta" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #F9CA0D">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+        </a>
+      </div>
+      <p class="rv {{cls.bat}}" style="margin: 0; font-size: 14px; color: #8C94A8">Toque na camisa da sua bateria para pedir o orçamento pelo WhatsApp. As cores podem ser ajustadas.</p>
+    </div>
+  </section>
+
+  <!-- ========== 03 DIA A DIA ========== -->
+  <section id="dia-a-dia" ref="{{r.dia}}" style="position: relative; background: #140809; border-top: 1px solid #3A1A20; overflow: clip">
+    <div class="wipe {{cls.dia}}" style="height: 6px; background: {{accent}}"></div>
+    <div aria-hidden="true" style="position: absolute; top: 110px; left: 0; white-space: nowrap; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 260px; line-height: 1; color: transparent; -webkit-text-stroke: 2px rgba(249,202,13,0.09); transform: {{diaWord}}; pointer-events: none">Samba · Rock · Corrida · Torcida</div>
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 96px 24px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 40px; align-items: end">
+      <div class="rv-l {{cls.dia}}" style="display: flex; flex-direction: column; gap: 18px">
+        <div style="display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: {{accent}}">
+          <span style="width: 40px; height: 40px; border-radius: 12px; background: {{accent}}; color: #0A0B0D; display: inline-flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"></path></svg></span>
+          03 · Linha premium
+        </div>
+        <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(52px, 7vw, 104px); line-height: 0.88">Sai do evento.<br><span style="color: {{accent}}">Vai pra rua.</span></h2>
+      </div>
+      <div class="rv-r {{cls.dia}}" style="display: flex; flex-direction: column; gap: 16px">
+        <h3 style="margin: 0; font-size: 22px; font-weight: 700">Linha premium para o dia a dia</h3>
+        <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #D3BEC2">Confortáveis e estilosas, nossas camisas premium combinam estampas marcantes e cuidado no acabamento para acompanhar você muito além dos eventos.</p>
+      </div>
+    </div>
+
+    <div ref="{{r.samba}}" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 24px 24px 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 32px; align-items: center">
+      <div class="rv-z {{cls.samba}}" style="position: relative; aspect-ratio: 15 / 14; max-height: 560px; border-radius: 30px; overflow: hidden; background: radial-gradient(circle at 50% 40%, #3A1820 0%, #1C0B0F 70%); border: 1px solid #4A2028">
+        <div style="position: absolute; left: 50%; bottom: 34px; width: 70%; height: 40px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,0.8), rgba(0,0,0,0))"></div>
+        <img src="assets/bat-costas.webp" alt="Costas da camisa Batucada Raiz com nome Bruno e número 88" style="position: absolute; right: 3%; top: 5%; width: 54%; height: auto; transform: {{sambaBack}}; filter: brightness(0.8) drop-shadow(0 24px 24px rgba(0,0,0,0.5))">
+        <img src="assets/bat-frente.webp" alt="Frente da camisa Batucada Raiz, bordô e creme, número 88" style="position: absolute; left: 3%; bottom: 5%; width: 60%; height: auto; transform: {{sambaFront}}; filter: drop-shadow(0 34px 34px rgba(0,0,0,0.6))">
+        <span style="position: absolute; left: 20px; top: 20px; padding: 8px 14px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase">Batucada Raiz</span>
+      </div>
+      <div class="rv-r {{cls.samba}}" style="display: flex; flex-direction: column; gap: 20px">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">Estampas</span>
+        <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 4.6vw, 60px); line-height: .92">Estampas para todos os gostos</strong>
+        <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #D3BEC2">Do samba ao rock, da corrida à torcida: explore estampas inspiradas em estilos musicais, bandas, esportes e outros temas. Escolha uma proposta ou personalize a camisa com a identidade da sua equipe, marca ou evento.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px">
+          <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #220F13; border: 1px solid #4A2028; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>Estilos musicais</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #220F13; border: 1px solid #4A2028; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3z"></path><path d="M3 19a2 2 0 0 0 2 2h1v-6H3z"></path></svg>Bandas</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #220F13; border: 1px solid #4A2028; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7l4 3-1.5 5h-5L8 10z"></path></svg>Esportes</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #220F13; border: 1px solid #4A2028; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path></svg>Sua marca</span>
+        </div>
+        <a class="btn-main" href="{{waLink}}" target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-weight: 700; font-size: 16px; text-decoration: none">Quero uma estampa assim</a>
+      </div>
+    </div>
+
+    <!-- modelagem -->
+    <div ref="{{r.model}}" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 40px 24px 112px; display: flex; flex-direction: column; gap: 28px">
+      <h3 class="rv {{cls.model}}" style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(36px, 4.4vw, 56px); line-height: .95">A modelagem que <span style="color: {{accent}}">combina com você</span></h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 18px">
+        <div class="rv {{cls.model}}" style="transition-delay: .05s; display: flex; flex-direction: column; gap: 16px; padding: 30px; border-radius: 24px; background: #1C0B0F; border: 1px solid #3A1A20">
+          <svg width="88" height="88" viewBox="0 0 120 120" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M38 14 L20 20 L4 44 L18 56 L26 50 L24 108 L96 108 L94 50 L102 56 L116 44 L100 20 L82 14 Q60 28 38 14 Z"></path></svg>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; text-transform: uppercase; font-size: 30px; line-height: 1">Oversized</strong>
+          <span style="font-size: 16px; line-height: 1.6; color: #D3BEC2">Corte amplo e visual descontraído.</span>
+        </div>
+        <div class="rv {{cls.model}}" style="transition-delay: .17s; display: flex; flex-direction: column; gap: 16px; padding: 30px; border-radius: 24px; background: #1C0B0F; border: 1px solid #3A1A20">
+          <svg width="88" height="88" viewBox="0 0 120 120" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M40 14 L28 18 L10 32 L20 48 L30 42 L30 106 L90 106 L90 42 L100 48 L110 32 L92 18 L80 14 Q60 28 40 14 Z"></path></svg>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; text-transform: uppercase; font-size: 30px; line-height: 1">Unissex</strong>
+          <span style="font-size: 16px; line-height: 1.6; color: #D3BEC2">Versátil para diferentes estilos.</span>
+        </div>
+        <div class="rv {{cls.model}}" style="transition-delay: .29s; display: flex; flex-direction: column; gap: 16px; padding: 30px; border-radius: 24px; background: #1C0B0F; border: 1px solid #3A1A20">
+          <svg width="88" height="88" viewBox="0 0 120 120" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M42 14 L32 18 L16 30 L24 44 L34 38 Q30 60 37 72 Q33 90 35 106 L85 106 Q87 90 83 72 Q90 60 86 38 L96 44 L104 30 L88 18 L78 14 Q60 28 42 14 Z"></path></svg>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; text-transform: uppercase; font-size: 30px; line-height: 1">Feminina</strong>
+          <span style="font-size: 16px; line-height: 1.6; color: #D3BEC2">Modelagem própria e conforto para diversas ocasiões.</span>
+        </div>
+      </div>
+      <p class="rv {{cls.model}}" style="margin: 0; padding: 26px 28px; border-radius: 22px; border: 1px solid #4A2028; background: #1C0B0F; font-size: 17px; line-height: 1.65; color: #E6D6D9">Trabalhamos com opções de tecido como <strong style="color: #F4F5F2">Helanca Light</strong> e <strong style="color: #F4F5F2">Dryfit</strong>, escolhidas conforme a proposta de cada projeto, com atenção à qualidade da impressão, à definição dos desenhos e ao acabamento.</p>
+    </div>
+  </section>
+
+  <!-- SELO + COMO FUNCIONA -->
+  <section ref="{{r.selo}}" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px">
+    <div class="rv {{cls.selo}}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 48px; align-items: center; padding: 48px; border-radius: 28px; background: #14161A; border: 1px solid #22252B">
+      <div style="display: flex; justify-content: center">
+        <img src="assets/selo-branco.png" alt="Selo de autenticidade Marol Sports — Qualidade garantida" style="width: 100%; max-width: 320px; height: auto; display: block">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 26px">
+        <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(36px, 4.5vw, 56px); line-height: 0.95">Como criamos <span style="color: {{accent}}">sua camisa</span></h2>
+        <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px">
+          <li style="display: flex; gap: 18px; align-items: flex-start">
+            <span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: {{accent}}; color: #0A0B0D; display: inline-flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px">1</span>
+            <div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 18px">Conte sua ideia</strong><span style="font-size: 15px; line-height: 1.55; color: #A3A8B0">Escolha uma estampa ou mande a identidade da sua equipe, marca ou evento pelo WhatsApp.</span></div>
+          </li>
+          <li style="display: flex; gap: 18px; align-items: flex-start">
+            <span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: {{accent}}; color: #0A0B0D; display: inline-flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px">2</span>
+            <div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 18px">Aprove o layout</strong><span style="font-size: 15px; line-height: 1.55; color: #A3A8B0">Você recebe a arte da camisa, frente e costas, para revisar antes da produção.</span></div>
+          </li>
+          <li style="display: flex; gap: 18px; align-items: flex-start">
+            <span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: {{accent}}; color: #0A0B0D; display: inline-flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px">3</span>
+            <div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 18px">Produção</strong><span style="font-size: 15px; line-height: 1.55; color: #A3A8B0">Sua camisa é produzida no tecido escolhido, com atenção à impressão e ao acabamento.</span></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section style="background: {{accent}}; color: #0A0B0D">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(52px, 8vw, 120px); line-height: 0.9">Vamos criar<br>sua camisa?</h2>
+      <p style="margin: 0; font-size: 20px; font-weight: 500">Peça seu orçamento pelo WhatsApp.</p>
+      <a href="{{waLink}}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 12px; min-height: 64px; padding: 0 36px; border-radius: 999px; background: #0A0B0D; color: #F4F5F2; font-weight: 700; font-size: 19px; text-decoration: none">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>
+        Chamar no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px solid #1C1F24">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+      <img src="assets/logo-branco.png" alt="Marol Sports" style="height: 52px; width: auto; display: block">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px; font-size: 15px">
+        <a href="{{waLink}}" target="_blank" rel="noopener" style="text-decoration: none; color: #C9CDD3">WhatsApp</a>
+        <a href="https://www.instagram.com/marolstore2/" target="_blank" rel="noopener" style="text-decoration: none; color: #C9CDD3">Instagram @marolstore2</a>
+      </div>
+      <div style="font-size: 14px; color: #8E949C">© 2026 Marol Sports. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+</div>
+</template>
+<script>
+/* Marol Sports — runtime leve que liga o template às animações (sem dependências) */
+(function () {
+  'use strict';
+  var RE = /\{\{\s*([^}]+?)\s*\}\}/g;
+  var ONE = /^\s*\{\{\s*([^}]+?)\s*\}\}\s*$/;
+  var root = { vals: {} };
+  var bindings = [];
+  var refs = [];
+
+  function get(path, scopes) {
+    path = path.trim();
+    if (path === 'true') return true;
+    if (path === 'false') return false;
+    if (/^-?\d+(\.\d+)?$/.test(path)) return Number(path);
+    var parts = path.split('.');
+    for (var i = 0; i < scopes.length; i++) {
+      var s = scopes[i];
+      if (s && Object.prototype.hasOwnProperty.call(s, parts[0])) {
+        var v = s;
+        for (var j = 0; j < parts.length; j++) { if (v == null) return undefined; v = v[parts[j]]; }
+        return v;
+      }
+    }
+    return undefined;
+  }
+  function interp(str, scopes) {
+    return str.replace(RE, function (m, p) { var v = get(p, scopes); return v == null ? '' : String(v); });
+  }
+  function bind(update) { var b = { last: undefined, update: update }; bindings.push(b); return b; }
+
+  function processAttrs(el, scopesFn) {
+    var attrs = Array.prototype.slice.call(el.attributes);
+    attrs.forEach(function (a) {
+      var name = a.name, val = a.value;
+      if (name.indexOf('hint-') === 0) { el.removeAttribute(name); return; }
+      if (val.indexOf('{{') < 0) return;
+      var one = ONE.exec(val);
+      if (name.indexOf('on') === 0 && one) {
+        el.removeAttribute(name);
+        var path = one[1];
+        el.addEventListener(name.slice(2), function (e) {
+          var f = get(path, scopesFn());
+          if (typeof f === 'function') f(e);
+        });
+        return;
+      }
+      if (name === 'ref' && one) {
+        el.removeAttribute(name);
+        var rp = one[1];
+        refs.push(function () { var f = get(rp, scopesFn()); if (typeof f === 'function') f(el); });
+        return;
+      }
+      el.removeAttribute(name);
+      bind(function (b) {
+        var v = interp(val, scopesFn());
+        if (v === b.last) return;
+        b.last = v;
+        if (name === 'class') el.className = v;
+        else if (name === 'value' && 'value' in el) el.value = v;
+        else el.setAttribute(name, v);
+      });
+    });
+  }
+
+  function processChildren(node, scopesFn) {
+    var kids = Array.prototype.slice.call(node.childNodes);
+    kids.forEach(function (ch) { processNode(ch, scopesFn); });
+  }
+
+  function processNode(n, scopesFn) {
+    if (n.nodeType === 3) {
+      var t = n.nodeValue;
+      if (t.indexOf('{{') < 0) return;
+      bind(function (b) { var v = interp(t, scopesFn()); if (v !== b.last) { b.last = v; n.nodeValue = v; } });
+      return;
+    }
+    if (n.nodeType !== 1) return;
+    var tag = n.tagName.toLowerCase();
+    if (tag === 'sc-for') {
+      var lm = ONE.exec(n.getAttribute('list') || ''); var as = n.getAttribute('as') || 'item';
+      var listPath = lm ? lm[1] : '';
+      var list = get(listPath, scopesFn()) || [];
+      var parent = n.parentNode;
+      for (var i = 0; i < list.length; i++) {
+        (function (idx) {
+          var fn = function () {
+            var ps = scopesFn(); var l = get(listPath, ps) || []; var sc = { $index: idx }; sc[as] = l[idx];
+            return [sc].concat(ps);
+          };
+          Array.prototype.slice.call(n.childNodes).forEach(function (c) {
+            var cl = c.cloneNode(true); parent.insertBefore(cl, n); processNode(cl, fn);
+          });
+        })(i);
+      }
+      parent.removeChild(n);
+      return;
+    }
+    if (tag === 'sc-if') {
+      var vm = ONE.exec(n.getAttribute('value') || ''); var vp = vm ? vm[1] : 'false';
+      var wrap = document.createElement('span'); wrap.style.display = 'contents';
+      while (n.firstChild) wrap.appendChild(n.firstChild);
+      n.parentNode.replaceChild(wrap, n);
+      bind(function (b) { var on = !!get(vp, scopesFn()); if (on !== b.last) { b.last = on; wrap.style.display = on ? 'contents' : 'none'; } });
+      processChildren(wrap, scopesFn);
+      return;
+    }
+    processAttrs(n, scopesFn);
+    processChildren(n, scopesFn);
+  }
+
+  var comp = null, pending = false;
+  function render() {
+    pending = false;
+    root.vals = comp.renderVals() || {};
+    for (var i = 0; i < bindings.length; i++) bindings[i].update(bindings[i]);
+  }
+  function schedule() { if (!pending && comp) { pending = true; Promise.resolve().then(render); } }
+
+  window.DCLogic = function DCLogic(props) { this.props = props || {}; this.state = {}; };
+  window.DCLogic.prototype.setState = function (p) {
+    if (typeof p === 'function') p = p(this.state, this.props);
+    this.state = Object.assign({}, this.state, p);
+    schedule();
+  };
+  window.DCLogic.prototype.forceUpdate = function () { schedule(); };
+
+  window.mountDC = function (Component, props, tplId, mountEl) {
+    comp = new Component(props);
+    root.vals = comp.renderVals() || {};
+    var frag = document.getElementById(tplId).content.cloneNode(true);
+    var rootFn = function () { return [root.vals]; };
+    processChildren(frag, rootFn);
+    for (var i = 0; i < bindings.length; i++) bindings[i].update(bindings[i]);
+    mountEl.appendChild(frag);
+    refs.forEach(function (r) { r(); });
+    if (comp.componentDidMount) comp.componentDidMount();
+  };
+})();
+
+</script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.K = {
+      OLY: [
+        { name: 'Azul', swatch: '#1E6BFF', front: 'assets/iegc-azul-frente.webp', back: 'assets/iegc-azul-costas.webp' },
+        { name: 'Verde', swatch: '#2DBA3E', front: 'assets/iegc-verde-frente.webp', back: 'assets/iegc-verde-costas.webp' }
+      ],
+      FRAMES: ['assets/okt-000.webp', 'assets/okt-045.webp', 'assets/okt-090.webp', 'assets/okt-135.webp', 'assets/okt-180.webp', 'assets/okt-225.webp', 'assets/okt-270.webp', 'assets/okt-315.webp'],
+      PLAYERS: [
+        ['assets/p1-parado.webp', 'Jogador do Pedreira F.C., camisa 7, de costas olhando para o gol'],
+        ['assets/p2-corrida.webp', 'Jogador do Pedreira F.C. correndo para a bola'],
+        ['assets/p3-preparo.webp', 'Jogador do Pedreira F.C. preparando o chute'],
+        ['assets/p4-chute.webp', 'Jogador do Pedreira F.C. chutando a bola'],
+        ['assets/p5-final.webp', 'Jogador do Pedreira F.C. após o chute'],
+        ['assets/p6-olhando.webp', 'Jogador do Pedreira F.C. olhando a bola no fundo da rede']
+      ],
+      KEEPERS: [
+        ['assets/g0-frente.webp', 'Goleiro de frente, posicionado no centro do gol'],
+        ['assets/g1-pronto.webp', 'Goleiro se preparando para o chute'],
+        ['assets/g2-salto.webp', 'Goleiro saltando'],
+        ['assets/g3-alto.webp', 'Goleiro voando para o canto, sem alcançar a bola'],
+        ['assets/g4-chao.webp', 'Goleiro caído após o gol']
+      ],
+      REVEALS: ['cats', 'times', 'timesA', 'timesB', 'eventos', 'turn', 'corr', 'olimp', 'bat', 'dia', 'samba', 'model', 'selo'],
+      PROG: ['times', 'eventos', 'dia', 'samba']
+    };
+    this.state = { shown: {}, prog: {}, kick: 0, oly: 0, ang: 20, auto3: true };
+    this.tv = 0; this.tDrag = false; this.tTarget = null; this.tIdle = 0; this.lastT = 0;
+    this.els = {};
+    this.refs2 = {};
+    var self = this;
+    this.K.REVEALS.concat(this.K.PROG, ['video', 'kick']).forEach(function (k) {
+      self.refs2[k] = function (el) { self.els[k] = el; if (k === 'video' && el) self.setupVideo(el); };
+    });
+    this.lastPT = 0;
+  }
+  setupVideo(v) {
+    try {
+      v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true;
+      v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('loop', '');
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    } catch (e) {}
+  }
+  componentDidMount() {
+    var self = this;
+    var K = this.K;
+    var clamp = function (v, a, b) { return v < a ? a : (v > b ? b : v); };
+    this.fallback = setTimeout(function () {
+      if (Object.keys(self.els).length === 0) {
+        var all = {}; K.REVEALS.forEach(function (k) { all[k] = true; });
+        self.setState({ shown: all });
+      }
+    }, 2500);
+    var tick = function () {
+      self.raf = requestAnimationFrame(tick);
+      var vh = window.innerHeight || 800;
+      var st = self.state, upd = {}, changed = false;
+      var newShown = null;
+      K.REVEALS.forEach(function (k) {
+        var el = self.els[k];
+        if (!el || st.shown[k]) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.86 && r.bottom > 0) { newShown = newShown || Object.assign({}, st.shown); newShown[k] = true; }
+      });
+      if (newShown) { upd.shown = newShown; changed = true; }
+      var newProg = null;
+      K.PROG.forEach(function (k) {
+        var el = self.els[k]; if (!el) return;
+        var r = el.getBoundingClientRect();
+        var p = clamp((vh - r.top) / (vh + r.height), 0, 1);
+        if (Math.abs((st.prog[k] || 0) - p) > 0.002) { newProg = newProg || Object.assign({}, st.prog); newProg[k] = p; }
+      });
+      if (newProg) { upd.prog = newProg; changed = true; }
+      var kel = self.els.kick;
+      if (kel) {
+        var kr = kel.getBoundingClientRect();
+        var kp = clamp(-kr.top / Math.max(1, kr.height - vh), 0, 1);
+        if (Math.abs(kp - st.kick) > 0.0008) { upd.kick = kp; changed = true; }
+      }
+      var now = performance.now(), dt = self.lastT ? Math.min(0.05, (now - self.lastT) / 1000) : 0.016; self.lastT = now;
+      var tel = self.els.turn, vis = false;
+      if (tel) { var trr = tel.getBoundingClientRect(); vis = trr.bottom > -100 && trr.top < vh + 100; }
+      if (vis && !self.tDrag) {
+        var ang = st.ang, moved = false;
+        if (self.tTarget !== null) {
+          var dd = self.tTarget - ang; ang += dd * Math.min(1, dt * 6); moved = true;
+          if (Math.abs(dd) < 0.05) { ang = self.tTarget; self.tTarget = null; }
+        } else {
+          if (Math.abs(self.tv) > 0.5) { ang += self.tv * dt; self.tv *= Math.pow(0.05, dt); moved = true; } else self.tv = 0;
+          self.tIdle += dt;
+          if (st.auto3 && self.tIdle > 1.2) { ang += dt * 60 * Math.min(1, self.tIdle - 1.2); moved = true; }
+        }
+        if (moved) { upd.ang = ang; changed = true; }
+      }
+      if (changed) self.setState(upd);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); clearTimeout(this.fallback); }
+  kickVals(p) {
+    var cl = function (v, a, b) { return v < a ? a : (v > b ? b : v); };
+    var K = this.K;
+    var pi = p < 0.14 ? 0 : (p < 0.28 ? 1 : (p < 0.38 ? 2 : (p < 0.46 ? 3 : (p < 0.68 ? 4 : 5))));
+    var gi = p < 0.28 ? 0 : (p < 0.40 ? 1 : (p < 0.47 ? 2 : (p < 0.64 ? 3 : 4)));
+    var S = { x: 40.5, y: 93 }, E = { x: 75.2, y: 31.8 };
+    var C = { x: S.x + (E.x - S.x) * 0.25, y: Math.min(S.y, E.y) - 14 };
+    var t = cl((p - 0.42) / 0.20, 0, 1);
+    var at = function (t) {
+      var k = 3.2, tp = (1 - 1 / (1 + k * t)) / (1 - 1 / (1 + k)), u = 1 - tp;
+      return { x: u * u * S.x + 2 * u * tp * C.x + tp * tp * E.x, y: u * u * S.y + 2 * u * tp * C.y + tp * tp * E.y, s: 0.3 + 0.7 / (1 + k * t) };
+    };
+    var b = at(t), flying = t > 0 && t < 1;
+    var q = at(Math.max(0, t - 0.09));
+    var dx = b.x - q.x, dy = (b.y - q.y) * 9 / 16;
+    var ang = Math.atan2(dy, dx) * 180 / Math.PI, len = Math.sqrt(dx * dx + dy * dy);
+    var since = p - 0.62;
+    var ap = cl(p / 0.40, 0, 1); ap = ap * ap * (3 - 2 * ap); var ia = 1 - ap;
+    var end = p > 0.66;
+    return {
+      players: K.PLAYERS.map(function (x, i) { return { src: x[0], alt: i === pi ? x[1] : '', op: i === pi ? 1 : 0 }; }),
+      keepers: K.KEEPERS.map(function (x, i) { return { src: x[0], alt: i === gi ? x[1] : '', op: i === gi ? 1 : 0 }; }),
+      bx: b.x.toFixed(2) + '%', by: b.y.toFixed(2) + '%', bs: b.s.toFixed(3),
+      rot: (t * 1080).toFixed(0) + 'deg', bblur: flying ? 'blur(1.2px)' : 'none',
+      streakW: (flying ? len : 0).toFixed(2) + 'cqw',
+      streakL: 'calc(' + b.x.toFixed(2) + '% - ' + (flying ? len : 0).toFixed(2) + 'cqw)',
+      streakSY: (b.s * 0.85).toFixed(3), streakO: flying ? 1 : 0, ang: ang.toFixed(1) + 'deg',
+      flashO: since > 0 && since < 0.08 ? (1 - since / 0.08).toFixed(3) : 0,
+      flashS: (0.6 + cl(since / 0.08, 0, 1) * 1.6).toFixed(3),
+      plT: 'translate(' + (-ia * 9).toFixed(2) + '%, ' + (ia * 7).toFixed(2) + '%) scale(' + (1 + ia * 0.2).toFixed(4) + ')',
+      endO: end ? 1 : 0, endS: end ? 1 : 0.72,
+      tagO: p > 0.03 && p < 0.26 ? 1 : 0,
+      zoom: (1 + 0.05 * cl(p / 0.6, 0, 1)).toFixed(4),
+      wordX: (-p * 8).toFixed(2) + '%',
+      hint: !end, done: end
+    };
+  }
+  renderVals() {
+    var self = this;
+    var K = this.K;
+    var accent = this.props.accent ?? '#F9CA0D';
+    var num = String(this.props.whatsapp || '+55 21 96621-4050').replace(/\D/g, '');
+    var waLink = 'https://wa.me/' + num + '?text=' + encodeURIComponent('Olá, Marol Sports! Quero um orçamento de camisas personalizadas.');
+    var st = this.state, pr = st.prog;
+    var cls = {}; K.REVEALS.forEach(function (k) { cls[k] = st.shown[k] ? 'in' : ''; });
+    var o = K.OLY[st.oly];
+    var olyPills = K.OLY.map(function (x, i) {
+      var on = i === st.oly;
+      return { name: 'Bandeira ' + x.name, swatch: x.swatch, pressed: on ? 'true' : 'false', bg: on ? '#F4F5F2' : 'transparent', fg: on ? '#0A0B0D' : '#F4F5F2', border: on ? '#F4F5F2' : '#3A4566', pick: function () { self.setState({ oly: i }); } };
+    });
+    var dots = [[43.97, 10.57, .45], [57.33, 23.29, .7], [65.52, 40, .95], [40.52, 64.57, 1.2], [37.5, 84, 1.45]].map(function (d) {
+      return { x: d[0] + '%', y: d[1] + '%', delay: d[2] + 's' };
+    });
+    var ss = pr.samba || 0;
+    var A = ((st.ang % 360) + 360) % 360, cur = Math.round(A / 45) % 8;
+    var tframes = K.FRAMES.map(function (src, i) {
+      return { src: src, alt: i === cur ? 'Camisa Equipe Oktoberfest Magé, vista ' + (i + 1) + ' de 8' : '', op: i === cur ? 1 : 0, vis: i === cur ? 'visible' : 'hidden' };
+    });
+    var LBL = ['Frente', 'Frente 3/4', 'Lateral', 'Costas 3/4', 'Costas', 'Costas 3/4', 'Lateral', 'Frente 3/4'];
+    var goAng = function (a) { var c = self.state.ang; self.tTarget = a + Math.round((c - a) / 360) * 360; self.tv = 0; self.setState({ auto3: false }); };
+    return {
+      accent: accent, waLink: waLink, r: this.refs2, cls: cls, dots: dots,
+      timesWord: 'translateX(' + (-(pr.times || 0) * 40).toFixed(2) + '%)',
+      evWord: 'translateX(' + (-30 + (pr.eventos || 0) * 30).toFixed(2) + '%)',
+      diaWord: 'translateX(' + (-(pr.dia || 0) * 35).toFixed(2) + '%)',
+      kick: this.kickVals(st.kick),
+      sambaFront: 'translateY(' + ((0.5 - ss) * 24).toFixed(1) + 'px) rotate(-3deg)',
+      sambaBack: 'translateY(' + ((0.5 - ss) * -24).toFixed(1) + 'px) rotate(4deg)',
+      tframes: tframes, turnLabel: LBL[Math.round(A / 45) % 8],
+      t3: {
+        autoPressed: st.auto3 ? 'true' : 'false', autoBg: st.auto3 ? '#F4F5F2' : 'transparent', autoFg: st.auto3 ? '#0A0B0D' : '#F4F5F2', autoBorder: st.auto3 ? '#F4F5F2' : '#3A4566'
+      },
+      view: {
+        front: function () { goAng(0); },
+        side: function () { goAng(90); },
+        back: function () { goAng(180); },
+        auto: function () { self.tIdle = 2; self.setState({ auto3: !self.state.auto3 }); }
+      },
+      tdown: function (ev) { try { ev.currentTarget.setPointerCapture(ev.pointerId); } catch (x) {} self.tDrag = true; self.tTarget = null; self.tv = 0; self.tIdle = 0; self.px = ev.clientX; self.lastPT = ev.timeStamp || performance.now(); },
+      tmove: function (ev) {
+        if (!self.tDrag) return;
+        var ts = ev.timeStamp || performance.now(), dx = ev.clientX - self.px; self.px = ev.clientX;
+        var d = -dx * 0.5, dtm = Math.max(8, ts - self.lastPT); self.lastPT = ts;
+        self.tv = 0.7 * self.tv + 0.3 * (d / (dtm / 1000)); self.tIdle = 0;
+        self.setState({ ang: self.state.ang + d });
+      },
+      tup: function () { if (self.tDrag) { self.tDrag = false; self.tIdle = 0; if (performance.now() - self.lastPT > 80) self.tv = 0; } },
+      oly: { front: o.front, back: o.back, altFront: 'Frente da camisa Olimpíadas IEGC 2026, bandeira ' + o.name.toLowerCase(), altBack: 'Costas da camisa Olimpíadas IEGC 2026, bandeira ' + o.name.toLowerCase() },
+      olyPills: olyPills
+    };
+  }
+}
+mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-tpl', document.getElementById('app'));
+</script>
+</body>
+</html>
