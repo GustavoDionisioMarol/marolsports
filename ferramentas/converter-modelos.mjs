@@ -19,6 +19,8 @@ const ladosAuto = lerJson('lados-camadas.json');
 const ladosManuais = lerJson('ajustes-manuais.json');
 // camadas que não aparecem (vazias ou cobertas), detectadas por verificar-camadas.mjs
 const invisiveis = lerJson('camadas-invisiveis.json');
+// ombreiras de recorte raglan, detectadas por detectar-ombros.mjs (a manga é comum)
+const ombreiras = lerJson('camadas-ombro.json');
 const ladoDefinido = (numero, peca, camada) =>
   ladosManuais[numero]?.[peca]?.[camada] ?? ladosAuto[numero]?.[peca]?.[camada]?.lado;
 if (!origem || !destino) {
@@ -161,7 +163,7 @@ for (const { numero, dir } of [...pastasModelo(origem)].sort((a, b) => a.numero 
     }
     for (const cam of Object.values(camadas)) for (const l of ['frente', 'verso']) if (cam[l]) delete cam[l].prefixo;
     const todas = Object.keys(camadas).map(Number).sort((a, b) => a - b).map((k) => camadas[k]);
-    const remover = new Set(invisiveis[numero]?.[peca] ?? []);
+    const remover = new Set([...(invisiveis[numero]?.[peca] ?? []), ...(ombreiras[numero]?.[peca] ?? [])]);
     const lista = todas.filter((_, i) => !remover.has(i + 1));
     if (todas.length) modelo.pecas[peca] = lista;
   }

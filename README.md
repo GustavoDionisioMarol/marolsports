@@ -88,6 +88,8 @@ ferramentas/
   classificar-camadas.mjs     sugere se camadas de um lado só são fundo ou destaque
   ajustes-manuais.json        decisão final de cada camada de um lado só (tem prioridade)
   lados-camadas.json          sugestões geradas pelo classificar-camadas.mjs
+  detectar-ombros.mjs         encontra ombreiras de recorte raglan (removidas: a manga é comum)
+  camadas-ombro.json          ombreiras que o conversor remove
   verificar-camadas.mjs       encontra camadas vazias ou cobertas (cor sem efeito)
   camadas-invisiveis.json     camadas que o conversor remove por não aparecerem
   gerar-miniaturas.mjs        gera as miniaturas usando o próprio simulador
@@ -138,8 +140,11 @@ Nesses casos, o campo de cor correspondente não teria efeito. O
 `verificar-camadas.mjs` pinta cada camada de preto e depois de branco e compara
 os pixels da peça. Quando nada muda, a camada vai para
 `camadas-invisiveis.json` e o conversor a remove. Depois de adicionar modelos,
-rode na ordem: `npm run converter`, `node ferramentas/verificar-camadas.mjs` (com
-o servidor ligado), `npm run converter` de novo e `npm run miniaturas`.
+rode na ordem, com o servidor ligado: `npm run converter`,
+`node ferramentas/detectar-ombros.mjs`, `node ferramentas/verificar-camadas.mjs`,
+`npm run converter` de novo e `npm run miniaturas`. Faixas no alto do peito que
+ligam um ombro ao outro (modelos 414 e 523) são mantidas por serem o desenho do
+modelo; a lista de exceções fica em `detectar-ombros.mjs`.
 
 ### Arquivos que o conversor não aproveitou nesta versão
 

@@ -14,12 +14,16 @@ const [url = 'http://localhost:8080/'] = process.argv.slice(2);
 const AQUI = path.dirname(new URL(import.meta.url).pathname);
 const MINIMO_PIXELS = 6; // pixels alterados (em 240 px de largura) para a camada contar como visível
 
+// ombreiras já saem do modelo: não entram na conta (o que estava embaixo delas aparece)
+let ombreiras = {};
+try { ombreiras = JSON.parse(fs.readFileSync(path.join(AQUI, 'camadas-ombro.json'), 'utf8')); } catch { /* sem ombreiras */ }
+
 const navegador = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
 const pagina = await navegador.newPage();
 await pagina.goto(url);
 await pagina.waitForFunction(() => window.simulador?.catalogo);
 
-const invisiveis = await pagina.evaluate(async (MINIMO) => {
+const invisiveis = await pagina.evaluate(async ({ MINIMO, ombreiras }) => {
   const s = window.simulador;
   const VB = { camisa: [224820, 284513], calcao: [182661, 157761] };
   const W = 240;
@@ -29,7 +33,7 @@ const invisiveis = await pagina.evaluate(async (MINIMO) => {
     const H = Math.round((W * vh) / vw);
     const corpo = camadas.map((c, i) => {
       const l = c[lado];
-      if (!l) return '';
+      if (!l || c.ombreira) return '';
       return `<svg width="${vw}" height="${vh}" viewBox="${l.viewBox}" preserveAspectRatio="none" style="color:${i === k ? cor : cinzas[i % cinzas.length]}" fill="currentColor">${l.svg}</svg>`;
     }).join('');
     const doc = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${vw} ${vh}" width="${W}" height="${H}">
@@ -47,8 +51,11 @@ const invisiveis = await pagina.evaluate(async (MINIMO) => {
   const saida = {};
   for (const m of s.catalogo.modelos) {
     const modelo = await s.carregarModelo(m.id);
-    for (const [peca, camadas] of Object.entries(modelo.pecas)) {
+    for (const [peca, lista] of Object.entries(modelo.pecas)) {
+      const fora = new Set(ombreiras[m.id]?.[peca] ?? []);
+      const camadas = lista.map((c, i) => (fora.has(i + 1) ? { ...c, ombreira: true } : c));
       for (let k = 0; k < camadas.length; k++) {
+        if (camadas[k].ombreira) continue;
         let mudou = 0;
         for (const lado of ['frente', 'verso']) {
           if (!camadas[k][lado]) continue;
@@ -61,7 +68,7 @@ const invisiveis = await pagina.evaluate(async (MINIMO) => {
     }
   }
   return saida;
-}, MINIMO_PIXELS);
+}, { MINIMO: MINIMO_PIXELS, ombreiras });
 
 fs.writeFileSync(path.join(AQUI, 'camadas-invisiveis.json'), JSON.stringify(invisiveis, null, 1));
 const total = Object.values(invisiveis).reduce((n, p) => n + Object.values(p).reduce((a, l) => a + l.length, 0), 0);
