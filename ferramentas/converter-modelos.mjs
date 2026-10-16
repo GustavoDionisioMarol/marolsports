@@ -5,6 +5,7 @@
 // Uso: node ferramentas/converter-modelos.mjs "<pasta Futebol Masculino>" simulador/dados
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 
 const [origem, destino] = process.argv.slice(2);
 const AQUI = path.dirname(new URL(import.meta.url).pathname);
@@ -120,6 +121,8 @@ function* pastasModelo(dir) {
 }
 
 const vistos = new Set();
+// versão dos dados: muda sempre que algum modelo muda, para o navegador não usar cópias antigas
+const hashDados = crypto.createHash('sha1');
 for (const { numero, dir } of [...pastasModelo(origem)].sort((a, b) => a.numero - b.numero)) {
   if (vistos.has(numero)) { avisos.push(`Modelo ${numero}: pasta duplicada ignorada (${dir})`); continue; }
   const modelo = { id: numero, pecas: {} };
@@ -173,7 +176,9 @@ for (const { numero, dir } of [...pastasModelo(origem)].sort((a, b) => a.numero 
     continue;
   }
   vistos.add(numero);
-  fs.writeFileSync(path.join(destino, 'modelos', `${numero}.json`), JSON.stringify(modelo));
+  const conteudoModelo = JSON.stringify(modelo);
+  hashDados.update(conteudoModelo);
+  fs.writeFileSync(path.join(destino, 'modelos', `${numero}.json`), conteudoModelo);
   indice.push({
     id: numero,
     camisa: modelo.pecas.camisa?.length ?? 0,
@@ -182,6 +187,6 @@ for (const { numero, dir } of [...pastasModelo(origem)].sort((a, b) => a.numero 
   });
 }
 
-fs.writeFileSync(path.join(destino, 'modelos.json'), JSON.stringify({ viewBox: VIEWBOX, silhuetas, modelos: indice }, null, 1));
+fs.writeFileSync(path.join(destino, 'modelos.json'), JSON.stringify({ versao: hashDados.digest('hex').slice(0, 10), viewBox: VIEWBOX, silhuetas, modelos: indice }, null, 1));
 console.log(`${indice.length} modelos convertidos.`);
 if (avisos.length) console.log(avisos.join('\n'));

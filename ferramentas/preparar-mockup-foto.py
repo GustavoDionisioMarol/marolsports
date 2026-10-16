@@ -232,5 +232,12 @@ saida['lados']['costas'].update({
     'punhos': poli(mover(punho_e, DESLOC)) + poli(mover(punho_d, DESLOC)),
     'gola': 'M996 62C1000 54 1006 48 1012 46C1040 42 1130 41 1163 44C1168 47 1172 52 1172 58C1150 66 1125 71 1100 72C1065 72 1030 68 996 62Z',
 })
+# versão dos arquivos: o simulador pede os mapas com ?v=<versão> para fugir do cache antigo
+import glob
+import hashlib
+h = hashlib.sha1()
+for arq in sorted(glob.glob(f'{destino}/*.webp')):
+    h.update(open(arq, 'rb').read())
+saida['versao'] = h.hexdigest()[:10]
 json.dump(saida, open(f'{destino}/foto.json', 'w'), indent=1)
 print('ok', {l: {p: v['caixa'] for p, v in d['pecas'].items()} for l, d in saida['lados'].items()}, 'branco ref', ref)

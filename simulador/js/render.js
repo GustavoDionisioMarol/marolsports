@@ -493,8 +493,8 @@ export function montarPalcoFoto({ estado, modelos, foto, vista, prefixo = 'f', b
           : `${frente ? `<path d="${f.abertura}" fill="var(--camisa-base)"/><path d="${f.golaInterna}" fill="var(--gola)"/>` : ''}<path d="${f.gola}" fill="var(--gola)"/>`}
       </g>` : ''}
       <!-- o recorte vai em cada imagem: um grupo recortado isolaria a mistura das cores -->
-      <image href="${base}sombra-${mapa}.webp" x="${x0}" y="${y0}" width="${w}" height="${h}" clip-path="url(#${id}-pecas)" style="mix-blend-mode:multiply" pointer-events="none"/>
-      <image href="${base}brilho-${mapa}.webp" x="${x0}" y="${y0}" width="${w}" height="${h}" clip-path="url(#${id}-pecas)" style="mix-blend-mode:screen" opacity=".38" pointer-events="none"/>
+      <image href="${base}sombra-${mapa}.webp${foto.versao ? `?v=${foto.versao}` : ''}" x="${x0}" y="${y0}" width="${w}" height="${h}" clip-path="url(#${id}-pecas)" style="mix-blend-mode:multiply" pointer-events="none"/>
+      <image href="${base}brilho-${mapa}.webp${foto.versao ? `?v=${foto.versao}` : ''}" x="${x0}" y="${y0}" width="${w}" height="${h}" clip-path="url(#${id}-pecas)" style="mix-blend-mode:screen" opacity=".38" pointer-events="none"/>
       ${careca && temCamisa ? `<g pointer-events="none">
         <path d="${careca.gola}" fill="#000" fill-opacity=".35" filter="url(#${id}-sb)" transform="translate(0 3)"/>
         <path d="${careca.abertura}" fill="url(#${id}-interno)"/>

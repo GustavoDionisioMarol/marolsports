@@ -63,7 +63,7 @@ reajustadas para outra imagem.
 ## Rodar localmente
 
 ```bash
-npx http-server simulador -p 8080
+npx http-server simulador -p 8080 -c-1
 # abra http://localhost:8080
 ```
 

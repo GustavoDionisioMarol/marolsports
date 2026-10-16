@@ -140,7 +140,7 @@ const cacheModelos = new Map();
 function carregarModelo(id) {
   if (id == null) return Promise.resolve(null);
   if (!cacheModelos.has(id)) {
-    const p = fetch(`dados/modelos/${id}.json`).then((r) => {
+    const p = fetch(`dados/modelos/${id}.json?v=${catalogo.versao ?? ''}`).then((r) => {
       if (!r.ok) throw new Error(`Modelo ${id} indisponível`);
       return r.json();
     });
@@ -610,7 +610,7 @@ function desenharGradeModelos() {
     ? lista.map((m) => {
       const n = (escolhendoCalcao ? m.calcao : m.camisa) + 1;
       return `<button class="cartao-modelo" data-modelo="${m.id}" aria-pressed="${m.id === selecionado}" title="Modelo ${m.id}">
-        <img src="dados/miniaturas/${escolhendoCalcao ? 'calcao-' : ''}${m.id}.webp" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+        <img src="dados/miniaturas/${escolhendoCalcao ? 'calcao-' : ''}${m.id}.webp?v=${catalogo.versao ?? ''}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
         Modelo ${m.id}<small>${n} ${n === 1 ? 'cor' : 'cores'}</small></button>`;
     }).join('')
     : '<p class="vazio" style="grid-column:1/-1">Nenhum modelo encontrado.</p>';
@@ -719,7 +719,7 @@ async function gerarImagem({ largura = 1800, tipo = 'image/png', comLegenda = tr
   const [mCamisa, mCalcao] = await Promise.all([carregarModelo(e.modeloCamisa), carregarModelo(idCalcao(e))]);
   let { svg, viewBox } = palco({ estado: e, modelos: { camisa: mCamisa, calcao: mCalcao }, vista: 'ambos', prefixo: 'x' });
   // imagens do mockup em foto precisam ir embutidas para a exportação
-  for (const arq of new Set(svg.match(/mockup\/[\w-]+\.webp/g) ?? [])) {
+  for (const arq of new Set(svg.match(/mockup\/[\w-]+\.webp(?:\?v=\w+)?/g) ?? [])) {
     imagensMockup[arq] ??= await base64(arq);
     svg = svg.replaceAll(`"${arq}"`, `"${imagensMockup[arq]}"`);
   }
@@ -959,8 +959,9 @@ function avisar(texto) {
 // ------------------------------------------------------------------ início
 
 async function iniciar() {
-  catalogo = await (await fetch('dados/modelos.json')).json();
-  try { fotoMockup = await (await fetch('mockup/foto.json')).json(); } catch { fotoMockup = null; }
+  // o índice e o mockup vêm sempre do servidor; os demais arquivos levam a versão no endereço
+  catalogo = await (await fetch('dados/modelos.json', { cache: 'no-store' })).json();
+  try { fotoMockup = await (await fetch('mockup/foto.json', { cache: 'no-store' })).json(); } catch { fotoMockup = null; }
   try { visual = localStorage.getItem('marol-sports:visual') || visual; } catch { /* sem armazenamento */ }
   $$('#visual [data-visual]').forEach((b) => {
     b.setAttribute('aria-pressed', b.dataset.visual === visual);
