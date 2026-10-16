@@ -27,16 +27,22 @@ html{scroll-behavior:smooth}
 .nl{transition:color .15s ease}
 .nl:hover{color:#F9CA0D !important}
 @media (max-width:1120px) and (min-width:901px){.nav-links{gap:16px !important;font-size:14px !important}}
-.bat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
-.bat-card{display:flex;flex-direction:column;gap:10px;padding:12px 12px 16px;border-radius:22px;background:#0D1324;border:1px solid #1F2A47;color:#F4F5F2;text-decoration:none;transition:transform .25s ease, border-color .25s ease}
-.bat-card:hover,.bat-card:focus-visible{transform:translateY(-6px);border-color:#F9CA0D}
-.bat-stage{position:relative;aspect-ratio:1/1;border-radius:16px;overflow:hidden;container-type:inline-size}
-.bat-wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Yellowtail','Brush Script MT',cursive;line-height:.82;color:rgba(255,255,255,.17);transform:rotate(-9deg);white-space:nowrap;pointer-events:none}
-.bat-card img{transition:transform .35s ease}
-.bat-card:hover .bat-stage img:last-of-type{transform:rotate(-2deg) translateY(-6px) scale(1.03)}
-.bat-cta{margin-top:auto;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:14px;font-weight:700;color:#F9CA0D}
-.bat-swipe{display:none}
-@media (max-width:700px){.bat-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:0 24px 8px;scroll-padding:0 24px;scrollbar-width:none}.bat-grid::-webkit-scrollbar{display:none}.bat-card{flex:0 0 78%;scroll-snap-align:start}.bat-swipe{display:inline}}
+.bat-view{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
+.bat-main{min-width:0;display:flex;flex-direction:column;gap:16px;padding:14px;border-radius:30px;background:#0D1324;border:1px solid #1F2A47}
+.bat-big{position:relative;aspect-ratio:16/11;border-radius:22px;overflow:hidden;container-type:inline-size;transition:background .4s ease}
+.bat-wm{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:'Yellowtail','Brush Script MT',cursive;line-height:.82;color:rgba(255,255,255,.16);transform:rotate(-8deg);white-space:nowrap;pointer-events:none}
+.bat-back{position:absolute;right:7%;top:9%;height:76%;width:auto;transform:rotate(6deg);filter:brightness(.72) drop-shadow(0 22px 22px rgba(0,0,0,.5))}
+.bat-front{position:absolute;left:9%;top:11%;height:84%;width:auto;transform:rotate(-4deg);filter:drop-shadow(0 30px 28px rgba(0,0,0,.55))}
+.bat-tag{position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:999px;background:rgba(7,11,22,.72);border:1px solid #2A3557;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9CDD3}
+.bat-info{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:0 6px 4px}
+.bat-side{min-width:0;display:flex;flex-direction:column;gap:12px}
+.bat-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bat-opt{display:flex;align-items:center;gap:10px;min-height:64px;padding:6px 10px 6px 6px;border-radius:16px;border:1px solid #1F2A47;background:#0D1324;color:#F4F5F2;font-family:'Barlow',sans-serif;font-size:13px;font-weight:600;line-height:1.2;text-align:left;cursor:pointer;transition:border-color .15s ease, background .15s ease}
+.bat-opt:hover{border-color:#3A4566}
+.bat-opt[aria-pressed="true"]{border-color:#F9CA0D;background:#16203A;box-shadow:inset 0 0 0 1px #F9CA0D}
+.bat-thumb{flex:none;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.bat-thumb img{height:44px;width:auto}
+@media (max-width:980px){.bat-view{grid-template-columns:minmax(0,1fr)}.bat-side{order:-1}.bat-list{display:flex;overflow-x:auto;scrollbar-width:none;margin:0 -24px;padding:0 24px 4px}.bat-list::-webkit-scrollbar{display:none}.bat-opt{flex:none;max-width:200px}.bat-big{aspect-ratio:1/1}}
 .pill{transition:background .15s ease,color .15s ease,border-color .15s ease}
 .grab{cursor:grab}.grab:active{cursor:grabbing}
 .rv{opacity:0;transform:translateY(46px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.75,.2,1)}
@@ -498,129 +504,32 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
           <div style="display: flex; flex-wrap: wrap; gap: 10px"><span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #111A30; border: 1px solid #22305A; font-size: 14px; font-weight: 600">Nome do ritmista</span><span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #111A30; border: 1px solid #22305A; font-size: 14px; font-weight: 600">Naipe: surdo, caixa, tamborim…</span><span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #111A30; border: 1px solid #22305A; font-size: 14px; font-weight: 600">Ensaio e desfile</span></div>
         </div>
       </div>
-      <div class="bat-grid rv {{cls.bat}}">
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Furiosa." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #D61F2666 0%, #D61F2622 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 34.0cqw">Furiosa</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <div style="position: absolute; left: 50%; top: 10%; height: 82%; aspect-ratio: 200 / 230; transform: translateX(-50%)"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Furiosa"><defs><clipPath id="bt0"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt0g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt0)"><rect x="0" y="0" width="200" height="230" fill="#D61F26"/><path d="M20,150 L180,96 L180,120 L20,174 Z" fill="#FFFFFF"/><path d="M11,72 L39,88" stroke="#FFFFFF" stroke-width="7"/><path d="M189,72 L161,88" stroke="#FFFFFF" stroke-width="7"/><rect x="0" y="0" width="200" height="230" fill="url(#bt0g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#FFFFFF" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="112.8" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="26.0" fill="#FFFFFF" stroke="#D61F26" stroke-width="3" paint-order="stroke" stroke-linejoin="round">FURIOSA</text></svg></div>
+      <div class="bat-view rv {{cls.bat}}">
+        <div class="bat-main">
+          <div class="bat-big" style="background: {{bat.bg}}">
+            <span class="bat-wm" aria-hidden="true" style="font-size: {{bat.fs}}"><span style="display: block">{{bat.l1}}</span><span style="display: block">{{bat.l2}}</span><span style="display: block">{{bat.l3}}</span></span>
+            <div style="position: absolute; left: 50%; bottom: 5%; width: 74%; height: 40px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.8), rgba(0,0,0,0))"></div>
+            <img class="bat-back" src="{{bat.back}}" alt="{{bat.altBack}}" style="visibility: {{bat.backVis}}">
+            <img class="bat-front" src="{{bat.front}}" alt="{{bat.altFront}}">
+            <span class="bat-tag">Frente e costas</span>
           </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Furiosa</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #D61F26; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Vermelho e branco</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Tabajara%20do%20Samba." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #2B6CC466 0%, #2B6CC422 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 34.0cqw">Tabajara<br>do Samba</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <img src="assets/baterias/tabajara-b.webp" alt="" loading="lazy" style="position: absolute; right: 3%; top: 9%; height: 72%; width: auto; transform: rotate(6deg); filter: brightness(.72) drop-shadow(0 18px 18px rgba(0,0,0,.5))"><img src="assets/baterias/tabajara-f.webp" alt="Camisa da bateria Tabajara do Samba, frente e costas" loading="lazy" style="position: absolute; left: 4%; top: 13%; height: 80%; width: auto; transform: rotate(-4deg); filter: drop-shadow(0 24px 22px rgba(0,0,0,.55))">
+          <div class="bat-info">
+            <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+              <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(26px, 3vw, 38px); line-height: .95">{{bat.name}}</strong>
+              <span style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 14px; height: 14px; border-radius: 50%; background: {{bat.c1}}; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 14px; height: 14px; border-radius: 50%; margin-left: -5px; background: {{bat.c2}}; border: 1px solid rgba(255,255,255,.3)"></i></span>{{bat.cap}}</span>
+            </div>
+            <a class="btn-main" href="{{bat.wa}}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-weight: 700; font-size: 15px; text-decoration: none; white-space: nowrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>Pedir orçamento</a>
           </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Tabajara do Samba</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #2B6CC4; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Azul e branco</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Soberana." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #13358C66 0%, #13358C22 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 34.0cqw">Soberana</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <img src="assets/baterias/soberana-b.webp" alt="" loading="lazy" style="position: absolute; right: 3%; top: 9%; height: 72%; width: auto; transform: rotate(6deg); filter: brightness(.72) drop-shadow(0 18px 18px rgba(0,0,0,.5))"><img src="assets/baterias/soberana-f.webp" alt="Camisa da bateria Soberana, frente e costas" loading="lazy" style="position: absolute; left: 4%; top: 13%; height: 80%; width: auto; transform: rotate(-4deg); filter: drop-shadow(0 24px 22px rgba(0,0,0,.55))">
+        </div>
+        <div class="bat-side">
+          <span style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #8C94A8">Escolha a bateria</span>
+          <div class="bat-list" role="group" aria-label="Escolha a bateria">
+            <sc-for list="{{batPills}}" as="p" hint-placeholder-count="12">
+              <button class="bat-opt" type="button" onClick="{{p.pick}}" aria-pressed="{{p.pressed}}"><span class="bat-thumb" style="background: radial-gradient(circle, {{p.c1}}66, #0A0F1D 80%)"><img src="{{p.thumb}}" alt=""></span><span class="bat-opt-name">{{p.name}}</span></button>
+            </sc-for>
           </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Soberana</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #13358C; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Azul e branco</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Swingueira%20de%20Noel." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #1E4FA866 0%, #1E4FA822 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 30.0cqw">Swingueira<br>de Noel</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <img src="assets/baterias/noel-b.webp" alt="" loading="lazy" style="position: absolute; right: 3%; top: 9%; height: 72%; width: auto; transform: rotate(6deg); filter: brightness(.72) drop-shadow(0 18px 18px rgba(0,0,0,.5))"><img src="assets/baterias/noel-f.webp" alt="Camisa da bateria Swingueira de Noel, frente e costas" loading="lazy" style="position: absolute; left: 4%; top: 13%; height: 80%; width: auto; transform: rotate(-4deg); filter: drop-shadow(0 24px 22px rgba(0,0,0,.55))">
-          </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Swingueira de Noel</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #1E4FA8; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Azul e branco</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Invocada." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #C8102E66 0%, #C8102E22 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 34.0cqw">Invocada</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <img src="assets/baterias/invocada-b.webp" alt="" loading="lazy" style="position: absolute; right: 3%; top: 9%; height: 72%; width: auto; transform: rotate(6deg); filter: brightness(.72) drop-shadow(0 18px 18px rgba(0,0,0,.5))"><img src="assets/baterias/invocada-f.webp" alt="Camisa da bateria Invocada, frente e costas" loading="lazy" style="position: absolute; left: 4%; top: 13%; height: 80%; width: auto; transform: rotate(-4deg); filter: drop-shadow(0 24px 22px rgba(0,0,0,.55))">
-          </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Invocada</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #C8102E; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #00843D; border: 1px solid rgba(255,255,255,.3)"></i></span>Vermelho, verde e branco</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20N%C3%A3o%20Existe%20Mais%20Quente." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #0A8F3C66 0%, #0A8F3C22 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 27.3cqw">Não Existe<br>Mais Quente</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <img src="assets/baterias/quente-b.webp" alt="" loading="lazy" style="position: absolute; right: 3%; top: 9%; height: 72%; width: auto; transform: rotate(6deg); filter: brightness(.72) drop-shadow(0 18px 18px rgba(0,0,0,.5))"><img src="assets/baterias/quente-f.webp" alt="Camisa da bateria Não Existe Mais Quente, frente e costas" loading="lazy" style="position: absolute; left: 4%; top: 13%; height: 80%; width: auto; transform: rotate(-4deg); filter: drop-shadow(0 24px 22px rgba(0,0,0,.55))">
-          </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Não Existe Mais Quente</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #0A8F3C; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Verde e branco</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Pura%20Cad%C3%AAncia." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #0B6E8A66 0%, #0B6E8A22 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 34.0cqw">Pura<br>Cadência</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <img src="assets/baterias/cadencia-b.webp" alt="" loading="lazy" style="position: absolute; right: 3%; top: 9%; height: 72%; width: auto; transform: rotate(6deg); filter: brightness(.72) drop-shadow(0 18px 18px rgba(0,0,0,.5))"><img src="assets/baterias/cadencia-f.webp" alt="Camisa da bateria Pura Cadência, frente e costas" loading="lazy" style="position: absolute; left: 4%; top: 13%; height: 80%; width: auto; transform: rotate(-4deg); filter: drop-shadow(0 24px 22px rgba(0,0,0,.55))">
-          </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Pura Cadência</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #0B6E8A; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #F2B705; border: 1px solid rgba(255,255,255,.3)"></i></span>Azul pavão e amarelo ouro</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Swing%20da%20Leopoldina." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #0E7A3E66 0%, #0E7A3E22 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 30.0cqw">Swing da<br>Leopoldina</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <img src="assets/baterias/leopoldina-b.webp" alt="" loading="lazy" style="position: absolute; right: 3%; top: 9%; height: 72%; width: auto; transform: rotate(6deg); filter: brightness(.72) drop-shadow(0 18px 18px rgba(0,0,0,.5))"><img src="assets/baterias/leopoldina-f.webp" alt="Camisa da bateria Swing da Leopoldina, frente e costas" loading="lazy" style="position: absolute; left: 4%; top: 13%; height: 80%; width: auto; transform: rotate(-4deg); filter: drop-shadow(0 24px 22px rgba(0,0,0,.55))">
-          </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Swing da Leopoldina</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #0E7A3E; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #E3B23C; border: 1px solid rgba(255,255,255,.3)"></i></span>Verde, branco e ouro</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Furac%C3%A3o%20Vermelho%20e%20Branco." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #D0202E66 0%, #D0202E22 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 24.0cqw">Furacão<br>Vermelho<br>e Branco</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <img src="assets/baterias/furacao-b.webp" alt="" loading="lazy" style="position: absolute; right: 3%; top: 9%; height: 72%; width: auto; transform: rotate(6deg); filter: brightness(.72) drop-shadow(0 18px 18px rgba(0,0,0,.5))"><img src="assets/baterias/furacao-f.webp" alt="Camisa da bateria Furacão Vermelho e Branco, frente e costas" loading="lazy" style="position: absolute; left: 4%; top: 13%; height: 80%; width: auto; transform: rotate(-4deg); filter: drop-shadow(0 24px 22px rgba(0,0,0,.55))">
-          </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Furacão Vermelho e Branco</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #D0202E; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Vermelho e branco</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Tem%20Que%20Respeitar%20Meu%20Tamborim." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #0A7B3E66 0%, #0A7B3E22 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 22.9cqw">Tem Que<br>Respeitar<br>Meu Tamborim</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <img src="assets/baterias/tamborim-b.webp" alt="" loading="lazy" style="position: absolute; right: 3%; top: 9%; height: 72%; width: auto; transform: rotate(6deg); filter: brightness(.72) drop-shadow(0 18px 18px rgba(0,0,0,.5))"><img src="assets/baterias/tamborim-f.webp" alt="Camisa da bateria Tem Que Respeitar Meu Tamborim, frente e costas" loading="lazy" style="position: absolute; left: 4%; top: 13%; height: 80%; width: auto; transform: rotate(-4deg); filter: drop-shadow(0 24px 22px rgba(0,0,0,.55))">
-          </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Tem Que Respeitar Meu Tamborim</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #0A7B3E; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #E0559B; border: 1px solid rgba(255,255,255,.3)"></i></span>Verde e rosa</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20bateria%20Sinf%C3%B4nica%20do%20Samba." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #0B6B3A66 0%, #0B6B3A22 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 33.3cqw">Sinfônica<br>do Samba</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <img src="assets/baterias/sinfonica-b.webp" alt="" loading="lazy" style="position: absolute; right: 3%; top: 9%; height: 72%; width: auto; transform: rotate(6deg); filter: brightness(.72) drop-shadow(0 18px 18px rgba(0,0,0,.5))"><img src="assets/baterias/sinfonica-f.webp" alt="Camisa da bateria Sinfônica do Samba, frente e costas" loading="lazy" style="position: absolute; left: 4%; top: 13%; height: 80%; width: auto; transform: rotate(-4deg); filter: drop-shadow(0 24px 22px rgba(0,0,0,.55))">
-          </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Sinfônica do Samba</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #0B6B3A; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #FFFFFF; border: 1px solid rgba(255,255,255,.3)"></i></span>Verde e branco</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
-        <a class="bat-card" href="https://wa.me/5521966214050?text=Ol%C3%A1%2C%20Marol%20Sports%21%20Quero%20um%20or%C3%A7amento%20de%20camisas%20para%20a%20minha%20bateria." target="_blank" rel="noopener">
-          <div class="bat-stage" style="background: radial-gradient(circle at 50% 42%, #1A1D2466 0%, #1A1D2422 38%, #0B1020 78%)">
-            <span aria-hidden="true" class="bat-wm" style="font-size: 34.0cqw">Sua<br>bateria</span>
-            <div style="position: absolute; left: 50%; bottom: 6%; width: 70%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.75), rgba(0,0,0,0))"></div>
-            <div style="position: absolute; left: 50%; top: 10%; height: 82%; aspect-ratio: 200 / 230; transform: translateX(-50%)"><svg viewBox="0 0 200 230" width="100%" height="100%" role="img" aria-label="Camisa da bateria Sua bateria"><defs><clipPath id="bt11"><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z"/></clipPath><linearGradient id="bt11g" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".78" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs><ellipse cx="100" cy="220" rx="64" ry="6" fill="#000" opacity=".45"/><g clip-path="url(#bt11)"><rect x="0" y="0" width="200" height="230" fill="#1A1D24"/><rect x="20" y="160" width="160" height="10" fill="#F9CA0D"/><rect x="20" y="178" width="160" height="6" fill="#F9CA0D"/><rect x="20" y="190" width="160" height="3" fill="#F9CA0D"/><path d="M11,72 L39,88" stroke="#F9CA0D" stroke-width="5"/><path d="M189,72 L161,88" stroke="#F9CA0D" stroke-width="5"/><rect x="0" y="0" width="200" height="230" fill="url(#bt11g)"/></g><path d="M86,14 Q100,31 114,14" fill="none" stroke="#F9CA0D" stroke-width="5"/><path d="M64,24 L86,14 Q100,28 114,14 L136,24 Q160,31 171,44 L187,75 Q177,84 162,88 L150,71 L149,204 Q100,213 51,204 L50,71 L38,88 Q23,84 13,75 L29,44 Q40,31 64,24 Z" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/><text x="100" y="100.1" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="26.0" fill="#F9CA0D" stroke="#1A1D24" stroke-width="3" paint-order="stroke" stroke-linejoin="round">SUA</text><text x="100" y="125.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="26.0" fill="#F9CA0D" stroke="#1A1D24" stroke-width="3" paint-order="stroke" stroke-linejoin="round">BATERIA</text></svg></div>
-          </div>
-          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 2vw, 23px); line-height: 1">Sua bateria</strong>
-          <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9B1C4"><span aria-hidden="true" style="display: inline-flex"><i style="width: 12px; height: 12px; border-radius: 50%; background: #1A1D24; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 12px; height: 12px; border-radius: 50%; margin-left: -4px; background: #F9CA0D; border: 1px solid rgba(255,255,255,.3)"></i></span>Nas cores da sua escola</span>
-          <span class="bat-cta">Pedir orçamento <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
-        </a>
+        </div>
       </div>
-      <p class="rv {{cls.bat}}" style="margin: 0; font-size: 14px; color: #8C94A8"><span class="bat-swipe">Arraste para o lado para ver todas. </span>Toque na camisa da sua bateria para pedir o orçamento pelo WhatsApp.</p>
     </div>
   </section>
 
@@ -884,6 +793,7 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.K = {
+      BAT: [{"k": "furiosa", "name": "Furiosa", "c1": "#D61F26", "c2": "#FFFFFF", "cap": "Vermelho e branco", "l": ["A Furiosa", "", ""], "fs": 26, "ext": "webp"}, {"k": "tabajara", "name": "Tabajara do Samba", "c1": "#1F4FD1", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Tabajara", "do Samba", ""], "fs": 26, "ext": "webp"}, {"k": "soberana", "name": "Soberana", "c1": "#1A44C2", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Soberana", "", ""], "fs": 26, "ext": "webp"}, {"k": "noel", "name": "Swingueira de Noel", "c1": "#2E8FE0", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Swingueira", "de Noel", ""], "fs": 24.0, "ext": "webp"}, {"k": "invocada", "name": "Invocada", "c1": "#0E7A3E", "c2": "#D61F26", "cap": "Verde, vermelho e branco", "l": ["Invocada", "", ""], "fs": 26, "ext": "webp"}, {"k": "quente", "name": "Não Existe Mais Quente", "c1": "#1E9B45", "c2": "#FFFFFF", "cap": "Verde e branco", "l": ["Não Existe", "Mais Quente", ""], "fs": 21.8, "ext": "webp"}, {"k": "cadencia", "name": "Pura Cadência", "c1": "#1F3FC0", "c2": "#F2C200", "cap": "Azul e amarelo ouro", "l": ["Pura", "Cadência", ""], "fs": 26, "ext": "webp"}, {"k": "leopoldina", "name": "Swing da Leopoldina", "c1": "#0E6B35", "c2": "#E3B23C", "cap": "Verde, branco e ouro", "l": ["Swing da", "Leopoldina", ""], "fs": 24.0, "ext": "webp"}, {"k": "furacao", "name": "Furacão Vermelho e Branco", "c1": "#D0202E", "c2": "#FFFFFF", "cap": "Vermelho e branco", "l": ["Furacão", "Vermelho", "e Branco"], "fs": 19, "ext": "webp"}, {"k": "tamborim", "name": "Tem Que Respeitar Meu Tamborim", "c1": "#0A6B3A", "c2": "#E0559B", "cap": "Verde e rosa", "l": ["Tem Que", "Respeitar", "Meu Tamborim"], "fs": 18.7, "ext": "webp"}, {"k": "sinfonica", "name": "Sinfônica do Samba", "c1": "#0B5E33", "c2": "#FFFFFF", "cap": "Verde e branco", "l": ["Sinfônica", "do Samba", ""], "fs": 26, "ext": "webp"}, {"k": "sua", "name": "Sua bateria", "c1": "#2A2D36", "c2": "#F9CA0D", "cap": "Nas cores da sua escola", "l": ["Sua", "bateria", ""], "fs": 26, "ext": "svg"}],
       OLY: [
         { name: 'Azul', swatch: '#1E6BFF', front: 'assets/iegc-azul-frente.webp', back: 'assets/iegc-azul-costas.webp' },
         { name: 'Verde', swatch: '#2DBA3E', front: 'assets/iegc-verde-frente.webp', back: 'assets/iegc-verde-costas.webp' }
@@ -907,7 +817,7 @@ class Component extends DCLogic {
       REVEALS: ['cats', 'times', 'timesA', 'timesB', 'eventos', 'turn', 'corr', 'olimp', 'bat', 'dia', 'samba', 'model', 'selo'],
       PROG: ['times', 'eventos', 'dia', 'samba']
     };
-    this.state = { shown: {}, prog: {}, kick: 0, oly: 0, ang: 20, auto3: true };
+    this.state = { shown: {}, prog: {}, kick: 0, oly: 0, bat: 0, ang: 20, auto3: true };
     this.tv = 0; this.tDrag = false; this.tTarget = null; this.tIdle = 0; this.lastT = 0;
     this.els = {};
     this.refs2 = {};
@@ -1026,6 +936,13 @@ class Component extends DCLogic {
     var st = this.state, pr = st.prog;
     var cls = {}; K.REVEALS.forEach(function (k) { cls[k] = st.shown[k] ? 'in' : ''; });
     var o = K.OLY[st.oly];
+    var bt = K.BAT[st.bat];
+    var batImg = function (x, side) { return 'assets/baterias/' + x.k + '-' + (x.ext === 'svg' ? 'f' : side) + '.' + x.ext; };
+    var batPills = K.BAT.map(function (x, i) {
+      var on = i === st.bat;
+      return { name: x.name, thumb: batImg(x, 'f'), c1: x.c1, c2: x.c2, pressed: on ? 'true' : 'false', pick: function () { self.setState({ bat: i }); } };
+    });
+    var batMsg = bt.k === 'sua' ? 'Olá, Marol Sports! Quero um orçamento de camisas para a minha bateria.' : 'Olá, Marol Sports! Quero um orçamento de camisas para a bateria ' + bt.name + '.';
     var olyPills = K.OLY.map(function (x, i) {
       var on = i === st.oly;
       return { name: 'Bandeira ' + x.name, swatch: x.swatch, pressed: on ? 'true' : 'false', bg: on ? '#F4F5F2' : 'transparent', fg: on ? '#0A0B0D' : '#F4F5F2', border: on ? '#F4F5F2' : '#3A4566', pick: function () { self.setState({ oly: i }); } };
@@ -1068,7 +985,9 @@ class Component extends DCLogic {
       },
       tup: function () { if (self.tDrag) { self.tDrag = false; self.tIdle = 0; if (performance.now() - self.lastPT > 80) self.tv = 0; } },
       oly: { front: o.front, back: o.back, altFront: 'Frente da camisa Olimpíadas IEGC 2026, bandeira ' + o.name.toLowerCase(), altBack: 'Costas da camisa Olimpíadas IEGC 2026, bandeira ' + o.name.toLowerCase() },
-      olyPills: olyPills
+      olyPills: olyPills,
+      batPills: batPills,
+      bat: { name: bt.name, cap: bt.cap, c1: bt.c1, c2: bt.c2, l1: bt.l[0], l2: bt.l[1], l3: bt.l[2], fs: bt.fs + 'cqw', front: batImg(bt, 'f'), back: batImg(bt, 'b'), backVis: bt.ext === 'svg' ? 'hidden' : 'visible', bg: 'radial-gradient(circle at 42% 45%, ' + bt.c1 + '88 0%, ' + bt.c1 + '2E 40%, #0A0F1D 78%)', altFront: 'Frente da camisa da bateria ' + bt.name, altBack: 'Costas da camisa da bateria ' + bt.name, wa: 'https://wa.me/' + num + '?text=' + encodeURIComponent(batMsg) }
     };
   }
 }
