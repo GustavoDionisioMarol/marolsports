@@ -1,0 +1,16 @@
+# Publicação no Netlify: o site é estático e fica todo na pasta simulador/.
+# Não há etapa de build; os arquivos de origem (.cdr/.svg) não vão para o ar.
+[build]
+  publish = "simulador"
+  command = "echo 'Site estático: nada para compilar'"
+
+# índice do catálogo e mockup sempre atualizados (o resto já leva ?v=<versão>)
+[[headers]]
+  for = "/dados/modelos.json"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/mockup/foto.json"
+  [headers.values]
+    Cache-Control = "no-cache"
