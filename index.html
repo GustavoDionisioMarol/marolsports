@@ -39,6 +39,7 @@ html{scroll-behavior:smooth}
 .bat-main{min-width:0;display:flex;flex-direction:column;gap:16px;padding:14px;border-radius:30px;background:#1C0B0F;border:1px solid #3A1A20}
 .bat-big{position:relative;aspect-ratio:16/11;border-radius:22px;overflow:hidden;container-type:inline-size;transition:background .4s ease}
 .bat-wm{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:'Yellowtail','Brush Script MT',cursive;line-height:.82;color:rgba(255,255,255,.16);transform:rotate(-8deg);white-space:nowrap;pointer-events:none}
+.bat-logo{position:absolute;left:50%;top:50%;width:96%;height:96%;object-fit:contain;transform:translate(-50%,-50%);opacity:.2;pointer-events:none}
 .bat-back{position:absolute;right:7%;top:9%;height:76%;width:auto;transform:rotate(6deg);filter:brightness(.72) drop-shadow(0 22px 22px rgba(0,0,0,.5))}
 .bat-front{position:absolute;left:9%;top:11%;height:84%;width:auto;transform:rotate(-4deg);filter:drop-shadow(0 30px 28px rgba(0,0,0,.55))}
 .bat-tag{position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:999px;background:rgba(20,8,9,.72);border:1px solid #4A2028;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9CDD3}
@@ -570,7 +571,8 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
       <div class="bat-view rv {{cls.bat}}">
         <div class="bat-main">
           <div class="bat-big" style="background: {{bat.bg}}">
-            <span class="bat-wm" aria-hidden="true" style="font-size: {{bat.fs}}"><span style="display: block">{{bat.l1}}</span><span style="display: block">{{bat.l2}}</span><span style="display: block">{{bat.l3}}</span></span>
+            <img class="bat-logo" src="{{bat.logo}}" alt="" aria-hidden="true" style="visibility: {{bat.logoVis}}">
+            <span class="bat-wm" aria-hidden="true" style="font-size: {{bat.fs}}; visibility: {{bat.wmVis}}"><span style="display: block">{{bat.l1}}</span><span style="display: block">{{bat.l2}}</span><span style="display: block">{{bat.l3}}</span></span>
             <div style="position: absolute; left: 50%; bottom: 5%; width: 74%; height: 40px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.8), rgba(0,0,0,0))"></div>
             <img class="bat-back" src="{{bat.back}}" alt="{{bat.altBack}}" style="visibility: {{bat.backVis}}">
             <img class="bat-front" src="{{bat.front}}" alt="{{bat.altFront}}">
@@ -1018,7 +1020,7 @@ class Component extends DCLogic {
       oly: { front: o.front, back: o.back, altFront: 'Frente da camisa Olimpíadas IEGC 2026, bandeira ' + o.name.toLowerCase(), altBack: 'Costas da camisa Olimpíadas IEGC 2026, bandeira ' + o.name.toLowerCase() },
       olyPills: olyPills,
       batPills: batPills,
-      bat: { name: bt.name, cap: bt.cap, escola: bt.escola, enredo: bt.enredo, titulo: bt.titulo, tema: bt.tema, c1: bt.c1, c2: bt.c2, l1: bt.l[0], l2: bt.l[1], l3: bt.l[2], fs: bt.fs + 'cqw', front: batImg(bt, 'f'), back: batImg(bt, 'b'), backVis: bt.ext === 'svg' ? 'hidden' : 'visible', bg: 'radial-gradient(circle at 42% 45%, ' + bt.c1 + '88 0%, ' + bt.c1 + '2E 40%, #120609 78%)', altFront: 'Frente da camisa da bateria ' + bt.name, altBack: 'Costas da camisa da bateria ' + bt.name, wa: 'https://wa.me/' + num + '?text=' + encodeURIComponent(batMsg) }
+      bat: { logo: bt.k === 'furiosa' ? '' : 'assets/baterias/' + bt.k + '-logo.webp', logoVis: bt.k === 'furiosa' ? 'hidden' : 'visible', wmVis: bt.k === 'furiosa' ? 'visible' : 'hidden', name: bt.name, cap: bt.cap, escola: bt.escola, enredo: bt.enredo, titulo: bt.titulo, tema: bt.tema, c1: bt.c1, c2: bt.c2, l1: bt.l[0], l2: bt.l[1], l3: bt.l[2], fs: bt.fs + 'cqw', front: batImg(bt, 'f'), back: batImg(bt, 'b'), backVis: bt.ext === 'svg' ? 'hidden' : 'visible', bg: 'radial-gradient(circle at 42% 45%, ' + bt.c1 + '88 0%, ' + bt.c1 + '2E 40%, #120609 78%)', altFront: 'Frente da camisa da bateria ' + bt.name, altBack: 'Costas da camisa da bateria ' + bt.name, wa: 'https://wa.me/' + num + '?text=' + encodeURIComponent(batMsg) }
     };
   }
 }
