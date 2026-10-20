@@ -1,0 +1,20 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo \"Site estático: nada para instalar\"",
+  "buildCommand": "echo \"Site estático: nada para compilar\"",
+  "outputDirectory": ".",
+  "redirects": [
+    { "source": "/simulador", "destination": "/simulador/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/simulador/dados/modelos.json",
+      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+    },
+    {
+      "source": "/simulador/mockup/foto.json",
+      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+    }
+  ]
+}

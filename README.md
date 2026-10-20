@@ -97,11 +97,26 @@ reajustadas para outra imagem.
 > **Licença:** se a foto veio de um banco de imagens (Freepik, Envato etc.),
 > confirme que a licença permite usá-la no site antes de publicar.
 
+## Publicação na Vercel
+
+O site da Marol Store (raiz do repositório) e o simulador (`simulador/`) são
+publicados juntos num único projeto da Vercel: o site em `/` e o simulador em
+`/simulador/`. A configuração está em `vercel.json` (sem build) e o
+`.vercelignore` deixa de fora os arquivos de origem (~2 GB), as ferramentas e a
+documentação.
+
+**Fluxo de aprovação:**
+- O `main` é a versão aprovada, que fica no ar.
+- Cada mudança é feita em outro branch, e a Vercel gera um endereço de prévia
+  para ele.
+- Depois da aprovação, o branch é juntado ao `main` e o site oficial atualiza
+  sozinho.
+
 ## Rodar localmente
 
 ```bash
-npx http-server simulador -p 8080 -c-1
-# abra http://localhost:8080
+npx http-server . -p 8080 -c-1
+# site: http://localhost:8080   simulador: http://localhost:8080/simulador/
 ```
 
 O simulador precisa ser servido por HTTP, porque abrir o `index.html` direto do
