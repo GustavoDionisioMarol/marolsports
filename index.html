@@ -46,6 +46,15 @@ html{scroll-behavior:smooth}
 .bat-info{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:0 6px 4px}
 .bat-story{display:flex;flex-direction:column;gap:10px;margin:0 6px 6px;padding:16px 18px;border-radius:18px;background:#140809;border:1px solid #3A1A20}
 .bat-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:#F9CA0D;color:#0A0B0D;font-size:13px;font-weight:800;letter-spacing:.04em}
+.bat-lines{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bat-line{display:flex;align-items:center;gap:10px;min-height:56px;padding:8px 14px;border-radius:16px;border:1px solid #3A1A20;background:#140809;color:#F4F5F2;font-family:'Barlow',sans-serif;text-align:left;cursor:pointer;transition:border-color .15s ease, background .15s ease}
+.bat-line b{display:block;font-size:15px}
+.bat-line em{display:block;font-style:normal;font-size:12px;color:#B89AA0}
+.bat-line svg{flex:none;width:20px;height:20px;color:#F9CA0D}
+.bat-line:hover{border-color:#5A2A33}
+.bat-line[aria-pressed="true"]{border-color:#F9CA0D;background:#2A1217;box-shadow:inset 0 0 0 1px #F9CA0D}
+.bat-floor{position:absolute;left:50%;bottom:5%;width:74%;height:40px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.8),rgba(0,0,0,0))}
+.bat-tag-b{left:auto;right:14px}
 .bat-side{min-width:0;display:flex;flex-direction:column;gap:12px}
 .bat-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .bat-opt{display:flex;align-items:center;gap:10px;min-height:64px;padding:6px 10px 6px 6px;border-radius:16px;border:1px solid #3A1A20;background:#1C0B0F;color:#F4F5F2;font-family:'Barlow',sans-serif;font-size:13px;font-weight:600;line-height:1.2;text-align:left;cursor:pointer;transition:border-color .15s ease, background .15s ease}
@@ -53,6 +62,7 @@ html{scroll-behavior:smooth}
 .bat-opt[aria-pressed="true"]{border-color:#F9CA0D;background:#2A1217;box-shadow:inset 0 0 0 1px #F9CA0D}
 .bat-thumb{flex:none;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .bat-thumb img{height:44px;width:auto}
+@media (max-width:700px){.bat-big{aspect-ratio:16/11 !important}.bat-front{left:2%;top:auto;bottom:6%;width:49%;height:auto;transform:none}.bat-back{right:2%;top:auto;bottom:6%;width:47%;height:auto;transform:none;filter:drop-shadow(0 16px 16px rgba(0,0,0,.5))}.bat-tag{top:10px;font-size:11px;padding:4px 10px}.bat-tag-f{left:10px}.bat-tag-b{display:inline-block;left:auto;right:10px}.bat-line em{display:none}}
 @media (max-width:980px){.bat-view{grid-template-columns:minmax(0,1fr)}.bat-side{order:-1}.bat-list{display:flex;overflow-x:auto;scrollbar-width:none;margin:0 -24px;padding:0 24px 4px}.bat-list::-webkit-scrollbar{display:none}.bat-opt{flex:none;max-width:200px}.bat-big{aspect-ratio:1/1}}
 .pill{transition:background .15s ease,color .15s ease,border-color .15s ease}
 .grab{cursor:grab}.grab:active{cursor:grabbing}
@@ -564,41 +574,56 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
           <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 4.6vw, 60px); line-height: .92">O samba no peito.<br><span style="color: {{accent}}">O ano inteiro.</span></strong>
         </div>
         <div style="display: flex; flex-direction: column; gap: 16px">
-          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #D3BEC2">Pra quem vive o carnaval o ano todo: camisas inspiradas nas baterias mais famosas do Rio, com estampas exclusivas para vestir no ensaio, no bloco, na quadra ou no rolê do fim de semana.</p>
+          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #D3BEC2">Pra quem vive o carnaval o ano todo. Escolha a sua escola e a linha: <b style="color: #F4F5F2">Legado</b>, que homenageia o enredo campeão da escola, ou <b style="color: #F4F5F2">Paixão pelo Samba</b>, pra vestir o amor pela escola no ensaio, na quadra ou no rolê.</p>
         
         </div>
       </div>
       <div class="bat-view rv {{cls.bat}}">
         <div class="bat-main">
+          <div class="bat-lines" role="group" aria-label="Linha da estampa">
+            <button class="bat-line" type="button" onClick="{{lineLeg.pick}}" aria-pressed="{{lineLeg.pressed}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v5a5 5 0 0 1-10 0z"></path><path d="M17 5h3v2a3 3 0 0 1-3 3"></path><path d="M7 5H4v2a3 3 0 0 0 3 3"></path></svg><span><b>Legado</b><em>Enredo campeão da escola</em></span></button>
+            <button class="bat-line" type="button" onClick="{{linePai.pick}}" aria-pressed="{{linePai.pressed}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg><span><b>Paixão pelo Samba</b><em>O amor pela escola</em></span></button>
+          </div>
           <div class="bat-big" style="background: {{bat.bg}}">
-            <img class="bat-logo" src="{{bat.logo}}" alt="" aria-hidden="true" style="visibility: {{bat.logoVis}}">
-            <span class="bat-wm" aria-hidden="true" style="font-size: {{bat.fs}}; visibility: {{bat.wmVis}}"><span style="display: block">{{bat.l1}}</span><span style="display: block">{{bat.l2}}</span><span style="display: block">{{bat.l3}}</span></span>
-            <div style="position: absolute; left: 50%; bottom: 5%; width: 74%; height: 40px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.8), rgba(0,0,0,0))"></div>
-            <img class="bat-back" src="{{bat.back}}" alt="{{bat.altBack}}" style="visibility: {{bat.backVis}}">
+            <img class="bat-logo" src="{{bat.logo}}" alt="" aria-hidden="true">
+            <div class="bat-floor"></div>
+            <img class="bat-back" src="{{bat.back}}" alt="{{bat.altBack}}">
             <img class="bat-front" src="{{bat.front}}" alt="{{bat.altFront}}">
-            <span class="bat-tag">Frente e costas</span>
+            <span class="bat-tag bat-tag-f">Frente</span><span class="bat-tag bat-tag-b">Costas</span>
           </div>
           <div class="bat-info">
             <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+              <span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: {{accent}}">{{bat.kicker}}</span>
               <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(26px, 3vw, 38px); line-height: .95">{{bat.name}}</strong>
               <span style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #D3BEC2"><span aria-hidden="true" style="display: inline-flex"><i style="width: 14px; height: 14px; border-radius: 50%; background: {{bat.c1}}; border: 1px solid rgba(255,255,255,.3)"></i><i style="width: 14px; height: 14px; border-radius: 50%; margin-left: -5px; background: {{bat.c2}}; border: 1px solid rgba(255,255,255,.3)"></i></span>{{bat.cap}}</span>
             </div>
             <a class="btn-main" href="{{bat.wa}}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-weight: 700; font-size: 15px; text-decoration: none; white-space: nowrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>Quero a minha</a>
           </div>
-          <div class="bat-story">
+          <div class="bat-story" style="display: {{bat.legDisp}}">
+            <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #D3BEC2"><b style="color: #F4F5F2">Linha Legado:</b> cada camisa homenageia o enredo com que a escola conquistou o carnaval.</p>
             <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
               <span class="bat-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v5a5 5 0 0 1-10 0z"></path><path d="M17 5h3v2a3 3 0 0 1-3 3"></path><path d="M7 5H4v2a3 3 0 0 0 3 3"></path></svg>{{bat.titulo}}</span>
-              <span style="font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #B89AA0">Enredo · {{bat.escola}}</span>
+              <span style="font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #B89AA0">Enredo homenageado · {{bat.escola}}</span>
             </div>
             <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.05">“{{bat.enredo}}”</strong>
             <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #D3BEC2"><span style="color: #F4F5F2; font-weight: 600">Na estampa:</span> {{bat.tema}}</p>
           </div>
+          <div class="bat-story" style="display: {{bat.paiDisp}}">
+            <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #D3BEC2"><b style="color: #F4F5F2">Linha Paixão pelo Samba:</b> pra vestir o amor pela escola no dia a dia, com os símbolos e as cores da comunidade.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <span class="bat-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg>Frente</span><strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.1">“{{bat.f1}}”</strong>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <span class="bat-chip" style="background: #F4F5F2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg>Costas</span><strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.1">“{{bat.f2}}”</strong>
+            </div>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #D3BEC2"><span style="color: #F4F5F2; font-weight: 600">Na estampa:</span> {{bat.ptema}}</p>
+          </div>
         </div>
         <div class="bat-side">
-          <span style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #B89AA0">Escolha a bateria</span>
-          <div class="bat-list" role="group" aria-label="Escolha a bateria">
+          <span style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #B89AA0">Escolha a escola</span>
+          <div class="bat-list" role="group" aria-label="Escolha a escola">
             <sc-for list="{{batPills}}" as="p" hint-placeholder-count="11">
-              <button class="bat-opt" type="button" onClick="{{p.pick}}" aria-pressed="{{p.pressed}}"><span class="bat-thumb" style="background: radial-gradient(circle, {{p.c1}}66, #120609 80%)"><img src="{{p.thumb}}" alt=""></span><span class="bat-opt-name">{{p.name}}</span></button>
+              <button class="bat-opt" type="button" onClick="{{p.pick}}" aria-pressed="{{p.pressed}}"><span class="bat-thumb" style="background: radial-gradient(circle, {{p.c1}}66, #120609 80%)"><img src="{{p.thumb}}" alt=""></span><span class="bat-opt-name"><b style="display: block">{{p.name}}</b><small style="display: block; font-weight: 500; color: #B89AA0">{{p.sub}}</small></span></button>
             </sc-for>
           </div>
         </div>
@@ -826,7 +851,7 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.K = {
-      BAT: [{"k": "furiosa", "name": "Furiosa", "c1": "#D61F26", "c2": "#FFFFFF", "cap": "Vermelho e branco", "l": ["A Furiosa", "", ""], "fs": 26, "ext": "webp", "escola": "Salgueiro", "enredo": "Bahia de Todos os Deuses", "titulo": "Campeã de 1969", "tema": "Baiana de tabuleiro, a igreja do Pelourinho e a roda de capoeira."}, {"k": "tabajara", "name": "Tabajara do Samba", "c1": "#1F4FD1", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Tabajara", "do Samba", ""], "fs": 26, "ext": "webp", "escola": "Portela", "enredo": "Lendas e Mistérios da Amazônia", "titulo": "Campeã de 1970", "tema": "Vitória-régia, rio, sol, lua e penas da águia."}, {"k": "soberana", "name": "Soberana", "c1": "#1A44C2", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Soberana", "", ""], "fs": 26, "ext": "webp", "escola": "Beija-Flor", "enredo": "Ratos e Urubus", "titulo": "Vice-campeã de 1989", "tema": "Coroa, retalhos e urubus: o encontro entre luxo e descarte."}, {"k": "noel", "name": "Swingueira de Noel", "c1": "#2E8FE0", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Swingueira", "de Noel", ""], "fs": 24.0, "ext": "webp", "escola": "Vila Isabel", "enredo": "Kizomba", "titulo": "Campeã de 1988", "tema": "Tramas, dança e liberdade."}, {"k": "invocada", "name": "Invocada", "c1": "#0E7A3E", "c2": "#D61F26", "cap": "Verde, vermelho e branco", "l": ["Invocada", "", ""], "fs": 26, "ext": "webp", "escola": "Grande Rio", "enredo": "Sete Chaves de Exu", "titulo": "Campeã de 2022", "tema": "Sete chaves, caminhos, espiral e búzios."}, {"k": "quente", "name": "Não Existe Mais Quente", "c1": "#1E9B45", "c2": "#FFFFFF", "cap": "Verde e branco", "l": ["Não Existe", "Mais Quente", ""], "fs": 21.8, "ext": "webp", "escola": "Mocidade", "enredo": "Ziriguidum 2001", "titulo": "Campeã de 1985", "tema": "Astronauta ritmista, órbitas e estrela."}, {"k": "cadencia", "name": "Pura Cadência", "c1": "#1F3FC0", "c2": "#F2C200", "cap": "Azul e amarelo ouro", "l": ["Pura", "Cadência", ""], "fs": 26, "ext": "webp", "escola": "Unidos da Tijuca", "enredo": "É Segredo!", "titulo": "Campeã de 2010", "tema": "Figurino em transformação e plumas de pavão."}, {"k": "leopoldina", "name": "Swing da Leopoldina", "c1": "#0E6B35", "c2": "#E3B23C", "cap": "Verde, branco e ouro", "l": ["Swing da", "Leopoldina", ""], "fs": 24.0, "ext": "webp", "escola": "Imperatriz", "enredo": "Mais Vale um Jegue que Me Carregue… Lá no Ceará", "titulo": "Campeã de 1995", "tema": "Jegue, bússola e paisagem do sertão."}, {"k": "furacao", "name": "Furacão Vermelho e Branco", "c1": "#D0202E", "c2": "#FFFFFF", "cap": "Vermelho e branco", "l": ["Furacão", "Vermelho", "e Branco"], "fs": 19, "ext": "webp", "escola": "Viradouro", "enredo": "Arroboboi, Dangbé", "titulo": "Campeã de 2024", "tema": "Serpente, ancestralidade e guardiãs da tradição."}, {"k": "tamborim", "name": "Tem Que Respeitar Meu Tamborim", "c1": "#0A6B3A", "c2": "#E0559B", "cap": "Verde e rosa", "l": ["Tem Que", "Respeitar", "Meu Tamborim"], "fs": 18.7, "ext": "webp", "escola": "Mangueira", "enredo": "História pra Ninar Gente Grande", "titulo": "Campeã de 2019", "tema": "Livro aberto e protagonistas recuperados pela história."}, {"k": "sinfonica", "name": "Sinfônica do Samba", "c1": "#0B5E33", "c2": "#FFFFFF", "cap": "Verde e branco", "l": ["Sinfônica", "do Samba", ""], "fs": 26, "ext": "webp", "escola": "Império Serrano", "enredo": "Bum Bum Paticumbum Prugurundum", "titulo": "Campeã de 1982", "tema": "Evolução dos desfiles, baiana e agogô de quatro bocas."}],
+      BAT: [{"k": "furiosa", "name": "Furiosa", "c1": "#D61F26", "c2": "#FFFFFF", "cap": "Vermelho e branco", "l": ["A Furiosa", "", ""], "fs": 26, "ext": "webp", "escola": "Salgueiro", "enredo": "Bahia de Todos os Deuses", "titulo": "Campeã de 1969", "tema": "Baiana de tabuleiro, a igreja do Pelourinho e a roda de capoeira.", "p": {"f1": "Meu coração é vermelho e branco", "f2": "Salgueiro é paixão", "tema": "Surdo, caixa e baquetas cruzadas.", "cap": "Vermelho e branco", "c1": "#C8102E", "c2": "#FFFFFF"}}, {"k": "tabajara", "name": "Tabajara do Samba", "c1": "#1F4FD1", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Tabajara", "do Samba", ""], "fs": 26, "ext": "webp", "escola": "Portela", "enredo": "Lendas e Mistérios da Amazônia", "titulo": "Campeã de 1970", "tema": "Vitória-régia, rio, sol, lua e penas da águia.", "p": {"f1": "Meu coração é azul e branco", "f2": "Onde tem samba, tem Portela", "tema": "A águia em voo e a pena azul.", "cap": "Azul e branco", "c1": "#1F4FD1", "c2": "#FFFFFF"}}, {"k": "soberana", "name": "Soberana", "c1": "#1A44C2", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Soberana", "", ""], "fs": 26, "ext": "webp", "escola": "Beija-Flor", "enredo": "Ratos e Urubus", "titulo": "Vice-campeã de 1989", "tema": "Coroa, retalhos e urubus: o encontro entre luxo e descarte.", "p": {"f1": "Meu coração bate em Nilópolis", "f2": "Um amor que voa alto", "tema": "O beija-flor e a flor de corações.", "cap": "Azul-claro e azul", "c1": "#8EC5EC", "c2": "#1F4FD1"}}, {"k": "noel", "name": "Swingueira de Noel", "c1": "#2E8FE0", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Swingueira", "de Noel", ""], "fs": 24.0, "ext": "webp", "escola": "Vila Isabel", "enredo": "Kizomba", "titulo": "Campeã de 1988", "tema": "Tramas, dança e liberdade.", "p": {"f1": "O samba mora aqui", "f2": "Meu coração é da Vila", "tema": "Violão coroado e notas musicais.", "cap": "Azul-marinho e branco", "c1": "#13285E", "c2": "#FFFFFF"}}, {"k": "invocada", "name": "Invocada", "c1": "#0E7A3E", "c2": "#D61F26", "cap": "Verde, vermelho e branco", "l": ["Invocada", "", ""], "fs": 26, "ext": "webp", "escola": "Grande Rio", "enredo": "Sete Chaves de Exu", "titulo": "Campeã de 2022", "tema": "Sete chaves, caminhos, espiral e búzios.", "p": {"f1": "Caxias no peito", "f2": "Caxias canta comigo", "tema": "Onça coroada e pintas de onça.", "cap": "Verde, vermelho e branco", "c1": "#0E8A5B", "c2": "#D61F26"}}, {"k": "quente", "name": "Não Existe Mais Quente", "c1": "#1E9B45", "c2": "#FFFFFF", "cap": "Verde e branco", "l": ["Não Existe", "Mais Quente", ""], "fs": 21.8, "ext": "webp", "escola": "Mocidade", "enredo": "Ziriguidum 2001", "titulo": "Campeã de 1985", "tema": "Astronauta ritmista, órbitas e estrela.", "p": {"f1": "Padre Miguel no coração", "f2": "Independente por amor", "tema": "A estrela da Mocidade.", "cap": "Verde e branco", "c1": "#3E9B2E", "c2": "#FFFFFF"}}, {"k": "cadencia", "name": "Pura Cadência", "c1": "#1F3FC0", "c2": "#F2C200", "cap": "Azul e amarelo ouro", "l": ["Pura", "Cadência", ""], "fs": 26, "ext": "webp", "escola": "Unidos da Tijuca", "enredo": "É Segredo!", "titulo": "Campeã de 2010", "tema": "Figurino em transformação e plumas de pavão.", "p": {"f1": "Meu coração é do Borel", "f2": "Orgulho de ser tijucano", "tema": "O pavão e suas plumas.", "cap": "Amarelo e azul", "c1": "#F2C200", "c2": "#1F3FC0"}}, {"k": "leopoldina", "name": "Swing da Leopoldina", "c1": "#0E6B35", "c2": "#E3B23C", "cap": "Verde, branco e ouro", "l": ["Swing da", "Leopoldina", ""], "fs": 24.0, "ext": "webp", "escola": "Imperatriz", "enredo": "Mais Vale um Jegue que Me Carregue… Lá no Ceará", "titulo": "Campeã de 1995", "tema": "Jegue, bússola e paisagem do sertão.", "p": {"f1": "Ramos no coração", "f2": "Meu samba tem coroa", "tema": "Coroa imperial e ramos dourados.", "cap": "Creme, verde e dourado", "c1": "#EFE6CF", "c2": "#0E6B35"}}, {"k": "furacao", "name": "Furacão Vermelho e Branco", "c1": "#D0202E", "c2": "#FFFFFF", "cap": "Vermelho e branco", "l": ["Furacão", "Vermelho", "e Branco"], "fs": 19, "ext": "webp", "escola": "Viradouro", "enredo": "Arroboboi, Dangbé", "titulo": "Campeã de 2024", "tema": "Serpente, ancestralidade e guardiãs da tradição.", "p": {"f1": "Meu coração é Viradouro", "f2": "Niterói canta comigo", "tema": "Coroa, aperto de mãos e furacão.", "cap": "Branco e vermelho", "c1": "#F4F4F4", "c2": "#D0202E"}}, {"k": "tamborim", "name": "Tem Que Respeitar Meu Tamborim", "c1": "#0A6B3A", "c2": "#E0559B", "cap": "Verde e rosa", "l": ["Tem Que", "Respeitar", "Meu Tamborim"], "fs": 18.7, "ext": "webp", "escola": "Mangueira", "enredo": "História pra Ninar Gente Grande", "titulo": "Campeã de 2019", "tema": "Livro aberto e protagonistas recuperados pela história.", "p": {"f1": "Verde e rosa na alma", "f2": "Meu coração é Mangueira", "tema": "Surdo verde e rosa com a coroa.", "cap": "Rosa e verde", "c1": "#E0207F", "c2": "#0A6B3A"}}, {"k": "sinfonica", "name": "Sinfônica do Samba", "c1": "#0B5E33", "c2": "#FFFFFF", "cap": "Verde e branco", "l": ["Sinfônica", "do Samba", ""], "fs": 26, "ext": "webp", "escola": "Império Serrano", "enredo": "Bum Bum Paticumbum Prugurundum", "titulo": "Campeã de 1982", "tema": "Evolução dos desfiles, baiana e agogô de quatro bocas.", "p": {"f1": "A Serrinha mora em mim", "f2": "Meu Império é o samba", "tema": "Coroa dourada e agogô.", "cap": "Verde e dourado", "c1": "#0B4D2E", "c2": "#D4AF37"}}],
       OLY: [
         { name: 'Azul', swatch: '#1E6BFF', front: 'assets/iegc-azul-frente.webp', back: 'assets/iegc-azul-costas.webp' },
         { name: 'Verde', swatch: '#2DBA3E', front: 'assets/iegc-verde-frente.webp', back: 'assets/iegc-verde-costas.webp' }
@@ -850,7 +875,7 @@ class Component extends DCLogic {
       REVEALS: ['cats', 'times', 'timesA', 'timesB', 'eventos', 'turn', 'corr', 'olimp', 'bat', 'dia', 'samba', 'model', 'selo'],
       PROG: ['times', 'eventos', 'dia', 'samba']
     };
-    this.state = { shown: {}, prog: {}, kick: 0, oly: 0, bat: 0, ang: 20, auto3: true };
+    this.state = { shown: {}, prog: {}, kick: 0, oly: 0, bat: 0, batLine: 'legado', ang: 20, auto3: true };
     this.tv = 0; this.tDrag = false; this.tTarget = null; this.tIdle = 0; this.lastT = 0;
     this.els = {};
     this.refs2 = {};
@@ -970,12 +995,15 @@ class Component extends DCLogic {
     var cls = {}; K.REVEALS.forEach(function (k) { cls[k] = st.shown[k] ? 'in' : ''; });
     var o = K.OLY[st.oly];
     var bt = K.BAT[st.bat];
-    var batImg = function (x, side) { return 'assets/baterias/' + x.k + '-' + (x.ext === 'svg' ? 'f' : side) + '.' + x.ext; };
+    var isP = st.batLine === 'paixao';
+    var batImg = function (x, side, pai) { return 'assets/baterias/' + x.k + (pai ? '-p-' : '-') + side + '.webp'; };
     var batPills = K.BAT.map(function (x, i) {
       var on = i === st.bat;
-      return { name: x.name, thumb: batImg(x, 'f'), c1: x.c1, c2: x.c2, pressed: on ? 'true' : 'false', pick: function () { self.setState({ bat: i }); } };
+      return { name: x.escola, sub: x.name, thumb: batImg(x, 'f', isP), c1: isP ? x.p.c1 : x.c1, pressed: on ? 'true' : 'false', pick: function () { self.setState({ bat: i }); } };
     });
-    var batMsg = 'Olá, Marol Store! Quero a camisa da Coleção Baterias Cariocas: ' + bt.name + '.';
+    var lineBtn = function (id) { var on = st.batLine === id; return { pressed: on ? 'true' : 'false', pick: function () { self.setState({ batLine: id }); } }; };
+    var bc1 = isP ? bt.p.c1 : bt.c1, bc2 = isP ? bt.p.c2 : bt.c2;
+    var batMsg = 'Olá, Marol Store! Quero a camisa da Coleção Baterias Cariocas: ' + bt.escola + ' · linha ' + (isP ? 'Paixão pelo Samba' : 'Legado (' + bt.name + ')') + '.';
     var olyPills = K.OLY.map(function (x, i) {
       var on = i === st.oly;
       return { name: 'Bandeira ' + x.name, swatch: x.swatch, pressed: on ? 'true' : 'false', bg: on ? '#F4F5F2' : 'transparent', fg: on ? '#0A0B0D' : '#F4F5F2', border: on ? '#F4F5F2' : '#3A4566', pick: function () { self.setState({ oly: i }); } };
@@ -1020,7 +1048,8 @@ class Component extends DCLogic {
       oly: { front: o.front, back: o.back, altFront: 'Frente da camisa Olimpíadas IEGC 2026, bandeira ' + o.name.toLowerCase(), altBack: 'Costas da camisa Olimpíadas IEGC 2026, bandeira ' + o.name.toLowerCase() },
       olyPills: olyPills,
       batPills: batPills,
-      bat: { logo: 'assets/baterias/' + bt.k + '-logo.webp', logoVis: 'visible', wmVis: 'hidden', name: bt.name, cap: bt.cap, escola: bt.escola, enredo: bt.enredo, titulo: bt.titulo, tema: bt.tema, c1: bt.c1, c2: bt.c2, l1: bt.l[0], l2: bt.l[1], l3: bt.l[2], fs: bt.fs + 'cqw', front: batImg(bt, 'f'), back: batImg(bt, 'b'), backVis: bt.ext === 'svg' ? 'hidden' : 'visible', bg: 'radial-gradient(circle at 42% 45%, ' + bt.c1 + '88 0%, ' + bt.c1 + '2E 40%, #120609 78%)', altFront: 'Frente da camisa da bateria ' + bt.name, altBack: 'Costas da camisa da bateria ' + bt.name, wa: 'https://wa.me/' + num + '?text=' + encodeURIComponent(batMsg) }
+      lineLeg: lineBtn('legado'), linePai: lineBtn('paixao'),
+      bat: { logo: 'assets/baterias/' + bt.k + '-logo.webp', escola: bt.escola, name: isP ? bt.escola : bt.name, kicker: isP ? 'Paixão pelo Samba' : 'Legado · bateria ' + bt.name, cap: isP ? bt.p.cap : bt.cap, enredo: bt.enredo, titulo: bt.titulo, tema: bt.tema, f1: bt.p.f1, f2: bt.p.f2, ptema: bt.p.tema, legDisp: isP ? 'none' : 'flex', paiDisp: isP ? 'flex' : 'none', c1: bc1, c2: bc2, front: batImg(bt, 'f', isP), back: batImg(bt, 'b', isP), bg: 'radial-gradient(circle at 42% 45%, ' + bc1 + '88 0%, ' + bc1 + '2E 40%, #120609 78%)', altFront: 'Frente da camisa ' + (isP ? 'Paixão pelo Samba ' : 'Legado ') + bt.escola, altBack: 'Costas da camisa ' + (isP ? 'Paixão pelo Samba ' : 'Legado ') + bt.escola, wa: 'https://wa.me/' + num + '?text=' + encodeURIComponent(batMsg) }
     };
   }
 }
