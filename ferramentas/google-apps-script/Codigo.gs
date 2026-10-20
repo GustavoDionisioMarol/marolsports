@@ -4,6 +4,8 @@
  * Como instalar (uma vez):
  *  1. Crie uma planilha no Google Sheets (ex.: "Clientes do simulador").
  *  2. Menu Extensões → Apps Script. Apague o conteúdo e cole este arquivo inteiro.
+ *     (Se o projeto foi criado direto em script.google.com, tudo bem: na primeira
+ *     execução o script cria a planilha "Clientes do simulador Marol Sports".)
  *  3. Salve, escolha a função "configurar" e clique em Executar (autorize o acesso).
  *  4. Implantar → Nova implantação → tipo "App da Web":
  *       Executar como: Eu  |  Quem pode acessar: Qualquer pessoa
@@ -23,7 +25,20 @@ function configurar() {
   aba_();
   const props = PropertiesService.getScriptProperties();
   if (!props.getProperty('SEGREDO')) props.setProperty('SEGREDO', Utilities.getUuid() + Utilities.getUuid());
+  Logger.log('Planilha dos clientes: ' + planilha_().getUrl());
   Logger.log('Pronto. Agora publique como App da Web (Implantar → Nova implantação).');
+}
+
+/** Planilha ligada ao script; se o script foi criado fora de uma planilha, cria uma. */
+function planilha_() {
+  const ativa = SpreadsheetApp.getActiveSpreadsheet();
+  if (ativa) return ativa;
+  const props = PropertiesService.getScriptProperties();
+  const id = props.getProperty('PLANILHA_ID');
+  if (id) return SpreadsheetApp.openById(id);
+  const nova = SpreadsheetApp.create('Clientes do simulador Marol Sports');
+  props.setProperty('PLANILHA_ID', nova.getId());
+  return nova;
 }
 
 function doPost(e) {
@@ -130,7 +145,7 @@ function redefinirSenha(d) {
 // ------------------------------------------------------------------ planilha
 
 function aba_() {
-  const planilha = SpreadsheetApp.getActiveSpreadsheet();
+  const planilha = planilha_();
   let aba = planilha.getSheetByName(ABA);
   if (!aba) {
     aba = planilha.insertSheet(ABA);
