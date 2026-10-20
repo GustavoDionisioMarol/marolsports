@@ -50,8 +50,11 @@ html{scroll-behavior:smooth}
 .esc-tab:hover{border-color:#3A4566}
 .esc-tab[aria-pressed="true"]{background:#16203A;border-color:#F9CA0D;box-shadow:inset 0 0 0 1px #F9CA0D}
 .esc-panel{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:center;padding:20px;border-radius:30px;background:#0D1324;border:1px solid #1F2A47}
-.esc-fig{margin:0;border-radius:22px;overflow:hidden;background:#c9c9c9}
-.esc-fig img{display:block;width:100%;height:auto}
+.esc-stage{position:relative;height:440px;border-radius:22px;overflow:hidden}
+.esc-floor{position:absolute;left:50%;bottom:22px;width:70%;height:36px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.8),rgba(0,0,0,0))}
+.esc-back{position:absolute;right:5%;top:8%;height:76%;width:auto;transform:rotate(7deg);filter:brightness(.8) drop-shadow(0 24px 24px rgba(0,0,0,.5))}
+.esc-front{position:absolute;left:5%;top:12%;height:82%;width:auto;transform:rotate(-5deg);filter:drop-shadow(0 30px 30px rgba(0,0,0,.55))}
+@media (max-width:700px){.esc-stage{height:auto;aspect-ratio:16/11}.esc-front{left:2%;top:auto;bottom:8%;height:auto;width:49%;transform:rotate(-4deg)}.esc-back{right:2%;top:auto;bottom:10%;height:auto;width:46%;transform:rotate(4deg)}}
 .esc-txt{display:flex;flex-direction:column;gap:16px;padding:8px}
 .esc-chip{display:inline-flex;align-items:center;padding:8px 14px;border-radius:999px;background:#111A30;border:1px solid #22305A;font-size:13px;font-weight:600}
 @media (max-width:900px){.esc-panel{grid-template-columns:minmax(0,1fr);padding:12px}}
@@ -518,7 +521,11 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
         </div>
       </div>
       <div class="esc-panel" style="display: {{escShow.arraia}}">
-        <figure class="esc-fig"><img src="assets/arraia-cec.webp" alt="Frente e costas da camisa do Arraiá do CEC: azul com mangas xadrez amarelo e azul, bandeirinhas, balões, mascote leão jogando bola e fogueira" loading="lazy"></figure>
+        <div class="esc-stage" style="background: radial-gradient(circle at 50% 45%, #22357A 0%, #0A0F1D 72%)">
+          <div class="esc-floor"></div>
+          <img class="esc-back" src="assets/arraia-b.webp" alt="Costas da camisa do Arraiá do CEC com bandeira do Brasil, mascote e fogueira" loading="lazy">
+          <img class="esc-front" src="assets/arraia-f.webp" alt="Frente da camisa do Arraiá do CEC: azul com mangas xadrez, bandeirinhas, mascote leão jogando bola e fogueira" loading="lazy">
+        </div>
         <div class="esc-txt">
           <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">Arraiá e festa junina</span>
           <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(34px, 3.6vw, 48px); line-height: .92">O arraiá da escola com a camisa da turma</strong>
@@ -528,7 +535,11 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
         </div>
       </div>
       <div class="esc-panel" style="display: {{escShow.feira}}">
-        <figure class="esc-fig"><img src="assets/feira-meio-ambiente.webp" alt="Frente e costas da camisa da I Semana do Meio Ambiente: branca com planeta, folhas e circuitos em azul e verde, frase “Pequenas atitudes, grandes transformações” nas costas" loading="lazy"></figure>
+        <div class="esc-stage" style="background: radial-gradient(circle at 50% 45%, #1F4A3A 0%, #0A0F1D 72%)">
+          <div class="esc-floor"></div>
+          <img class="esc-back" src="assets/feira-b.webp" alt="Costas da camisa da I Semana do Meio Ambiente com a frase “Pequenas atitudes, grandes transformações”" loading="lazy">
+          <img class="esc-front" src="assets/feira-f.webp" alt="Frente da camisa da I Semana do Meio Ambiente: branca com planeta, folhas e circuitos" loading="lazy">
+        </div>
         <div class="esc-txt">
           <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">Feiras e mostras</span>
           <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(34px, 3.6vw, 48px); line-height: .92">Feira, mostra ou semana temática</strong>
