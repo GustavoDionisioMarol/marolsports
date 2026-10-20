@@ -1,12 +1,17 @@
 # Site Marol Store — contexto do projeto
 
-Landing page estática da **Marol Store** (camisas personalizadas). Tudo está em `index.html` (HTML + CSS + JS embutidos, sem build) e `assets/`. Publicado no Netlify a partir deste repositório (`netlify.toml`: publica a raiz, sem build). Branches `main` e `Site-Sports` ficam iguais; o dono publica pelo Netlify.
+Landing page estática da **Marol Store** (camisas personalizadas). Tudo está em `index.html` (HTML + CSS + JS embutidos, sem build) e `assets/`. O simulador de uniformes fica no branch `simulador`, com projeto próprio na Vercel.
+
+## Branches e publicação (Vercel)
+- `main`: este site, publicado pela Vercel (`vercel.json`: publica a raiz, sem build). **`main` = versão aprovada, no ar.**
+- `simulador`: só o simulador, em outro projeto da Vercel.
+- Mudanças vão para um branch novo criado a partir do `main`; a Vercel gera uma prévia e, depois da aprovação do dono, o branch é juntado ao `main`. Nunca enviar direto para o `main` sem aprovação.
 
 ## Marca
 - Marca principal: **Marol Store** (`assets/marol-store.png`, favicon `assets/favicon-store.png`).
 - **Marol Sports** (`assets/selo-branco.png`, `assets/logo-branco.png`) é só o segmento de **uniformes esportivos de time** — aparece apenas na seção 01 e no cartão "Uniformes de time". Eventos e Dia a dia não levam o selo.
 - WhatsApp: +55 21 96621-4050 (mensagens começam com "Olá, Marol Store!"). Instagram @marolstore2.
-- Simulador (externo): https://simuladormsports.netlify.app/ (menu do topo e seção de times).
+- Simulador (externo, branch `simulador`): https://simuladormsports.netlify.app/ (menu do topo e seção de times). Ao publicar o simulador na Vercel, trocar os dois links do `index.html` pelo endereço novo.
 - Cor de destaque: amarelo `#F9CA0D`; fontes Barlow / Barlow Condensed / Yellowtail (Google Fonts).
 
 ## Estrutura da página

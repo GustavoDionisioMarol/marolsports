@@ -1,0 +1,4 @@
+# Fica fora da publicação na Vercel: ferramentas e documentação.
+tools
+*.py
+CLAUDE.md
