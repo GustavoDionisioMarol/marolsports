@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="sim/css/app.css">
+<style>
+html,body{margin:0;width:720px;height:900px;overflow:hidden;background:#111}
+#cena{position:absolute;inset:0;width:720px;height:900px}
+.leg{position:absolute;left:0;right:0;bottom:0;padding:90px 36px 40px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-family:Inter,sans-serif}
+.leg small{display:block;font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:#FFD700;font-weight:700}
+.leg b{display:block;font-size:46px;line-height:1.05;margin-top:8px;font-weight:800}
+.leg,.selo{opacity:0}
+.selo{position:absolute;top:30px;left:30px;background:rgba(17,17,17,.75);color:#fff;font:600 18px Inter,sans-serif;padding:10px 16px;border-radius:999px;display:flex;gap:10px;align-items:center}
+.selo i{width:10px;height:10px;border-radius:50%;background:#FFD700}
+</style></head><body>
+<svg id="cena" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"></svg>
+<div class="selo"><i></i>2 · Do simulador para o campo</div>
+<div class="leg"><small>Pronto pra jogar</small><b>O mesmo uniforme,<br>na pele do seu time</b></div>
+<script type="module">
+import { montarPalcoFoto, variaveisCor } from './sim/js/render.js';
+import { UNIFORME as U } from './uniforme.js';
+const foto = await (await fetch('jogador/jogador.json')).json();
+const modelo = await (await fetch(`sim/dados/modelos/${U.modelo}.json`)).json();
+const estado = {
+  pecas: 'ambos',
+  cores: { sincronizar: true, camisa: { base: U.base, camadas: U.camadas }, calcao: { base: U.base, camadas: U.camadas } },
+  gola: { tipo: 'v', cor: U.gola }, manga: { cor: 'corpo' }, punho: { tipo: 'sem', cor: U.gola },
+  meiao: { ativo: false, cor: U.meiao },
+  nome: { texto: U.nome, numero: U.numero, fonte: 'bebas', cor: U.corNome, contorno: U.contorno, numeroFrente: 'centro', numeroCalcao: true, posicaoNome: 'acima', tamanhoNome: 1 },
+  textos: [], imagens: [], deslocamentos: {},
+};
+const { svg } = montarPalcoFoto({ estado, modelos: { camisa: modelo, calcao: modelo }, foto, vista: 'frente', base: 'jogador/' });
+const f = foto.lados.frente;
+const cena = document.getElementById('cena');
+for (const [k, v] of Object.entries(variaveisCor(estado))) cena.style.setProperty(k, v);
+cena.innerHTML = `<image href="jogador/foto.webp" x="0" y="0" width="${foto.largura}" height="${foto.altura}"/>
+  ${svg}
+  <defs><clipPath id="meias"><path d="${f.meias}"/></clipPath></defs>
+  <g style="isolation:isolate">
+    <path d="${f.meias}" fill="var(--meiao)"/>
+    <image href="jogador/sombra-frente.webp" width="${foto.largura}" height="${foto.altura}" clip-path="url(#meias)" style="mix-blend-mode:multiply"/>
+    <image href="jogador/brilho-frente.webp" width="${foto.largura}" height="${foto.altura}" clip-path="url(#meias)" style="mix-blend-mode:screen" opacity=".38"/>
+  </g>`;
+await document.fonts.ready;
+await Promise.all([...cena.querySelectorAll('image')].map((im) => new Promise((ok) => { const i = new Image(); i.onload = i.onerror = ok; i.src = im.getAttribute('href'); })));
+// câmera: corpo inteiro -> aproxima no peito
+const A = [40, 250, 1520, 1900], B = [455, 330, 780, 975];
+const ease = (t) => t < 0 ? 0 : t > 1 ? 1 : t * t * (3 - 2 * t);
+window.quadro = (t) => { // t em segundos
+  const k = ease(t / 5.5);
+  const v = A.map((a, i) => a + (B[i] - a) * k);
+  cena.setAttribute('viewBox', v.join(' '));
+  document.querySelector('.selo').style.opacity = ease((t - 0.2) / 0.6);
+  document.querySelector('.leg').style.opacity = ease((t - 1.2) / 0.8);
+  const leg = document.querySelector('.leg b'); leg.style.transform = `translateY(${(1 - ease((t - 1.2) / 0.8)) * 20}px)`;
+};
+window.quadro(0);
+window.pronto = true;
+</script></body></html>
