@@ -11,7 +11,7 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Marca principal: **Marol Store** (`assets/marol-store.png`, favicon `assets/favicon-store.png`).
 - **Marol Sports** (`assets/selo-branco.png`, `assets/logo-branco.png`) é só o segmento de **uniformes esportivos de time** — aparece apenas na seção 01 e no cartão "Uniformes de time". Eventos e Dia a dia não levam o selo.
 - WhatsApp: +55 21 96621-4050 (mensagens começam com "Olá, Marol Store!"). Instagram @marolstore2.
-- Simulador (externo, branch `simulador`): https://simuladormsports.netlify.app/ (menu do topo e seção de times). Ao publicar o simulador na Vercel, trocar os dois links do `index.html` pelo endereço novo.
+- Simulador (externo, branch `simulador`, projeto `simuladormarol` na Vercel): https://simuladormarol.vercel.app/ (menu do topo e seção de times).
 - Cor de destaque: amarelo `#F9CA0D`; fontes Barlow / Barlow Condensed / Yellowtail (Google Fonts).
 
 ## Estrutura da página
