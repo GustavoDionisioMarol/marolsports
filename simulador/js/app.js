@@ -1,4 +1,5 @@
 import { CORES, cor, hex, rotulo } from './cores.js';
+import { exigirAcesso, usuarioAtual, sair } from './acesso.js';
 import {
   TRONCO, montarPalco, montarPalcoFoto, overlaysPeca, variaveisCor, VB, GOLAS, PUNHOS,
   TIPOS_GOLA, TIPOS_PUNHO, POSICOES_NUMERO_FRENTE, POSICOES_IMAGEM, FONTES,
@@ -819,7 +820,9 @@ const TAMANHOS = ['PP', 'P', 'M', 'G', 'GG', 'XGG'];
 
 function abrirOrcamento() {
   const d = $('#dialogo');
-  const salvo = JSON.parse(localStorage.getItem('marol-sports:contato') || '{}');
+  // dados do cadastro preenchem o orçamento
+  const u = usuarioAtual() ?? {};
+  const salvo = { nome: u.nome, telefone: u.whatsapp, cidade: u.cidade, ...JSON.parse(localStorage.getItem('marol-sports:contato') || '{}') };
   d.innerHTML = `<form method="dialog" id="form-orcamento" novalidate>
     <h2>Pedir orçamento</h2>
     <p class="sub">Preencha seus dados e as quantidades. Vamos abrir o WhatsApp da Marol Sports com o resumo da sua simulação, e a imagem do uniforme será baixada para você anexar na conversa.</p>
@@ -856,7 +859,8 @@ function abrirOrcamento() {
     const obs = $('#orc-obs', d).value.trim();
     const msg = [
       '*Pedido de orçamento – Simulador Marol Sports*',
-      `Nome: ${nome}`, `Telefone: ${telefone}`, `Cidade: ${cidade}`, '',
+      `Nome: ${nome}`, `Telefone: ${telefone}`, `Cidade: ${cidade}`,
+      ...(usuarioAtual()?.email ? [`E-mail: ${usuarioAtual().email}`] : []), ...(usuarioAtual()?.time ? [`Time: ${usuarioAtual().time}`] : []), '',
       '*Uniforme*', ...resumo().map((l) => `• ${l}`), '',
       qtd.length ? `*Quantidades:* ${qtd.map(([t, n]) => `${t}: ${n}`).join(' · ')} (total ${total})` : '*Quantidades:* a definir',
       obs ? `*Observações:* ${obs}` : '',
@@ -1036,7 +1040,13 @@ async function iniciar() {
 // Usado pela ferramenta que gera as miniaturas do catálogo.
 window.simulador = { montarPalco, variaveisCor, PADRAO, VB, TRONCO, get catalogo() { return catalogo; }, carregarModelo };
 
-iniciar().catch((err) => {
+// o simulador só abre depois do cadastro/login
+exigirAcesso().then((u) => {
+  $('#usuario-nome').textContent = u?.nome?.split(' ')[0] ?? '';
+  $('#usuario').hidden = !u;
+  $('#btn-sair').addEventListener('click', sair);
+  return iniciar();
+}).catch((err) => {
   console.error(err);
   avisar('Não foi possível iniciar o simulador.');
 });

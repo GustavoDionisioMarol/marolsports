@@ -37,6 +37,43 @@ publicado em qualquer hospedagem, inclusive em `marolsports.com/simulador/`.
   WhatsApp da Marol com o resumo completo e baixa a imagem para anexar. O número
   fica na constante `WHATSAPP` em `simulador/js/app.js`.
 
+## Cadastro e login (Google Sheets)
+
+O simulador só abre depois que o cliente cria uma conta ou entra. Os cadastros
+ficam numa planilha do Google Sheets, gravados por um Google Apps Script
+(`ferramentas/google-apps-script/Codigo.gs`).
+
+**Instalação (uma vez):**
+
+1. Crie uma planilha no Google Sheets, por exemplo "Clientes do simulador".
+2. Abra **Extensões → Apps Script**, apague o conteúdo e cole o arquivo
+   `Codigo.gs` inteiro. Salve.
+3. Selecione a função **configurar** e clique em **Executar**. Autorize o acesso
+   à planilha e ao envio de e-mail, que é usado para redefinir a senha.
+4. Clique em **Implantar → Nova implantação → App da Web**, com
+   "Executar como: **Eu**" e "Quem pode acessar: **Qualquer pessoa**".
+5. Copie a URL que termina em `/exec` e cole em `simulador/js/config.js`, em
+   `API_CADASTRO`. Publique o site de novo.
+
+**O que fica na planilha** (aba "Clientes"):
+- data do cadastro, nome, e-mail, WhatsApp, cidade, time e aceite de contato;
+- último acesso e número de acessos;
+- sal e hash da senha, em colunas ocultas. A senha nunca é gravada.
+
+**Como funciona:**
+- **Cadastro e login:** o login gera um passe assinado, válido por 30 dias. O
+  cliente continua conectado nesse período.
+- **Senha:** "Esqueci minha senha" envia um código de 6 dígitos por e-mail.
+  Depois de 5 senhas erradas, o e-mail fica bloqueado por 15 minutos.
+- **Orçamento:** os dados do cadastro já preenchem o formulário.
+
+> **Limite:** como o site é estático, a trava fica no navegador. Para captar
+> clientes ela funciona bem, mas uma pessoa com conhecimento técnico consegue
+> contorná-la. Uma trava total exige um servidor na frente do site.
+
+> Ao alterar o `Codigo.gs`, publique em **Implantar → Gerenciar implantações →
+> Editar → Nova versão**, para manter a mesma URL.
+
 ## Mockup em foto (teste)
 
 Além do visual ilustrado, o simulador tem o visual **Foto** (botão "Foto /

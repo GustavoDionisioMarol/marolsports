@@ -25,6 +25,8 @@
       <button class="btn-secundario" id="btn-armario" title="Simulações salvas neste navegador"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM12 4v16M9 11v2M15 11v2"/></svg><span>Armário</span></button>
       <button class="btn-secundario" id="btn-salvar" title="Salvar no armário"><svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"/><path d="M8 3v5h7V3M8 21v-7h8v7"/></svg><span>Salvar</span></button>
       <button class="btn-secundario" id="btn-baixar" title="Baixar imagem (PNG)"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>Baixar</span></button>
+      <span class="sep"></span>
+      <span class="usuario" id="usuario" hidden><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><b id="usuario-nome"></b><button class="btn-link" id="btn-sair" type="button">Sair</button></span>
       <button class="btn-primario" id="btn-orcamento"><svg viewBox="0 0 24 24"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.6-4.2A8.5 8.5 0 1 1 20.5 11.6z"/></svg><span>Pedir orçamento</span></button>
     </div>
   </header>
@@ -70,6 +72,19 @@
       <p class="dica">Dica: arraste nomes, números e imagens no uniforme para ajustar a posição · Ctrl + rolagem do mouse para dar zoom.</p>
     </section>
   </main>
+
+  <section class="acesso" id="acesso" hidden aria-label="Cadastro e login">
+    <div class="acesso-marca">
+      <img src="logo_branca.webp" alt="Marol Sports" width="160" height="64">
+      <h1>Monte o uniforme do seu time</h1>
+      <ul>
+        <li>Mais de 180 modelos exclusivos</li>
+        <li>Cores, gola, nome, número, escudo e patrocínio</li>
+        <li>Salve suas simulações e peça orçamento pelo WhatsApp</li>
+      </ul>
+    </div>
+    <div class="acesso-cartao" aria-live="polite"></div>
+  </section>
 
   <dialog id="dialogo" class="dialogo"></dialog>
   <div class="aviso" id="aviso" role="status" hidden></div>
