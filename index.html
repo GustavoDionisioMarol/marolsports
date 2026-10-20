@@ -46,7 +46,7 @@ html{scroll-behavior:smooth}
 .bat-info{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:0 6px 4px}
 .bat-story{display:flex;flex-direction:column;gap:10px;margin:0 6px 6px;padding:16px 18px;border-radius:18px;background:#140809;border:1px solid #3A1A20}
 .bat-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:#F9CA0D;color:#0A0B0D;font-size:13px;font-weight:800;letter-spacing:.04em}
-.bat-lines{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bat-lines{scroll-margin-top:150px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .bat-line{display:flex;align-items:center;gap:10px;min-height:56px;padding:8px 14px;border-radius:16px;border:1px solid #3A1A20;background:#140809;color:#F4F5F2;font-family:'Barlow',sans-serif;text-align:left;cursor:pointer;transition:border-color .15s ease, background .15s ease}
 .bat-line b{display:block;font-size:15px}
 .bat-line em{display:block;font-style:normal;font-size:12px;color:#B89AA0}
@@ -63,7 +63,7 @@ html{scroll-behavior:smooth}
 .bat-thumb{flex:none;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .bat-thumb img{height:44px;width:auto}
 @media (max-width:700px){.bat-big{aspect-ratio:16/11 !important}.bat-front{left:2%;top:auto;bottom:6%;width:49%;height:auto;transform:none}.bat-back{right:2%;top:auto;bottom:6%;width:47%;height:auto;transform:none;filter:drop-shadow(0 16px 16px rgba(0,0,0,.5))}.bat-tag{top:10px;font-size:11px;padding:4px 10px}.bat-tag-f{left:10px}.bat-tag-b{display:inline-block;left:auto;right:10px}.bat-line em{display:none}}
-@media (max-width:980px){.bat-view{grid-template-columns:minmax(0,1fr)}.bat-side{order:-1}.bat-list{display:flex;overflow-x:auto;scrollbar-width:none;margin:0 -24px;padding:0 24px 4px}.bat-list::-webkit-scrollbar{display:none}.bat-opt{flex:none;max-width:200px}.bat-big{aspect-ratio:1/1}}
+@media (max-width:980px){.bat-view{grid-template-columns:minmax(0,1fr)}.bat-side{order:-1}.bat-list{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.bat-opt{min-height:56px;padding:5px 8px 5px 5px;gap:8px;font-size:12.5px}.bat-thumb{width:42px;height:42px;border-radius:10px}.bat-thumb img{height:38px}.bat-opt small{font-size:11px}.bat-big{aspect-ratio:1/1}}
 .pill{transition:background .15s ease,color .15s ease,border-color .15s ease}
 .grab{cursor:grab}.grab:active{cursor:grabbing}
 .rv{opacity:0;transform:translateY(46px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.75,.2,1)}
@@ -993,7 +993,7 @@ class Component extends DCLogic {
     var batImg = function (x, side, pai) { return 'assets/baterias/' + x.k + (pai ? '-p-' : '-') + side + '.webp'; };
     var batPills = K.BAT.map(function (x, i) {
       var on = i === st.bat;
-      return { name: x.escola, sub: x.name, thumb: batImg(x, 'f', isP), c1: isP ? x.p.c1 : x.c1, pressed: on ? 'true' : 'false', pick: function () { self.setState({ bat: i }); } };
+      return { name: x.escola, sub: x.name, thumb: batImg(x, 'f', isP), c1: isP ? x.p.c1 : x.c1, pressed: on ? 'true' : 'false', pick: function () { self.setState({ bat: i }); if (window.innerWidth <= 980) { var el = document.querySelector('.bat-lines'); if (el) setTimeout(function () { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); } } };
     });
     var lineBtn = function (id) { var on = st.batLine === id; return { pressed: on ? 'true' : 'false', pick: function () { self.setState({ batLine: id }); } }; };
     var bc1 = isP ? bt.p.c1 : bt.c1, bc2 = isP ? bt.p.c2 : bt.c2;
