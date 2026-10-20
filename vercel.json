@@ -3,17 +3,14 @@
   "framework": null,
   "installCommand": "echo \"Site estático: nada para instalar\"",
   "buildCommand": "echo \"Site estático: nada para compilar\"",
-  "outputDirectory": ".",
-  "redirects": [
-    { "source": "/simulador", "destination": "/simulador/", "permanent": true }
-  ],
+  "outputDirectory": "simulador",
   "headers": [
     {
-      "source": "/simulador/dados/modelos.json",
+      "source": "/dados/modelos.json",
       "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
     },
     {
-      "source": "/simulador/mockup/foto.json",
+      "source": "/mockup/foto.json",
       "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
     }
   ]

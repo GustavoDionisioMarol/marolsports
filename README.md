@@ -2,7 +2,7 @@
 
 Simulador de uniformes de futebol, feito do zero. É um site estático, sem
 dependências em tempo de execução: HTML, CSS e JavaScript puros. Pode ser
-publicado em qualquer hospedagem, inclusive em `marolsports.com/simulador/`.
+publicado em qualquer hospedagem, como no projeto da Vercel deste branch.
 
 ## O que ele faz
 
@@ -99,24 +99,22 @@ reajustadas para outra imagem.
 
 ## Publicação na Vercel
 
-O site da Marol Store (raiz do repositório) e o simulador (`simulador/`) são
-publicados juntos num único projeto da Vercel: o site em `/` e o simulador em
-`/simulador/`. A configuração está em `vercel.json` (sem build) e o
-`.vercelignore` deixa de fora os arquivos de origem (~2 GB), as ferramentas e a
-documentação.
+Este branch (`simulador`) tem só o simulador. O site da Marol Store fica no
+branch `main`, num projeto separado da Vercel.
 
-**Fluxo de aprovação:**
-- O `main` é a versão aprovada, que fica no ar.
-- Cada mudança é feita em outro branch, e a Vercel gera um endereço de prévia
-  para ele.
-- Depois da aprovação, o branch é juntado ao `main` e o site oficial atualiza
-  sozinho.
+- Projeto da Vercel do simulador: **Production Branch = `simulador`**. O
+  `vercel.json` publica a pasta `simulador/` na raiz do endereço, sem build. O
+  `.vercelignore` deixa de fora os arquivos de origem (~2 GB), as ferramentas e
+  a documentação.
+- Para testar uma mudança antes de pôr no ar, crie um branch a partir do
+  `simulador`. A Vercel gera um endereço de prévia; depois da aprovação, junte
+  o branch ao `simulador`.
 
 ## Rodar localmente
 
 ```bash
-npx http-server . -p 8080 -c-1
-# site: http://localhost:8080   simulador: http://localhost:8080/simulador/
+npx http-server simulador -p 8080 -c-1
+# abra http://localhost:8080
 ```
 
 O simulador precisa ser servido por HTTP, porque abrir o `index.html` direto do

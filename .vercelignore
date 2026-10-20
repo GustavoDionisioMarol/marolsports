@@ -1,13 +1,10 @@
 # Fica fora da publicação na Vercel: arquivos de origem (CorelDRAW/SVG, ~2 GB),
-# ferramentas e documentação. Vão para o ar só o site (index.html, assets/)
-# e o simulador (simulador/).
+# ferramentas e documentação. Vai para o ar só a pasta simulador/.
 Futebol Masculino-*
 ferramentas
-tools
 node_modules
 *.cdr
 *.py
-CLAUDE.md
 README.md
 package.json
 package-lock.json
