@@ -46,6 +46,16 @@ html{scroll-behavior:smooth}
 .bat-info{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:0 6px 4px}
 .bat-story{display:flex;flex-direction:column;gap:10px;margin:0 6px 6px;padding:16px 18px;border-radius:18px;background:#140809;border:1px solid #3A1A20}
 .bat-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:#F9CA0D;color:#0A0B0D;font-size:13px;font-weight:800;letter-spacing:.04em}
+.esc-tab{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:18px;border-radius:18px;background:#0D1324;border:1px solid #1F2A47;color:#F4F5F2;font-family:'Barlow',sans-serif;font-size:16px;text-align:left;cursor:pointer;transition:border-color .15s ease, background .15s ease}
+.esc-tab:hover{border-color:#3A4566}
+.esc-tab[aria-pressed="true"]{background:#16203A;border-color:#F9CA0D;box-shadow:inset 0 0 0 1px #F9CA0D}
+.esc-panel{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:center;padding:20px;border-radius:30px;background:#0D1324;border:1px solid #1F2A47}
+.esc-fig{margin:0;border-radius:22px;overflow:hidden;background:#c9c9c9}
+.esc-fig img{display:block;width:100%;height:auto}
+.esc-txt{display:flex;flex-direction:column;gap:16px;padding:8px}
+.esc-chip{display:inline-flex;align-items:center;padding:8px 14px;border-radius:999px;background:#111A30;border:1px solid #22305A;font-size:13px;font-weight:600}
+@media (max-width:900px){.esc-panel{grid-template-columns:minmax(0,1fr);padding:12px}}
+@media (max-width:700px){.esc-tabs{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:8px !important}.esc-tab{padding:12px 10px;gap:8px;font-size:13px;line-height:1.2}}
 .bat-lines{scroll-margin-top:150px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .bat-line{display:flex;align-items:center;gap:10px;min-height:56px;padding:8px 14px;border-radius:16px;border:1px solid #3A1A20;background:#140809;color:#F4F5F2;font-family:'Barlow',sans-serif;text-align:left;cursor:pointer;transition:border-color .15s ease, background .15s ease}
 .bat-line b{display:block;font-size:15px}
@@ -472,32 +482,15 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
         <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
           <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">2.3 · Eventos escolares</span>
           <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 4.6vw, 60px); line-height: .92">Evento na escola também tem camisa</strong>
-          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #BCC3D3">Olimpíadas, arraiá, feira de ciências, jogos internos e datas comemorativas: a turma inteira vestindo a mesma identidade.</p>
+          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #BCC3D3">Olimpíadas, arraiá e feiras: a turma inteira vestindo a mesma identidade. Escolha o tipo de evento e veja um exemplo.</p>
         </div>
       </div>
-      <div class="rv {{cls.olimp}}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 12px">
-        <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 18px; background: #16203A; border: 1px solid rgba(249,202,13,0.45)">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c1.5 2 3 3.2 3 5.2A3 3 0 0 1 9 7.2C9 5.8 10 5 10.5 4"></path><path d="M8 11h8l-1 4H9z"></path><path d="M10 15l-1 7h6l-1-7"></path></svg>
-          <strong style="font-size: 16px">Olimpíadas</strong>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 18px; background: #0D1324; border: 1px solid #1F2A47">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4-3 6-6.5 6-10a6 6 0 0 0-12 0c0 3.5 2 7 6 10z"></path><path d="M12 6v4"></path><path d="M10 8h4"></path></svg>
-          <strong style="font-size: 16px">Arraiá e festa junina</strong>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 18px; background: #0D1324; border: 1px solid #1F2A47">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"></path><path d="M10 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3"></path><path d="M7.5 15h9"></path></svg>
-          <strong style="font-size: 16px">Feiras e mostras</strong>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 18px; background: #0D1324; border: 1px solid #1F2A47">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7l4 3-1.5 5h-5L8 10z"></path></svg>
-          <strong style="font-size: 16px">Jogos internos</strong>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 18px; background: #0D1324; border: 1px solid #1F2A47">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v10H4V12"></path><path d="M2 7h20v5H2z"></path><path d="M12 22V7"></path><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
-          <strong style="font-size: 16px">Camisas comemorativas</strong>
-        </div>
+      <div class="esc-tabs rv {{cls.olimp}}" role="group" aria-label="Tipo de evento escolar" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px">
+        <button class="esc-tab" type="button" onClick="{{escTabs.oly.pick}}" aria-pressed="{{escTabs.oly.pressed}}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c1.5 2 3 3.2 3 5.2A3 3 0 0 1 9 7.2C9 5.8 10 5 10.5 4"></path><path d="M8 11h8l-1 4H9z"></path><path d="M10 15l-1 7h6l-1-7"></path></svg><strong>Olimpíadas</strong></button>
+        <button class="esc-tab" type="button" onClick="{{escTabs.arraia.pick}}" aria-pressed="{{escTabs.arraia.pressed}}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4-3 6-6.5 6-10a6 6 0 0 0-12 0c0 3.5 2 7 6 10z"></path><path d="M12 6v4"></path><path d="M10 8h4"></path></svg><strong>Arraiá e festa junina</strong></button>
+        <button class="esc-tab" type="button" onClick="{{escTabs.feira.pick}}" aria-pressed="{{escTabs.feira.pressed}}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"></path><path d="M10 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3"></path><path d="M7.5 15h9"></path></svg><strong>Feiras e mostras</strong></button>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px; align-items: stretch">
+      <div style="display: {{escShow.oly}}; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px; align-items: stretch">
         <div class="rv-l {{cls.olimp}}" style="display: flex; flex-direction: column; gap: 18px; padding: 28px; border-radius: 30px; background: #0D1324; border: 1px solid #1F2A47">
           <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
             <div style="display: flex; flex-direction: column; gap: 4px">
@@ -522,6 +515,26 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
           <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 55%; background: linear-gradient(0deg, rgba(7,11,22,0.92), rgba(7,11,22,0))"></div>
           <span style="position: relative; align-self: flex-start; padding: 8px 14px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase">Olimpíadas escolares</span>
           <strong style="position: relative; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 44px; line-height: .92">Do pátio ao pódio,<br>a escola inteira junta.</strong>
+        </div>
+      </div>
+      <div class="esc-panel" style="display: {{escShow.arraia}}">
+        <figure class="esc-fig"><img src="assets/arraia-cec.webp" alt="Frente e costas da camisa do Arraiá do CEC: azul com mangas xadrez amarelo e azul, bandeirinhas, balões, mascote leão jogando bola e fogueira" loading="lazy"></figure>
+        <div class="esc-txt">
+          <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">Arraiá e festa junina</span>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(34px, 3.6vw, 48px); line-height: .92">O arraiá da escola com a camisa da turma</strong>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #BCC3D3">Bandeirinhas, xadrez, fogueira e o mascote da escola: camisas juninas com a identidade de cada colégio, para alunos, professores e famílias.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px"><span class="esc-chip">Arraiá do CEC</span><span class="esc-chip">Mascote da escola</span><span class="esc-chip">Xadrez junino</span></div>
+          <a class="btn-main" href="{{escWa.arraia}}" target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-weight: 700; font-size: 15px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>Quero para a minha escola</a>
+        </div>
+      </div>
+      <div class="esc-panel" style="display: {{escShow.feira}}">
+        <figure class="esc-fig"><img src="assets/feira-meio-ambiente.webp" alt="Frente e costas da camisa da I Semana do Meio Ambiente: branca com planeta, folhas e circuitos em azul e verde, frase “Pequenas atitudes, grandes transformações” nas costas" loading="lazy"></figure>
+        <div class="esc-txt">
+          <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">Feiras e mostras</span>
+          <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(34px, 3.6vw, 48px); line-height: .92">Feira, mostra ou semana temática</strong>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #BCC3D3">Feira de ciências, mostra cultural ou semana temática: a camisa vira parte do projeto e da memória do evento.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px"><span class="esc-chip">I Semana do Meio Ambiente</span><span class="esc-chip">Feira de ciências</span><span class="esc-chip">Mostra cultural</span></div>
+          <a class="btn-main" href="{{escWa.feira}}" target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; background: {{accent}}; color: #0A0B0D; font-weight: 700; font-size: 15px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>Quero para a minha escola</a>
         </div>
       </div>
     </div>
@@ -869,7 +882,7 @@ class Component extends DCLogic {
       REVEALS: ['cats', 'times', 'timesA', 'timesB', 'eventos', 'turn', 'corr', 'olimp', 'bat', 'dia', 'samba', 'model', 'selo'],
       PROG: ['times', 'eventos', 'dia', 'samba']
     };
-    this.state = { shown: {}, prog: {}, kick: 0, oly: 0, bat: 0, batLine: 'legado', ang: 20, auto3: true };
+    this.state = { shown: {}, prog: {}, kick: 0, escTab: 'oly', oly: 0, bat: 0, batLine: 'legado', ang: 20, auto3: true };
     this.tv = 0; this.tDrag = false; this.tTarget = null; this.tIdle = 0; this.lastT = 0;
     this.els = {};
     this.refs2 = {};
@@ -1041,6 +1054,9 @@ class Component extends DCLogic {
       tup: function () { if (self.tDrag) { self.tDrag = false; self.tIdle = 0; if (performance.now() - self.lastPT > 80) self.tv = 0; } },
       oly: { front: o.front, back: o.back, altFront: 'Frente da camisa Olimpíadas IEGC 2026, bandeira ' + o.name.toLowerCase(), altBack: 'Costas da camisa Olimpíadas IEGC 2026, bandeira ' + o.name.toLowerCase() },
       olyPills: olyPills,
+      escTabs: (function () { var o = {}; ['oly', 'arraia', 'feira'].forEach(function (k) { o[k] = { pressed: st.escTab === k ? 'true' : 'false', pick: function () { self.setState({ escTab: k }); } }; }); return o; })(),
+      escShow: { oly: st.escTab === 'oly' ? 'grid' : 'none', arraia: st.escTab === 'arraia' ? 'grid' : 'none', feira: st.escTab === 'feira' ? 'grid' : 'none' },
+      escWa: { arraia: 'https://wa.me/' + num + '?text=' + encodeURIComponent('Olá, Marol Store! Quero um orçamento de camisas para o arraiá da minha escola.'), feira: 'https://wa.me/' + num + '?text=' + encodeURIComponent('Olá, Marol Store! Quero um orçamento de camisas para uma feira/mostra da minha escola.') },
       batPills: batPills,
       lineLeg: lineBtn('legado'), linePai: lineBtn('paixao'),
       bat: { logo: 'assets/baterias/' + bt.k + '-logo.webp', escola: bt.escola, name: isP ? bt.escola : bt.name, kicker: isP ? 'Paixão pelo Samba' : 'Legado · bateria ' + bt.name, cap: isP ? bt.p.cap : bt.cap, enredo: bt.enredo, titulo: bt.titulo, tema: bt.tema, f1: bt.p.f1, f2: bt.p.f2, ptema: bt.p.tema, legDisp: isP ? 'none' : 'flex', paiDisp: isP ? 'flex' : 'none', c1: bc1, c2: bc2, front: batImg(bt, 'f', isP), back: batImg(bt, 'b', isP), bg: 'radial-gradient(circle at 42% 45%, ' + bc1 + '88 0%, ' + bc1 + '2E 40%, #120609 78%)', altFront: 'Frente da camisa ' + (isP ? 'Paixão pelo Samba ' : 'Legado ') + bt.escola, altBack: 'Costas da camisa ' + (isP ? 'Paixão pelo Samba ' : 'Legado ') + bt.escola, wa: 'https://wa.me/' + num + '?text=' + encodeURIComponent(batMsg) }
