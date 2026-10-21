@@ -737,7 +737,7 @@ async function gerarImagem({ largura = 1800, tipo = 'image/png', comLegenda = tr
       .legenda-lado{font:700 12px Inter,sans-serif;letter-spacing:.14em;fill:#24323c;opacity:.65} .info{font:500 13px Inter,sans-serif;fill:#24323c}</style>
     <defs><radialGradient id="fundo" cx=".5" cy=".35" r=".8"><stop offset="0" stop-color="#c9d1d8"/><stop offset=".7" stop-color="#a9b4bd"/><stop offset="1" stop-color="#9aa6b0"/></radialGradient></defs>
     <rect width="${W}" height="${H}" fill="url(#fundo)"/>
-    ${comLegenda ? `<rect width="${W}" height="70" fill="#1d4251"/><image href="${logoEmbutido}" x="28" y="14" width="107" height="43"/>
+    ${comLegenda ? `<rect width="${W}" height="70" fill="#1d4251"/><image href="${logoEmbutido}" x="28" y="10" width="74" height="50"/>
       <text x="${W - 28}" y="32" text-anchor="end" style="font:700 18px Inter,sans-serif;fill:#fff">${esc($('#titulo-modelo').textContent)}</text>
       <text x="${W - 28}" y="52" text-anchor="end" style="font:500 12px Inter,sans-serif;fill:#fff;opacity:.75">Simulação gerada em ${new Date().toLocaleDateString('pt-BR')} · marolsports.com</text>` : ''}
     <svg x="40" y="${topo}" width="${vw}" height="${vh}" viewBox="${viewBox}" overflow="visible">${svg}</svg>

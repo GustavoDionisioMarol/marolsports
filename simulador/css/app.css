@@ -2,6 +2,9 @@
 @font-face { font-family: 'Bebas Neue'; src: url(../fontes/bebas-neue-400.woff2) format('woff2'); font-display: swap; }
 @font-face { font-family: 'Oswald'; src: url(../fontes/oswald-600.woff2) format('woff2'); font-weight: 600; font-display: swap; }
 @font-face { font-family: 'Teko'; src: url(../fontes/teko-600.woff2) format('woff2'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Barlow Condensed'; src: url(../fontes/barlow-condensed-600.woff2) format('woff2'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Barlow Condensed'; src: url(../fontes/barlow-condensed-800i.woff2) format('woff2'); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Barlow Condensed'; src: url(../fontes/barlow-condensed-900i.woff2) format('woff2'); font-weight: 900; font-style: italic; font-display: swap; }
 @font-face { font-family: 'Graduate'; src: url(../fontes/graduate-400.woff2) format('woff2'); font-display: swap; }
 
 :root {
@@ -259,46 +262,103 @@ input[type="range"] { width: 100%; accent-color: var(--marca); }
 }
 
 /* ------------------------------------------------------------------ cadastro e login */
+/* visual esportivo: preto, grafite e o amarelo da marca, títulos condensados em itálico */
 body.bloqueado > .topo, body.bloqueado > .area { display: none; }
+body.bloqueado { background: #0b0c0f; }
 .acesso {
-  min-height: 100vh; display: grid; grid-template-columns: minmax(280px, 1fr) minmax(320px, 520px);
-  background: var(--fundo-app);
+  --esp-fundo: #0b0c0f; --esp-cartao: #15171c; --esp-campo: #1d2026; --esp-linha: #2b2f37;
+  --esp-amarelo: #f9ca0d; --esp-amarelo-2: #ffd93d; --esp-texto: #f4f5f7; --esp-texto-2: #a3a9b4;
+  --titulo: 'Barlow Condensed', 'Inter', sans-serif;
+  min-height: 100vh; display: grid; grid-template-columns: minmax(280px, 1fr) minmax(340px, 540px);
+  background: var(--esp-fundo); color: var(--esp-texto);
 }
 .acesso-marca {
-  background: radial-gradient(circle at 20% 15%, #2a5a6e 0%, var(--marca) 45%, var(--marca-escura) 100%);
-  color: #fff; padding: 48px 56px; display: flex; flex-direction: column; justify-content: center;
-  position: relative; overflow: hidden; isolation: isolate;
+  color: #fff; padding: 48px clamp(28px, 5vw, 72px); display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden; isolation: isolate; background: #07080a;
 }
 /* vídeo de fundo + camada escura por cima dele (o texto fica acima dos dois) */
 .acesso-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .acesso-marca::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(90deg, rgba(8, 18, 24, .88) 0%, rgba(8, 18, 24, .72) 55%, rgba(8, 18, 24, .6) 100%);
+  background:
+    linear-gradient(90deg, rgba(7, 8, 10, .92) 0%, rgba(7, 8, 10, .74) 55%, rgba(7, 8, 10, .55) 100%),
+    linear-gradient(0deg, rgba(7, 8, 10, .7) 0%, transparent 35%);
 }
-.acesso-texto { display: flex; flex-direction: column; gap: 18px; text-shadow: 0 2px 12px rgba(0, 0, 0, .45); }
-.acesso-marca img { width: 160px; height: auto; }
-.acesso-marca h1 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.1; margin: 8px 0 0; max-width: 14ch; }
-.acesso-marca ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; opacity: .9; }
-.acesso-marca li { padding-left: 26px; position: relative; }
-.acesso-marca li::before { content: ''; position: absolute; left: 0; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--destaque); box-shadow: 0 0 0 4px rgba(239, 106, 40, .25); }
-.acesso-cartao { align-self: center; background: #fff; margin: 32px; padding: 30px 28px; border-radius: 16px; box-shadow: var(--sombra); }
-.acesso-cartao h2 { margin: 0 0 4px; font-size: 22px; }
-.acesso-cartao .sub { color: var(--texto-2); margin: 0 0 18px; line-height: 1.45; }
-.acesso-cartao .btn-primario.largo { width: 100%; justify-content: center; height: 44px; font-size: 14px; margin-top: 6px; }
-.acesso-cartao .btn-primario:disabled { opacity: .6; cursor: wait; }
-.acesso-aceite { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; color: var(--texto-2); line-height: 1.4; margin: 4px 0 10px; }
-.acesso-aceite input { margin-top: 2px; accent-color: var(--marca); }
-.acesso-erro { background: #fdecea; color: #b42318; border-radius: 8px; padding: 9px 12px; font-size: 13px; margin: 6px 0; }
-.acesso-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 16px; font-size: 13px; color: var(--texto-2); }
+/* faixas diagonais amarelas no canto, como num uniforme */
+.acesso-marca::after {
+  content: ''; position: absolute; right: -60px; bottom: -40px; width: 300px; height: 150px; z-index: -1;
+  background: repeating-linear-gradient(115deg, var(--esp-amarelo) 0 14px, transparent 14px 34px);
+  opacity: .85; transform: skewX(-20deg);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 60%); mask-image: linear-gradient(90deg, transparent, #000 60%);
+}
+.acesso-texto { display: flex; flex-direction: column; gap: 20px; max-width: 560px; }
+.acesso-marca img { width: 132px; height: auto; filter: drop-shadow(0 4px 14px rgba(0, 0, 0, .5)); }
+.acesso-kicker {
+  align-self: flex-start; font: 600 15px/1 var(--titulo); letter-spacing: .22em; text-transform: uppercase; color: #0b0c0f;
+  background: var(--esp-amarelo); padding: 7px 14px 6px; transform: skewX(-14deg); margin-top: 8px;
+}
+.acesso-kicker span { display: inline-block; transform: skewX(14deg); }
+.acesso-marca h1 {
+  font: italic 900 clamp(46px, 6.2vw, 86px)/.9 var(--titulo); text-transform: uppercase; letter-spacing: -.005em;
+  margin: 0; text-shadow: 0 4px 24px rgba(0, 0, 0, .55);
+}
+.acesso-marca h1 em { display: block; font-style: inherit; color: var(--esp-amarelo); }
+.acesso-marca ul { margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.acesso-marca li {
+  padding-left: 38px; position: relative; font: 600 19px/1.25 var(--titulo); letter-spacing: .03em; text-transform: uppercase; color: #e6e8ec;
+}
+.acesso-marca li::before {
+  content: ''; position: absolute; left: 0; top: 0; width: 24px; height: 24px; background: var(--esp-amarelo); transform: skewX(-12deg);
+}
+.acesso-marca li::after {
+  content: ''; position: absolute; left: 8px; top: 5px; width: 6px; height: 11px; border: solid #0b0c0f; border-width: 0 3px 3px 0; transform: rotate(45deg);
+}
+
+/* lado do formulário */
+.acesso > .acesso-cartao {
+  align-self: center; margin: 32px; padding: 34px 30px 28px; border-radius: 14px; position: relative; overflow: hidden;
+  background: var(--esp-cartao); border: 1px solid rgba(255, 255, 255, .07); box-shadow: 0 30px 80px rgba(0, 0, 0, .55);
+}
+.acesso-cartao::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 5px;
+  background: linear-gradient(90deg, var(--esp-amarelo) 0 70%, transparent 70% 73%, var(--esp-amarelo) 73% 82%, transparent 82% 85%, var(--esp-amarelo) 85%);
+}
+.acesso-cartao h2 { margin: 0 0 6px; font: italic 800 34px/1 var(--titulo); text-transform: uppercase; letter-spacing: .01em; color: #fff; }
+.acesso-cartao .sub { color: var(--esp-texto-2); margin: 0 0 20px; line-height: 1.5; }
+.acesso-cartao .sub b { color: #fff; }
+.acesso-cartao .campo label { font: 600 13px/1.2 var(--titulo); letter-spacing: .12em; text-transform: uppercase; color: var(--esp-texto-2); }
+.acesso-cartao input:not([type=checkbox]) {
+  background: var(--esp-campo); border: 1px solid var(--esp-linha); color: var(--esp-texto); border-radius: 8px; height: 44px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.acesso-cartao input::placeholder { color: #6b7280; }
+.acesso-cartao input:not([type=checkbox]):focus { outline: none; border-color: var(--esp-amarelo); box-shadow: 0 0 0 3px rgba(249, 202, 13, .22); }
+.acesso-cartao input:-webkit-autofill { -webkit-text-fill-color: var(--esp-texto); -webkit-box-shadow: 0 0 0 40px var(--esp-campo) inset; caret-color: var(--esp-texto); }
+.acesso-cartao .btn-primario.largo {
+  width: 100%; justify-content: center; height: 52px; margin-top: 8px; border: 0; border-radius: 8px;
+  background: var(--esp-amarelo); color: #0b0c0f; font: italic 800 21px/1 var(--titulo); letter-spacing: .04em; text-transform: uppercase;
+  box-shadow: 0 10px 26px rgba(249, 202, 13, .22); transition: background .15s, transform .15s, box-shadow .15s;
+}
+.acesso-cartao .btn-primario.largo:hover { background: var(--esp-amarelo-2); transform: translateY(-1px); box-shadow: 0 14px 30px rgba(249, 202, 13, .3); }
+.acesso-cartao .btn-primario:disabled { opacity: .6; cursor: wait; transform: none; }
+.acesso-cartao :focus-visible { outline-color: var(--esp-amarelo); }
+.acesso-aceite { display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; color: var(--esp-texto-2); line-height: 1.45; margin: 6px 0 12px; }
+.acesso-aceite input { margin-top: 2px; width: 16px; height: 16px; accent-color: var(--esp-amarelo); }
+.acesso-erro { background: rgba(240, 68, 56, .12); border: 1px solid rgba(240, 68, 56, .35); color: #ff8a80; border-radius: 8px; padding: 9px 12px; font-size: 13px; margin: 6px 0; }
+.acesso-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 18px; font-size: 13px; color: var(--esp-texto-2); }
+.acesso-links .btn-link { color: var(--esp-amarelo); font-weight: 600; }
 .usuario { display: inline-flex; align-items: center; gap: 6px; color: #fff; font-size: 13px; }
 .usuario svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
 .usuario b { font-weight: 600; max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .usuario .btn-link { color: #fff; opacity: .8; }
 @media (max-width: 860px) {
   .acesso { grid-template-columns: 1fr; }
-  .acesso-marca { padding: 28px 22px; gap: 12px; }
+  .acesso-marca { padding: 28px 22px 52px; }
   .acesso-marca ul { display: none; }
-  .acesso-marca { padding-bottom: 46px; }
-  .acesso-cartao { margin: -18px 14px 24px; padding: 22px 18px; }
+  .acesso-texto { gap: 14px; }
+  .acesso-marca img { width: 96px; }
+  .acesso-marca h1 { font-size: clamp(40px, 12vw, 56px); }
+  .acesso-marca::after { width: 200px; height: 90px; }
+  .acesso > .acesso-cartao { margin: -24px 14px 24px; padding: 26px 18px 22px; }
   .usuario b { display: none; }
 }
