@@ -123,9 +123,8 @@ function mostrarTela(resolver) {
   document.body.classList.add('bloqueado');
   const tela = $('#acesso');
   tela.hidden = false;
-  // o vídeo só é baixado e tocado quando a tela de acesso aparece (e não toca para quem pede menos movimento)
-  const video = $('.acesso-video', tela);
-  if (video && !matchMedia('(prefers-reduced-motion: reduce)').matches) video.play().catch(() => {});
+  // o vídeo de fundo só é baixado e tocado quando a tela de acesso aparece
+  $('.acesso-video', tela)?.play().catch(() => {});
   const cartao = $('.acesso-cartao', tela);
   const aviso = API_CADASTRO ? '' : '<p class="acesso-erro">O cadastro ainda não foi configurado neste site. Veja as instruções no README.</p>';
 
