@@ -1263,9 +1263,24 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
       { k: 'fla-plumagem', nome: 'Plumagem clara', sub: 'Penas em tom sobre tom' },
       { k: 'fla-territorio', nome: 'Território rubro', sub: 'Linhas topográficas' }
     ] },
-    { k: 'botafogo', nome: 'Botafogo', cor: '#DADADA', estampas: [{ nome: 'Garrincha', sub: 'O craque em ilustração clássica', foto: true }] },
-    { k: 'vasco', nome: 'Vasco', cor: '#DADADA', estampas: [{ nome: 'Faixa diagonal', sub: 'A faixa e São Januário', foto: true }] },
-    { k: 'fluminense', nome: 'Fluminense', cor: '#8A1538', estampas: [{ nome: 'Botânica tricolor', sub: 'Folhagem em creme, grená e verde', foto: true }] }
+    { k: 'botafogo', nome: 'Botafogo', cor: '#DADADA', estampas: [
+      { k: 'bot-yamato', nome: 'Yamato-e · Garrincha', sub: 'Tributo a Garrincha em pintura japonesa', foto: true },
+      { k: 'bot-heranca', nome: 'Herança alvinegra', sub: 'Damasco em preto e cinza' },
+      { k: 'bot-trama', nome: 'Trama Clara da Estrela', sub: 'A estrela em tom sobre tom' },
+      { k: 'bot-territorio', nome: 'Território Alvinegro', sub: 'Listras e linhas topográficas' }
+    ] },
+    { k: 'vasco', nome: 'Vasco', cor: '#DADADA', estampas: [
+      { k: 'vas-territorio', nome: 'Território da Colina', sub: 'A faixa e São Januário', foto: true },
+      { k: 'vas-yamato', nome: 'Yamato vascaíno', sub: 'A caravela em estilo japonês' },
+      { k: 'vas-heranca', nome: 'Herança Cruzmaltina', sub: 'Damasco com a cruz de malta' },
+      { k: 'vas-trama', nome: 'Trama Clara Vascaína', sub: 'Trama náutica em tom sobre tom' }
+    ] },
+    { k: 'fluminense', nome: 'Fluminense', cor: '#8A1538', estampas: [
+      { k: 'flu-trama', nome: 'Trama Clara', sub: 'Folhagem botânica tricolor', foto: true },
+      { k: 'flu-yamato', nome: 'Yamato Tricolor', sub: 'Ilustração clássica em estilo japonês' },
+      { k: 'flu-heranca', nome: 'Herança Tricolor', sub: 'Damasco em verde e grená' },
+      { k: 'flu-territorio', nome: 'Território Tricolor', sub: 'Verde e grená em linhas topográficas' }
+    ] }
   ];
   var raiz = document.getElementById('dia-maiores');
   if (!raiz) return;
@@ -1388,6 +1403,7 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
   function abrir(n) {
     var origens = Array.prototype.map.call(botoes, function (b) { return b.querySelector('img').getBoundingClientRect(); });
     atual = { c: n, e: 0, vista: 'corpo' };
+    precarregarClube(CLUBES[n]);
     alturaDe(function () {
       escolha.hidden = true; vitrine.hidden = false; cena.dataset.estado = 'vitrine';
       desenhar(true);
@@ -1409,6 +1425,7 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
   function trocarClube(n) {
     if (n === atual.c) return;
     var vez = ++trocando;
+    precarregarClube(CLUBES[n]);
     palco.classList.remove('entra'); palco.classList.add('sai');
     abas.forEach(function (b, i) { b.setAttribute('aria-pressed', String(i === n)); });
     escudoAoCentro(abas[n].querySelector('img').getBoundingClientRect(), abas[n].querySelector('img').src);
@@ -1437,6 +1454,18 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
     var e = CLUBES[atual.c].estampas[+b.dataset.e];
     atual.e = +b.dataset.e; atual.vista = vistas(e)[0]; desenhar();
   });
+
+  // pré-carrega as fotos para a animação não esperar o download: os modelos quando a seção aparece,
+  // as camisas do clube quando ele é aberto
+  var carregadas = {};
+  function precarregar(srcs) { srcs.forEach(function (u) { if (!carregadas[u]) { carregadas[u] = new Image(); carregadas[u].src = u; } }); }
+  function precarregarClube(c) { precarregar(c.estampas.reduce(function (l, e) { return e.k ? l.concat([D + e.k + '-frente.webp', D + e.k + '-costas.webp']) : l; }, [])); }
+  if ('IntersectionObserver' in window) {
+    var io2 = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { precarregar(CLUBES.map(function (c) { return D + 'modelo-' + c.k + '.webp'; })); io2.disconnect(); }
+    }, { rootMargin: '600px 0px' });
+    io2.observe(cena);
+  }
 
   // entrada suave ao rolar até a seção
   var rv = raiz.querySelectorAll('.mr-rv');

@@ -33,9 +33,9 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Homenagem a Flamengo, Botafogo, Vasco e Fluminense; 4 estampas por clube, modelagem oversized.
 - Abertura: só os 4 escudos e "Qual é o seu time do coração?". O clique abre a vitrine do clube: o escudo escolhido voa para o centro do palco e cresce, os outros viram abas pequenas centralizadas no topo (trocar de time); o holofote acende, o escudo se dissolve e o modelo sobe no palco (a troca de time pelas abas repete a animação do escudo); ao lado, as outras 3 estampas do clube (clicar troca a do palco). A estampa principal é a que o modelo veste ("No corpo"); as outras mostram Frente/Costas. "Todos os times" volta para a abertura. No celular (até 980px): escudos em 2×2 e as estampas embaixo do palco.
 - HTML em `#dia-maiores`, estilos em `<style id="estilos-maiores">`, dados e lógica no script "Maiores do Rio" no fim do `index.html` (lista `CLUBES`: `k`, `nome`, `cor`, `estampas` com `k`, `nome`, `sub` e `foto: true` na que o modelo veste). Fica fora do `Component`.
-- Arquivos em `assets/maiores/`: `escudo-<clube>.webp`, `modelo-<clube>.webp`, `<prefixo>-<estampa>-frente.webp` / `-costas.webp` (Flamengo: `fla-`). Originais em `originais/maiores-do-rio/` (não vão para o ar).
-- Mockups de camisa em fundo bege (frente | costas lado a lado): recortar com `tools/recorte_mockup_bege.py <png> <saída>` (`--sombra` tira a sombra cinza embaixo de barras escuras; não usar em camisas de barra clara).
-- Pendente: as outras 3 estampas de Botafogo, Vasco e Fluminense (até lá aparecem como "Em breve").
+- Arquivos em `assets/maiores/`: `escudo-<clube>.webp`, `modelo-<clube>.webp`, `<prefixo>-<estampa>-frente.webp` / `-costas.webp` (prefixos `fla-`, `bot-`, `vas-`, `flu-`; estampas `yamato`, `heranca`, `trama`/`plumagem`, `territorio`). Originais em `originais/maiores-do-rio/` (não vão para o ar).
+- Mockups de camisa em fundo bege (frente | costas lado a lado): recortar com `tools/recorte_mockup_bege.py <png> <saída>` (`--sombra` tira a sombra cinza embaixo de barras escuras, não usar em camisas de barra clara; `--grabcut` para fundo com degradê/vinheta ou quando sobra o título grudado na camisa).
+- Todas as 16 estampas no ar. Estampa vestida pelo modelo: Flamengo Herança, Botafogo Yamato-e (Garrincha), Vasco Território da Colina, Fluminense Trama Clara.
 
 ## Imagens
 - O dono manda mockups frente+costas lado a lado com **fundo verde liso**; recorte com `tools/recorte_fundo_verde.py` (corta o cabeçalho e o rodapé com os nomes "FRENTE/COSTAS").
