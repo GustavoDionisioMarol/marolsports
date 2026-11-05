@@ -149,6 +149,14 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
 .mr-escudo-btn:hover img,.mr-escudo-btn:focus-visible img{filter:drop-shadow(0 14px 22px rgba(0,0,0,.55)) drop-shadow(0 0 26px rgba(255,244,214,.18))}
 .mr-escudo-btn:hover span,.mr-escudo-btn:focus-visible span{color:#F4F5F2}
 .mr-escudo-btn:focus-visible{outline:2px solid var(--mr-am);outline-offset:2px}
+/* escudo com vídeo da coleção ao fundo */
+.mr-escudo-btn.com-video{overflow:hidden;align-self:stretch;justify-content:center;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.mr-escudo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;transform:scale(1.04);transition:transform 1.2s cubic-bezier(.22,.7,.18,1)}
+.mr-escudo-veu{position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 55% at 50% 45%,rgba(14,5,7,.35),rgba(14,5,7,.8)),linear-gradient(0deg,rgba(14,5,7,.85),transparent 45%);transition:opacity .6s ease}
+.mr-escudo-btn.com-video img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.7))}
+.mr-escudo-btn.com-video span{color:#E9E3E4;text-shadow:0 2px 10px rgba(0,0,0,.8)}
+.mr-escudo-btn.com-video:hover .mr-escudo-video{transform:scale(1.1)}
+.mr-escudo-btn.com-video:hover .mr-escudo-veu{opacity:.7}
 .mr-dica{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B89AA0}
 /* vitrine */
 .mr-topo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding-bottom:18px;border-bottom:1px solid #2A1217}
@@ -1302,7 +1310,7 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
       { k: 'fla-plumagem', nome: 'Plumagem clara', sub: 'Penas em tom sobre tom', corpo: true },
       { k: 'fla-territorio', nome: 'Território rubro', sub: 'Linhas topográficas', corpo: true }
     ] },
-    { k: 'botafogo', nome: 'Botafogo', cor: '#DADADA', estampas: [
+    { k: 'botafogo', nome: 'Botafogo', cor: '#DADADA', video: true, estampas: [
       { k: 'bot-yamato', nome: 'Yamato-e · Garrincha', sub: 'Tributo a Garrincha em pintura japonesa', foto: true },
       { k: 'bot-heranca', nome: 'Herança alvinegra', sub: 'Damasco em preto e cinza', corpo: true },
       { k: 'bot-trama', nome: 'Trama Clara da Estrela', sub: 'A estrela em tom sobre tom', corpo: true },
@@ -1338,12 +1346,21 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
   var zap = function (c, e) { return 'https://wa.me/' + NUM + '?text=' + encodeURIComponent('Olá, Marol Store! Quero a camisa ' + e.nome + ' do ' + c.nome + ', da coleção Maiores do Rio.'); };
 
   $('.mr-escudos').innerHTML = CLUBES.map(function (c, n) {
-    return '<button type="button" class="mr-escudo-btn" data-n="' + n + '" style="--cor:' + c.cor + '"><img src="' + D + 'escudo-' + c.k + '.webp" alt="" loading="lazy" decoding="async"><span>' + esc(c.nome) + '</span></button>';
+    // clube com vídeo (video-<clube>.mp4): passa ao fundo do escudo, escurecido
+    var video = c.video ? '<video class="mr-escudo-video" muted loop playsinline preload="none" poster="' + D + 'video-' + c.k + '.jpg" aria-hidden="true"><source src="' + D + 'video-' + c.k + '.mp4" type="video/mp4"></video><span class="mr-escudo-veu" aria-hidden="true"></span>' : '';
+    return '<button type="button" class="mr-escudo-btn' + (c.video ? ' com-video' : '') + '" data-n="' + n + '" style="--cor:' + c.cor + '">' + video + '<img src="' + D + 'escudo-' + c.k + '.webp" alt="" loading="lazy" decoding="async"><span>' + esc(c.nome) + '</span></button>';
   }).join('');
   $('.mr-abas').innerHTML = CLUBES.map(function (c, n) {
     return '<button type="button" class="mr-aba" data-n="' + n + '" aria-pressed="false" title="' + esc(c.nome) + '"><img src="' + D + 'escudo-' + c.k + '.webp" alt="" loading="lazy" decoding="async"><span>' + esc(c.nome) + '</span></button>';
   }).join('');
   var botoes = raiz.querySelectorAll('.mr-escudo-btn'), abas = raiz.querySelectorAll('.mr-aba');
+  var videos = raiz.querySelectorAll('.mr-escudo-video');
+  if (videos.length && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var ioV = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting && !escolha.hidden) e.target.play().catch(function () {}); else e.target.pause(); });
+    }, { threshold: 0.25 });
+    videos.forEach(function (v) { ioV.observe(v); });
+  }
 
   // troca a imagem do palco com um esmaecer suave
   function trocarFoto(src, alt, camisa, imediato) {
@@ -1447,6 +1464,7 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
     precarregarClube(CLUBES[n]);
     alturaDe(function () {
       escolha.hidden = true; vitrine.hidden = false; cena.dataset.estado = 'vitrine';
+      videos.forEach(function (v) { v.pause(); });
       desenhar(true);
     });
     palco.classList.remove('entra', 'sai'); palco.classList.add('espera');
@@ -1479,6 +1497,7 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
 
   function fechar() {
     alturaDe(function () { vitrine.hidden = true; escolha.hidden = false; cena.dataset.estado = 'escolha'; });
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) videos.forEach(function (v) { v.play().catch(function () {}); });
     if (!calmo && escolha.animate) escolha.animate([{ opacity: 0, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 600, easing: 'cubic-bezier(.22,.7,.18,1)' });
     atual.c = -1;
   }
