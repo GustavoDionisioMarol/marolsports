@@ -127,84 +127,125 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
   </script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 <style id="estilos-maiores">
-/* 3.3 Maiores do Rio — palco no escuro e holofote de cima */
-.mr{--mr-am:#F9CA0D;--mr-ease:cubic-bezier(.22,.7,.18,1)}
+/* 3.3 Maiores do Rio — escolha pelos escudos e vitrine do clube com holofote */
+.mr{--mr-am:#F9CA0D;--mr-ease:cubic-bezier(.22,.7,.18,1);--mr-ease-io:cubic-bezier(.65,0,.25,1)}
 .mr-rv{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s var(--mr-ease)}
 .mr-rv.in{opacity:1;transform:none}
-.mr-dica{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#B89AA0}
-.mr-dica svg{color:var(--mr-am)}
-.mr-so-cel{display:none}
-@media (max-width:980px){.mr-so-cel{display:inline}.mr-so-pc{display:none}}
-.mr-palco{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding-top:28px}
-.mr-clube{position:relative;display:flex;flex-direction:column;align-items:center;min-width:0;isolation:isolate}
-.mr-acender{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px 6px 8px;border:0;background:none;color:inherit;font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.mr-acender:focus-visible{outline:2px solid var(--mr-am);outline-offset:4px;border-radius:18px}
-/* luminária no alto e feixe de luz em cone */
-.mr-lampada{position:absolute;top:-10px;left:50%;width:58px;height:12px;transform:translateX(-50%);border-radius:0 0 30px 30px;background:linear-gradient(#3a3a3a,#141414);box-shadow:0 0 0 1px rgba(255,255,255,.06)}
-.mr-lampada::after{content:'';position:absolute;left:12%;right:12%;bottom:-3px;height:4px;border-radius:50%;background:#fff6dc;opacity:.08;transition:opacity .6s ease;box-shadow:0 0 0 rgba(255,240,200,0)}
-.mr-feixe{position:absolute;top:0;left:50%;width:150%;height:100%;transform:translateX(-50%);pointer-events:none;z-index:-1;opacity:0;
-  background:linear-gradient(180deg,rgba(255,244,214,.42) 0%,rgba(255,244,214,.16) 45%,rgba(255,244,214,.04) 80%,transparent 100%);
-  clip-path:polygon(45% 0,55% 0,100% 100%,0 100%);filter:blur(14px);transition:opacity .9s ease}
+.mr-cena{position:relative;padding-top:12px}
+.mr-escolha[hidden],.mr-vitrine[hidden]{display:none!important}
+/* escolha */
+.mr-escolha{display:flex;flex-direction:column;align-items:center;gap:34px;padding:40px 0 20px;text-align:center}
+.mr-pergunta{margin:0;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(34px,4.4vw,58px);line-height:.95}
+.mr-pergunta em{font-style:inherit;color:var(--mr-am)}
+.mr-escudos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,3vw,48px);width:100%;max-width:980px}
+.mr-escudo-btn{position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;padding:30px 8px 18px;border:0;border-radius:24px;background:none;color:inherit;font:inherit;cursor:pointer;isolation:isolate;-webkit-tap-highlight-color:transparent}
+.mr-escudo-btn::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:24px;opacity:0;transition:opacity .5s ease;
+  background:radial-gradient(60% 55% at 50% 0%,rgba(255,244,214,.18),transparent 70%),radial-gradient(50% 30% at 50% 100%,color-mix(in srgb,var(--cor) 30%,transparent),transparent 70%)}
+.mr-escudo-btn img{height:clamp(96px,11vw,150px);width:auto;filter:grayscale(.7) brightness(.62);transform:translateY(0);transition:filter .6s ease,transform .6s var(--mr-ease);animation:mr-flutua 5s ease-in-out infinite}
+.mr-escudo-btn:nth-child(2) img{animation-delay:-1.2s}.mr-escudo-btn:nth-child(3) img{animation-delay:-2.4s}.mr-escudo-btn:nth-child(4) img{animation-delay:-3.6s}
+@keyframes mr-flutua{50%{transform:translateY(-6px)}}
+.mr-escudo-btn span{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(20px,2vw,28px);color:#6E5A5E;transition:color .5s ease}
+.mr-escudo-btn:hover::before,.mr-escudo-btn:focus-visible::before{opacity:1}
+.mr-escudo-btn:hover img,.mr-escudo-btn:focus-visible img{filter:drop-shadow(0 14px 22px rgba(0,0,0,.55)) drop-shadow(0 0 26px rgba(255,244,214,.18))}
+.mr-escudo-btn:hover span,.mr-escudo-btn:focus-visible span{color:#F4F5F2}
+.mr-escudo-btn:focus-visible{outline:2px solid var(--mr-am);outline-offset:2px}
+.mr-dica{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B89AA0}
+/* vitrine */
+.mr-topo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding-bottom:18px;border-bottom:1px solid #2A1217}
+.mr-topo .mr-voltar{justify-self:start}
+.mr-voltar{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px 0 10px;border-radius:999px;border:1px solid #3A1A20;background:none;color:#D3BEC2;font:700 13px 'Barlow',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.mr-voltar:hover{border-color:#5A2A33;color:#fff}
+.mr-abas{display:flex;justify-content:center;gap:8px}
+.mr-aba{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:5px 14px 5px 6px;border-radius:999px;border:1px solid #3A1A20;background:rgba(28,11,15,.6);color:#B89AA0;font:700 13px 'Barlow',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,background .3s,color .3s}
+.mr-aba img{height:36px;width:auto;filter:grayscale(.85) brightness(.55);transition:filter .4s ease}
+.mr-aba:hover{border-color:#5A2A33;color:#fff}.mr-aba:hover img{filter:none}
+.mr-aba[aria-pressed="true"]{border-color:var(--mr-am);background:#2A1217;color:#fff;box-shadow:inset 0 0 0 1px var(--mr-am)}
+.mr-aba[aria-pressed="true"] img{filter:none}
+.mr-corpo{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:28px;padding-top:24px}
+.mr-esquerda{display:flex;flex-direction:column;gap:18px;min-width:0}
+.mr-palco{position:relative;height:clamp(440px,68vh,680px);isolation:isolate;overflow:hidden;border-radius:28px;
+  background:radial-gradient(70% 60% at 50% 30%,color-mix(in srgb,var(--cor) 14%,#1a0a0e),#0e0507 75%)}
+.mr-marca{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:-2;text-align:center;white-space:nowrap;pointer-events:none;
+  font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(90px,15vw,210px);line-height:1;
+  color:transparent;-webkit-text-stroke:2px color-mix(in srgb,var(--cor) 40%,rgba(255,255,255,.12));opacity:.55}
+.mr-lampada{position:absolute;top:0;left:50%;width:70px;height:12px;transform:translateX(-50%);border-radius:0 0 30px 30px;background:linear-gradient(#3a3a3a,#141414);z-index:2}
+.mr-lampada::after{content:'';position:absolute;left:12%;right:12%;bottom:-3px;height:4px;border-radius:50%;background:#fff6dc;box-shadow:0 0 18px 6px rgba(255,240,200,.55)}
+.mr-feixe{position:absolute;top:0;left:50%;width:110%;height:100%;transform:translateX(-50%);z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,244,214,.38) 0%,rgba(255,244,214,.13) 45%,rgba(255,244,214,.03) 85%,transparent);
+  clip-path:polygon(46% 0,54% 0,92% 100%,8% 100%);filter:blur(16px)}
 .mr-feixe::after{content:'';position:absolute;inset:0;opacity:.5;
   background-image:radial-gradient(1.4px 1.4px at 20% 30%,#fff8,transparent),radial-gradient(1px 1px at 65% 22%,#fff7,transparent),radial-gradient(1.6px 1.6px at 42% 64%,#fff6,transparent),radial-gradient(1px 1px at 78% 70%,#fff6,transparent),radial-gradient(1.2px 1.2px at 30% 82%,#fff5,transparent);
   background-size:180px 240px;animation:mr-poeira 14s linear infinite}
 @keyframes mr-poeira{to{background-position:30px -240px}}
-.mr-chao{position:absolute;left:50%;bottom:4px;width:86%;height:46px;transform:translateX(-50%);border-radius:50%;z-index:-1;opacity:0;
-  background:radial-gradient(closest-side,color-mix(in srgb,var(--cor) 55%,#fff4d6),transparent);filter:blur(6px);transition:opacity 1.1s ease .25s}
-.mr-escudo{height:clamp(64px,7vw,96px);width:auto;transition:filter 1.2s var(--mr-ease),transform 1.2s var(--mr-ease),opacity 1.2s ease}
-.mr-nome{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(22px,2.2vw,30px);line-height:1;letter-spacing:.02em;color:#6E5A5E;transition:color 1s ease}
-.mr-heroi{position:relative;width:100%;aspect-ratio:4/5}
-.mr-heroi img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:filter 1.2s var(--mr-ease),transform 1.2s var(--mr-ease),opacity .7s ease}
-.mr-heroi img.sai{opacity:0}
-/* apagado */
-.mr-escudo,.mr-heroi img{filter:grayscale(.85) brightness(.44) contrast(.95);transform:scale(.95)}
-.mr-palco.tem-luz .mr-clube:not(.aceso) .mr-escudo,.mr-palco.tem-luz .mr-clube:not(.aceso) .mr-heroi img{filter:grayscale(1) brightness(.28)}
-.mr-acender:hover .mr-escudo,.mr-acender:hover .mr-heroi img{filter:grayscale(.6) brightness(.6)}
-/* aceso */
-.mr-clube.aceso .mr-feixe{opacity:1;animation:mr-acende 1.3s ease both}
-.mr-clube.aceso .mr-lampada::after{opacity:1;box-shadow:0 0 18px 6px rgba(255,240,200,.55)}
-.mr-clube.aceso .mr-chao{opacity:.55}
-.mr-clube.aceso .mr-escudo{filter:drop-shadow(0 8px 18px rgba(0,0,0,.55)) drop-shadow(0 0 22px rgba(255,244,214,.25));transform:none}
-.mr-clube.aceso .mr-heroi img{filter:drop-shadow(0 28px 30px rgba(0,0,0,.65));transform:none}
-.mr-clube.aceso .mr-nome{color:#F4F5F2}
+.mr-chao{position:absolute;left:50%;bottom:10px;width:60%;height:50px;transform:translateX(-50%);border-radius:50%;z-index:-1;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--cor) 50%,#fff4d6),transparent);filter:blur(8px);opacity:.5}
+.mr-foto{position:absolute;inset:26px 0 0}
+.mr-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 30px 34px rgba(0,0,0,.6));transition:opacity .7s ease,transform .9s var(--mr-ease)}
+.mr-foto img.camisa{inset:6% 6% 8%;width:88%;height:86%;object-position:center}
+.mr-foto img.sai{opacity:0;transform:scale(.97)}
+/* entrada do palco (ao abrir ou trocar de time) */
+.mr-palco.entra .mr-feixe{animation:mr-acende 1.3s ease both}
+.mr-palco.entra .mr-lampada::after{animation:mr-acende 1.3s ease both}
+.mr-palco.entra .mr-foto{animation:mr-sobe 1.2s var(--mr-ease) .35s both}
+.mr-palco.entra .mr-marca{animation:mr-marca 1.4s var(--mr-ease) .15s both}
+.mr-palco.entra .mr-chao{animation:mr-chao 1.2s ease .45s both}
+.mr-palco.espera .mr-foto,.mr-palco.espera .mr-feixe,.mr-palco.espera .mr-marca,.mr-palco.espera .mr-chao{opacity:0}
+.mr-palco.sai .mr-foto{opacity:0;transform:translateY(18px) scale(.97);filter:blur(6px);transition:opacity .35s ease,transform .35s ease,filter .35s ease}
+.mr-palco.sai .mr-feixe,.mr-palco.sai .mr-marca,.mr-palco.sai .mr-chao{opacity:0;transition:opacity .3s ease}
 @keyframes mr-acende{0%{opacity:0}7%{opacity:.7}11%{opacity:.12}19%{opacity:.85}25%{opacity:.35}40%{opacity:.9}100%{opacity:1}}
-/* informações do clube aceso: nome da estampa, frente/costas, as outras estampas e o pedido */
-.mr-info{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;padding:6px 4px 0;visibility:hidden;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s var(--mr-ease),visibility 0s .6s}
-.mr-clube.aceso .mr-info{visibility:visible;opacity:1;transform:none;transition:opacity .7s ease .55s,transform .7s var(--mr-ease) .55s,visibility 0s}
-.mr-estampa{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:22px;line-height:1;text-transform:uppercase;text-align:center}
-.mr-estampa small{display:block;margin-top:5px;font-family:'Barlow',sans-serif;font-style:normal;font-weight:600;font-size:12px;letter-spacing:.12em;color:#B89AA0}
-.mr-lados{display:inline-flex;padding:3px;border-radius:999px;border:1px solid #3A1A20;background:#1C0B0F}
-.mr-lados button{min-height:30px;padding:0 14px;border:0;border-radius:999px;background:none;color:#B89AA0;font:700 12px 'Barlow',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-.mr-lados button[aria-pressed="true"]{background:var(--mr-am);color:#0A0B0D}
-.mr-outras{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%}
-.mr-outra{position:relative;aspect-ratio:4/5;padding:4px;border-radius:12px;border:1px solid #3A1A20;background:rgba(28,11,15,.6);cursor:pointer;opacity:0;transform:translateY(10px);transition:border-color .2s,opacity .5s ease,transform .5s var(--mr-ease)}
-.mr-clube.aceso .mr-outra{opacity:1;transform:none}
-.mr-clube.aceso .mr-outra:nth-child(1){transition-delay:0s,.7s,.7s}.mr-clube.aceso .mr-outra:nth-child(2){transition-delay:0s,.8s,.8s}.mr-clube.aceso .mr-outra:nth-child(3){transition-delay:0s,.9s,.9s}.mr-clube.aceso .mr-outra:nth-child(4){transition-delay:0s,1s,1s}
-.mr-outra img{width:100%;height:100%;object-fit:contain}
-.mr-outra:hover{border-color:#5A2A33}
-.mr-outra[aria-pressed="true"]{border-color:var(--mr-am);box-shadow:inset 0 0 0 1px var(--mr-am)}
-.mr-breve{font-size:13px;line-height:1.5;color:#B89AA0;text-align:center}
-.mr-pedir{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--mr-am);color:#0A0B0D;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
-/* os quatro modelos: caimento oversized */
-.mr-modelos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding-top:8px;border-top:1px solid #2A1217}
-.mr-modelos figure{position:relative;margin:0;display:flex;flex-direction:column;align-items:center;gap:10px}
-.mr-modelos img{width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;object-position:bottom;filter:grayscale(1) brightness(.38);transform:scale(.97);transition:filter 1.2s var(--mr-ease),transform 1.2s var(--mr-ease)}
-.mr-modelos figure.aceso img{filter:drop-shadow(0 22px 26px rgba(0,0,0,.6));transform:none}
-.mr-modelos figcaption{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6E5A5E;transition:color 1s ease}
-.mr-modelos figure.aceso figcaption{color:var(--mr-am)}
-.mr-titulo-modelos{grid-column:1/-1;margin:18px 0 4px;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(26px,3vw,38px);line-height:1}
-.mr-titulo-modelos span{color:var(--mr-am)}
+@keyframes mr-sobe{from{opacity:0;transform:translateY(90px) scale(.94);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+@keyframes mr-marca{from{opacity:0;letter-spacing:.3em}to{opacity:.55;letter-spacing:0}}
+@keyframes mr-chao{from{opacity:0}to{opacity:.5}}
+.mr-info{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.mr-titulo{display:flex;flex-direction:column;gap:4px;min-width:0}
+.mr-clube-nome{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mr-am)}
+.mr-estampa{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(30px,3.2vw,44px);line-height:.95}
+.mr-sub{font-size:14px;color:#B89AA0}
+.mr-acoes{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mr-vistas{display:inline-flex;padding:3px;border-radius:999px;border:1px solid #3A1A20;background:#1C0B0F}
+.mr-vistas:empty{display:none}
+.mr-vistas button{min-height:36px;padding:0 16px;border:0;border-radius:999px;background:none;color:#B89AA0;font:700 12px 'Barlow',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.mr-vistas button[aria-pressed="true"]{background:var(--mr-am);color:#0A0B0D}
+.mr-pedir{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 22px;border-radius:999px;background:var(--mr-am);color:#0A0B0D;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap}
+.mr-lado{display:flex;flex-direction:column;gap:14px;min-width:0}
+.mr-lado-tit{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#B89AA0}
+.mr-cards{display:grid;grid-template-rows:repeat(3,1fr);gap:12px;flex:1}
+.mr-card{position:relative;display:grid;grid-template-columns:120px minmax(0,1fr);align-items:center;gap:14px;padding:10px 14px 10px 10px;border-radius:20px;border:1px solid #3A1A20;background:rgba(28,11,15,.55);color:#F4F5F2;font:inherit;text-align:left;cursor:pointer;
+  opacity:0;transform:translateX(24px);transition:border-color .25s,background .25s}
+.mr-card.mostra{animation:mr-card .7s var(--mr-ease) both}
+@keyframes mr-card{to{opacity:1;transform:none}}
+.mr-card:hover{border-color:#5A2A33;background:#22100f}
+.mr-card img{width:120px;height:150px;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,.5));transition:transform .5s var(--mr-ease)}
+.mr-card:hover img{transform:scale(1.06) rotate(-2deg)}
+.mr-card b{display:block;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:22px;line-height:1}
+.mr-card small{display:block;margin-top:4px;font-size:13px;color:#B89AA0}
+.mr-card.breve{cursor:default}
+.mr-card.breve .mr-silueta{width:120px;height:150px;border-radius:14px;background:linear-gradient(110deg,#1f0d11 30%,#2c1419 50%,#1f0d11 70%);background-size:200% 100%;animation:mr-brilho 2.4s linear infinite;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z'/%3E%3C/svg%3E") center/80% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z'/%3E%3C/svg%3E") center/80% no-repeat}
+@keyframes mr-brilho{to{background-position:-200% 0}}
+/* escudos voando da escolha para as abas */
+.mr-voo{position:absolute;z-index:5;pointer-events:none;will-change:transform;transform-origin:0 0}
 @media (max-width:980px){
-  .mr-palco,.mr-modelos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -24px;padding-left:24px;padding-right:24px;scrollbar-width:none}
-  .mr-palco::-webkit-scrollbar,.mr-modelos::-webkit-scrollbar{display:none}
-  .mr-clube{flex:0 0 min(78vw,320px);scroll-snap-align:center}
-  .mr-modelos figure{flex:0 0 min(56vw,240px);scroll-snap-align:center}
-  .mr-titulo-modelos{position:sticky;left:0;flex:0 0 100%;display:none}
+  .mr-escudos{grid-template-columns:repeat(2,minmax(0,1fr));max-width:420px}
+  .mr-corpo{grid-template-columns:minmax(0,1fr)}
+  .mr-palco{height:clamp(380px,64vh,560px)}
+  .mr-topo{grid-template-columns:minmax(0,1fr);justify-items:center;gap:12px}
+  .mr-topo .mr-voltar{justify-self:center}
+  .mr-abas{overflow-x:auto;scrollbar-width:none;max-width:100%}
+  .mr-abas::-webkit-scrollbar{display:none}
+  .mr-aba{padding:4px;min-height:44px}
+  .mr-aba span{display:none}
+  .mr-cards{grid-template-rows:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .mr-card{grid-template-columns:1fr;justify-items:center;text-align:center;padding:8px 6px 10px;gap:6px;border-radius:16px}
+  .mr-card img,.mr-card.breve .mr-silueta{width:100%;height:auto;aspect-ratio:5/6}
+  .mr-card b{font-size:16px}
+  .mr-card small{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .mr-rv,.mr-rv.in{opacity:1;transform:none;transition:none}
-  .mr-clube.aceso .mr-feixe{animation:none}
-  .mr-feixe::after{animation:none}
+  .mr-escudo-btn img,.mr-feixe::after,.mr-card.breve .mr-silueta{animation:none}
+  .mr-palco.entra *{animation-duration:.01s!important;animation-delay:0s!important}
+  .mr-card.mostra{animation-duration:.01s;animation-delay:0s!important}
 }
 </style>
 <style id="estilos-costas">
@@ -774,20 +815,48 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
       </div>
     </div>
 
-    <!-- 3.3 Coleção Maiores do Rio: colunas apagadas; o clique acende um holofote sobre o clube (montado pelo script "Maiores do Rio" no fim da página) -->
-    <div id="dia-maiores" class="mr" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 24px 24px 72px; display: flex; flex-direction: column; gap: 28px; scroll-margin-top: 80px">
+    <!-- 3.3 Coleção Maiores do Rio: escolha do time pelos escudos; ao clicar, abre a vitrine do clube com holofote (montada pelo script "Maiores do Rio" no fim da página) -->
+    <div id="dia-maiores" class="mr" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 24px 24px 80px; display: flex; flex-direction: column; gap: 28px; scroll-margin-top: 80px">
       <div class="mr-rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px 40px; align-items: end; padding-top: 40px; border-top: 1px solid #3A1A20">
         <div style="display: flex; flex-direction: column; gap: 14px">
           <span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #F9CA0D"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"></path><path d="M12 8l1.3 2.7 3 .4-2.2 2 .6 3L12 14.7 9.3 16.1l.6-3-2.2-2 3-.4z"></path></svg>3.3 · Coleção Maiores do Rio</span>
           <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 4.6vw, 60px); line-height: .92">Os maiores do Rio.<br><span style="color: #F9CA0D">No seu estilo.</span></strong>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 14px">
-          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #D3BEC2">Uma homenagem aos quatro clubes mais tradicionais do Rio: <b style="color: #F4F5F2">Flamengo, Botafogo, Vasco e Fluminense</b>. Quatro estampas por clube, em modelagem <b style="color: #F4F5F2">oversized</b>, pra vestir a paixão no dia a dia.</p>
-          <span class="mr-dica"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"></path></svg><span class="mr-so-cel">Deslize e toque</span><span class="mr-so-pc">Toque</span> em um clube para acender o holofote</span>
+        <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #D3BEC2">Uma homenagem aos quatro clubes mais tradicionais do Rio: <b style="color: #F4F5F2">Flamengo, Botafogo, Vasco e Fluminense</b>. Quatro estampas por clube, em modelagem <b style="color: #F4F5F2">oversized</b>, pra vestir a paixão no dia a dia.</p>
+      </div>
+      <div class="mr-cena mr-rv" data-estado="escolha">
+        <div class="mr-escolha">
+          <p class="mr-pergunta">Qual é o seu <em>time do coração?</em></p>
+          <div class="mr-escudos" role="group" aria-label="Escolha o seu time"></div>
+          <span class="mr-dica">Toque no escudo para ver as estampas</span>
+        </div>
+        <div class="mr-vitrine" hidden>
+          <div class="mr-topo">
+            <button type="button" class="mr-voltar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>Todos os times</button>
+            <div class="mr-abas" role="group" aria-label="Trocar de time"></div>
+          </div>
+          <div class="mr-corpo">
+            <div class="mr-esquerda">
+              <div class="mr-palco">
+                <span class="mr-marca" aria-hidden="true"></span>
+                <span class="mr-lampada" aria-hidden="true"></span><span class="mr-feixe" aria-hidden="true"></span><span class="mr-chao" aria-hidden="true"></span>
+                <div class="mr-foto"></div>
+              </div>
+              <div class="mr-info">
+                <div class="mr-titulo"><span class="mr-clube-nome"></span><strong class="mr-estampa"></strong><small class="mr-sub"></small></div>
+                <div class="mr-acoes">
+                  <div class="mr-vistas" role="group" aria-label="Como ver a camisa"></div>
+                  <a class="mr-pedir" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>Quero a minha</a>
+                </div>
+              </div>
+            </div>
+            <aside class="mr-lado">
+              <span class="mr-lado-tit"></span>
+              <div class="mr-cards"></div>
+            </aside>
+          </div>
         </div>
       </div>
-      <div class="mr-palco mr-rv" role="group" aria-label="Clubes da coleção Maiores do Rio"></div>
-      <div class="mr-modelos mr-rv" aria-label="Modelos vestindo a coleção, caimento oversized"></div>
     </div>
 
     <!-- modelagem -->
@@ -1220,110 +1289,222 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
 </script>
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".nl-panel a");if(a){a.blur();}});</script>
 <script>
-// Maiores do Rio: monta as colunas e controla o holofote
+// Maiores do Rio: escolha do time pelos escudos e vitrine do clube
 (function () {
   var NUM = '5521966214050';
   var D = 'assets/maiores/';
+  // por clube: a estampa que o modelo veste vem primeiro (foto = modelo-<clube>.webp);
+  // as outras usam os mockups <k>-frente.webp / <k>-costas.webp
   var CLUBES = [
-    { k: 'flamengo', nome: 'Flamengo', cor: '#C8102E', modelo: 'Estampa Herança', estampas: [
+    { k: 'flamengo', nome: 'Flamengo', cor: '#C8102E', estampas: [
+      { k: 'fla-heranca', nome: 'Herança', sub: 'Damasco botânico', foto: true },
       { k: 'fla-yamato', nome: 'Yamato-e', sub: 'O urubu em estilo japonês' },
-      { k: 'fla-heranca', nome: 'Herança', sub: 'Damasco botânico' },
       { k: 'fla-plumagem', nome: 'Plumagem clara', sub: 'Penas em tom sobre tom' },
       { k: 'fla-territorio', nome: 'Território rubro', sub: 'Linhas topográficas' }
     ] },
-    { k: 'botafogo', nome: 'Botafogo', cor: '#E6E6E6', modelo: 'Estampa Garrincha', estampas: [] },
-    { k: 'vasco', nome: 'Vasco', cor: '#E6E6E6', modelo: 'Estampa da faixa', estampas: [] },
-    { k: 'fluminense', nome: 'Fluminense', cor: '#8A1538', modelo: 'Estampa botânica tricolor', estampas: [] }
+    { k: 'botafogo', nome: 'Botafogo', cor: '#DADADA', estampas: [
+      { k: 'bot-yamato', nome: 'Yamato-e · Garrincha', sub: 'Tributo a Garrincha em pintura japonesa', foto: true },
+      { k: 'bot-heranca', nome: 'Herança alvinegra', sub: 'Damasco em preto e cinza' },
+      { k: 'bot-trama', nome: 'Trama Clara da Estrela', sub: 'A estrela em tom sobre tom' },
+      { k: 'bot-territorio', nome: 'Território Alvinegro', sub: 'Listras e linhas topográficas' }
+    ] },
+    { k: 'vasco', nome: 'Vasco', cor: '#DADADA', estampas: [
+      { k: 'vas-territorio', nome: 'Território da Colina', sub: 'A faixa e São Januário', foto: true },
+      { k: 'vas-yamato', nome: 'Yamato vascaíno', sub: 'A caravela em estilo japonês' },
+      { k: 'vas-heranca', nome: 'Herança Cruzmaltina', sub: 'Damasco com a cruz de malta' },
+      { k: 'vas-trama', nome: 'Trama Clara Vascaína', sub: 'Trama náutica em tom sobre tom' }
+    ] },
+    { k: 'fluminense', nome: 'Fluminense', cor: '#8A1538', estampas: [
+      { k: 'flu-trama', nome: 'Trama Clara', sub: 'Folhagem botânica tricolor', foto: true },
+      { k: 'flu-yamato', nome: 'Yamato Tricolor', sub: 'Ilustração clássica em estilo japonês' },
+      { k: 'flu-heranca', nome: 'Herança Tricolor', sub: 'Damasco em verde e grená' },
+      { k: 'flu-territorio', nome: 'Território Tricolor', sub: 'Verde e grená em linhas topográficas' }
+    ] }
   ];
   var raiz = document.getElementById('dia-maiores');
   if (!raiz) return;
-  var palco = raiz.querySelector('.mr-palco');
-  var modelos = raiz.querySelector('.mr-modelos');
+  var $ = function (s) { return raiz.querySelector(s); };
+  var cena = $('.mr-cena'), escolha = $('.mr-escolha'), vitrine = $('.mr-vitrine');
+  var palco = $('.mr-palco'), fotoBox = $('.mr-foto');
+  var calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-  var foto = function (c, e, lado) { return e ? D + e.k + '-' + lado + '.webp' : D + 'modelo-' + c.k + '.webp'; };
-  var zap = function (c, e) { return 'https://wa.me/' + NUM + '?text=' + encodeURIComponent('Olá, Marol Store! Quero a camisa ' + (e ? e.nome + ' do ' : 'do ') + c.nome + ', da coleção Maiores do Rio.'); };
-  var estado = CLUBES.map(function () { return { i: 0, lado: 'frente' }; });
+  var atual = { c: -1, e: 0, vista: 'corpo' };
 
-  palco.innerHTML = CLUBES.map(function (c, n) {
-    var e = c.estampas[0];
-    var outras = c.estampas.length
-      ? '<div class="mr-outras" role="group" aria-label="Estampas do ' + esc(c.nome) + '">' + c.estampas.map(function (x, i) {
-          return '<button type="button" class="mr-outra" data-i="' + i + '" aria-pressed="' + (i === 0) + '" title="' + esc(x.nome) + '"><img src="' + foto(c, x, 'frente') + '" alt="' + esc(x.nome) + '" loading="lazy" decoding="async"></button>';
-        }).join('') + '</div>'
-      : '<p class="mr-breve">As quatro estampas do ' + esc(c.nome) + ' chegam em breve.</p>';
-    return '<article class="mr-clube" data-n="' + n + '" style="--cor:' + c.cor + '">' +
-      '<button type="button" class="mr-acender" aria-pressed="false" aria-label="Acender o holofote: ' + esc(c.nome) + '">' +
-        '<span class="mr-lampada" aria-hidden="true"></span><span class="mr-feixe" aria-hidden="true"></span><span class="mr-chao" aria-hidden="true"></span>' +
-        '<img class="mr-escudo" src="' + D + 'escudo-' + c.k + '.webp" alt="Escudo do ' + esc(c.nome) + '" loading="lazy" decoding="async">' +
-        '<span class="mr-nome">' + esc(c.nome) + '</span>' +
-        '<span class="mr-heroi"><img src="' + foto(c, e, 'frente') + '" alt="' + esc(e ? 'Camisa ' + e.nome + ' do ' + c.nome : 'Modelo vestindo a camisa do ' + c.nome) + '" loading="lazy" decoding="async"></span>' +
-      '</button>' +
-      '<div class="mr-info">' +
-        '<span class="mr-estampa">' + esc(e ? e.nome : c.modelo) + '<small>' + esc(e ? e.sub : 'Oversized') + '</small></span>' +
-        (e ? '<div class="mr-lados" role="group" aria-label="Lado da camisa"><button type="button" data-lado="frente" aria-pressed="true">Frente</button><button type="button" data-lado="costas" aria-pressed="false">Costas</button></div>' : '') +
-        outras +
-        '<a class="mr-pedir" href="' + zap(c, e) + '" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>Quero a minha</a>' +
-      '</div></article>';
+  var vistas = function (e) { return (e.foto ? ['corpo'] : []).concat(e.k ? ['frente', 'costas'] : []); };
+  var imagem = function (c, e, vista) { return vista === 'corpo' ? D + 'modelo-' + c.k + '.webp' : D + e.k + '-' + vista + '.webp'; };
+  var miniatura = function (c, e) { return e.foto ? D + 'modelo-' + c.k + '.webp' : D + e.k + '-frente.webp'; };
+  var zap = function (c, e) { return 'https://wa.me/' + NUM + '?text=' + encodeURIComponent('Olá, Marol Store! Quero a camisa ' + e.nome + ' do ' + c.nome + ', da coleção Maiores do Rio.'); };
+
+  $('.mr-escudos').innerHTML = CLUBES.map(function (c, n) {
+    return '<button type="button" class="mr-escudo-btn" data-n="' + n + '" style="--cor:' + c.cor + '"><img src="' + D + 'escudo-' + c.k + '.webp" alt="" loading="lazy" decoding="async"><span>' + esc(c.nome) + '</span></button>';
   }).join('');
-
-  modelos.innerHTML = '<strong class="mr-titulo-modelos">Caimento <span>oversized</span></strong>' + CLUBES.map(function (c, n) {
-    return '<figure data-n="' + n + '"><img src="' + D + 'modelo-' + c.k + '.webp" alt="Modelo vestindo a camisa do ' + esc(c.nome) + ' (' + esc(c.modelo) + ')" loading="lazy" decoding="async"><figcaption>' + esc(c.nome) + '</figcaption></figure>';
+  $('.mr-abas').innerHTML = CLUBES.map(function (c, n) {
+    return '<button type="button" class="mr-aba" data-n="' + n + '" aria-pressed="false" title="' + esc(c.nome) + '"><img src="' + D + 'escudo-' + c.k + '.webp" alt="" loading="lazy" decoding="async"><span>' + esc(c.nome) + '</span></button>';
   }).join('');
+  var botoes = raiz.querySelectorAll('.mr-escudo-btn'), abas = raiz.querySelectorAll('.mr-aba');
 
-  var colunas = palco.querySelectorAll('.mr-clube');
-  var figuras = modelos.querySelectorAll('figure');
-
-  // troca a imagem em destaque com um esmaecer suave
-  function trocar(col, src, alt) {
-    var heroi = col.querySelector('.mr-heroi');
-    var atual = heroi.querySelector('img:not(.sai)');
-    if (atual && atual.getAttribute('src') === src) return;
+  // troca a imagem do palco com um esmaecer suave
+  function trocarFoto(src, alt, camisa, imediato) {
+    var velha = fotoBox.querySelector('img:not(.sai)');
+    if (velha && velha.getAttribute('src') === src) return;
     var nova = new Image();
-    nova.alt = alt; nova.decoding = 'async'; nova.className = 'sai';
-    nova.onload = function () {
-      heroi.appendChild(nova);
+    nova.alt = alt; nova.decoding = 'async'; nova.className = (camisa ? 'camisa ' : '') + (imediato ? '' : 'sai');
+    var pronto = function () {
+      fotoBox.appendChild(nova);
+      if (imediato) { fotoBox.querySelectorAll('img').forEach(function (i) { if (i !== nova) i.remove(); }); return; }
       requestAnimationFrame(function () { requestAnimationFrame(function () {
         nova.classList.remove('sai');
-        if (atual) { atual.classList.add('sai'); setTimeout(function () { atual.remove(); }, 750); }
+        if (velha) { velha.classList.add('sai'); setTimeout(function () { velha.remove(); }, 800); }
       }); });
     };
+    nova.onload = nova.onerror = pronto;
     nova.src = src;
   }
 
-  function mostrar(n) {
-    var c = CLUBES[n], st = estado[n], col = colunas[n], e = c.estampas[st.i];
-    trocar(col, foto(c, e, st.lado), e ? 'Camisa ' + e.nome + ' do ' + c.nome + (st.lado === 'costas' ? ', costas' : '') : 'Modelo vestindo a camisa do ' + c.nome);
-    col.querySelector('.mr-estampa').innerHTML = esc(e ? e.nome : c.modelo) + '<small>' + esc(e ? e.sub : 'Oversized') + '</small>';
-    col.querySelectorAll('.mr-outra').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.i === st.i)); });
-    col.querySelectorAll('.mr-lados button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lado === st.lado)); });
-    col.querySelector('.mr-pedir').href = zap(c, e);
+  function desenhar(imediato) {
+    var c = CLUBES[atual.c], e = c.estampas[atual.e];
+    if (vistas(e).indexOf(atual.vista) < 0) atual.vista = vistas(e)[0];
+    palco.style.setProperty('--cor', c.cor); cena.style.setProperty('--cor', c.cor);
+    $('.mr-marca').textContent = c.nome;
+    trocarFoto(imagem(c, e, atual.vista), (atual.vista === 'corpo' ? 'Modelo vestindo a camisa ' : 'Camisa ') + e.nome + ' do ' + c.nome + (atual.vista === 'costas' ? ', costas' : ''), atual.vista !== 'corpo', imediato);
+    $('.mr-clube-nome').textContent = c.nome;
+    $('.mr-estampa').textContent = e.nome;
+    $('.mr-sub').textContent = e.sub + ' · oversized';
+    var vs = vistas(e), rot = { corpo: 'No corpo', frente: 'Frente', costas: 'Costas' };
+    $('.mr-vistas').innerHTML = vs.length > 1 ? vs.map(function (v) { return '<button type="button" data-v="' + v + '" aria-pressed="' + (v === atual.vista) + '">' + rot[v] + '</button>'; }).join('') : '';
+    $('.mr-pedir').href = zap(c, e);
+    abas.forEach(function (b, i) { b.setAttribute('aria-pressed', String(i === atual.c)); });
+    // as outras três estampas do clube (ou "em breve" enquanto não chegam)
+    $('.mr-lado-tit').textContent = 'Outras estampas do ' + c.nome;
+    var html = '', k = 0;
+    c.estampas.forEach(function (x, i) {
+      if (i === atual.e) return;
+      html += '<button type="button" class="mr-card" data-e="' + i + '" style="animation-delay:' + (0.45 + k++ * 0.1) + 's"><img src="' + miniatura(c, x) + '" alt=""><span><b>' + esc(x.nome) + '</b><small>' + esc(x.sub) + '</small></span></button>';
+    });
+    for (; k < 3; k++) html += '<div class="mr-card breve" style="animation-delay:' + (0.45 + k * 0.1) + 's"><span class="mr-silueta" aria-hidden="true"></span><span><b>Em breve</b><small>Nova estampa do ' + esc(c.nome) + '</small></span></div>';
+    $('.mr-cards').innerHTML = html;
+    requestAnimationFrame(function () { raiz.querySelectorAll('.mr-card').forEach(function (el) { el.classList.add('mostra'); }); });
   }
 
-  function acender(n) {
-    var ja = colunas[n].classList.contains('aceso');
-    colunas.forEach(function (col, i) {
-      var on = i === n && !ja;
-      col.classList.toggle('aceso', on);
-      col.querySelector('.mr-acender').setAttribute('aria-pressed', String(on));
-      if (figuras[i]) figuras[i].classList.toggle('aceso', on);
+  function entrar() { palco.classList.remove('entra', 'sai', 'espera'); void palco.offsetWidth; palco.classList.add('entra'); }
+
+  // anima a altura da cena entre dois estados
+  function alturaDe(fn) {
+    var h0 = cena.offsetHeight; fn(); var h1 = cena.offsetHeight;
+    if (calmo || !cena.animate || h0 === h1) return;
+    cena.animate([{ height: h0 + 'px', overflow: 'hidden' }, { height: h1 + 'px', overflow: 'hidden' }], { duration: 750, easing: 'cubic-bezier(.65,0,.25,1)' });
+  }
+
+  // escudos voam da escolha para as abas do topo
+  function voar(a, alvo, aceso, atraso) {
+    if (calmo || !document.body.animate) return;
+    var base = cena.getBoundingClientRect(), b = alvo.getBoundingClientRect();
+    var img = document.createElement('img');
+    img.src = alvo.src; img.className = 'mr-voo'; img.alt = '';
+    img.style.left = (a.left - base.left) + 'px'; img.style.top = (a.top - base.top) + 'px';
+    img.style.width = a.width + 'px'; img.style.height = a.height + 'px';
+    cena.appendChild(img);
+    alvo.style.visibility = 'hidden';
+    var dx = b.left - a.left, dy = b.top - a.top, k = b.width / a.width;
+    var apagado = 'grayscale(.85) brightness(.55)', inicio = 'grayscale(.7) brightness(.62)';
+    var anim = img.animate([
+      { transform: 'translate(0,0) scale(1)', filter: aceso ? 'drop-shadow(0 0 0 transparent)' : inicio },
+      { transform: 'translate(' + dx * 0.45 + 'px,' + (dy * 0.45 - 50) + 'px) scale(' + (1 + k) / 2 + ')', offset: 0.5, filter: aceso ? 'drop-shadow(0 0 24px rgba(255,244,214,.45))' : apagado },
+      { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + k + ')', filter: aceso ? 'drop-shadow(0 0 0 transparent)' : apagado }
+    ], { duration: 950, delay: atraso, easing: 'cubic-bezier(.65,0,.25,1)', fill: 'both' });
+    anim.onfinish = function () { alvo.style.visibility = ''; img.remove(); };
+  }
+
+  // o escudo escolhido vai para o centro do palco, cresce com brilho e se dissolve enquanto a estampa sobe
+  var CHEGA = 780; // ms até o escudo chegar ao centro (aí o holofote acende)
+  function escudoAoCentro(de, src) {
+    if (calmo || !document.body.animate) return;
+    var base = cena.getBoundingClientRect(), p = palco.getBoundingClientRect();
+    var img = document.createElement('img');
+    img.src = src; img.className = 'mr-voo'; img.alt = '';
+    img.style.left = (de.left - base.left) + 'px'; img.style.top = (de.top - base.top) + 'px';
+    img.style.width = de.width + 'px'; img.style.height = de.height + 'px';
+    cena.appendChild(img);
+    var h = Math.min(p.height * 0.42, p.width * 0.5), k = h / de.height, w = de.width * k;
+    var dx = p.left + (p.width - w) / 2 - de.left, dy = p.top + (p.height - h) / 2 - de.top;
+    var brilho = 'drop-shadow(0 0 30px rgba(255,244,214,.55)) drop-shadow(0 20px 30px rgba(0,0,0,.6))';
+    var t = function (x, y, e) { return 'translate(' + x + 'px,' + y + 'px) scale(' + e + ')'; };
+    var total = 1700;
+    img.animate([
+      { transform: t(0, 0, 1), filter: 'none', opacity: 1, easing: 'cubic-bezier(.65,0,.25,1)' },
+      { transform: t(dx * 0.5, dy * 0.5 - 60, (1 + k) / 2), offset: 0.22, easing: 'cubic-bezier(.65,0,.25,1)' },
+      { transform: t(dx, dy, k), filter: brilho, opacity: 1, offset: CHEGA / total, easing: 'ease-in-out' },
+      { transform: t(dx, dy - 6, k * 1.02), filter: brilho, opacity: 1, offset: 0.62, easing: 'ease-in' },
+      { transform: t(dx - w * 0.06, dy - h * 0.1, k * 1.12), filter: 'blur(6px) ' + brilho, opacity: 0 }
+    ], { duration: total, fill: 'both' }).onfinish = function () { img.remove(); };
+  }
+
+  function abrir(n) {
+    var origens = Array.prototype.map.call(botoes, function (b) { return b.querySelector('img').getBoundingClientRect(); });
+    atual = { c: n, e: 0, vista: 'corpo' };
+    precarregarClube(CLUBES[n]);
+    alturaDe(function () {
+      escolha.hidden = true; vitrine.hidden = false; cena.dataset.estado = 'vitrine';
+      desenhar(true);
     });
-    palco.classList.toggle('tem-luz', !ja);
-    if (!ja && matchMedia('(max-width: 980px)').matches) {
-      colunas[n].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      if (figuras[n]) modelos.scrollTo({ left: figuras[n].offsetLeft - (modelos.clientWidth - figuras[n].offsetWidth) / 2, behavior: 'smooth' });
+    palco.classList.remove('entra', 'sai'); palco.classList.add('espera');
+    // o escolhido vai ao palco; os outros viram as abas pequenas do topo
+    abas.forEach(function (aba, i) { if (i !== n) voar(origens[i], aba.querySelector('img'), false, 120 + Math.abs(i - n) * 70); });
+    escudoAoCentro(origens[n], botoes[n].querySelector('img').src);
+    setTimeout(entrar, calmo ? 0 : CHEGA);
+    if (!calmo && vitrine.animate) {
+      $('.mr-topo').animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, delay: 300, easing: 'ease', fill: 'backwards' });
+      $('.mr-info').animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: 800, delay: CHEGA + 500, easing: 'cubic-bezier(.22,.7,.18,1)', fill: 'backwards' });
     }
+    var topo = cena.getBoundingClientRect().top;
+    if (topo < 70 || topo > innerHeight * 0.4) window.scrollTo({ top: scrollY + topo - 90, behavior: calmo ? 'auto' : 'smooth' });
   }
 
-  colunas.forEach(function (col, n) {
-    col.querySelector('.mr-acender').addEventListener('click', function () { acender(n); });
-    col.querySelectorAll('.mr-outra').forEach(function (b) {
-      b.addEventListener('click', function () { estado[n].i = +b.dataset.i; mostrar(n); });
-    });
-    col.querySelectorAll('.mr-lados button').forEach(function (b) {
-      b.addEventListener('click', function () { estado[n].lado = b.dataset.lado; mostrar(n); });
-    });
+  var trocando = 0;
+  function trocarClube(n) {
+    if (n === atual.c) return;
+    var vez = ++trocando;
+    precarregarClube(CLUBES[n]);
+    palco.classList.remove('entra'); palco.classList.add('sai');
+    abas.forEach(function (b, i) { b.setAttribute('aria-pressed', String(i === n)); });
+    escudoAoCentro(abas[n].querySelector('img').getBoundingClientRect(), abas[n].querySelector('img').src);
+    setTimeout(function () {
+      if (vez !== trocando) return;
+      atual = { c: n, e: 0, vista: 'corpo' };
+      desenhar(true); palco.classList.remove('sai'); entrar();
+    }, calmo ? 0 : CHEGA);
+  }
+
+  function fechar() {
+    alturaDe(function () { vitrine.hidden = true; escolha.hidden = false; cena.dataset.estado = 'escolha'; });
+    if (!calmo && escolha.animate) escolha.animate([{ opacity: 0, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 600, easing: 'cubic-bezier(.22,.7,.18,1)' });
+    atual.c = -1;
+  }
+
+  botoes.forEach(function (b, n) { b.addEventListener('click', function () { abrir(n); }); });
+  abas.forEach(function (b, n) { b.addEventListener('click', function () { trocarClube(n); }); });
+  $('.mr-voltar').addEventListener('click', fechar);
+  $('.mr-vistas').addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-v]'); if (!b) return;
+    atual.vista = b.dataset.v; desenhar();
   });
-  figuras.forEach(function (f, n) { f.addEventListener('click', function () { if (!colunas[n].classList.contains('aceso')) acender(n); }); });
+  $('.mr-cards').addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-e]'); if (!b) return;
+    var e = CLUBES[atual.c].estampas[+b.dataset.e];
+    atual.e = +b.dataset.e; atual.vista = vistas(e)[0]; desenhar();
+  });
+
+  // pré-carrega as fotos para a animação não esperar o download: os modelos quando a seção aparece,
+  // as camisas do clube quando ele é aberto
+  var carregadas = {};
+  function precarregar(srcs) { srcs.forEach(function (u) { if (!carregadas[u]) { carregadas[u] = new Image(); carregadas[u].src = u; } }); }
+  function precarregarClube(c) { precarregar(c.estampas.reduce(function (l, e) { return e.k ? l.concat([D + e.k + '-frente.webp', D + e.k + '-costas.webp']) : l; }, [])); }
+  if ('IntersectionObserver' in window) {
+    var io2 = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { precarregar(CLUBES.map(function (c) { return D + 'modelo-' + c.k + '.webp'; })); io2.disconnect(); }
+    }, { rootMargin: '600px 0px' });
+    io2.observe(cena);
+  }
 
   // entrada suave ao rolar até a seção
   var rv = raiz.querySelectorAll('.mr-rv');
