@@ -5,8 +5,12 @@
 # Requer: pip install opencv-python-headless pillow numpy
 import cv2, numpy as np, sys
 from PIL import Image
-src,name,out=sys.argv[1],sys.argv[2],sys.argv[3]
-T1=float(sys.argv[4]) if len(sys.argv)>4 else 90
+#   --sem-legenda: mockup sem os nomes FRENTE/COSTAS no alto e embaixo (camisa ocupando a altura toda):
+#   não corta faixas de cima e de baixo, senão a gola e a barra saem cortadas.
+sem_legenda='--sem-legenda' in sys.argv
+args=[a for a in sys.argv if a!='--sem-legenda']
+src,name,out=args[1],args[2],args[3]
+T1=float(args[4]) if len(args)>4 else 90
 img=cv2.imread(src); f=img.astype(np.float32); H,W=img.shape[:2]
 border=np.concatenate([f[:6].reshape(-1,3),f[-6:].reshape(-1,3),f[:,:6].reshape(-1,3),f[:,-6:].reshape(-1,3)])
 bgc=np.median(border,0)
@@ -16,7 +20,7 @@ n,lab,st,_=cv2.connectedComponentsWithStats(cand,4)
 touch=set(np.unique(np.concatenate([lab[0],lab[-1],lab[:,0],lab[:,-1]])))-{0}
 bg=np.isin(lab,list(touch))
 hard=(~bg).astype(np.uint8)
-hard[:int(H*0.10)]=0; hard[int(H*0.925):]=0
+if not sem_legenda: hard[:int(H*0.10)]=0; hard[int(H*0.925):]=0
 cols=hard[:, int(W*0.45):int(W*0.55)].sum(0); cut=int(W*0.45)+int(np.argmin(cols)); hard[:,cut]=0
 n,lab,st,_=cv2.connectedComponentsWithStats(hard,8)
 idx=np.argsort(st[1:,cv2.CC_STAT_AREA])[::-1][:2]+1

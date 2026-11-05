@@ -26,7 +26,7 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Duas linhas por escola (estado `batLine`): **Legado** (homenageia o enredo campeão; arquivos `assets/baterias/<k>-f.webp` / `-b.webp`) e **Paixão pelo Samba** (`<k>-p-f.webp` / `-p-b.webp`).
 - Marca d'água: logo da escola `assets/baterias/<k>-logo.webp` (uso autorizado pelo dono).
 - Chaves: furiosa (Salgueiro), tabajara (Portela), soberana (Beija-Flor), noel (Vila Isabel), invocada (Grande Rio), quente (Mocidade), cadencia (Tijuca), leopoldina (Imperatriz), furacao (Viradouro), tamborim (Mangueira), sinfonica (Império Serrano).
-- Legado em versão nova (nov/2026): Tijuca, Vila Isabel, Portela, Viradouro e Mocidade. Pendente: estampa Legado nova da Mangueira.
+- Legado em versão nova (nov/2026) nas 11 escolas. Imperatriz passou a homenagear o enredo de 2023 ("O Aperreio do Cabra...").
 - Sem personalização (nome/número) nessa coleção: é linha casual de fã.
 
 ## Maiores do Rio
@@ -38,7 +38,7 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Pendente: as estampas de Botafogo, Vasco e Fluminense (até lá a coluna mostra a foto do modelo).
 
 ## Imagens
-- O dono manda mockups frente+costas lado a lado com **fundo verde liso**; recorte com `tools/recorte_fundo_verde.py` (corta o cabeçalho e o rodapé com os nomes "FRENTE/COSTAS").
+- O dono manda mockups frente+costas lado a lado com **fundo verde liso**; recorte com `tools/recorte_fundo_verde.py` (corta o cabeçalho e o rodapé com os nomes "FRENTE/COSTAS"; mockups sem esses nomes, como os da Legado de nov/2026, usam `--sem-legenda`, senão a gola e a barra saem cortadas).
 - Logos para marca d'água: `tools/logo_marca_dagua.py`.
 - Sempre conferir no celular (390px): frente e costas lado a lado, sem sobreposição.
 
