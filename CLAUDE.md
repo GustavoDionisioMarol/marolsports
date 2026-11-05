@@ -36,7 +36,7 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - HTML em `#dia-maiores`, estilos em `<style id="estilos-maiores">`, dados e lógica no script "Maiores do Rio" no fim do `index.html` (lista `CLUBES`: `k`, `nome`, `cor`, `estampas` com `k`, `nome`, `sub` e `foto: true` na que o modelo veste; `corpo: true` nas outras que têm foto vestida, arquivo `corpo-<k>.webp`). Fica fora do `Component`.
 - Arquivos em `assets/maiores/`: `escudo-<clube>.webp`, `modelo-<clube>.webp`, `<prefixo>-<estampa>-frente.webp` / `-costas.webp` (prefixos `fla-`, `bot-`, `vas-`, `flu-`; estampas `yamato`, `heranca`, `trama`/`plumagem`, `territorio`). Originais em `originais/maiores-do-rio/` (não vão para o ar).
 - Mockups de camisa em fundo bege (frente | costas lado a lado): recortar com `tools/recorte_mockup_bege.py <png> <saída>` (`--sombra` tira a sombra cinza embaixo de barras escuras, não usar em camisas de barra clara; `--grabcut` para fundo com degradê/vinheta ou quando sobra o título grudado na camisa).
-- Fotos vestidas extras: Botafogo Herança, Trama Clara e Território; Vasco Trama Clara.
+- As 16 estampas têm foto vestida (principal = `modelo-<clube>.webp`, demais = `corpo-<k>.webp`). Originais das fotos em `originais/maiores-do-rio/vestidas/`.
 - Todas as 16 estampas no ar. Estampa vestida pelo modelo: Flamengo Herança, Botafogo Yamato-e (Garrincha), Vasco Território da Colina, Fluminense Trama Clara.
 
 ## Imagens
