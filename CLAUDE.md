@@ -26,7 +26,7 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Duas linhas por escola (estado `batLine`): **Legado** (homenageia o enredo campeão; arquivos `assets/baterias/<k>-f.webp` / `-b.webp`) e **Paixão pelo Samba** (`<k>-p-f.webp` / `-p-b.webp`).
 - Marca d'água: logo da escola `assets/baterias/<k>-logo.webp` (uso autorizado pelo dono).
 - Chaves: furiosa (Salgueiro), tabajara (Portela), soberana (Beija-Flor), noel (Vila Isabel), invocada (Grande Rio), quente (Mocidade), cadencia (Tijuca), leopoldina (Imperatriz), furacao (Viradouro), tamborim (Mangueira), sinfonica (Império Serrano).
-- Pendente: estampas Legado novas de Mangueira e Unidos da Tijuca.
+- Legado em versão nova (nov/2026): Tijuca, Vila Isabel, Portela, Viradouro e Mocidade. Pendente: estampa Legado nova da Mangueira.
 - Sem personalização (nome/número) nessa coleção: é linha casual de fã.
 
 ## Maiores do Rio
