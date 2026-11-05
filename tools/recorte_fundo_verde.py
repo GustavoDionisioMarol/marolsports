@@ -38,8 +38,11 @@ for side,k in zip(('f','b'),comps):
     alpha=np.where(band>0,soft*cv2.dilate(m,np.ones((5,5),np.uint8)),m.astype(np.float32))
     if side=='f': alpha[:,cut:]=0
     else: alpha[:,:cut]=0
-    mx=np.maximum(R,B); G2=np.where(band>0,np.minimum(G,mx+np.maximum(0,(G-mx))*0.5),G)
+    # na borda, o verde não pode passar do maior entre vermelho e azul (tira o contorno verde do fundo)
+    mx=np.maximum(R,B); G2=np.where(band>0,np.minimum(G,mx),G)
     rgb=np.dstack([R,G2,B]).clip(0,255).astype(np.uint8)
+    # recua a borda 1 px, com transição suave, para não sobrar contorno do fundo verde
+    alpha=alpha*cv2.GaussianBlur(cv2.erode(m,np.ones((3,3),np.uint8)).astype(np.float32),(0,0),0.8)
     a=(alpha*255).astype(np.uint8)
     x,y,w,h,_=st[k]; pad=6
     crop=np.dstack([rgb,a])[max(0,y-pad):y+h+pad,max(0,x-pad):x+w+pad]
