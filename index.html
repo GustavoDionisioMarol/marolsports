@@ -208,8 +208,8 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
 }
 </style>
 <style id="estilos-costas">
-/* Teste: deixar as costas legíveis. Beija-Flor = trocar frente/costas + ampliar + frase da nuca em texto;
-   Salgueiro = detalhes ampliados da nuca e da barra. Ligado pelo script "Costas legíveis" no fim da página. */
+/* Costas legíveis (linha Legado): trocar frente/costas, lupa ao passar o mouse (computador),
+   ampliar em tela cheia (celular) e a frase da nuca em texto. Ligado pelo script "Costas legíveis" no fim da página. */
 .bat-big.ve-costas .bat-back{right:auto;left:9%;top:11%;height:84%;transform:rotate(-4deg);filter:drop-shadow(0 30px 28px rgba(0,0,0,.55));z-index:2}
 .bat-big.ve-costas .bat-front{left:auto;right:7%;top:9%;height:76%;transform:rotate(6deg);filter:brightness(.72) drop-shadow(0 22px 22px rgba(0,0,0,.5));z-index:1}
 .bat-big.ve-costas .bat-tag-f{left:auto;right:14px}.bat-big.ve-costas .bat-tag-b{left:14px;right:auto}
@@ -218,13 +218,16 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
 .bat-acoes button{pointer-events:auto;display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(10,11,13,.72);color:#F4F5F2;font:700 13px 'Barlow',sans-serif;letter-spacing:.04em;cursor:pointer;backdrop-filter:blur(6px)}
 .bat-acoes button:hover{border-color:#F9CA0D}
 .bat-acoes button.prim{background:#F9CA0D;color:#0A0B0D;border-color:#F9CA0D}
+.bat-acoes .dica{display:none;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:999px;background:rgba(10,11,13,.72);color:#D3BEC2;font:600 13px 'Barlow',sans-serif;backdrop-filter:blur(6px)}
+@media (hover:hover) and (pointer:fine){.bat-acoes [data-a="ampliar"]{display:none}.bat-acoes .dica{display:inline-flex}}
+/* lupa: acompanha o mouse sobre a camisa em destaque, que fica reta enquanto a lupa está ativa */
+.bat-lupa{position:absolute;z-index:4;width:230px;height:230px;margin:-115px 0 0 -115px;border-radius:50%;border:2px solid #F9CA0D;background-color:#120609;background-repeat:no-repeat;box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 0 0 4px rgba(10,11,13,.35);pointer-events:none;opacity:0;transform:scale(.6);transition:opacity .2s ease,transform .25s cubic-bezier(.22,.7,.18,1)}
+.bat-big.lupa-on .bat-lupa{opacity:1;transform:none}
+.bat-big.modo-troca .bat-front,.bat-big.modo-troca .bat-back{transition:transform .35s cubic-bezier(.22,.7,.18,1)}
+.bat-big.lupa-on:not(.ve-costas) .bat-front,.bat-big.lupa-on.ve-costas .bat-back{transform:none;cursor:none}
 .bat-nuca{display:flex;flex-direction:column;gap:6px;padding:14px 18px;border-radius:16px;border:1px solid #3A1A20;background:#1C0B0F}
 .bat-nuca span{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F9CA0D}
 .bat-nuca q{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:clamp(20px,2.2vw,26px);line-height:1.15;color:#F4F5F2;quotes:'“' '”'}
-.bat-detalhes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.bat-det{position:relative;margin:0;border-radius:16px;overflow:hidden;border:1px solid #3A1A20;background:#1C0B0F}
-.bat-det div{width:100%;background-repeat:no-repeat}
-.bat-det figcaption{position:absolute;left:10px;top:10px;padding:4px 10px;border-radius:999px;background:rgba(10,11,13,.75);color:#F9CA0D;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 .bat-zoom{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;background:rgba(6,6,8,.94);backdrop-filter:blur(4px)}
 .bat-zoom[hidden]{display:none}
 .bat-zoom-topo{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;color:#F4F5F2}
@@ -241,7 +244,6 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
   .bat-big.ve-costas .bat-back{left:8%;right:auto;top:auto;bottom:4%;width:50%;height:auto;transform:none;filter:drop-shadow(0 16px 16px rgba(0,0,0,.5))}
   .bat-big.ve-costas .bat-front{right:2%;left:auto;top:auto;bottom:10%;width:38%;height:auto;transform:none;filter:brightness(.6)}
   .bat-acoes{bottom:8px}.bat-acoes button{min-height:32px;padding:0 10px;font-size:12px}
-  .bat-detalhes{gap:8px}
 }
 </style>
 </head>
@@ -1332,15 +1334,25 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
 })();
 </script>
 <script>
-// Costas legíveis (teste para comparar): Beija-Flor no modo "troca" (trocar frente/costas, ampliar, frase da nuca em texto)
-// e Salgueiro no modo "detalhes" (recortes ampliados da nuca e da barra). Só na linha Legado.
+// Costas legíveis (linha Legado): trocar frente/costas, lupa ao passar o mouse no computador,
+// ampliar em tela cheia no celular e a frase da nuca (verso do samba-enredo) em texto.
 (function () {
-  var TESTE = {
-    soberana: { modo: 'troca', nuca: 'A fantasia resiste' },
-    furiosa: { modo: 'detalhes' }
+  // frase escrita na nuca de cada camisa Legado ("|" vira quebra de linha)
+  var NUCA = {
+    furiosa: 'Bahia, os meus olhos estão brilhando',
+    tabajara: 'A lua apaixonada chorou tanto|Que do seu pranto nasceu o rio e o mar',
+    soberana: 'A fantasia resiste',
+    noel: 'Hoje a Vila é Kizomba|É batuque, canto e dança',
+    invocada: 'Eu levo fé nesse povo que diz|Boa noite, moça, boa noite, moço',
+    quente: 'Avançar no tempo e nas estrelas|Fazer meu ziriguidum, meu ziriguidum',
+    cadencia: 'É segredo, não conto a ninguém|Sou Tijuca, vou além',
+    leopoldina: 'E foi-se então, adeus, capitão!|No estouro do pipoco',
+    furacao: 'É o ninho da serpente,|jamais tente afrontar',
+    tamborim: 'Mangueira, tira a poeira dos porões|Ô, abre alas pros teus heróis de barracões',
+    sinfonica: 'Enfeitei meu coração|De confete e serpentina'
   };
-  // regiões do texto nas costas (frações da imagem recortada): nuca e barra
-  var NUCA = [0.24, 0.05, 0.76, 0.17], BARRA = [0.24, 0.85, 0.76, 0.98];
+  var ZOOM = 2.4; // aumento da lupa
+  var mouse = matchMedia('(hover: hover) and (pointer: fine)');
   var big = document.querySelector('.bat-big');
   if (!big) return;
   var frente = big.querySelector('.bat-front'), costas = big.querySelector('.bat-back');
@@ -1396,53 +1408,52 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
   zoom.querySelector('.bat-zoom-fechar').addEventListener('click', fecharZoom);
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !zoom.hidden) fecharZoom(); });
 
-  // recorte de uma região da imagem das costas, ampliado (fundo CSS)
-  function recorte(src, reg, rotulo) {
-    var w = reg[2] - reg[0], h = reg[3] - reg[1];
-    var fig = document.createElement('figure'); fig.className = 'bat-det';
-    var d = document.createElement('div');
-    d.style.backgroundImage = 'url("' + src + '")';
-    d.style.backgroundSize = (100 / w) + '% auto';
-    d.style.backgroundPosition = (reg[0] / (1 - w) * 100) + '% ' + (reg[1] / (1 - h) * 100) + '%';
-    var img = new Image(); img.onload = function () { d.style.aspectRatio = (w * img.naturalWidth) + ' / ' + (h * img.naturalHeight); }; img.src = src;
-    d.setAttribute('role', 'img'); d.setAttribute('aria-label', rotulo + ' da camisa, ampliada');
-    fig.appendChild(d);
-    var cap = document.createElement('figcaption'); cap.textContent = rotulo; fig.appendChild(cap);
-    return fig;
-  }
-
+  var esc = function (t) { return t.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var LUPA = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>';
   function aplicar() {
     var m = /baterias\/([a-z]+)(-p)?-b\.webp/.exec(costas.getAttribute('src') || '');
-    var chave = m && !m[2] ? m[1] : null;
-    var cfg = chave && TESTE[chave];
-    var id = cfg ? chave : null;
-    if (id === atual && (!cfg || cfg.modo !== 'detalhes')) return;
+    var id = m && !m[2] ? m[1] : null; // só na linha Legado
+    if (id === atual) return;
     atual = id;
-    big.classList.remove('ve-costas', 'modo-troca');
+    big.classList.remove('ve-costas', 'modo-troca', 'lupa-on');
     acoes.innerHTML = ''; extra.innerHTML = '';
-    if (!cfg) return;
-    if (cfg.modo === 'troca') {
-      big.classList.add('modo-troca');
-      acoes.innerHTML = '<button type="button" class="prim" data-a="trocar">Ver costas</button><button type="button" data-a="ampliar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>Ampliar</button>';
-      if (cfg.nuca) extra.innerHTML = '<div class="bat-nuca"><span>Frase na nuca</span><q>' + cfg.nuca + '</q></div>';
-    } else {
-      var d = document.createElement('div'); d.className = 'bat-detalhes';
-      var src = costas.getAttribute('src');
-      d.appendChild(recorte(src, NUCA, 'Nuca'));
-      d.appendChild(recorte(src, BARRA, 'Barra'));
-      extra.appendChild(d);
-    }
+    if (!id) return;
+    big.classList.add('modo-troca');
+    acoes.innerHTML = '<button type="button" class="prim" data-a="trocar">Ver costas</button><button type="button" data-a="ampliar">' + LUPA + 'Ampliar</button><span class="dica">' + LUPA + 'Passe o mouse para ver de perto</span>';
+    if (NUCA[id]) extra.innerHTML = '<div class="bat-nuca"><span>Frase na nuca</span><q>' + NUCA[id].split('|').map(esc).join('<br>') + '</q></div>';
   }
+
+  // lupa (computador): acompanha o mouse sobre a camisa em destaque
+  var lupa = document.createElement('div'); lupa.className = 'bat-lupa'; lupa.setAttribute('aria-hidden', 'true'); big.appendChild(lupa);
+  function emDestaque() { return big.classList.contains('ve-costas') ? costas : frente; }
+  big.addEventListener('pointermove', function (ev) {
+    if (!mouse.matches || ev.pointerType !== 'mouse' || !big.classList.contains('modo-troca')) return;
+    var img = emDestaque(), base = big.getBoundingClientRect();
+    // mede a camisa sem a inclinação (é assim que ela fica com a lupa ativa)
+    var r = { left: base.left + img.offsetLeft, top: base.top + img.offsetTop, width: img.offsetWidth, height: img.offsetHeight };
+    var x = ev.clientX - r.left, y = ev.clientY - r.top;
+    var dentro = x >= 0 && y >= 0 && x <= r.width && y <= r.height && !ev.target.closest('.bat-acoes');
+    big.classList.toggle('lupa-on', dentro);
+    if (!dentro) return;
+    var meia = lupa.offsetWidth / 2;
+    lupa.style.left = (ev.clientX - base.left) + 'px'; lupa.style.top = (ev.clientY - base.top) + 'px';
+    lupa.style.backgroundImage = 'url("' + img.src + '")';
+    lupa.style.backgroundSize = (r.width * ZOOM) + 'px ' + (r.height * ZOOM) + 'px';
+    lupa.style.backgroundPosition = (meia - x * ZOOM) + 'px ' + (meia - y * ZOOM) + 'px';
+  });
+  big.addEventListener('pointerleave', function () { big.classList.remove('lupa-on'); });
+
   acoes.addEventListener('click', function (ev) {
     var b = ev.target.closest('[data-a]'); if (!b) return;
-    if (b.dataset.a === 'trocar') trocar(); else abrirZoom();
+    if (b.dataset.a === 'trocar') { big.classList.remove('lupa-on'); trocar(); } else abrirZoom();
   });
-  // clicar na camisa de trás traz ela para a frente (só no modo troca)
+  // clicar na camisa de trás traz ela para a frente; na da frente, só o celular abre a tela cheia
+  // (no computador a lupa já mostra de perto)
   [frente, costas].forEach(function (el) {
     el.addEventListener('click', function () {
       if (!big.classList.contains('modo-troca')) return;
-      var naFrente = big.classList.contains('ve-costas') ? costas : frente;
-      if (el === naFrente) abrirZoom(); else trocar();
+      if (el !== emDestaque()) { big.classList.remove('lupa-on'); trocar(); }
+      else if (!mouse.matches) abrirZoom();
     });
   });
   new MutationObserver(aplicar).observe(costas, { attributes: true, attributeFilter: ['src'] });

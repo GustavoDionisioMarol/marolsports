@@ -28,7 +28,7 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Chaves: furiosa (Salgueiro), tabajara (Portela), soberana (Beija-Flor), noel (Vila Isabel), invocada (Grande Rio), quente (Mocidade), cadencia (Tijuca), leopoldina (Imperatriz), furacao (Viradouro), tamborim (Mangueira), sinfonica (Império Serrano).
 - Legado em versão nova (nov/2026) nas 11 escolas. Imperatriz passou a homenagear o enredo de 2023 ("O Aperreio do Cabra...").
 - Sem personalização (nome/número) nessa coleção: é linha casual de fã.
-- **Teste em andamento (costas legíveis):** script "Costas legíveis" + `<style id="estilos-costas">`, só na linha Legado. Beija-Flor (`soberana`) no modo "troca" (botão Ver costas / clique na camisa de trás, Ampliar em tela cheia com zoom, frase da nuca em texto); Salgueiro (`furiosa`) no modo "detalhes" (recortes ampliados da nuca e da barra). Lista `TESTE` no script. O dono vai escolher um dos dois para aplicar nas 11 escolas.
+- **Costas legíveis** (linha Legado, todas as escolas): script "Costas legíveis" + `<style id="estilos-costas">`. Botão "Ver costas" (ou clique na camisa de trás) troca frente e costas com animação; no computador, passar o mouse na camisa em destaque mostra uma lupa (sem abrir janela); no celular, "Ampliar" abre a tela cheia com zoom por toque. A frase da nuca aparece em texto abaixo da camisa (lista `NUCA` no script, `|` = quebra de linha) — atualizar ao trocar uma estampa Legado.
 
 ## Maiores do Rio
 - Homenagem a Flamengo, Botafogo, Vasco e Fluminense; 4 estampas por clube, modelagem oversized.
