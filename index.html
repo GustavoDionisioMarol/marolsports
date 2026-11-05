@@ -1304,15 +1304,15 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
     ] },
     { k: 'botafogo', nome: 'Botafogo', cor: '#DADADA', estampas: [
       { k: 'bot-yamato', nome: 'Yamato-e · Garrincha', sub: 'Tributo a Garrincha em pintura japonesa', foto: true },
-      { k: 'bot-heranca', nome: 'Herança alvinegra', sub: 'Damasco em preto e cinza' },
-      { k: 'bot-trama', nome: 'Trama Clara da Estrela', sub: 'A estrela em tom sobre tom' },
-      { k: 'bot-territorio', nome: 'Território Alvinegro', sub: 'Listras e linhas topográficas' }
+      { k: 'bot-heranca', nome: 'Herança alvinegra', sub: 'Damasco em preto e cinza', corpo: true },
+      { k: 'bot-trama', nome: 'Trama Clara da Estrela', sub: 'A estrela em tom sobre tom', corpo: true },
+      { k: 'bot-territorio', nome: 'Território Alvinegro', sub: 'Listras e linhas topográficas', corpo: true }
     ] },
     { k: 'vasco', nome: 'Vasco', cor: '#DADADA', estampas: [
       { k: 'vas-territorio', nome: 'Território da Colina', sub: 'A faixa e São Januário', foto: true },
       { k: 'vas-yamato', nome: 'Yamato vascaíno', sub: 'A caravela em estilo japonês' },
       { k: 'vas-heranca', nome: 'Herança Cruzmaltina', sub: 'Damasco com a cruz de malta' },
-      { k: 'vas-trama', nome: 'Trama Clara Vascaína', sub: 'Trama náutica em tom sobre tom' }
+      { k: 'vas-trama', nome: 'Trama Clara Vascaína', sub: 'Trama náutica em tom sobre tom', corpo: true }
     ] },
     { k: 'fluminense', nome: 'Fluminense', cor: '#8A1538', estampas: [
       { k: 'flu-trama', nome: 'Trama Clara', sub: 'Folhagem botânica tricolor', foto: true },
@@ -1330,9 +1330,11 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
   var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var atual = { c: -1, e: 0, vista: 'corpo' };
 
-  var vistas = function (e) { return (e.foto ? ['corpo'] : []).concat(e.k ? ['frente', 'costas'] : []); };
-  var imagem = function (c, e, vista) { return vista === 'corpo' ? D + 'modelo-' + c.k + '.webp' : D + e.k + '-' + vista + '.webp'; };
-  var miniatura = function (c, e) { return e.foto ? D + 'modelo-' + c.k + '.webp' : D + e.k + '-frente.webp'; };
+  // foto no corpo: a principal usa modelo-<clube>.webp; as outras com corpo: true usam corpo-<k>.webp
+  var fotoCorpo = function (c, e) { return e.foto ? D + 'modelo-' + c.k + '.webp' : e.corpo ? D + 'corpo-' + e.k + '.webp' : null; };
+  var vistas = function (e) { return (e.foto || e.corpo ? ['corpo'] : []).concat(e.k ? ['frente', 'costas'] : []); };
+  var imagem = function (c, e, vista) { return vista === 'corpo' ? fotoCorpo(c, e) : D + e.k + '-' + vista + '.webp'; };
+  var miniatura = function (c, e) { return fotoCorpo(c, e) || D + e.k + '-frente.webp'; };
   var zap = function (c, e) { return 'https://wa.me/' + NUM + '?text=' + encodeURIComponent('Olá, Marol Store! Quero a camisa ' + e.nome + ' do ' + c.nome + ', da coleção Maiores do Rio.'); };
 
   $('.mr-escudos').innerHTML = CLUBES.map(function (c, n) {
@@ -1498,7 +1500,7 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
   // as camisas do clube quando ele é aberto
   var carregadas = {};
   function precarregar(srcs) { srcs.forEach(function (u) { if (!carregadas[u]) { carregadas[u] = new Image(); carregadas[u].src = u; } }); }
-  function precarregarClube(c) { precarregar(c.estampas.reduce(function (l, e) { return e.k ? l.concat([D + e.k + '-frente.webp', D + e.k + '-costas.webp']) : l; }, [])); }
+  function precarregarClube(c) { precarregar(c.estampas.reduce(function (l, e) { return (e.k ? l.concat([D + e.k + '-frente.webp', D + e.k + '-costas.webp']) : l).concat(e.corpo ? [fotoCorpo(c, e)] : []); }, [])); }
   if ('IntersectionObserver' in window) {
     var io2 = new IntersectionObserver(function (es) {
       if (es.some(function (e) { return e.isIntersecting; })) { precarregar(CLUBES.map(function (c) { return D + 'modelo-' + c.k + '.webp'; })); io2.disconnect(); }
