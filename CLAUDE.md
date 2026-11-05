@@ -18,7 +18,7 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Menu flutuante com ícones: Uniformes de time · Eventos · Dia a dia (submenu: Coleção Samba, Baterias Cariocas) · Simulador.
 - **01 Uniformes de time** (`#times`): banner, animação do chute (scroll), selo Marol Sports.
 - **02 Eventos** (`#eventos`): 2.1 Festas (camisa 360º com 8 fotos), 2.2 Corridas, 2.3 Eventos escolares com 3 abas interativas (Olimpíadas IEGC, Arraiá do CEC, Feiras e mostras — camisas recortadas e inclinadas).
-- **03 Dia a dia** (`#dia-a-dia`): 3.1 Coleção Samba (`#dia-samba`, Batucada Raiz), 3.2 **Coleção Baterias Cariocas** (`#dia-baterias`), modelagens.
+- **03 Dia a dia** (`#dia-a-dia`): 3.1 Coleção Samba (`#dia-samba`, Batucada Raiz), 3.2 **Coleção Baterias Cariocas** (`#dia-baterias`), 3.3 **Coleção Maiores do Rio** (`#dia-maiores`), modelagens.
 - "Como criamos sua camisa", CTA final, rodapé.
 
 ## Baterias Cariocas
@@ -28,6 +28,14 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Chaves: furiosa (Salgueiro), tabajara (Portela), soberana (Beija-Flor), noel (Vila Isabel), invocada (Grande Rio), quente (Mocidade), cadencia (Tijuca), leopoldina (Imperatriz), furacao (Viradouro), tamborim (Mangueira), sinfonica (Império Serrano).
 - Pendente: estampas Legado novas de Mangueira e Unidos da Tijuca.
 - Sem personalização (nome/número) nessa coleção: é linha casual de fã.
+
+## Maiores do Rio
+- Homenagem a Flamengo, Botafogo, Vasco e Fluminense; 4 estampas por clube, modelagem oversized.
+- Quatro colunas apagadas; o clique acende um holofote de cima (feixe, luz no chão, escudo e camisa ganham cor). Abaixo aparecem frente/costas, as 4 estampas do clube e o botão do WhatsApp. Faixa final "Caimento oversized" com as 4 fotos de modelos. No celular (até 980px) colunas e modelos viram carrossel.
+- HTML em `#dia-maiores`, estilos em `<style id="estilos-maiores">`, dados e lógica no script "Maiores do Rio" no fim do `index.html` (lista `CLUBES`: `k`, `nome`, `cor`, `modelo`, `estampas` com `k`, `nome`, `sub`). Fica fora do `Component`.
+- Arquivos em `assets/maiores/`: `escudo-<clube>.webp`, `modelo-<clube>.webp`, `<prefixo>-<estampa>-frente.webp` / `-costas.webp` (Flamengo: `fla-`). Originais em `originais/maiores-do-rio/` (não vão para o ar).
+- Mockups de camisa em fundo bege (frente | costas lado a lado): recortar com `tools/recorte_mockup_bege.py <png> <saída>`.
+- Pendente: as estampas de Botafogo, Vasco e Fluminense (até lá a coluna mostra a foto do modelo).
 
 ## Imagens
 - O dono manda mockups frente+costas lado a lado com **fundo verde liso**; recorte com `tools/recorte_fundo_verde.py` (corta o cabeçalho e o rodapé com os nomes "FRENTE/COSTAS").
