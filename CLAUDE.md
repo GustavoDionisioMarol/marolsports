@@ -46,5 +46,6 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Sempre conferir no celular (390px): frente e costas lado a lado, sem sobreposição.
 
 ## Como trabalhar
+- Não desligar animações/vídeos por `prefers-reduced-motion`: no Windows a opção "reduzir animações" é comum e fazia o PC mostrar o site sem as animações (vitrine, vídeo, troca de costas).
 - Estado e renderização: classe `Component` no fim de `index.html` (`this.state`, `renderVals()` devolve os valores usados como `{{...}}` no template `#app-tpl`). Revelações por scroll em `K.REVEALS`.
 - Testar localmente: `python3 -m http.server 8080` na raiz e abrir `http://localhost:8080`.
