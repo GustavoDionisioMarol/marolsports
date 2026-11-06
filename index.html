@@ -116,10 +116,6 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
   .hs-stage{aspect-ratio:auto !important;height:420px}
   .hs-img{left:10% !important;width:80% !important}
 }
-@media (prefers-reduced-motion: reduce){
-  .hs-shirt{animation:none}
-  .rv,.rv-l,.rv-r,.rv-z,.wipe{transition:none;opacity:1;transform:none}
-}
 </style>
   <!-- Vercel Speed Insights (versão para HTML; só coleta quando o site está publicado na Vercel) -->
   <script>
@@ -153,7 +149,7 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
 /* escudo com vídeo da coleção ao fundo */
 .mr-escudo-btn.com-video{overflow:hidden;align-self:stretch;justify-content:center;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
 .mr-escudo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;transform:scale(1.04);transition:transform 1.2s cubic-bezier(.22,.7,.18,1)}
-.mr-escudo-veu{position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 55% at 50% 45%,rgba(14,5,7,.12),rgba(14,5,7,.6)),linear-gradient(0deg,rgba(14,5,7,.8),transparent 40%);transition:opacity .6s ease}
+.mr-escudo-veu{position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 55% at 50% 45%,rgba(14,5,7,.32),rgba(14,5,7,.74)),linear-gradient(0deg,rgba(14,5,7,.86),transparent 45%);transition:opacity .6s ease}
 .mr-escudo-btn.com-video img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.7))}
 .mr-escudo-btn.com-video span{color:#E9E3E4;text-shadow:0 2px 10px rgba(0,0,0,.8)}
 .mr-escudo-btn.com-video:hover .mr-escudo-video{transform:scale(1.1)}
@@ -255,12 +251,6 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
   .mr-card img,.mr-card.breve .mr-silueta{width:100%;height:auto;aspect-ratio:3/4}
   .mr-card b{font-size:11px;line-height:1.05}
   .mr-card small{display:none}
-}
-@media (prefers-reduced-motion:reduce){
-  .mr-rv,.mr-rv.in{opacity:1;transform:none;transition:none}
-  .mr-escudo-btn img,.mr-feixe::after,.mr-card.breve .mr-silueta{animation:none}
-  .mr-palco.entra *{animation-duration:.01s!important;animation-delay:0s!important}
-  .mr-card.mostra{animation-duration:.01s;animation-delay:0s!important}
 }
 </style>
 <style id="estilos-costas">
@@ -1341,7 +1331,7 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
   var $ = function (s) { return raiz.querySelector(s); };
   var cena = $('.mr-cena'), escolha = $('.mr-escolha'), vitrine = $('.mr-vitrine');
   var palco = $('.mr-palco'), fotoBox = $('.mr-foto');
-  var calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var calmo = false; // animações sempre ligadas: no Windows, 'reduzir animações' é comum e apagava a vitrine
   var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var atual = { c: -1, e: 0, vista: 'corpo' };
 
@@ -1363,7 +1353,7 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
   var botoes = raiz.querySelectorAll('.mr-escudo-btn'), abas = raiz.querySelectorAll('.mr-aba');
   var videos = raiz.querySelectorAll('.mr-escudo-video');
   videos.forEach(function (v) { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.setAttribute('webkit-playsinline', ''); });
-  if (videos.length && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (videos.length && 'IntersectionObserver' in window) {
     var ioV = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting && !escolha.hidden) e.target.play().catch(function () {}); else e.target.pause(); });
     }, { threshold: 0.25 });
@@ -1505,7 +1495,7 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
 
   function fechar() {
     alturaDe(function () { vitrine.hidden = true; escolha.hidden = false; cena.dataset.estado = 'escolha'; });
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) videos.forEach(function (v) { v.play().catch(function () {}); });
+    videos.forEach(function (v) { v.play().catch(function () {}); });
     if (!calmo && escolha.animate) escolha.animate([{ opacity: 0, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 600, easing: 'cubic-bezier(.22,.7,.18,1)' });
     atual.c = -1;
   }
@@ -1569,7 +1559,7 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
   var extra = document.createElement('div'); extra.className = 'bat-extra'; extra.style.display = 'contents';
   big.insertAdjacentElement('afterend', extra);
   var acoes = document.createElement('div'); acoes.className = 'bat-acoes'; big.appendChild(acoes);
-  var calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var calmo = false; // troca animada sempre (ver Maiores do Rio)
   var atual = null;
 
   // troca frente e costas animando cada camisa do lugar antigo para o novo
