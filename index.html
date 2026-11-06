@@ -127,84 +127,179 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
   </script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 <style id="estilos-maiores">
-/* 3.3 Maiores do Rio — palco no escuro e holofote de cima */
-.mr{--mr-am:#F9CA0D;--mr-ease:cubic-bezier(.22,.7,.18,1)}
+/* 3.3 Maiores do Rio — escolha pelos escudos e vitrine do clube com holofote */
+.mr{--mr-am:#F9CA0D;--mr-ease:cubic-bezier(.22,.7,.18,1);--mr-ease-io:cubic-bezier(.65,0,.25,1)}
 .mr-rv{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s var(--mr-ease)}
 .mr-rv.in{opacity:1;transform:none}
-.mr-dica{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#B89AA0}
-.mr-dica svg{color:var(--mr-am)}
-.mr-so-cel{display:none}
-@media (max-width:980px){.mr-so-cel{display:inline}.mr-so-pc{display:none}}
-.mr-palco{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding-top:28px}
-.mr-clube{position:relative;display:flex;flex-direction:column;align-items:center;min-width:0;isolation:isolate}
-.mr-acender{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px 6px 8px;border:0;background:none;color:inherit;font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.mr-acender:focus-visible{outline:2px solid var(--mr-am);outline-offset:4px;border-radius:18px}
-/* luminária no alto e feixe de luz em cone */
-.mr-lampada{position:absolute;top:-10px;left:50%;width:58px;height:12px;transform:translateX(-50%);border-radius:0 0 30px 30px;background:linear-gradient(#3a3a3a,#141414);box-shadow:0 0 0 1px rgba(255,255,255,.06)}
-.mr-lampada::after{content:'';position:absolute;left:12%;right:12%;bottom:-3px;height:4px;border-radius:50%;background:#fff6dc;opacity:.08;transition:opacity .6s ease;box-shadow:0 0 0 rgba(255,240,200,0)}
-.mr-feixe{position:absolute;top:0;left:50%;width:150%;height:100%;transform:translateX(-50%);pointer-events:none;z-index:-1;opacity:0;
-  background:linear-gradient(180deg,rgba(255,244,214,.42) 0%,rgba(255,244,214,.16) 45%,rgba(255,244,214,.04) 80%,transparent 100%);
-  clip-path:polygon(45% 0,55% 0,100% 100%,0 100%);filter:blur(14px);transition:opacity .9s ease}
+.mr-cena{position:relative;padding-top:12px}
+.mr-escolha[hidden],.mr-vitrine[hidden]{display:none!important}
+/* escolha */
+.mr-escolha{display:flex;flex-direction:column;align-items:center;gap:34px;padding:40px 0 20px;text-align:center}
+.mr-pergunta{margin:0;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(34px,4.4vw,58px);line-height:.95}
+.mr-pergunta em{font-style:inherit;color:var(--mr-am)}
+.mr-escudos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2.4vw,32px);width:100%;max-width:1100px}
+.mr-escudo-btn{min-height:clamp(320px,56vh,560px);justify-content:center}
+.mr-escudo-btn{position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;padding:30px 8px 18px;border:0;border-radius:24px;background:none;color:inherit;font:inherit;cursor:pointer;isolation:isolate;-webkit-tap-highlight-color:transparent}
+.mr-escudo-btn::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:24px;opacity:0;transition:opacity .5s ease;
+  background:radial-gradient(60% 55% at 50% 0%,rgba(255,244,214,.18),transparent 70%),radial-gradient(50% 30% at 50% 100%,color-mix(in srgb,var(--cor) 30%,transparent),transparent 70%)}
+.mr-escudo-btn img{height:clamp(96px,11vw,150px);width:auto;filter:grayscale(.7) brightness(.62);transform:translateY(0);transition:filter .6s ease,transform .6s var(--mr-ease);animation:mr-flutua 5s ease-in-out infinite}
+.mr-escudo-btn:nth-child(2) img{animation-delay:-1.2s}.mr-escudo-btn:nth-child(3) img{animation-delay:-2.4s}.mr-escudo-btn:nth-child(4) img{animation-delay:-3.6s}
+@keyframes mr-flutua{50%{transform:translateY(-6px)}}
+.mr-escudo-btn span{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(20px,2vw,28px);color:#6E5A5E;transition:color .5s ease}
+.mr-escudo-btn:hover::before,.mr-escudo-btn:focus-visible::before{opacity:1}
+.mr-escudo-btn:hover img,.mr-escudo-btn:focus-visible img{filter:drop-shadow(0 14px 22px rgba(0,0,0,.55)) drop-shadow(0 0 26px rgba(255,244,214,.18))}
+.mr-escudo-btn:hover span,.mr-escudo-btn:focus-visible span{color:#F4F5F2}
+.mr-escudo-btn:focus-visible{outline:2px solid var(--mr-am);outline-offset:2px}
+/* escudo com vídeo da coleção ao fundo */
+.mr-escudo-btn.com-video{overflow:hidden;align-self:stretch;justify-content:center;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.mr-escudo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;transform:scale(1.04);transition:transform 1.2s cubic-bezier(.22,.7,.18,1)}
+.mr-escudo-veu{position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 55% at 50% 45%,rgba(14,5,7,.12),rgba(14,5,7,.6)),linear-gradient(0deg,rgba(14,5,7,.8),transparent 40%);transition:opacity .6s ease}
+.mr-escudo-btn.com-video img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.7))}
+.mr-escudo-btn.com-video span{color:#E9E3E4;text-shadow:0 2px 10px rgba(0,0,0,.8)}
+.mr-escudo-btn.com-video:hover .mr-escudo-video{transform:scale(1.1)}
+.mr-escudo-btn.com-video:hover .mr-escudo-veu{opacity:.7}
+.mr-dica{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B89AA0}
+/* vitrine */
+.mr-topo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding-bottom:18px;border-bottom:1px solid #2A1217}
+.mr-topo .mr-voltar{justify-self:start}
+.mr-voltar{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px 0 10px;border-radius:999px;border:1px solid #3A1A20;background:none;color:#D3BEC2;font:700 13px 'Barlow',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.mr-voltar:hover{border-color:#5A2A33;color:#fff}
+.mr-abas{display:flex;justify-content:center;gap:8px}
+.mr-aba{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:5px 14px 5px 6px;border-radius:999px;border:1px solid #3A1A20;background:rgba(28,11,15,.6);color:#B89AA0;font:700 13px 'Barlow',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,background .3s,color .3s}
+.mr-aba img{height:36px;width:auto;filter:grayscale(.85) brightness(.55);transition:filter .4s ease}
+.mr-aba:hover{border-color:#5A2A33;color:#fff}.mr-aba:hover img{filter:none}
+.mr-aba[aria-pressed="true"]{border-color:var(--mr-am);background:#2A1217;color:#fff;box-shadow:inset 0 0 0 1px var(--mr-am)}
+.mr-aba[aria-pressed="true"] img{filter:none}
+.mr-corpo{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:28px;padding-top:24px}
+.mr-esquerda{display:flex;flex-direction:column;gap:18px;min-width:0}
+.mr-palco{position:relative;height:clamp(440px,68vh,680px);isolation:isolate;overflow:hidden;border-radius:28px;
+  background:radial-gradient(70% 60% at 50% 30%,color-mix(in srgb,var(--cor) 14%,#1a0a0e),#0e0507 75%)}
+.mr-marca{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:-2;text-align:center;white-space:nowrap;pointer-events:none;
+  font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(90px,15vw,210px);line-height:1;
+  color:transparent;-webkit-text-stroke:2px color-mix(in srgb,var(--cor) 40%,rgba(255,255,255,.12));opacity:.55}
+.mr-lampada{position:absolute;top:0;left:50%;width:70px;height:12px;transform:translateX(-50%);border-radius:0 0 30px 30px;background:linear-gradient(#3a3a3a,#141414);z-index:2}
+.mr-lampada::after{content:'';position:absolute;left:12%;right:12%;bottom:-3px;height:4px;border-radius:50%;background:#fff6dc;box-shadow:0 0 18px 6px rgba(255,240,200,.55)}
+.mr-feixe{position:absolute;top:0;left:50%;width:110%;height:100%;transform:translateX(-50%);z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,244,214,.38) 0%,rgba(255,244,214,.13) 45%,rgba(255,244,214,.03) 85%,transparent);
+  clip-path:polygon(46% 0,54% 0,92% 100%,8% 100%);filter:blur(16px)}
 .mr-feixe::after{content:'';position:absolute;inset:0;opacity:.5;
   background-image:radial-gradient(1.4px 1.4px at 20% 30%,#fff8,transparent),radial-gradient(1px 1px at 65% 22%,#fff7,transparent),radial-gradient(1.6px 1.6px at 42% 64%,#fff6,transparent),radial-gradient(1px 1px at 78% 70%,#fff6,transparent),radial-gradient(1.2px 1.2px at 30% 82%,#fff5,transparent);
   background-size:180px 240px;animation:mr-poeira 14s linear infinite}
 @keyframes mr-poeira{to{background-position:30px -240px}}
-.mr-chao{position:absolute;left:50%;bottom:4px;width:86%;height:46px;transform:translateX(-50%);border-radius:50%;z-index:-1;opacity:0;
-  background:radial-gradient(closest-side,color-mix(in srgb,var(--cor) 55%,#fff4d6),transparent);filter:blur(6px);transition:opacity 1.1s ease .25s}
-.mr-escudo{height:clamp(64px,7vw,96px);width:auto;transition:filter 1.2s var(--mr-ease),transform 1.2s var(--mr-ease),opacity 1.2s ease}
-.mr-nome{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(22px,2.2vw,30px);line-height:1;letter-spacing:.02em;color:#6E5A5E;transition:color 1s ease}
-.mr-heroi{position:relative;width:100%;aspect-ratio:4/5}
-.mr-heroi img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:filter 1.2s var(--mr-ease),transform 1.2s var(--mr-ease),opacity .7s ease}
-.mr-heroi img.sai{opacity:0}
-/* apagado */
-.mr-escudo,.mr-heroi img{filter:grayscale(.85) brightness(.44) contrast(.95);transform:scale(.95)}
-.mr-palco.tem-luz .mr-clube:not(.aceso) .mr-escudo,.mr-palco.tem-luz .mr-clube:not(.aceso) .mr-heroi img{filter:grayscale(1) brightness(.28)}
-.mr-acender:hover .mr-escudo,.mr-acender:hover .mr-heroi img{filter:grayscale(.6) brightness(.6)}
-/* aceso */
-.mr-clube.aceso .mr-feixe{opacity:1;animation:mr-acende 1.3s ease both}
-.mr-clube.aceso .mr-lampada::after{opacity:1;box-shadow:0 0 18px 6px rgba(255,240,200,.55)}
-.mr-clube.aceso .mr-chao{opacity:.55}
-.mr-clube.aceso .mr-escudo{filter:drop-shadow(0 8px 18px rgba(0,0,0,.55)) drop-shadow(0 0 22px rgba(255,244,214,.25));transform:none}
-.mr-clube.aceso .mr-heroi img{filter:drop-shadow(0 28px 30px rgba(0,0,0,.65));transform:none}
-.mr-clube.aceso .mr-nome{color:#F4F5F2}
+.mr-chao{position:absolute;left:50%;bottom:10px;width:60%;height:50px;transform:translateX(-50%);border-radius:50%;z-index:-1;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--cor) 50%,#fff4d6),transparent);filter:blur(8px);opacity:.5}
+.mr-foto{position:absolute;inset:26px 0 0}
+.mr-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 30px 34px rgba(0,0,0,.6));transition:opacity .7s ease,transform .9s var(--mr-ease)}
+.mr-foto img.camisa{inset:6% 6% 8%;width:88%;height:86%;object-position:center}
+.mr-foto img.sai{opacity:0;transform:scale(.97)}
+/* entrada do palco (ao abrir ou trocar de time) */
+.mr-palco.entra .mr-feixe{animation:mr-acende 1.3s ease both}
+.mr-palco.entra .mr-lampada::after{animation:mr-acende 1.3s ease both}
+.mr-palco.entra .mr-foto{animation:mr-sobe 1.2s var(--mr-ease) .35s both}
+.mr-palco.entra .mr-marca{animation:mr-marca 1.4s var(--mr-ease) .15s both}
+.mr-palco.entra .mr-chao{animation:mr-chao 1.2s ease .45s both}
+.mr-palco.espera .mr-foto,.mr-palco.espera .mr-feixe,.mr-palco.espera .mr-marca,.mr-palco.espera .mr-chao{opacity:0}
+.mr-palco.sai .mr-foto{opacity:0;transform:translateY(18px) scale(.97);filter:blur(6px);transition:opacity .35s ease,transform .35s ease,filter .35s ease}
+.mr-palco.sai .mr-feixe,.mr-palco.sai .mr-marca,.mr-palco.sai .mr-chao{opacity:0;transition:opacity .3s ease}
 @keyframes mr-acende{0%{opacity:0}7%{opacity:.7}11%{opacity:.12}19%{opacity:.85}25%{opacity:.35}40%{opacity:.9}100%{opacity:1}}
-/* informações do clube aceso: nome da estampa, frente/costas, as outras estampas e o pedido */
-.mr-info{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;padding:6px 4px 0;visibility:hidden;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s var(--mr-ease),visibility 0s .6s}
-.mr-clube.aceso .mr-info{visibility:visible;opacity:1;transform:none;transition:opacity .7s ease .55s,transform .7s var(--mr-ease) .55s,visibility 0s}
-.mr-estampa{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:22px;line-height:1;text-transform:uppercase;text-align:center}
-.mr-estampa small{display:block;margin-top:5px;font-family:'Barlow',sans-serif;font-style:normal;font-weight:600;font-size:12px;letter-spacing:.12em;color:#B89AA0}
-.mr-lados{display:inline-flex;padding:3px;border-radius:999px;border:1px solid #3A1A20;background:#1C0B0F}
-.mr-lados button{min-height:30px;padding:0 14px;border:0;border-radius:999px;background:none;color:#B89AA0;font:700 12px 'Barlow',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-.mr-lados button[aria-pressed="true"]{background:var(--mr-am);color:#0A0B0D}
-.mr-outras{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%}
-.mr-outra{position:relative;aspect-ratio:4/5;padding:4px;border-radius:12px;border:1px solid #3A1A20;background:rgba(28,11,15,.6);cursor:pointer;opacity:0;transform:translateY(10px);transition:border-color .2s,opacity .5s ease,transform .5s var(--mr-ease)}
-.mr-clube.aceso .mr-outra{opacity:1;transform:none}
-.mr-clube.aceso .mr-outra:nth-child(1){transition-delay:0s,.7s,.7s}.mr-clube.aceso .mr-outra:nth-child(2){transition-delay:0s,.8s,.8s}.mr-clube.aceso .mr-outra:nth-child(3){transition-delay:0s,.9s,.9s}.mr-clube.aceso .mr-outra:nth-child(4){transition-delay:0s,1s,1s}
-.mr-outra img{width:100%;height:100%;object-fit:contain}
-.mr-outra:hover{border-color:#5A2A33}
-.mr-outra[aria-pressed="true"]{border-color:var(--mr-am);box-shadow:inset 0 0 0 1px var(--mr-am)}
-.mr-breve{font-size:13px;line-height:1.5;color:#B89AA0;text-align:center}
-.mr-pedir{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--mr-am);color:#0A0B0D;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
-/* os quatro modelos: caimento oversized */
-.mr-modelos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding-top:8px;border-top:1px solid #2A1217}
-.mr-modelos figure{position:relative;margin:0;display:flex;flex-direction:column;align-items:center;gap:10px}
-.mr-modelos img{width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;object-position:bottom;filter:grayscale(1) brightness(.38);transform:scale(.97);transition:filter 1.2s var(--mr-ease),transform 1.2s var(--mr-ease)}
-.mr-modelos figure.aceso img{filter:drop-shadow(0 22px 26px rgba(0,0,0,.6));transform:none}
-.mr-modelos figcaption{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6E5A5E;transition:color 1s ease}
-.mr-modelos figure.aceso figcaption{color:var(--mr-am)}
-.mr-titulo-modelos{grid-column:1/-1;margin:18px 0 4px;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(26px,3vw,38px);line-height:1}
-.mr-titulo-modelos span{color:var(--mr-am)}
+@keyframes mr-sobe{from{opacity:0;transform:translateY(90px) scale(.94);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+@keyframes mr-marca{from{opacity:0;letter-spacing:.3em}to{opacity:.55;letter-spacing:0}}
+@keyframes mr-chao{from{opacity:0}to{opacity:.5}}
+.mr-info{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.mr-titulo{display:flex;flex-direction:column;gap:4px;min-width:0}
+.mr-clube-nome{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mr-am)}
+.mr-estampa{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:clamp(30px,3.2vw,44px);line-height:.95}
+.mr-sub{font-size:14px;color:#B89AA0}
+.mr-acoes{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mr-vistas{position:absolute;left:50%;bottom:16px;z-index:3;transform:translateX(-50%);display:inline-flex;padding:4px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(14,5,7,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 10px 24px rgba(0,0,0,.45)}
+.mr-vistas:empty{display:none}
+.mr-vistas button{min-height:36px;padding:0 16px;border:0;border-radius:999px;background:none;color:#B89AA0;font:700 12px 'Barlow',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.mr-vistas button[aria-pressed="true"]{background:var(--mr-am);color:#0A0B0D}
+.mr-pedir{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 22px;border-radius:999px;background:var(--mr-am);color:#0A0B0D;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap}
+.mr-lado{display:flex;flex-direction:column;gap:14px;min-width:0}
+.mr-lado-tit{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#B89AA0}
+.mr-cards{display:grid;grid-template-rows:repeat(3,1fr);gap:12px;flex:1}
+.mr-card{position:relative;display:grid;grid-template-columns:120px minmax(0,1fr);align-items:center;gap:14px;padding:10px 14px 10px 10px;border-radius:20px;border:1px solid #3A1A20;background:rgba(28,11,15,.55);color:#F4F5F2;font:inherit;text-align:left;cursor:pointer;
+  opacity:0;transform:translateX(24px);transition:border-color .25s,background .25s}
+.mr-card.mostra{animation:mr-card .7s var(--mr-ease) both}
+@keyframes mr-card{to{opacity:1;transform:none}}
+.mr-card:hover{border-color:#5A2A33;background:#22100f}
+.mr-card img{width:120px;height:150px;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,.5));transition:transform .5s var(--mr-ease)}
+.mr-card:hover img{transform:scale(1.06) rotate(-2deg)}
+.mr-card b{display:block;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:22px;line-height:1}
+.mr-card small{display:block;margin-top:4px;font-size:13px;color:#B89AA0}
+.mr-card.breve{cursor:default}
+.mr-card.breve .mr-silueta{width:120px;height:150px;border-radius:14px;background:linear-gradient(110deg,#1f0d11 30%,#2c1419 50%,#1f0d11 70%);background-size:200% 100%;animation:mr-brilho 2.4s linear infinite;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z'/%3E%3C/svg%3E") center/80% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z'/%3E%3C/svg%3E") center/80% no-repeat}
+@keyframes mr-brilho{to{background-position:-200% 0}}
+/* escudos voando da escolha para as abas */
+.mr-voo{position:absolute;z-index:5;pointer-events:none;will-change:transform;transform-origin:0 0}
 @media (max-width:980px){
-  .mr-palco,.mr-modelos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -24px;padding-left:24px;padding-right:24px;scrollbar-width:none}
-  .mr-palco::-webkit-scrollbar,.mr-modelos::-webkit-scrollbar{display:none}
-  .mr-clube{flex:0 0 min(78vw,320px);scroll-snap-align:center}
-  .mr-modelos figure{flex:0 0 min(56vw,240px);scroll-snap-align:center}
-  .mr-titulo-modelos{position:sticky;left:0;flex:0 0 100%;display:none}
+  .mr-escudos{grid-template-columns:repeat(2,minmax(0,1fr));max-width:460px;gap:12px}
+  .mr-escudo-btn{min-height:clamp(220px,34vh,320px)}
+  .mr-corpo{grid-template-columns:minmax(0,1fr) 78px;grid-template-areas:"palco lado" "info info";gap:10px;padding-top:16px}
+  .mr-esquerda{display:contents}
+  .mr-palco{grid-area:palco;height:clamp(400px,66vh,580px);border-radius:22px}
+  .mr-info{grid-area:info}
+  .mr-lado{grid-area:lado;gap:8px}
+  .mr-lado-tit{display:none}
+  .mr-vistas{bottom:12px}.mr-vistas button{min-height:34px;padding:0 11px;font-size:11px;white-space:nowrap}
+  .mr-topo{grid-template-columns:minmax(0,1fr);justify-items:center;gap:12px}
+  .mr-topo .mr-voltar{justify-self:center}
+  .mr-abas{overflow-x:auto;scrollbar-width:none;max-width:100%}
+  .mr-abas::-webkit-scrollbar{display:none}
+  .mr-aba{padding:4px;min-height:44px}
+  .mr-aba span{display:none}
+  .mr-cards{grid-template-rows:none;grid-template-columns:1fr;align-content:start;gap:8px}
+  .mr-card{grid-template-columns:1fr;justify-items:center;text-align:center;padding:6px 4px 8px;gap:4px;border-radius:14px}
+  .mr-card img,.mr-card.breve .mr-silueta{width:100%;height:auto;aspect-ratio:3/4}
+  .mr-card b{font-size:11px;line-height:1.05}
+  .mr-card small{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .mr-rv,.mr-rv.in{opacity:1;transform:none;transition:none}
-  .mr-clube.aceso .mr-feixe{animation:none}
-  .mr-feixe::after{animation:none}
+  .mr-escudo-btn img,.mr-feixe::after,.mr-card.breve .mr-silueta{animation:none}
+  .mr-palco.entra *{animation-duration:.01s!important;animation-delay:0s!important}
+  .mr-card.mostra{animation-duration:.01s;animation-delay:0s!important}
+}
+</style>
+<style id="estilos-costas">
+/* Costas legíveis (linha Legado): trocar frente/costas, lupa ao passar o mouse (computador),
+   ampliar em tela cheia (celular) e a frase da nuca em texto. Ligado pelo script "Costas legíveis" no fim da página. */
+.bat-big.ve-costas .bat-back{right:auto;left:9%;top:11%;height:84%;transform:rotate(-4deg);filter:drop-shadow(0 30px 28px rgba(0,0,0,.55));z-index:2}
+.bat-big.ve-costas .bat-front{left:auto;right:7%;top:9%;height:76%;transform:rotate(6deg);filter:brightness(.72) drop-shadow(0 22px 22px rgba(0,0,0,.5));z-index:1}
+.bat-big.ve-costas .bat-tag-f{left:auto;right:14px}.bat-big.ve-costas .bat-tag-b{left:14px;right:auto}
+.bat-big.modo-troca .bat-back,.bat-big.modo-troca .bat-front{cursor:pointer}
+.bat-acoes{position:absolute;left:0;right:0;bottom:12px;z-index:3;display:flex;justify-content:center;gap:8px;pointer-events:none}
+.bat-acoes button{pointer-events:auto;display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(10,11,13,.72);color:#F4F5F2;font:700 13px 'Barlow',sans-serif;letter-spacing:.04em;cursor:pointer;backdrop-filter:blur(6px)}
+.bat-acoes button:hover{border-color:#F9CA0D}
+.bat-acoes button.prim{background:#F9CA0D;color:#0A0B0D;border-color:#F9CA0D}
+.bat-acoes .dica{display:none;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:999px;background:rgba(10,11,13,.72);color:#D3BEC2;font:600 13px 'Barlow',sans-serif;backdrop-filter:blur(6px)}
+@media (hover:hover) and (pointer:fine){.bat-acoes [data-a="ampliar"]{display:none}.bat-acoes .dica{display:inline-flex}}
+/* lupa: acompanha o mouse sobre a camisa em destaque, que fica reta enquanto a lupa está ativa */
+.bat-lupa{position:absolute;z-index:4;width:230px;height:230px;margin:-115px 0 0 -115px;border-radius:50%;border:2px solid #F9CA0D;background-color:#120609;background-repeat:no-repeat;box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 0 0 4px rgba(10,11,13,.35);pointer-events:none;opacity:0;transform:scale(.6);transition:opacity .2s ease,transform .25s cubic-bezier(.22,.7,.18,1)}
+.bat-big.lupa-on .bat-lupa{opacity:1;transform:none}
+.bat-big.modo-troca .bat-front,.bat-big.modo-troca .bat-back{transition:transform .35s cubic-bezier(.22,.7,.18,1)}
+.bat-big.lupa-on:not(.ve-costas) .bat-front,.bat-big.lupa-on.ve-costas .bat-back{transform:none;cursor:none}
+.bat-nuca{display:flex;flex-direction:column;gap:6px;padding:14px 18px;border-radius:16px;border:1px solid #3A1A20;background:#1C0B0F}
+.bat-nuca span{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F9CA0D}
+.bat-nuca q{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:clamp(20px,2.2vw,26px);line-height:1.15;color:#F4F5F2;quotes:'“' '”'}
+.bat-zoom{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;background:rgba(6,6,8,.94);backdrop-filter:blur(4px)}
+.bat-zoom[hidden]{display:none}
+.bat-zoom-topo{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;color:#F4F5F2}
+.bat-zoom-topo b{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;font-size:22px}
+.bat-zoom-lados{display:inline-flex;padding:3px;border-radius:999px;border:1px solid #3A1A20;background:#1C0B0F}
+.bat-zoom-lados button{min-height:34px;padding:0 16px;border:0;border-radius:999px;background:none;color:#B89AA0;font:700 12px 'Barlow',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.bat-zoom-lados button[aria-pressed="true"]{background:#F9CA0D;color:#0A0B0D}
+.bat-zoom-fechar{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:none;color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.bat-zoom-area{position:relative;flex:1;overflow:hidden;touch-action:none;cursor:zoom-in}
+.bat-zoom-area img{position:absolute;inset:16px;width:calc(100% - 32px);height:calc(100% - 32px);object-fit:contain;transition:transform .35s cubic-bezier(.22,.7,.18,1)}
+.bat-zoom-area.zoom{cursor:zoom-out}.bat-zoom-area.zoom img{transform:scale(2.6);transition:transform .35s cubic-bezier(.22,.7,.18,1),transform-origin 0s}
+.bat-zoom-dica{padding:10px 18px 18px;text-align:center;font-size:13px;color:#B89AA0}
+@media (max-width:700px){
+  .bat-big.ve-costas .bat-back{left:8%;right:auto;top:auto;bottom:4%;width:50%;height:auto;transform:none;filter:drop-shadow(0 16px 16px rgba(0,0,0,.5))}
+  .bat-big.ve-costas .bat-front{right:2%;left:auto;top:auto;bottom:10%;width:38%;height:auto;transform:none;filter:brightness(.6)}
+  .bat-acoes{bottom:8px}.bat-acoes button{min-height:32px;padding:0 10px;font-size:12px}
 }
 </style>
 </head>
@@ -735,20 +830,48 @@ input[type=range].rot::-moz-range-thumb{width:16px;height:16px;border-radius:50%
       </div>
     </div>
 
-    <!-- 3.3 Coleção Maiores do Rio: colunas apagadas; o clique acende um holofote sobre o clube (montado pelo script "Maiores do Rio" no fim da página) -->
-    <div id="dia-maiores" class="mr" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 24px 24px 72px; display: flex; flex-direction: column; gap: 28px; scroll-margin-top: 80px">
+    <!-- 3.3 Coleção Maiores do Rio: escolha do time pelos escudos; ao clicar, abre a vitrine do clube com holofote (montada pelo script "Maiores do Rio" no fim da página) -->
+    <div id="dia-maiores" class="mr" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 24px 24px 80px; display: flex; flex-direction: column; gap: 28px; scroll-margin-top: 80px">
       <div class="mr-rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px 40px; align-items: end; padding-top: 40px; border-top: 1px solid #3A1A20">
         <div style="display: flex; flex-direction: column; gap: 14px">
           <span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #F9CA0D"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"></path><path d="M12 8l1.3 2.7 3 .4-2.2 2 .6 3L12 14.7 9.3 16.1l.6-3-2.2-2 3-.4z"></path></svg>3.3 · Coleção Maiores do Rio</span>
           <strong style="font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 4.6vw, 60px); line-height: .92">Os maiores do Rio.<br><span style="color: #F9CA0D">No seu estilo.</span></strong>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 14px">
-          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #D3BEC2">Uma homenagem aos quatro clubes mais tradicionais do Rio: <b style="color: #F4F5F2">Flamengo, Botafogo, Vasco e Fluminense</b>. Quatro estampas por clube, em modelagem <b style="color: #F4F5F2">oversized</b>, pra vestir a paixão no dia a dia.</p>
-          <span class="mr-dica"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"></path></svg><span class="mr-so-cel">Deslize e toque</span><span class="mr-so-pc">Toque</span> em um clube para acender o holofote</span>
+        <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #D3BEC2">Uma homenagem aos quatro clubes mais tradicionais do Rio: <b style="color: #F4F5F2">Flamengo, Botafogo, Vasco e Fluminense</b>. Quatro estampas por clube, em modelagem <b style="color: #F4F5F2">oversized</b>, pra vestir a paixão no dia a dia.</p>
+      </div>
+      <div class="mr-cena mr-rv" data-estado="escolha">
+        <div class="mr-escolha">
+          <p class="mr-pergunta">Qual é o seu <em>time do coração?</em></p>
+          <div class="mr-escudos" role="group" aria-label="Escolha o seu time"></div>
+          <span class="mr-dica">Toque no escudo para ver as estampas</span>
+        </div>
+        <div class="mr-vitrine" hidden>
+          <div class="mr-topo">
+            <button type="button" class="mr-voltar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>Todos os times</button>
+            <div class="mr-abas" role="group" aria-label="Trocar de time"></div>
+          </div>
+          <div class="mr-corpo">
+            <div class="mr-esquerda">
+              <div class="mr-palco">
+                <span class="mr-marca" aria-hidden="true"></span>
+                <span class="mr-lampada" aria-hidden="true"></span><span class="mr-feixe" aria-hidden="true"></span><span class="mr-chao" aria-hidden="true"></span>
+                <div class="mr-foto"></div>
+                <div class="mr-vistas" role="group" aria-label="Como ver a camisa"></div>
+              </div>
+              <div class="mr-info">
+                <div class="mr-titulo"><span class="mr-clube-nome"></span><strong class="mr-estampa"></strong><small class="mr-sub"></small></div>
+                <div class="mr-acoes">
+                  <a class="mr-pedir" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>Quero a minha</a>
+                </div>
+              </div>
+            </div>
+            <aside class="mr-lado">
+              <span class="mr-lado-tit"></span>
+              <div class="mr-cards"></div>
+            </aside>
+          </div>
         </div>
       </div>
-      <div class="mr-palco mr-rv" role="group" aria-label="Clubes da coleção Maiores do Rio"></div>
-      <div class="mr-modelos mr-rv" aria-label="Modelos vestindo a coleção, caimento oversized"></div>
     </div>
 
     <!-- modelagem -->
@@ -972,7 +1095,7 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.K = {
-      BAT: [{"k": "furiosa", "name": "Furiosa", "c1": "#D61F26", "c2": "#FFFFFF", "cap": "Vermelho e branco", "l": ["A Furiosa", "", ""], "fs": 26, "ext": "webp", "escola": "Salgueiro", "enredo": "Bahia de Todos os Deuses", "titulo": "Campeã de 1969", "tema": "Baiana de tabuleiro, a igreja do Pelourinho e a roda de capoeira.", "p": {"f1": "Meu coração é vermelho e branco", "f2": "Salgueiro é paixão", "tema": "Surdo, caixa e baquetas cruzadas.", "cap": "Vermelho e branco", "c1": "#C8102E", "c2": "#FFFFFF"}}, {"k": "tabajara", "name": "Tabajara do Samba", "c1": "#1F4FD1", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Tabajara", "do Samba", ""], "fs": 26, "ext": "webp", "escola": "Portela", "enredo": "Lendas e Mistérios da Amazônia", "titulo": "Campeã de 1970", "tema": "Vitória-régia, rio, sol, lua e penas da águia.", "p": {"f1": "Meu coração é azul e branco", "f2": "Onde tem samba, tem Portela", "tema": "A águia em voo e a pena azul.", "cap": "Azul e branco", "c1": "#1F4FD1", "c2": "#FFFFFF"}}, {"k": "soberana", "name": "Soberana", "c1": "#DCEBF7", "c2": "#1F4FD1", "cap": "Azul-claro e azul royal", "l": ["Soberana", "", ""], "fs": 26, "ext": "webp", "escola": "Beija-Flor", "enredo": "Ratos e Urubus", "titulo": "Vice-campeã de 1989", "tema": "Coroa, retalhos e urubus: o encontro entre luxo e descarte.", "p": {"f1": "Meu coração bate em Nilópolis", "f2": "Um amor que voa alto", "tema": "O beija-flor e a flor de corações.", "cap": "Azul-claro e azul", "c1": "#8EC5EC", "c2": "#1F4FD1"}}, {"k": "noel", "name": "Swingueira de Noel", "c1": "#13285E", "c2": "#FFFFFF", "cap": "Azul-marinho e branco", "l": ["Swingueira", "de Noel", ""], "fs": 24.0, "ext": "webp", "escola": "Vila Isabel", "enredo": "Kizomba", "titulo": "Campeã de 1988", "tema": "Tramas, dança e liberdade.", "p": {"f1": "O samba mora aqui", "f2": "Meu coração é da Vila", "tema": "Violão coroado e notas musicais.", "cap": "Azul-marinho e branco", "c1": "#13285E", "c2": "#FFFFFF"}}, {"k": "invocada", "name": "Invocada", "c1": "#0E8A6B", "c2": "#D61F26", "cap": "Verde, vermelho e branco", "l": ["Invocada", "", ""], "fs": 26, "ext": "webp", "escola": "Grande Rio", "enredo": "Sete Chaves de Exu", "titulo": "Campeã de 2022", "tema": "Sete chaves, caminhos, espiral e búzios.", "p": {"f1": "Caxias no peito", "f2": "Caxias canta comigo", "tema": "Onça coroada e pintas de onça.", "cap": "Verde, vermelho e branco", "c1": "#0E8A5B", "c2": "#D61F26"}}, {"k": "quente", "name": "Não Existe Mais Quente", "c1": "#2E9B2E", "c2": "#FFFFFF", "cap": "Verde e branco", "l": ["Não Existe", "Mais Quente", ""], "fs": 21.8, "ext": "webp", "escola": "Mocidade", "enredo": "Ziriguidum 2001", "titulo": "Campeã de 1985", "tema": "Astronauta ritmista, órbitas e estrela.", "p": {"f1": "Padre Miguel no coração", "f2": "Independente por amor", "tema": "A estrela da Mocidade.", "cap": "Verde e branco", "c1": "#3E9B2E", "c2": "#FFFFFF"}}, {"k": "cadencia", "name": "Pura Cadência", "c1": "#1F3FC0", "c2": "#F2C200", "cap": "Azul e amarelo ouro", "l": ["Pura", "Cadência", ""], "fs": 26, "ext": "webp", "escola": "Unidos da Tijuca", "enredo": "É Segredo!", "titulo": "Campeã de 2010", "tema": "Figurino em transformação e plumas de pavão.", "p": {"f1": "Meu coração é do Borel", "f2": "Orgulho de ser tijucano", "tema": "O pavão e suas plumas.", "cap": "Amarelo e azul", "c1": "#F2C200", "c2": "#1F3FC0"}}, {"k": "leopoldina", "name": "Swing da Leopoldina", "c1": "#EFE6CF", "c2": "#0E6B35", "cap": "Creme, verde e dourado", "l": ["Swing da", "Leopoldina", ""], "fs": 24.0, "ext": "webp", "escola": "Imperatriz", "enredo": "Mais Vale um Jegue que Me Carregue… Lá no Ceará", "titulo": "Campeã de 1995", "tema": "Jegue, bússola e paisagem do sertão.", "p": {"f1": "Ramos no coração", "f2": "Meu samba tem coroa", "tema": "Coroa imperial e ramos dourados.", "cap": "Creme, verde e dourado", "c1": "#EFE6CF", "c2": "#0E6B35"}}, {"k": "furacao", "name": "Furacão Vermelho e Branco", "c1": "#F4F4F4", "c2": "#D0202E", "cap": "Branco e vermelho", "l": ["Furacão", "Vermelho", "e Branco"], "fs": 19, "ext": "webp", "escola": "Viradouro", "enredo": "Arroboboi, Dangbé", "titulo": "Campeã de 2024", "tema": "Serpente, ancestralidade e guardiãs da tradição.", "p": {"f1": "Meu coração é Viradouro", "f2": "Niterói canta comigo", "tema": "Coroa, aperto de mãos e furacão.", "cap": "Branco e vermelho", "c1": "#F4F4F4", "c2": "#D0202E"}}, {"k": "tamborim", "name": "Tem Que Respeitar Meu Tamborim", "c1": "#0A6B3A", "c2": "#E0559B", "cap": "Verde e rosa", "l": ["Tem Que", "Respeitar", "Meu Tamborim"], "fs": 18.7, "ext": "webp", "escola": "Mangueira", "enredo": "História pra Ninar Gente Grande", "titulo": "Campeã de 2019", "tema": "Livro aberto e protagonistas recuperados pela história.", "p": {"f1": "Verde e rosa na alma", "f2": "Meu coração é Mangueira", "tema": "Surdo verde e rosa com a coroa.", "cap": "Rosa e verde", "c1": "#E0207F", "c2": "#0A6B3A"}}, {"k": "sinfonica", "name": "Sinfônica do Samba", "c1": "#0B4D2E", "c2": "#FFFFFF", "cap": "Verde e branco", "l": ["Sinfônica", "do Samba", ""], "fs": 26, "ext": "webp", "escola": "Império Serrano", "enredo": "Bum Bum Paticumbum Prugurundum", "titulo": "Campeã de 1982", "tema": "Evolução dos desfiles, baiana e agogô de quatro bocas.", "p": {"f1": "A Serrinha mora em mim", "f2": "Meu Império é o samba", "tema": "Coroa dourada e agogô.", "cap": "Verde e dourado", "c1": "#0B4D2E", "c2": "#D4AF37"}}],
+      BAT: [{"k": "furiosa", "name": "Furiosa", "c1": "#D61F26", "c2": "#FFFFFF", "cap": "Vermelho e branco", "l": ["A Furiosa", "", ""], "fs": 26, "ext": "webp", "escola": "Salgueiro", "enredo": "Bahia de Todos os Deuses", "titulo": "Campeã de 1969", "tema": "Baiana de tabuleiro, a igreja do Pelourinho e a roda de capoeira.", "p": {"f1": "Meu coração é vermelho e branco", "f2": "Salgueiro é paixão", "tema": "Surdo, caixa e baquetas cruzadas.", "cap": "Vermelho e branco", "c1": "#C8102E", "c2": "#FFFFFF"}}, {"k": "tabajara", "name": "Tabajara do Samba", "c1": "#1F4FD1", "c2": "#FFFFFF", "cap": "Azul e branco", "l": ["Tabajara", "do Samba", ""], "fs": 26, "ext": "webp", "escola": "Portela", "enredo": "Lendas e Mistérios da Amazônia", "titulo": "Campeã de 1970", "tema": "Vitória-régia, o rio sob a lua, a flor de lótus e a pena da águia.", "p": {"f1": "Meu coração é azul e branco", "f2": "Onde tem samba, tem Portela", "tema": "A águia em voo e a pena azul.", "cap": "Azul e branco", "c1": "#1F4FD1", "c2": "#FFFFFF"}}, {"k": "soberana", "name": "Soberana", "c1": "#DCEBF7", "c2": "#1F4FD1", "cap": "Azul-claro e azul royal", "l": ["Soberana", "", ""], "fs": 26, "ext": "webp", "escola": "Beija-Flor", "enredo": "Ratos e Urubus", "titulo": "Vice-campeã de 1989", "tema": "Coroa, retalhos e urubus: o encontro entre luxo e descarte.", "p": {"f1": "Meu coração bate em Nilópolis", "f2": "Um amor que voa alto", "tema": "O beija-flor e a flor de corações.", "cap": "Azul-claro e azul", "c1": "#8EC5EC", "c2": "#1F4FD1"}}, {"k": "noel", "name": "Swingueira de Noel", "c1": "#13285E", "c2": "#FFFFFF", "cap": "Azul-marinho e branco", "l": ["Swingueira", "de Noel", ""], "fs": 24.0, "ext": "webp", "escola": "Vila Isabel", "enredo": "Kizomba", "titulo": "Campeã de 1988", "tema": "Mulheres dançando, a lua e a corrente partida da liberdade.", "p": {"f1": "O samba mora aqui", "f2": "Meu coração é da Vila", "tema": "Violão coroado e notas musicais.", "cap": "Azul-marinho e branco", "c1": "#13285E", "c2": "#FFFFFF"}}, {"k": "invocada", "name": "Invocada", "c1": "#0E8A6B", "c2": "#D61F26", "cap": "Verde, vermelho e branco", "l": ["Invocada", "", ""], "fs": 26, "ext": "webp", "escola": "Grande Rio", "enredo": "Sete Chaves de Exu", "titulo": "Campeã de 2022", "tema": "As sete chaves, o caminho em espiral, os búzios e a cabaça.", "p": {"f1": "Caxias no peito", "f2": "Caxias canta comigo", "tema": "Onça coroada e pintas de onça.", "cap": "Verde, vermelho e branco", "c1": "#0E8A5B", "c2": "#D61F26"}}, {"k": "quente", "name": "Não Existe Mais Quente", "c1": "#2E9B2E", "c2": "#FFFFFF", "cap": "Verde e branco", "l": ["Não Existe", "Mais Quente", ""], "fs": 21.8, "ext": "webp", "escola": "Mocidade", "enredo": "Ziriguidum 2001", "titulo": "Campeã de 1985", "tema": "Astronauta ritmista, órbitas e estrela.", "p": {"f1": "Padre Miguel no coração", "f2": "Independente por amor", "tema": "A estrela da Mocidade.", "cap": "Verde e branco", "c1": "#3E9B2E", "c2": "#FFFFFF"}}, {"k": "cadencia", "name": "Pura Cadência", "c1": "#1F3FC0", "c2": "#F2C200", "cap": "Azul e amarelo ouro", "l": ["Pura", "Cadência", ""], "fs": 26, "ext": "webp", "escola": "Unidos da Tijuca", "enredo": "É Segredo!", "titulo": "Campeã de 2010", "tema": "Dançarina com a saia em plumas de pavão, o pavão da escola e os versos de É Segredo.", "p": {"f1": "Meu coração é do Borel", "f2": "Orgulho de ser tijucano", "tema": "O pavão e suas plumas.", "cap": "Amarelo e azul", "c1": "#F2C200", "c2": "#1F3FC0"}}, {"k": "leopoldina", "name": "Swing da Leopoldina", "c1": "#EFE6CF", "c2": "#0E6B35", "cap": "Creme, verde e dourado", "l": ["Swing da", "Leopoldina", ""], "fs": 24.0, "ext": "webp", "escola": "Imperatriz", "enredo": "O Aperreio do Cabra Que o Excomungado Tratou Com Má-querença e o Santíssimo Não Deu Guarida", "titulo": "Campeã de 2023", "tema": "O cangaceiro a cavalo, o balão rumo ao céu e o santo com a chave diante da porteira fechada.", "p": {"f1": "Ramos no coração", "f2": "Meu samba tem coroa", "tema": "Coroa imperial e ramos dourados.", "cap": "Creme, verde e dourado", "c1": "#EFE6CF", "c2": "#0E6B35"}}, {"k": "furacao", "name": "Furacão Vermelho e Branco", "c1": "#F4F4F4", "c2": "#D0202E", "cap": "Branco e vermelho", "l": ["Furacão", "Vermelho", "e Branco"], "fs": 19, "ext": "webp", "escola": "Viradouro", "enredo": "Arroboboi, Dangbé", "titulo": "Campeã de 2024", "tema": "Serpente, ancestralidade e guardiãs da tradição.", "p": {"f1": "Meu coração é Viradouro", "f2": "Niterói canta comigo", "tema": "Coroa, aperto de mãos e furacão.", "cap": "Branco e vermelho", "c1": "#F4F4F4", "c2": "#D0202E"}}, {"k": "tamborim", "name": "Tem Que Respeitar Meu Tamborim", "c1": "#0A6B3A", "c2": "#E0559B", "cap": "Verde e rosa", "l": ["Tem Que", "Respeitar", "Meu Tamborim"], "fs": 18.7, "ext": "webp", "escola": "Mangueira", "enredo": "História pra Ninar Gente Grande", "titulo": "Campeã de 2019", "tema": "Mulheres que a história esqueceu, o livro aberto, a pena e a corrente partida.", "p": {"f1": "Verde e rosa na alma", "f2": "Meu coração é Mangueira", "tema": "Surdo verde e rosa com a coroa.", "cap": "Rosa e verde", "c1": "#E0207F", "c2": "#0A6B3A"}}, {"k": "sinfonica", "name": "Sinfônica do Samba", "c1": "#0B4D2E", "c2": "#FFFFFF", "cap": "Verde e branco", "l": ["Sinfônica", "do Samba", ""], "fs": 26, "ext": "webp", "escola": "Império Serrano", "enredo": "Bum Bum Paticumbum Prugurundum", "titulo": "Campeã de 1982", "tema": "Baiana com pandeiro, o agogô de quatro bocas, o surdo e a igreja enfeitada.", "p": {"f1": "A Serrinha mora em mim", "f2": "Meu Império é o samba", "tema": "Coroa dourada e agogô.", "cap": "Verde e dourado", "c1": "#0B4D2E", "c2": "#D4AF37"}}],
       OLY: [
         { name: 'Azul', swatch: '#1E6BFF', front: 'assets/iegc-azul-frente.webp', back: 'assets/iegc-azul-costas.webp' },
         { name: 'Verde', swatch: '#2DBA3E', front: 'assets/iegc-verde-frente.webp', back: 'assets/iegc-verde-costas.webp' }
@@ -1181,110 +1304,236 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
 </script>
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".nl-panel a");if(a){a.blur();}});</script>
 <script>
-// Maiores do Rio: monta as colunas e controla o holofote
+// Maiores do Rio: escolha do time pelos escudos e vitrine do clube
 (function () {
   var NUM = '5521966214050';
   var D = 'assets/maiores/';
+  // por clube: a estampa que o modelo veste vem primeiro (foto = modelo-<clube>.webp);
+  // as outras usam os mockups <k>-frente.webp / <k>-costas.webp
   var CLUBES = [
-    { k: 'flamengo', nome: 'Flamengo', cor: '#C8102E', modelo: 'Estampa Herança', estampas: [
-      { k: 'fla-yamato', nome: 'Yamato-e', sub: 'O urubu em estilo japonês' },
-      { k: 'fla-heranca', nome: 'Herança', sub: 'Damasco botânico' },
-      { k: 'fla-plumagem', nome: 'Plumagem clara', sub: 'Penas em tom sobre tom' },
-      { k: 'fla-territorio', nome: 'Território rubro', sub: 'Linhas topográficas' }
+    { k: 'flamengo', nome: 'Flamengo', cor: '#C8102E', estampas: [
+      { k: 'fla-heranca', nome: 'Herança', sub: 'Damasco botânico', foto: true },
+      { k: 'fla-yamato', nome: 'Yamato-e', sub: 'O urubu em estilo japonês', corpo: true },
+      { k: 'fla-plumagem', nome: 'Plumagem clara', sub: 'Penas em tom sobre tom', corpo: true },
+      { k: 'fla-territorio', nome: 'Território rubro', sub: 'Linhas topográficas', corpo: true }
     ] },
-    { k: 'botafogo', nome: 'Botafogo', cor: '#E6E6E6', modelo: 'Estampa Garrincha', estampas: [] },
-    { k: 'vasco', nome: 'Vasco', cor: '#E6E6E6', modelo: 'Estampa da faixa', estampas: [] },
-    { k: 'fluminense', nome: 'Fluminense', cor: '#8A1538', modelo: 'Estampa botânica tricolor', estampas: [] }
+    { k: 'botafogo', nome: 'Botafogo', cor: '#DADADA', video: true, estampas: [
+      { k: 'bot-yamato', nome: 'Yamato-e · Garrincha', sub: 'Tributo a Garrincha em pintura japonesa', foto: true },
+      { k: 'bot-heranca', nome: 'Herança alvinegra', sub: 'Damasco em preto e cinza', corpo: true },
+      { k: 'bot-trama', nome: 'Trama Clara da Estrela', sub: 'A estrela em tom sobre tom', corpo: true },
+      { k: 'bot-territorio', nome: 'Território Alvinegro', sub: 'Listras e linhas topográficas', corpo: true }
+    ] },
+    { k: 'vasco', nome: 'Vasco', cor: '#DADADA', estampas: [
+      { k: 'vas-territorio', nome: 'Território da Colina', sub: 'A faixa e São Januário', foto: true },
+      { k: 'vas-yamato', nome: 'Yamato vascaíno', sub: 'A caravela em estilo japonês', corpo: true },
+      { k: 'vas-heranca', nome: 'Herança Cruzmaltina', sub: 'Damasco com a cruz de malta', corpo: true },
+      { k: 'vas-trama', nome: 'Trama Clara Vascaína', sub: 'Trama náutica em tom sobre tom', corpo: true }
+    ] },
+    { k: 'fluminense', nome: 'Fluminense', cor: '#8A1538', estampas: [
+      { k: 'flu-trama', nome: 'Trama Clara', sub: 'Folhagem botânica tricolor', foto: true },
+      { k: 'flu-yamato', nome: 'Yamato Tricolor', sub: 'Ilustração clássica em estilo japonês', corpo: true },
+      { k: 'flu-heranca', nome: 'Herança Tricolor', sub: 'Damasco em verde e grená', corpo: true },
+      { k: 'flu-territorio', nome: 'Território Tricolor', sub: 'Verde e grená em linhas topográficas', corpo: true }
+    ] }
   ];
   var raiz = document.getElementById('dia-maiores');
   if (!raiz) return;
-  var palco = raiz.querySelector('.mr-palco');
-  var modelos = raiz.querySelector('.mr-modelos');
+  var $ = function (s) { return raiz.querySelector(s); };
+  var cena = $('.mr-cena'), escolha = $('.mr-escolha'), vitrine = $('.mr-vitrine');
+  var palco = $('.mr-palco'), fotoBox = $('.mr-foto');
+  var calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-  var foto = function (c, e, lado) { return e ? D + e.k + '-' + lado + '.webp' : D + 'modelo-' + c.k + '.webp'; };
-  var zap = function (c, e) { return 'https://wa.me/' + NUM + '?text=' + encodeURIComponent('Olá, Marol Store! Quero a camisa ' + (e ? e.nome + ' do ' : 'do ') + c.nome + ', da coleção Maiores do Rio.'); };
-  var estado = CLUBES.map(function () { return { i: 0, lado: 'frente' }; });
+  var atual = { c: -1, e: 0, vista: 'corpo' };
 
-  palco.innerHTML = CLUBES.map(function (c, n) {
-    var e = c.estampas[0];
-    var outras = c.estampas.length
-      ? '<div class="mr-outras" role="group" aria-label="Estampas do ' + esc(c.nome) + '">' + c.estampas.map(function (x, i) {
-          return '<button type="button" class="mr-outra" data-i="' + i + '" aria-pressed="' + (i === 0) + '" title="' + esc(x.nome) + '"><img src="' + foto(c, x, 'frente') + '" alt="' + esc(x.nome) + '" loading="lazy" decoding="async"></button>';
-        }).join('') + '</div>'
-      : '<p class="mr-breve">As quatro estampas do ' + esc(c.nome) + ' chegam em breve.</p>';
-    return '<article class="mr-clube" data-n="' + n + '" style="--cor:' + c.cor + '">' +
-      '<button type="button" class="mr-acender" aria-pressed="false" aria-label="Acender o holofote: ' + esc(c.nome) + '">' +
-        '<span class="mr-lampada" aria-hidden="true"></span><span class="mr-feixe" aria-hidden="true"></span><span class="mr-chao" aria-hidden="true"></span>' +
-        '<img class="mr-escudo" src="' + D + 'escudo-' + c.k + '.webp" alt="Escudo do ' + esc(c.nome) + '" loading="lazy" decoding="async">' +
-        '<span class="mr-nome">' + esc(c.nome) + '</span>' +
-        '<span class="mr-heroi"><img src="' + foto(c, e, 'frente') + '" alt="' + esc(e ? 'Camisa ' + e.nome + ' do ' + c.nome : 'Modelo vestindo a camisa do ' + c.nome) + '" loading="lazy" decoding="async"></span>' +
-      '</button>' +
-      '<div class="mr-info">' +
-        '<span class="mr-estampa">' + esc(e ? e.nome : c.modelo) + '<small>' + esc(e ? e.sub : 'Oversized') + '</small></span>' +
-        (e ? '<div class="mr-lados" role="group" aria-label="Lado da camisa"><button type="button" data-lado="frente" aria-pressed="true">Frente</button><button type="button" data-lado="costas" aria-pressed="false">Costas</button></div>' : '') +
-        outras +
-        '<a class="mr-pedir" href="' + zap(c, e) + '" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path></svg>Quero a minha</a>' +
-      '</div></article>';
+  // foto no corpo: a principal usa modelo-<clube>.webp; as outras com corpo: true usam corpo-<k>.webp
+  var fotoCorpo = function (c, e) { return e.foto ? D + 'modelo-' + c.k + '.webp' : e.corpo ? D + 'corpo-' + e.k + '.webp' : null; };
+  var vistas = function (e) { return (e.foto || e.corpo ? ['corpo'] : []).concat(e.k ? ['frente', 'costas'] : []); };
+  var imagem = function (c, e, vista) { return vista === 'corpo' ? fotoCorpo(c, e) : D + e.k + '-' + vista + '.webp'; };
+  var miniatura = function (c, e) { return fotoCorpo(c, e) || D + e.k + '-frente.webp'; };
+  var zap = function (c, e) { return 'https://wa.me/' + NUM + '?text=' + encodeURIComponent('Olá, Marol Store! Quero a camisa ' + e.nome + ' do ' + c.nome + ', da coleção Maiores do Rio.'); };
+
+  $('.mr-escudos').innerHTML = CLUBES.map(function (c, n) {
+    // clube com vídeo (video-<clube>.mp4): passa ao fundo do escudo, escurecido
+    var video = c.video ? '<video class="mr-escudo-video" muted loop playsinline preload="none" poster="' + D + 'video-' + c.k + '.jpg" aria-hidden="true"><source src="' + D + 'video-' + c.k + '.mp4" type="video/mp4"><source src="' + D + 'video-' + c.k + '.webm" type="video/webm"></video><span class="mr-escudo-veu" aria-hidden="true"></span>' : '';
+    return '<button type="button" class="mr-escudo-btn' + (c.video ? ' com-video' : '') + '" data-n="' + n + '" style="--cor:' + c.cor + '">' + video + '<img src="' + D + 'escudo-' + c.k + '.webp" alt="" loading="lazy" decoding="async"><span>' + esc(c.nome) + '</span></button>';
   }).join('');
-
-  modelos.innerHTML = '<strong class="mr-titulo-modelos">Caimento <span>oversized</span></strong>' + CLUBES.map(function (c, n) {
-    return '<figure data-n="' + n + '"><img src="' + D + 'modelo-' + c.k + '.webp" alt="Modelo vestindo a camisa do ' + esc(c.nome) + ' (' + esc(c.modelo) + ')" loading="lazy" decoding="async"><figcaption>' + esc(c.nome) + '</figcaption></figure>';
+  $('.mr-abas').innerHTML = CLUBES.map(function (c, n) {
+    return '<button type="button" class="mr-aba" data-n="' + n + '" aria-pressed="false" title="' + esc(c.nome) + '"><img src="' + D + 'escudo-' + c.k + '.webp" alt="" loading="lazy" decoding="async"><span>' + esc(c.nome) + '</span></button>';
   }).join('');
+  var botoes = raiz.querySelectorAll('.mr-escudo-btn'), abas = raiz.querySelectorAll('.mr-aba');
+  var videos = raiz.querySelectorAll('.mr-escudo-video');
+  videos.forEach(function (v) { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.setAttribute('webkit-playsinline', ''); });
+  if (videos.length && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var ioV = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting && !escolha.hidden) e.target.play().catch(function () {}); else e.target.pause(); });
+    }, { threshold: 0.25 });
+    videos.forEach(function (v) { ioV.observe(v); });
+  }
 
-  var colunas = palco.querySelectorAll('.mr-clube');
-  var figuras = modelos.querySelectorAll('figure');
-
-  // troca a imagem em destaque com um esmaecer suave
-  function trocar(col, src, alt) {
-    var heroi = col.querySelector('.mr-heroi');
-    var atual = heroi.querySelector('img:not(.sai)');
-    if (atual && atual.getAttribute('src') === src) return;
+  // troca a imagem do palco com um esmaecer suave
+  function trocarFoto(src, alt, camisa, imediato) {
+    var velha = fotoBox.querySelector('img:not(.sai)');
+    if (velha && velha.getAttribute('src') === src) return;
     var nova = new Image();
-    nova.alt = alt; nova.decoding = 'async'; nova.className = 'sai';
-    nova.onload = function () {
-      heroi.appendChild(nova);
+    nova.alt = alt; nova.decoding = 'async'; nova.className = (camisa ? 'camisa ' : '') + (imediato ? '' : 'sai');
+    var pronto = function () {
+      fotoBox.appendChild(nova);
+      if (imediato) { fotoBox.querySelectorAll('img').forEach(function (i) { if (i !== nova) i.remove(); }); return; }
       requestAnimationFrame(function () { requestAnimationFrame(function () {
         nova.classList.remove('sai');
-        if (atual) { atual.classList.add('sai'); setTimeout(function () { atual.remove(); }, 750); }
+        if (velha) { velha.classList.add('sai'); setTimeout(function () { velha.remove(); }, 800); }
       }); });
     };
+    nova.onload = nova.onerror = pronto;
     nova.src = src;
   }
 
-  function mostrar(n) {
-    var c = CLUBES[n], st = estado[n], col = colunas[n], e = c.estampas[st.i];
-    trocar(col, foto(c, e, st.lado), e ? 'Camisa ' + e.nome + ' do ' + c.nome + (st.lado === 'costas' ? ', costas' : '') : 'Modelo vestindo a camisa do ' + c.nome);
-    col.querySelector('.mr-estampa').innerHTML = esc(e ? e.nome : c.modelo) + '<small>' + esc(e ? e.sub : 'Oversized') + '</small>';
-    col.querySelectorAll('.mr-outra').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.i === st.i)); });
-    col.querySelectorAll('.mr-lados button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lado === st.lado)); });
-    col.querySelector('.mr-pedir').href = zap(c, e);
+  function desenhar(imediato) {
+    var c = CLUBES[atual.c], e = c.estampas[atual.e];
+    if (vistas(e).indexOf(atual.vista) < 0) atual.vista = vistas(e)[0];
+    palco.style.setProperty('--cor', c.cor); cena.style.setProperty('--cor', c.cor);
+    $('.mr-marca').textContent = c.nome;
+    trocarFoto(imagem(c, e, atual.vista), (atual.vista === 'corpo' ? 'Modelo vestindo a camisa ' : 'Camisa ') + e.nome + ' do ' + c.nome + (atual.vista === 'costas' ? ', costas' : ''), atual.vista !== 'corpo', imediato);
+    $('.mr-clube-nome').textContent = c.nome;
+    $('.mr-estampa').textContent = e.nome;
+    $('.mr-sub').textContent = e.sub + ' · oversized';
+    var vs = vistas(e), rot = { corpo: 'No corpo', frente: 'Frente', costas: 'Costas' };
+    $('.mr-vistas').innerHTML = vs.length > 1 ? vs.map(function (v) { return '<button type="button" data-v="' + v + '" aria-pressed="' + (v === atual.vista) + '">' + rot[v] + '</button>'; }).join('') : '';
+    $('.mr-pedir').href = zap(c, e);
+    abas.forEach(function (b, i) { b.setAttribute('aria-pressed', String(i === atual.c)); });
+    // as outras três estampas do clube (ou "em breve" enquanto não chegam)
+    $('.mr-lado-tit').textContent = 'Outras estampas do ' + c.nome;
+    var html = '', k = 0;
+    c.estampas.forEach(function (x, i) {
+      if (i === atual.e) return;
+      html += '<button type="button" class="mr-card" data-e="' + i + '" style="animation-delay:' + (0.45 + k++ * 0.1) + 's"><img src="' + miniatura(c, x) + '" alt=""><span><b>' + esc(x.nome) + '</b><small>' + esc(x.sub) + '</small></span></button>';
+    });
+    for (; k < 3; k++) html += '<div class="mr-card breve" style="animation-delay:' + (0.45 + k * 0.1) + 's"><span class="mr-silueta" aria-hidden="true"></span><span><b>Em breve</b><small>Nova estampa do ' + esc(c.nome) + '</small></span></div>';
+    $('.mr-cards').innerHTML = html;
+    requestAnimationFrame(function () { raiz.querySelectorAll('.mr-card').forEach(function (el) { el.classList.add('mostra'); }); });
   }
 
-  function acender(n) {
-    var ja = colunas[n].classList.contains('aceso');
-    colunas.forEach(function (col, i) {
-      var on = i === n && !ja;
-      col.classList.toggle('aceso', on);
-      col.querySelector('.mr-acender').setAttribute('aria-pressed', String(on));
-      if (figuras[i]) figuras[i].classList.toggle('aceso', on);
+  function entrar() { palco.classList.remove('entra', 'sai', 'espera'); void palco.offsetWidth; palco.classList.add('entra'); }
+
+  // anima a altura da cena entre dois estados
+  function alturaDe(fn) {
+    var h0 = cena.offsetHeight; fn(); var h1 = cena.offsetHeight;
+    if (calmo || !cena.animate || h0 === h1) return;
+    cena.animate([{ height: h0 + 'px', overflow: 'hidden' }, { height: h1 + 'px', overflow: 'hidden' }], { duration: 750, easing: 'cubic-bezier(.65,0,.25,1)' });
+  }
+
+  // escudos voam da escolha para as abas do topo
+  function voar(a, alvo, aceso, atraso) {
+    if (calmo || !document.body.animate) return;
+    var base = cena.getBoundingClientRect(), b = alvo.getBoundingClientRect();
+    var img = document.createElement('img');
+    img.src = alvo.src; img.className = 'mr-voo'; img.alt = '';
+    img.style.left = (a.left - base.left) + 'px'; img.style.top = (a.top - base.top) + 'px';
+    img.style.width = a.width + 'px'; img.style.height = a.height + 'px';
+    cena.appendChild(img);
+    alvo.style.visibility = 'hidden';
+    var dx = b.left - a.left, dy = b.top - a.top, k = b.width / a.width;
+    var apagado = 'grayscale(.85) brightness(.55)', inicio = 'grayscale(.7) brightness(.62)';
+    var anim = img.animate([
+      { transform: 'translate(0,0) scale(1)', filter: aceso ? 'drop-shadow(0 0 0 transparent)' : inicio },
+      { transform: 'translate(' + dx * 0.45 + 'px,' + (dy * 0.45 - 50) + 'px) scale(' + (1 + k) / 2 + ')', offset: 0.5, filter: aceso ? 'drop-shadow(0 0 24px rgba(255,244,214,.45))' : apagado },
+      { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + k + ')', filter: aceso ? 'drop-shadow(0 0 0 transparent)' : apagado }
+    ], { duration: 950, delay: atraso, easing: 'cubic-bezier(.65,0,.25,1)', fill: 'both' });
+    anim.onfinish = function () { alvo.style.visibility = ''; img.remove(); };
+  }
+
+  // o escudo escolhido vai para o centro do palco, cresce com brilho e se dissolve enquanto a estampa sobe
+  var CHEGA = 780; // ms até o escudo chegar ao centro (aí o holofote acende)
+  function escudoAoCentro(de, src) {
+    if (calmo || !document.body.animate) return;
+    var base = cena.getBoundingClientRect(), p = palco.getBoundingClientRect();
+    var img = document.createElement('img');
+    img.src = src; img.className = 'mr-voo'; img.alt = '';
+    img.style.left = (de.left - base.left) + 'px'; img.style.top = (de.top - base.top) + 'px';
+    img.style.width = de.width + 'px'; img.style.height = de.height + 'px';
+    cena.appendChild(img);
+    var h = Math.min(p.height * 0.42, p.width * 0.5), k = h / de.height, w = de.width * k;
+    var dx = p.left + (p.width - w) / 2 - de.left, dy = p.top + (p.height - h) / 2 - de.top;
+    var brilho = 'drop-shadow(0 0 30px rgba(255,244,214,.55)) drop-shadow(0 20px 30px rgba(0,0,0,.6))';
+    var t = function (x, y, e) { return 'translate(' + x + 'px,' + y + 'px) scale(' + e + ')'; };
+    var total = 1700;
+    img.animate([
+      { transform: t(0, 0, 1), filter: 'none', opacity: 1, easing: 'cubic-bezier(.65,0,.25,1)' },
+      { transform: t(dx * 0.5, dy * 0.5 - 60, (1 + k) / 2), offset: 0.22, easing: 'cubic-bezier(.65,0,.25,1)' },
+      { transform: t(dx, dy, k), filter: brilho, opacity: 1, offset: CHEGA / total, easing: 'ease-in-out' },
+      { transform: t(dx, dy - 6, k * 1.02), filter: brilho, opacity: 1, offset: 0.62, easing: 'ease-in' },
+      { transform: t(dx - w * 0.06, dy - h * 0.1, k * 1.12), filter: 'blur(6px) ' + brilho, opacity: 0 }
+    ], { duration: total, fill: 'both' }).onfinish = function () { img.remove(); };
+  }
+
+  function abrir(n) {
+    var origens = Array.prototype.map.call(botoes, function (b) { return b.querySelector('img').getBoundingClientRect(); });
+    atual = { c: n, e: 0, vista: 'corpo' };
+    precarregarClube(CLUBES[n]);
+    alturaDe(function () {
+      escolha.hidden = true; vitrine.hidden = false; cena.dataset.estado = 'vitrine';
+      videos.forEach(function (v) { v.pause(); });
+      desenhar(true);
     });
-    palco.classList.toggle('tem-luz', !ja);
-    if (!ja && matchMedia('(max-width: 980px)').matches) {
-      colunas[n].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      if (figuras[n]) modelos.scrollTo({ left: figuras[n].offsetLeft - (modelos.clientWidth - figuras[n].offsetWidth) / 2, behavior: 'smooth' });
+    palco.classList.remove('entra', 'sai'); palco.classList.add('espera');
+    // o escolhido vai ao palco; os outros viram as abas pequenas do topo
+    abas.forEach(function (aba, i) { if (i !== n) voar(origens[i], aba.querySelector('img'), false, 120 + Math.abs(i - n) * 70); });
+    escudoAoCentro(origens[n], botoes[n].querySelector('img').src);
+    setTimeout(entrar, calmo ? 0 : CHEGA);
+    if (!calmo && vitrine.animate) {
+      $('.mr-topo').animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, delay: 300, easing: 'ease', fill: 'backwards' });
+      $('.mr-info').animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: 800, delay: CHEGA + 500, easing: 'cubic-bezier(.22,.7,.18,1)', fill: 'backwards' });
     }
+    var topo = cena.getBoundingClientRect().top;
+    if (topo < 70 || topo > innerHeight * 0.4) window.scrollTo({ top: scrollY + topo - 90, behavior: calmo ? 'auto' : 'smooth' });
   }
 
-  colunas.forEach(function (col, n) {
-    col.querySelector('.mr-acender').addEventListener('click', function () { acender(n); });
-    col.querySelectorAll('.mr-outra').forEach(function (b) {
-      b.addEventListener('click', function () { estado[n].i = +b.dataset.i; mostrar(n); });
-    });
-    col.querySelectorAll('.mr-lados button').forEach(function (b) {
-      b.addEventListener('click', function () { estado[n].lado = b.dataset.lado; mostrar(n); });
-    });
+  var trocando = 0;
+  function trocarClube(n) {
+    if (n === atual.c) return;
+    var vez = ++trocando;
+    precarregarClube(CLUBES[n]);
+    palco.classList.remove('entra'); palco.classList.add('sai');
+    abas.forEach(function (b, i) { b.setAttribute('aria-pressed', String(i === n)); });
+    escudoAoCentro(abas[n].querySelector('img').getBoundingClientRect(), abas[n].querySelector('img').src);
+    setTimeout(function () {
+      if (vez !== trocando) return;
+      atual = { c: n, e: 0, vista: 'corpo' };
+      desenhar(true); palco.classList.remove('sai'); entrar();
+    }, calmo ? 0 : CHEGA);
+  }
+
+  function fechar() {
+    alturaDe(function () { vitrine.hidden = true; escolha.hidden = false; cena.dataset.estado = 'escolha'; });
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) videos.forEach(function (v) { v.play().catch(function () {}); });
+    if (!calmo && escolha.animate) escolha.animate([{ opacity: 0, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 600, easing: 'cubic-bezier(.22,.7,.18,1)' });
+    atual.c = -1;
+  }
+
+  botoes.forEach(function (b, n) { b.addEventListener('click', function () { abrir(n); }); });
+  abas.forEach(function (b, n) { b.addEventListener('click', function () { trocarClube(n); }); });
+  $('.mr-voltar').addEventListener('click', fechar);
+  $('.mr-vistas').addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-v]'); if (!b) return;
+    atual.vista = b.dataset.v; desenhar();
   });
-  figuras.forEach(function (f, n) { f.addEventListener('click', function () { if (!colunas[n].classList.contains('aceso')) acender(n); }); });
+  $('.mr-cards').addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-e]'); if (!b) return;
+    var e = CLUBES[atual.c].estampas[+b.dataset.e];
+    atual.e = +b.dataset.e; atual.vista = vistas(e)[0]; desenhar();
+  });
+
+  // pré-carrega as fotos para a animação não esperar o download: os modelos quando a seção aparece,
+  // as camisas do clube quando ele é aberto
+  var carregadas = {};
+  function precarregar(srcs) { srcs.forEach(function (u) { if (!carregadas[u]) { carregadas[u] = new Image(); carregadas[u].src = u; } }); }
+  function precarregarClube(c) { precarregar(c.estampas.reduce(function (l, e) { return (e.k ? l.concat([D + e.k + '-frente.webp', D + e.k + '-costas.webp']) : l).concat(e.corpo ? [fotoCorpo(c, e)] : []); }, [])); }
+  if ('IntersectionObserver' in window) {
+    var io2 = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { precarregar(CLUBES.map(function (c) { return D + 'modelo-' + c.k + '.webp'; })); io2.disconnect(); }
+    }, { rootMargin: '600px 0px' });
+    io2.observe(cena);
+  }
 
   // entrada suave ao rolar até a seção
   var rv = raiz.querySelectorAll('.mr-rv');
@@ -1292,6 +1541,133 @@ mountDC(Component, {"accent": "#F9CA0D", "whatsapp": "+55 21 96621-4050"}, 'app-
     var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }); }, { threshold: 0.15 });
     rv.forEach(function (el) { io.observe(el); });
   } else rv.forEach(function (el) { el.classList.add('in'); });
+})();
+</script>
+<script>
+// Costas legíveis (linha Legado): trocar frente/costas, lupa ao passar o mouse no computador,
+// ampliar em tela cheia no celular e a frase da nuca (verso do samba-enredo) em texto.
+(function () {
+  // frase escrita na nuca de cada camisa Legado ("|" vira quebra de linha)
+  var NUCA = {
+    furiosa: 'Bahia, os meus olhos estão brilhando',
+    tabajara: 'A lua apaixonada chorou tanto|Que do seu pranto nasceu o rio e o mar',
+    soberana: 'A fantasia resiste',
+    noel: 'Hoje a Vila é Kizomba|É batuque, canto e dança',
+    invocada: 'Eu levo fé nesse povo que diz|Boa noite, moça, boa noite, moço',
+    quente: 'Avançar no tempo e nas estrelas|Fazer meu ziriguidum, meu ziriguidum',
+    cadencia: 'É segredo, não conto a ninguém|Sou Tijuca, vou além',
+    leopoldina: 'E foi-se então, adeus, capitão!|No estouro do pipoco',
+    furacao: 'É o ninho da serpente,|jamais tente afrontar',
+    tamborim: 'Mangueira, tira a poeira dos porões|Ô, abre alas pros teus heróis de barracões',
+    sinfonica: 'Enfeitei meu coração|De confete e serpentina'
+  };
+  var ZOOM = 2.4; // aumento da lupa
+  var mouse = matchMedia('(hover: hover) and (pointer: fine)');
+  var big = document.querySelector('.bat-big');
+  if (!big) return;
+  var frente = big.querySelector('.bat-front'), costas = big.querySelector('.bat-back');
+  var extra = document.createElement('div'); extra.className = 'bat-extra'; extra.style.display = 'contents';
+  big.insertAdjacentElement('afterend', extra);
+  var acoes = document.createElement('div'); acoes.className = 'bat-acoes'; big.appendChild(acoes);
+  var calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var atual = null;
+
+  // troca frente e costas animando cada camisa do lugar antigo para o novo
+  function trocar() {
+    var antes = [frente, costas].map(function (el) { return { r: el.getBoundingClientRect(), t: getComputedStyle(el).transform }; });
+    big.classList.toggle('ve-costas');
+    atualizarBotoes();
+    if (calmo || !frente.animate) return;
+    [frente, costas].forEach(function (el, i) {
+      var a = antes[i].r, b = el.getBoundingClientRect(), tb = getComputedStyle(el).transform;
+      var dx = (a.left + a.width / 2) - (b.left + b.width / 2), dy = (a.top + a.height / 2) - (b.top + b.height / 2), k = a.width / b.width;
+      var t0 = 'translate(' + dx + 'px,' + dy + 'px) scale(' + k + ') ' + (antes[i].t === 'none' ? '' : antes[i].t);
+      el.animate([{ transform: t0 }, { transform: tb === 'none' ? 'none' : tb }], { duration: 650, easing: 'cubic-bezier(.65,0,.25,1)' });
+    });
+  }
+  function atualizarBotoes() {
+    var c = big.classList.contains('ve-costas');
+    var b = acoes.querySelector('[data-a="trocar"]'); if (b) b.textContent = c ? 'Ver frente' : 'Ver costas';
+  }
+
+  // ampliar em tela cheia, com toque/clique para dar zoom e arrastar para mover
+  var zoom = document.createElement('div');
+  zoom.className = 'bat-zoom'; zoom.hidden = true; zoom.setAttribute('role', 'dialog'); zoom.setAttribute('aria-modal', 'true'); zoom.setAttribute('aria-label', 'Camisa ampliada');
+  zoom.innerHTML = '<div class="bat-zoom-topo"><b></b><div class="bat-zoom-lados"><button type="button" data-l="f">Frente</button><button type="button" data-l="b">Costas</button></div><button type="button" class="bat-zoom-fechar" aria-label="Fechar">×</button></div><div class="bat-zoom-area"><img alt=""></div><p class="bat-zoom-dica">Toque na camisa para aproximar e arraste para ver os detalhes</p>';
+  document.body.appendChild(zoom);
+  var area = zoom.querySelector('.bat-zoom-area'), zimg = area.querySelector('img');
+  function lado(l) {
+    zimg.src = (l === 'b' ? costas : frente).src;
+    zimg.alt = (l === 'b' ? costas : frente).alt;
+    area.classList.remove('zoom');
+    zoom.querySelectorAll('[data-l]').forEach(function (x) { x.setAttribute('aria-pressed', String(x.dataset.l === l)); });
+  }
+  function abrirZoom() {
+    zoom.querySelector('b').textContent = (document.querySelector('.bat-info strong') || {}).textContent || '';
+    lado(big.classList.contains('ve-costas') ? 'b' : 'f');
+    zoom.hidden = false; document.documentElement.style.overflow = 'hidden';
+    zoom.querySelector('.bat-zoom-fechar').focus();
+  }
+  function fecharZoom() { zoom.hidden = true; document.documentElement.style.overflow = ''; }
+  function origem(ev) { var r = area.getBoundingClientRect(); zimg.style.transformOrigin = ((ev.clientX - r.left) / r.width * 100) + '% ' + ((ev.clientY - r.top) / r.height * 100) + '%'; }
+  var arrastou = false, apertado = false;
+  area.addEventListener('pointerdown', function (ev) { apertado = true; arrastou = false; if (area.classList.contains('zoom')) area.setPointerCapture(ev.pointerId); });
+  area.addEventListener('pointermove', function (ev) { if (area.classList.contains('zoom') && (apertado || ev.pointerType === 'mouse')) { arrastou = arrastou || apertado; origem(ev); } });
+  area.addEventListener('pointerup', function (ev) { apertado = false; if (arrastou) return; origem(ev); area.classList.toggle('zoom'); });
+  zoom.querySelectorAll('[data-l]').forEach(function (x) { x.addEventListener('click', function () { lado(x.dataset.l); }); });
+  zoom.querySelector('.bat-zoom-fechar').addEventListener('click', fecharZoom);
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !zoom.hidden) fecharZoom(); });
+
+  var esc = function (t) { return t.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var LUPA = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>';
+  function aplicar() {
+    var m = /baterias\/([a-z]+)(-p)?-b\.webp/.exec(costas.getAttribute('src') || '');
+    var id = m && !m[2] ? m[1] : null; // só na linha Legado
+    if (id === atual) return;
+    atual = id;
+    big.classList.remove('ve-costas', 'modo-troca', 'lupa-on');
+    acoes.innerHTML = ''; extra.innerHTML = '';
+    if (!id) return;
+    big.classList.add('modo-troca');
+    acoes.innerHTML = '<button type="button" class="prim" data-a="trocar">Ver costas</button><button type="button" data-a="ampliar">' + LUPA + 'Ampliar</button><span class="dica">' + LUPA + 'Passe o mouse para ver de perto</span>';
+    if (NUCA[id]) extra.innerHTML = '<div class="bat-nuca"><span>Frase na nuca</span><q>' + NUCA[id].split('|').map(esc).join('<br>') + '</q></div>';
+  }
+
+  // lupa (computador): acompanha o mouse sobre a camisa em destaque
+  var lupa = document.createElement('div'); lupa.className = 'bat-lupa'; lupa.setAttribute('aria-hidden', 'true'); big.appendChild(lupa);
+  function emDestaque() { return big.classList.contains('ve-costas') ? costas : frente; }
+  big.addEventListener('pointermove', function (ev) {
+    if (!mouse.matches || ev.pointerType !== 'mouse' || !big.classList.contains('modo-troca')) return;
+    var img = emDestaque(), base = big.getBoundingClientRect();
+    // mede a camisa sem a inclinação (é assim que ela fica com a lupa ativa)
+    var r = { left: base.left + img.offsetLeft, top: base.top + img.offsetTop, width: img.offsetWidth, height: img.offsetHeight };
+    var x = ev.clientX - r.left, y = ev.clientY - r.top;
+    var dentro = x >= 0 && y >= 0 && x <= r.width && y <= r.height && !ev.target.closest('.bat-acoes');
+    big.classList.toggle('lupa-on', dentro);
+    if (!dentro) return;
+    var meia = lupa.offsetWidth / 2;
+    lupa.style.left = (ev.clientX - base.left) + 'px'; lupa.style.top = (ev.clientY - base.top) + 'px';
+    lupa.style.backgroundImage = 'url("' + img.src + '")';
+    lupa.style.backgroundSize = (r.width * ZOOM) + 'px ' + (r.height * ZOOM) + 'px';
+    lupa.style.backgroundPosition = (meia - x * ZOOM) + 'px ' + (meia - y * ZOOM) + 'px';
+  });
+  big.addEventListener('pointerleave', function () { big.classList.remove('lupa-on'); });
+
+  acoes.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-a]'); if (!b) return;
+    if (b.dataset.a === 'trocar') { big.classList.remove('lupa-on'); trocar(); } else abrirZoom();
+  });
+  // clicar na camisa de trás traz ela para a frente; na da frente, só o celular abre a tela cheia
+  // (no computador a lupa já mostra de perto)
+  [frente, costas].forEach(function (el) {
+    el.addEventListener('click', function () {
+      if (!big.classList.contains('modo-troca')) return;
+      if (el !== emDestaque()) { big.classList.remove('lupa-on'); trocar(); }
+      else if (!mouse.matches) abrirZoom();
+    });
+  });
+  new MutationObserver(aplicar).observe(costas, { attributes: true, attributeFilter: ['src'] });
+  aplicar();
 })();
 </script>
 </body>

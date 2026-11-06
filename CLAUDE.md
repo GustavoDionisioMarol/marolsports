@@ -15,7 +15,7 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Cor de destaque: amarelo `#F9CA0D`; fontes Barlow / Barlow Condensed / Yellowtail (Google Fonts).
 
 ## Estrutura da página
-- Menu flutuante com ícones: Uniformes de time · Eventos · Dia a dia (submenu: Coleção Samba, Baterias Cariocas) · Simulador.
+- Menu flutuante com ícones: Uniformes de time · Eventos · Dia a dia (submenu: Coleção Samba, Baterias Cariocas, Maiores do Rio) · Simulador.
 - **01 Uniformes de time** (`#times`): banner, animação do chute (scroll), selo Marol Sports.
 - **02 Eventos** (`#eventos`): 2.1 Festas (camisa 360º com 8 fotos), 2.2 Corridas, 2.3 Eventos escolares com 3 abas interativas (Olimpíadas IEGC, Arraiá do CEC, Feiras e mostras — camisas recortadas e inclinadas).
 - **03 Dia a dia** (`#dia-a-dia`): 3.1 Coleção Samba (`#dia-samba`, Batucada Raiz), 3.2 **Coleção Baterias Cariocas** (`#dia-baterias`), 3.3 **Coleção Maiores do Rio** (`#dia-maiores`), modelagens.
@@ -26,19 +26,22 @@ Landing page estática da **Marol Store** (camisas personalizadas). Tudo está e
 - Duas linhas por escola (estado `batLine`): **Legado** (homenageia o enredo campeão; arquivos `assets/baterias/<k>-f.webp` / `-b.webp`) e **Paixão pelo Samba** (`<k>-p-f.webp` / `-p-b.webp`).
 - Marca d'água: logo da escola `assets/baterias/<k>-logo.webp` (uso autorizado pelo dono).
 - Chaves: furiosa (Salgueiro), tabajara (Portela), soberana (Beija-Flor), noel (Vila Isabel), invocada (Grande Rio), quente (Mocidade), cadencia (Tijuca), leopoldina (Imperatriz), furacao (Viradouro), tamborim (Mangueira), sinfonica (Império Serrano).
-- Pendente: estampas Legado novas de Mangueira e Unidos da Tijuca.
+- Legado em versão nova (nov/2026) nas 11 escolas. Imperatriz passou a homenagear o enredo de 2023 ("O Aperreio do Cabra...").
 - Sem personalização (nome/número) nessa coleção: é linha casual de fã.
+- **Costas legíveis** (linha Legado, todas as escolas): script "Costas legíveis" + `<style id="estilos-costas">`. Botão "Ver costas" (ou clique na camisa de trás) troca frente e costas com animação; no computador, passar o mouse na camisa em destaque mostra uma lupa (sem abrir janela); no celular, "Ampliar" abre a tela cheia com zoom por toque. A frase da nuca aparece em texto abaixo da camisa (lista `NUCA` no script, `|` = quebra de linha) — atualizar ao trocar uma estampa Legado.
 
 ## Maiores do Rio
 - Homenagem a Flamengo, Botafogo, Vasco e Fluminense; 4 estampas por clube, modelagem oversized.
-- Quatro colunas apagadas; o clique acende um holofote de cima (feixe, luz no chão, escudo e camisa ganham cor). Abaixo aparecem frente/costas, as 4 estampas do clube e o botão do WhatsApp. Faixa final "Caimento oversized" com as 4 fotos de modelos. No celular (até 980px) colunas e modelos viram carrossel.
-- HTML em `#dia-maiores`, estilos em `<style id="estilos-maiores">`, dados e lógica no script "Maiores do Rio" no fim do `index.html` (lista `CLUBES`: `k`, `nome`, `cor`, `modelo`, `estampas` com `k`, `nome`, `sub`). Fica fora do `Component`.
-- Arquivos em `assets/maiores/`: `escudo-<clube>.webp`, `modelo-<clube>.webp`, `<prefixo>-<estampa>-frente.webp` / `-costas.webp` (Flamengo: `fla-`). Originais em `originais/maiores-do-rio/` (não vão para o ar).
-- Mockups de camisa em fundo bege (frente | costas lado a lado): recortar com `tools/recorte_mockup_bege.py <png> <saída>`.
-- Pendente: as estampas de Botafogo, Vasco e Fluminense (até lá a coluna mostra a foto do modelo).
+- Abertura: só os 4 escudos e "Qual é o seu time do coração?". O clique abre a vitrine do clube: o escudo escolhido voa para o centro do palco e cresce, os outros viram abas pequenas centralizadas no topo (trocar de time); o holofote acende, o escudo se dissolve e o modelo sobe no palco (a troca de time pelas abas repete a animação do escudo); ao lado, as outras 3 estampas do clube (clicar troca a do palco). A estampa principal é a que o modelo veste ("No corpo"); as outras mostram Frente/Costas. "Todos os times" volta para a abertura. Botões No corpo/Frente/Costas ficam sobre a foto, no pé do palco. No celular (até 980px): escudos em 2×2, as outras estampas numa coluna estreita ao lado do palco e o nome + "Quero a minha" embaixo.
+- HTML em `#dia-maiores`, estilos em `<style id="estilos-maiores">`, dados e lógica no script "Maiores do Rio" no fim do `index.html` (lista `CLUBES`: `k`, `nome`, `cor`, `estampas` com `k`, `nome`, `sub` e `foto: true` na que o modelo veste; `corpo: true` nas outras que têm foto vestida, arquivo `corpo-<k>.webp`). Fica fora do `Component`.
+- Arquivos em `assets/maiores/`: `escudo-<clube>.webp`, `modelo-<clube>.webp`, `<prefixo>-<estampa>-frente.webp` / `-costas.webp` (prefixos `fla-`, `bot-`, `vas-`, `flu-`; estampas `yamato`, `heranca`, `trama`/`plumagem`, `territorio`). Originais em `originais/maiores-do-rio/` (não vão para o ar).
+- Mockups de camisa em fundo bege (frente | costas lado a lado): recortar com `tools/recorte_mockup_bege.py <png> <saída>` (`--sombra` tira a sombra cinza embaixo de barras escuras, não usar em camisas de barra clara; `--grabcut` para fundo com degradê/vinheta ou quando sobra o título grudado na camisa).
+- Vídeo da coleção ao fundo do escudo na abertura: `video: true` no clube + `assets/maiores/video-<clube>.mp4` e `.jpg` (capa). Hoje só o Botafogo (3 vídeos de campanha juntos, 23 s, sem som; `.webm` de reserva). Cartões da abertura altos (~56vh) para o vídeo preencher a tela.
+- As 16 estampas têm foto vestida (principal = `modelo-<clube>.webp`, demais = `corpo-<k>.webp`). Originais das fotos em `originais/maiores-do-rio/vestidas/`.
+- Todas as 16 estampas no ar. Estampa vestida pelo modelo: Flamengo Herança, Botafogo Yamato-e (Garrincha), Vasco Território da Colina, Fluminense Trama Clara.
 
 ## Imagens
-- O dono manda mockups frente+costas lado a lado com **fundo verde liso**; recorte com `tools/recorte_fundo_verde.py` (corta o cabeçalho e o rodapé com os nomes "FRENTE/COSTAS").
+- O dono manda mockups frente+costas lado a lado com **fundo verde liso**; recorte com `tools/recorte_fundo_verde.py` (corta o cabeçalho e o rodapé com os nomes "FRENTE/COSTAS"; mockups sem esses nomes, como os da Legado de nov/2026, usam `--sem-legenda`, senão a gola e a barra saem cortadas).
 - Logos para marca d'água: `tools/logo_marca_dagua.py`.
 - Sempre conferir no celular (390px): frente e costas lado a lado, sem sobreposição.
 
